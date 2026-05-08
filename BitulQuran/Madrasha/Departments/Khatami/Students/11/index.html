@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Student Dashboard — Bitul Quran Madrasha</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="icon" href="Logo.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { --muted:#6b7280; --bg:#f8fafc; --accent:#0b5fff; }
+    body { background:#f3f4f6; color:#0f172a; font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace; }
+    .small-muted { color:var(--muted); font-size:0.95rem; }
+    .clock-box { border:1px solid #e5e7eb; border-radius:8px; padding:12px; background:white; }
+    .page-box { text-align:center; padding:8px; border-radius:6px; color:white; font-weight:700; user-select:none; }
+    .completed { background:#16a34a; }   /* Green */
+    .in-progress { background:#f59e0b; } /* Orange */
+    .pending { background:#ef4444; }     /* Red */
+    .para-btn { padding:8px 10px; border-radius:6px; background:#eef2ff; cursor:pointer; border:1px solid #c7d2fe; }
+    .para-btn.active { background:#c7d2fe; }
+    .modal { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.5); z-index:50; }
+    .modal-card { width:90%; max-width:900px; background:white; border-radius:8px; padding:16px; box-shadow:0 10px 30px rgba(0,0,0,0.2); }
+    .summary-list { display:flex; gap:12px; flex-wrap:wrap; }
+    .summary-item { background:var(--bg); padding:10px; border-radius:8px; min-width:220px; }
+    .collapse { transition: max-height 0.28s ease; overflow: hidden; }
+    .comment-box { border-left:4px solid #e5e7eb; padding:10px; border-radius:6px; background:white; }
+    .comment-meta { font-size:0.9rem; color:var(--muted); }
+    .role-badge { display:inline-block; padding:2px 8px; border-radius:999px; font-size:0.8rem; color:white; }
+    .role-principal { background:#0ea5a4; }
+    .role-teacher { background:#2563eb; }
+    .role-guardian { background:#f97316; }
+    .btn { padding:8px 12px; border-radius:6px; cursor:pointer; }
+    .btn-primary { background:var(--accent); color:white; border:none; }
+    .btn-ghost { background:#fff; color:var(--accent); border:1px solid #e2e8f0; }
+    .label { font-weight:600; color:#0f172a; }
+    .muted { color:var(--muted); }
+    a { color:var(--accent); text-decoration:none; }
+  </style>
+</head>
+<body>
+
+  <header class="bg-white border-b">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between h-16 items-center">
+      <div class="flex items-center gap-3">
+        <img id="brandLogo" src="logo.png" alt="Logo" class="h-10 w-10 rounded" />
+        <div>
+          <div id="brandTitle" class="font-semibold text-lg text-blue-900">Bitul Quran Madrasha</div>
+          <div id="brandSubtitle" class="text-sm small-muted">Student Dashboard</div>
+
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <div class="text-sm small-muted text-right">
+          <div id="clockTitle">🕒 Dhaka Time</div>
+          <div id="clock" class="mono text-blue-700">Loading...</div>
+        </div>
+        <div class="flex items-center gap-3">
+          <button id="btnEn" onclick="setLang('en')" class="px-2 py-1 text-sm rounded border bg-white">EN</button>
+          <button id="btnBn" onclick="setLang('bn')" class="px-2 py-1 text-sm rounded border bg-white">বাংলা</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+
+    <!-- Student Profile -->
+    <section id="profile" class="bg-white rounded-lg shadow p-5">
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-3">
+        <div class="flex items-center gap-4 md:col-span-1">
+          <img id="studentPhoto" src="Sakib.png" alt="Student Photo" class="h-24 w-24 rounded-full object-cover border" />
+        </div>
+        <div class="md:col-span-2 space-y-1">
+          <p><span class="label">Name:</span> <span id="name">—</span></p>
+          <p><span class="label">Guardian:</span> <span id="guardian">—</span></p>
+          <p><span class="label">Contact:</span> <span id="guardianContact">—</span></p>
+          
+          <p><span class="label">Hifz Start Date:</span> <span id="startDate">—</span></p>
+          <p><span class="label">Group:</span> <span id="group">—</span></p>
+          <p><span class="label">Ustad:</span> <span id="groupUstad">—</span></p>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <h3 id="memProgressTitle" class="text-lg font-semibold text-blue-800">Memorization Progress</h3>
+        <div class="w-full bg-gray-200 rounded-full h-6 overflow-hidden mt-2">
+          <div id="progressBar" class="bg-green-500 h-6 text-center text-white text-sm font-bold leading-6">0%</div>
+        </div>
+        <p class="small-muted mt-2" id="progressText">Loading progress...</p>
+      </div>
+    </section>
+
+    <!-- Hifz Start Date & Timers -->
+    <section id="hifzTimeSection" class="bg-white rounded-lg shadow p-5">
+      <h2 class="text-xl font-semibold text-blue-900">Hifz Start Date & Timers</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+        <!-- 1: Count since Hifz start -->
+        <div class="clock-box">
+          <h3 class="font-semibold text-blue-800">Count since Hifz start</h3>
+          <div id="sinceStartClock" class="mono text-lg text-green-600">Loading...</div>
+          <div class="small-muted mt-2" id="sinceStartLabel">Start: —</div>
+        </div>
+
+        <!-- 2: Count since all 30 para completed -->
+        <div class="clock-box">
+          <h3 class="font-semibold text-blue-800">Count since all 30 para complete</h3>
+          <div id="sinceCompleteClock" class="mono text-lg text-orange-600">Loading...</div>
+          <div class="small-muted mt-2" id="sinceCompleteLabel">All complete: —</div>
+        </div>
+
+        <!-- 3: Countdown to target -->
+        <div class="clock-box">
+          <h3 class="font-semibold text-blue-800">Countdown to target</h3>
+          <div id="countDownClock" class="mono text-lg text-red-600">Loading...</div>
+          <div class="small-muted mt-2" id="targetLabel">Target: —</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Summary -->
+    <section id="summarySection" class="bg-white rounded-lg shadow p-5">
+      <h2 id="summaryTitle" class="text-xl font-semibold text-blue-900 cursor-pointer" onclick="toggleSummary()">Summary (Completed / In Progress)</h2>
+      <div id="summaryList" class="summary-list collapse" style="max-height:0;"></div>
+    </section>
+
+    <!-- Hifz Tracker -->
+    <section id="hifzTracker" class="bg-white rounded-lg shadow p-5">
+      <div class="flex items-center justify-between">
+        <h2 id="hifzTitle" class="text-xl font-semibold text-blue-900">Hifz Tracker</h2>
+        <div id="overall-status" class="small-muted">Loading stats...</div>
+      </div>
+
+      <div class="mt-4 flex flex-wrap gap-2" id="paraButtons"></div>
+
+      <div class="mt-4">
+        <h3 id="selectedParaTitle" class="text-lg font-semibold text-slate-800">Select a Para to view details</h3>
+        <div id="paraPages" class="mt-3 grid grid-cols-5 gap-2"></div>
+      </div>
+
+      <div class="mt-4">
+        <div class="w-full bg-gray-200 rounded-full h-6 overflow-hidden">
+          <div id="overall-bar1" class="bg-blue-600 h-6 text-center text-white text-sm font-bold leading-6">0%</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Challenges -->
+    <section id="challenges" class="bg-white rounded-lg shadow p-5">
+      <h2 id="challengesTitle" class="text-xl font-semibold text-blue-900">Current Memorize Challenges</h2>
+      <div id="challengeList" class="mt-4 space-y-4"></div>
+    </section>
+
+    <!-- Commitment -->
+    <section id="commitment" class="bg-white rounded-lg shadow p-5">
+      <h2 id="commitmentTitle" class="text-xl font-semibold text-blue-900">Commitment & Code of Conduct</h2>
+      <p id="commitmentText" class="mt-2 text-gray-700">Loading...</p>
+    </section>
+
+    <!-- Comments -->
+    <section id="comments" class="bg-white rounded-lg shadow p-5">
+      <h2 id="commentsTitle" class="text-xl font-semibold text-blue-900">Teacher / Guardian Notes</h2>
+
+      <div id="commentsList" class="mt-3 space-y-3"></div>
+
+      <div class="mt-4 grid grid-cols-1 md:grid-cols-4 gap-3 items-end">
+        <div class="md:col-span-1">
+          <label class="block text-sm font-medium text-gray-700">Role</label>
+          <select id="commentRole" class="w-full border rounded p-2">
+            <option value="principal">Principal</option>
+            <option value="teacher">Teacher</option>
+            <option value="guardian">Guardian</option>
+          </select>
+        </div>
+        <div class="md:col-span-3">
+          <label class="block text-sm font-medium text-gray-700">Write suggestion, feedback or complaint</label>
+          <textarea id="newComment" class="w-full border rounded p-2" rows="3" placeholder="Type your message here..."></textarea>
+        </div>
+      </div>
+
+      <div class="mt-3 flex gap-2">
+        <button class="btn btn-primary" onclick="addComment()">Submit</button>
+        <button class="btn btn-ghost" onclick="clearComments()">Clear Local Comments</button>
+      </div>
+
+      <p class="small-muted mt-3" id="accessNote"></p>
+    </section>
+
+    <!-- MJ Ahmad Message -->
+    <section id="mjSection" class="bg-white rounded-lg shadow p-5">
+      <h2 id="mjTitle" class="text-xl font-semibold text-blue-900">Message from MJ Ahmad</h2>
+      <blockquote id="mjMessage" class="mt-2 italic text-gray-700">Loading...</blockquote>
+    </section>
+
+  </main>
+
+  <!-- Modal -->
+  <div id="modal" class="hidden" aria-hidden="true">
+    <div class="modal" onclick="closeModal()">
+      <div class="modal-card" onclick="event.stopPropagation()">
+        <div class="flex items-center justify-between">
+          <h3 id="modalTitle" class="text-lg font-semibold">Para Details</h3>
+          <div><button onclick="closeModal()" class="px-3 py-1 rounded border bg-gray-100">Close</button></div>
+        </div>
+        <div id="modalBody" class="mt-3"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ---------- Utilities ----------
+    function formatDate(iso) {
+      try {
+        const d = new Date(iso);
+        if (isNaN(d)) return iso;
+        return d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+      } catch (e) { return iso; }
+    }
+
+    function safeParseDate(value) {
+      if (!value) return null;
+      let d = new Date(value);
+      if (!isNaN(d.getTime())) return d;
+      d = new Date(value + 'Z');
+      if (!isNaN(d.getTime())) return d;
+      d = new Date(value.replace(' ', 'T'));
+      if (!isNaN(d.getTime())) return d;
+      d = new Date(value + 'T00:00:00+06:00');
+      if (!isNaN(d.getTime())) return d;
+      return null;
+    }
+
+    // Header Dhaka clock
+    function updateHeaderClock(){
+      try {
+        const now = new Date();
+        const dhakaFormatter = new Intl.DateTimeFormat('en-GB', {
+          timeZone: 'Asia/Dhaka',
+          year: 'numeric', month: '2-digit', day: '2-digit',
+          hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+        });
+        const parts = dhakaFormatter.formatToParts(now);
+        const lookup = {}; parts.forEach(p => lookup[p.type] = p.value);
+        const isoString = `${lookup.year}-${lookup.month}-${lookup.day}T${lookup.hour}:${lookup.minute}:${lookup.second}+06:00`;
+        const el = document.getElementById("clock");
+        if (el) el.textContent = isoString;
+      } catch (e) {
+        const el = document.getElementById("clock");
+        if (el) el.textContent = new Date().toLocaleString();
+      }
+    }
+    setInterval(updateHeaderClock, 1000);
+    updateHeaderClock();
+
+    // ---------- Data & State ----------
+    let DATA = null;
+    let LANG = 'en';
+    const COMMENTS_KEY = 'bitul_comments_v1';
+
+    // Hifz timeline dates
+    let hifzStartDate = null;
+    let hifzAllCompleteDate = null;
+    let hifzTargetDate = null;
+    let hifzTimersInterval = null;
+
+    // ---------- Load student.json ----------
+    async function loadData() {
+      try {
+        const res = await fetch('student.json', { cache: "no-store" });
+        if (!res.ok) throw new Error('student.json load failed');
+        DATA = await res.json();
+        renderAll();
+      } catch (err) {
+        console.error(err);
+        document.body.innerHTML = '<div class="p-6 text-red-600">Failed to load student.json</div>';
+      }
+    }
+
+    // ---------- Render ----------
+    function renderAll() {
+      if (!DATA) return;
+      const ui = (DATA.ui && DATA.ui.strings && DATA.ui.strings[LANG]) ? DATA.ui.strings[LANG] : ((DATA.ui && DATA.ui.strings && DATA.ui.strings.en) ? DATA.ui.strings.en : {});
+      const s = DATA.student || {};
+
+      // Titles
+      const brandTitleEl = document.getElementById('brandTitle'); if (brandTitleEl) brandTitleEl.textContent = ui.title || 'Bitul Quran Madrasha';
+      const profileTitleEl = document.getElementById('profileTitle'); if (profileTitleEl) profileTitleEl.textContent = ui.student_profile || 'Student Profile';
+      const memProgressTitleEl = document.getElementById('memProgressTitle'); if (memProgressTitleEl) memProgressTitleEl.textContent = ui.memorization_progress || 'Memorization Progress';
+      const hifzTitleEl = document.getElementById('hifzTitle'); if (hifzTitleEl) hifzTitleEl.textContent = ui.hifz_tracker || 'Hifz Tracker';
+      const challengesTitleEl = document.getElementById('challengesTitle'); if (challengesTitleEl) challengesTitleEl.textContent = ui.challenges || 'Current Memorize Challenges';
+      const commitmentTitleEl = document.getElementById('commitmentTitle'); if (commitmentTitleEl) commitmentTitleEl.textContent = ui.commitment || 'Commitment & Code of Conduct';
+      const summaryTitleEl = document.getElementById('summaryTitle'); if (summaryTitleEl) summaryTitleEl.textContent = ui.summary_section || 'Summary (Completed / In Progress)';
+      const commentsTitleEl = document.getElementById('commentsTitle'); if (commentsTitleEl) commentsTitleEl.textContent = ui.comments_section || 'Teacher / Guardian Notes';
+      const mjTitleEl = document.getElementById('mjTitle'); if (mjTitleEl) mjTitleEl.textContent = ui.mj_message || 'Message from MJ Ahmad';
+      const clockTitleEl = document.getElementById('clockTitle'); if (clockTitleEl) clockTitleEl.textContent = ui.clock_title || '🕒 Dhaka Time';
+
+      // Student fields
+      const nameEl = document.getElementById('name'); if (nameEl) nameEl.textContent = s.name || '—';
+      const deptEl = document.getElementById('department'); if (deptEl) deptEl.textContent = s.department || '—';
+      const guardianEl = document.getElementById('guardian'); if (guardianEl) guardianEl.textContent = (s.guardian && s.guardian.name) ? s.guardian.name : '—';
+      const guardianContactEl = document.getElementById('guardianContact'); if (guardianContactEl) guardianContactEl.textContent = (s.guardian && s.guardian.contact) ? s.guardian.contact : '—';
+      const groupEl = document.getElementById('group'); if (groupEl) groupEl.textContent = s.group || '—';
+      const groupUstadEl = document.getElementById('groupUstad'); if (groupUstadEl) groupUstadEl.textContent = s.group_ustad || '—';
+      const startDateEl = document.getElementById('startDate'); if (startDateEl) startDateEl.textContent = s.hifz_start_date ? formatDate(s.hifz_start_date) : '—';
+      const deadlineEl = document.getElementById('deadline'); if (deadlineEl) deadlineEl.textContent = (s.memorization && s.memorization.upcoming_deadline) ? formatDate(s.memorization.upcoming_deadline) : '—';
+
+      // Build paras (1..30 each with 20 pages)
+      const paras = [];
+      for (let p = 1; p <= 30; p++) {
+        const entry = (s.hifz_tracker || []).find(x => x.para_number === p) || { para_number: p, pages: [] };
+        if (!entry.pages || entry.pages.length === 0) {
+          const pages = [];
+          for (let i = 1; i <= 20; i++) pages.push({ page_number: i, status: 'pending' });
+          entry.pages = pages;
+        } else {
+          const pages = entry.pages.slice(0, 20);
+          while (pages.length < 20) pages.push({ page_number: pages.length + 1, status: 'pending' });
+          entry.pages = pages;
+        }
+        paras.push(entry);
+      }
+      window._paras = paras;
+
+      // Summary & tracker UI
+      renderSummary(paras);
+      renderParaButtons(paras);
+      updateOverallStats();
+
+      // Challenges
+      const challengeList = document.getElementById('challengeList');
+      if (challengeList) {
+        challengeList.innerHTML = '';
+        (s.challenges || []).forEach(ch => {
+          const card = document.createElement('div');
+          card.className = 'border rounded p-3 bg-white';
+          const title = document.createElement('div');
+          title.className = 'flex items-center justify-between';
+          const left = document.createElement('div');
+          left.innerHTML = `<strong>${ch.title}</strong><div class="small-muted">${ch.description}</div>`;
+          const right = document.createElement('div');
+          right.innerHTML = `<div class="small-muted">Target: ${formatDate(ch.target_date)}</div>`;
+          title.appendChild(left);
+          title.appendChild(right);
+
+          const countdown = document.createElement('div');
+          countdown.className = 'countdown mt-2';
+          countdown.id = `countdown-${ch.id}`;
+          countdown.textContent = 'Loading countdown...';
+
+          card.appendChild(title);
+          card.appendChild(countdown);
+          challengeList.appendChild(card);
+
+          startCountdown(ch.id, ch.target_date);
+        });
+      }
+
+      // Commitment & MJ message
+      const commitmentTextEl = document.getElementById('commitmentText'); if (commitmentTextEl) commitmentTextEl.textContent = (s.commitment && s.commitment[LANG]) ? s.commitment[LANG] : (s.commitment || '');
+      const mjMessageEl = document.getElementById('mjMessage'); if (mjMessageEl) mjMessageEl.textContent = (s.mj_ahmad_message && s.mj_ahmad_message[LANG]) ? s.mj_ahmad_message[LANG] : (s.mj_ahmad_message || '');
+
+      // Comments
+      renderComments();
+      const accessNoteEl = document.getElementById('accessNote'); if (accessNoteEl) accessNoteEl.textContent = (ui && ui.access_note) ? ui.access_note : '';
+
+      // Initialize Hifz timers
+      initHifzTimers();
+    }
+
+    // ---------- Summary & Para UI ----------
+    function renderSummary(paras) {
+      const summaryList = document.getElementById('summaryList');
+      if (!summaryList) return;
+      summaryList.innerHTML = '';
+      const completedMap = [];
+      const inProgressMap = [];
+      paras.forEach(p => {
+        const completedPages = p.pages.filter(pg => pg.status === 'completed').map(pg => pg.page_number);
+        const inProgressPages = p.pages.filter(pg => pg.status === 'in progress').map(pg => pg.page_number);
+        if (completedPages.length) completedMap.push({ para: p.para_number, pages: completedPages });
+        if (inProgressPages.length) inProgressMap.push({ para: p.para_number, pages: inProgressPages });
+      });
+
+      const compBox = document.createElement('div'); compBox.className = 'summary-item';
+      compBox.innerHTML = `<strong>Completed</strong><div class="small-muted mt-2">${completedMap.length ? '' : 'None'}</div>`;
+      completedMap.forEach(item => { const line = document.createElement('div'); line.textContent = `Para ${item.para}: pages ${item.pages.join(', ')}`; compBox.appendChild(line); });
+      summaryList.appendChild(compBox);
+
+      const progBox = document.createElement('div'); progBox.className = 'summary-item';
+      progBox.innerHTML = `<strong>In Progress</strong><div class="small-muted mt-2">${inProgressMap.length ? '' : 'None'}</div>`;
+      inProgressMap.forEach(item => { const line = document.createElement('div'); line.textContent = `Para ${item.para}: pages ${item.pages.join(', ')}`; progBox.appendChild(line); });
+      summaryList.appendChild(progBox);
+    }
+
+    function toggleSummary() {
+      const el = document.getElementById('summaryList');
+      if (!el) return;
+      if (el.style.maxHeight && el.style.maxHeight !== '0px') el.style.maxHeight = '0';
+      else el.style.maxHeight = el.scrollHeight + 'px';
+    }
+
+    function renderParaButtons(paras) {
+      const paraButtons = document.getElementById('paraButtons');
+      if (!paraButtons) return;
+      paraButtons.innerHTML = '';
+      paras.forEach(p => {
+        const btn = document.createElement('button');
+        btn.className = 'para-btn';
+        btn.id = `para-btn-${p.para_number}`;
+        btn.textContent = `Para ${p.para_number}`;
+        btn.onclick = () => showParaDetailsReadOnly(p.para_number);
+        paraButtons.appendChild(btn);
+      });
+    }
+
+    function showParaDetailsReadOnly(paraNumber) {
+      const paras = window._paras || [];
+      const para = paras.find(p => p.para_number === paraNumber);
+      if (!para) return;
+      document.querySelectorAll('.para-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById(`para-btn-${paraNumber}`); if (activeBtn) activeBtn.classList.add('active');
+
+      const selectedParaTitle = document.getElementById('selectedParaTitle'); if (selectedParaTitle) selectedParaTitle.textContent = `Para ${paraNumber} — Pages (read-only)`;
+      const grid = document.getElementById('paraPages'); if (grid) {
+        grid.innerHTML = '';
+        para.pages.forEach(p => {
+          const div = document.createElement('div');
+          div.className = 'page-box ' + (p.status === 'completed' ? 'completed' : (p.status === 'in progress' ? 'in-progress' : 'pending'));
+          div.textContent = p.page_number;
+          div.title = `Page ${p.page_number} — ${p.status}`;
+          grid.appendChild(div);
+        });
+      }
+
+      const modal = document.getElementById('modal'); const modalTitle = document.getElementById('modalTitle'); const modalBody = document.getElementById('modalBody');
+      if (modalTitle) modalTitle.textContent = `Para ${paraNumber} Details (read-only)`;
+      if (modalBody) {
+        modalBody.innerHTML = '';
+        const stats = { completed: 0, inProgress: 0, pending: 0 };
+        para.pages.forEach(p => { if (p.status === 'completed') stats.completed++; else if (p.status === 'in progress') stats.inProgress++; else stats.pending++; });
+        modalBody.innerHTML = `
+          <div class="small-muted">Pages: 1 - 20</div>
+          <div class="mt-2">✅ Completed: ${stats.completed} &nbsp; 🔄 In Progress: ${stats.inProgress} &nbsp; ⏳ Pending: ${stats.pending}</div>
+          <div class="mt-3 grid grid-cols-5 gap-2" id="modalPages"></div>
+          <div class="mt-3 small-muted">This view is read-only. Statuses reflect recorded progress from student.json.</div>
+        `;
+        const modalPages = modalBody.querySelector('#modalPages');
+        if (modalPages) para.pages.forEach(p => { const d = document.createElement('div'); d.className = 'page-box ' + (p.status === 'completed' ? 'completed' : (p.status === 'in progress' ? 'in-progress' : 'pending')); d.textContent = p.page_number; modalPages.appendChild(d); });
+      }
+      if (modal) { modal.className = ''; modal.style.display = 'block'; modal.setAttribute('aria-hidden', 'false'); }
+    }
+
+    function closeModal() { const modal = document.getElementById('modal'); if (modal) { modal.style.display = 'none'; modal.className = 'hidden'; modal.setAttribute('aria-hidden', 'true'); } document.querySelectorAll('.para-btn').forEach(b => b.classList.remove('active')); const selectedParaTitle = document.getElementById('selectedParaTitle'); if (selectedParaTitle) selectedParaTitle.textContent = 'Select a Para to view details'; const paraPages = document.getElementById('paraPages'); if (paraPages) paraPages.innerHTML = ''; }
+
+    // ---------- Overall stats ----------
+    function updateOverallStats() {
+      const paras = window._paras || [];
+      let allPages = [];
+      paras.forEach(para => para.pages.forEach(page => allPages.push(page.status)));
+      const totalPages = allPages.length;
+      const completed = allPages.filter(s => s === "completed").length;
+      const inProgress = allPages.filter(s => s === "in progress").length;
+      const pending = allPages.filter(s => s === "pending").length;
+      const percentPages = totalPages > 0 ? Math.round((completed / totalPages) * 100) : 0;
+
+      const overallStatusEl = document.getElementById("overall-status");
+      if (overallStatusEl) overallStatusEl.textContent = `✅ Completed: ${completed} | 🔄 In Progress: ${inProgress} | ⏳ Pending: ${pending}`;
+      const overallBar1 = document.getElementById("overall-bar1");
+      if (overallBar1) { overallBar1.style.width = percentPages + "%"; overallBar1.textContent = percentPages + "%"; }
+      const bar = document.getElementById('progressBar'); if (bar) { bar.style.width = percentPages + '%'; bar.textContent = percentPages + '%'; }
+      const progressTextEl = document.getElementById('progressText'); if (progressTextEl) progressTextEl.textContent = `${completed} of ${totalPages} pages completed (${percentPages}%)`;
+    }
+
+    // ---------- Comments ----------
+    function loadLocalComments() { try { const raw = localStorage.getItem(COMMENTS_KEY); return raw ? JSON.parse(raw) : []; } catch (e) { return []; } }
+    function saveLocalComments(list) { localStorage.setItem(COMMENTS_KEY, JSON.stringify(list || [])); }
+
+    function renderComments() {
+      const commentsList = document.getElementById('commentsList'); if (!commentsList) return; commentsList.innerHTML = '';
+      const jsonComments = (DATA && DATA.student && DATA.student.comments) ? DATA.student.comments : [];
+      jsonComments.forEach(c => {
+        const box = document.createElement('div'); box.className = 'comment-box';
+        const roleClass = c.role === 'principal' ? 'role-principal' : (c.role === 'teacher' ? 'role-teacher' : 'role-guardian');
+        box.innerHTML = `<div class="flex items-center justify-between"><div><span class="role-badge ${roleClass}">${c.name}</span></div><div class="comment-meta">${c.timestamp || ''}</div></div><div class="mt-2">${c.message || '<span class="small-muted">No message</span>'}</div>`;
+        commentsList.appendChild(box);
+      });
+      const local = loadLocalComments();
+      local.forEach(c => {
+        const box = document.createElement('div'); box.className = 'comment-box';
+        const roleClass = c.role === 'principal' ? 'role-principal' : (c.role === 'teacher' ? 'role-teacher' : 'role-guardian');
+        box.innerHTML = `<div class="flex items-center justify-between"><div><span class="role-badge ${roleClass}">${c.name}</span></div><div class="comment-meta">${c.timestamp || ''}</div></div><div class="mt-2">${escapeHtml(c.message)}</div>`;
+        commentsList.appendChild(box);
+      });
+    }
+
+    function escapeHtml(s) { if (!s) return ''; return s.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;').replaceAll('"', '&quot;'); }
+
+    function addComment() {
+      const roleEl = document.getElementById('commentRole'); const role = roleEl ? roleEl.value : 'teacher';
+      const messageEl = document.getElementById('newComment'); const message = messageEl ? messageEl.value.trim() : '';
+      if (!message) { alert('Please write a message before submitting.'); return; }
+      const nameMap = { principal: 'Principal Sir', teacher: (DATA && DATA.student && DATA.student.group_ustad) ? DATA.student.group_ustad : 'Teacher', guardian: (DATA && DATA.student && DATA.student.guardian && DATA.student.guardian.name) ? DATA.student.guardian.name : 'Guardian' };
+      const entry = { role: role, name: nameMap[role] || role, message: message, timestamp: new Date().toLocaleString() };
+      const local = loadLocalComments(); local.unshift(entry); saveLocalComments(local); if (messageEl) messageEl.value = ''; renderComments();
+    }
+
+    function clearComments() { if (!confirm('Clear all locally stored comments? This will not affect student.json.')) return; localStorage.removeItem(COMMENTS_KEY); renderComments(); }
+
+    // ---------- Hifz timers ----------
+    function initHifzTimers() {
+      const s = (DATA && DATA.student) ? DATA.student : {};
+
+      if (s.hifz_start_date) hifzStartDate = safeParseDate(s.hifz_start_date);
+      if (s.hifz_all_complete_date) hifzAllCompleteDate = safeParseDate(s.hifz_all_complete_date);
+      if (s.memorization && s.memorization.upcoming_deadline) hifzTargetDate = safeParseDate(s.memorization.upcoming_deadline);
+
+      // Fallbacks (requested defaults)
+      if (!hifzStartDate || isNaN(hifzStartDate.getTime())) hifzStartDate = new Date("2024-01-01T00:00:00+06:00");
+      if (!hifzAllCompleteDate || isNaN(hifzAllCompleteDate.getTime())) hifzAllCompleteDate = new Date("2025-12-15T00:00:00+06:00");
+      if (!hifzTargetDate || isNaN(hifzTargetDate.getTime())) hifzTargetDate = new Date("2026-12-31T23:59:59+06:00");
+
+      // Update labels
+      const sinceStartLabel = document.getElementById('sinceStartLabel'); if (sinceStartLabel) sinceStartLabel.textContent = 'Start: ' + hifzStartDate.toLocaleString();
+      const sinceCompleteLabel = document.getElementById('sinceCompleteLabel'); if (sinceCompleteLabel) sinceCompleteLabel.textContent = 'All complete: ' + hifzAllCompleteDate.toLocaleString();
+      const targetLabel = document.getElementById('targetLabel'); if (targetLabel) targetLabel.textContent = 'Target: ' + hifzTargetDate.toLocaleString();
+
+      if (hifzTimersInterval) clearInterval(hifzTimersInterval);
+      updateSinceStartClock();
+      updateSinceCompleteClock();
+      updateCountDownClock();
+      hifzTimersInterval = setInterval(() => {
+        updateSinceStartClock();
+        updateSinceCompleteClock();
+        updateCountDownClock();
+      }, 1000);
+    }
+
+    function updateSinceStartClock() {
+      if (!hifzStartDate) return;
+      const now = new Date();
+      let diffMs = now.getTime() - hifzStartDate.getTime();
+      if (diffMs < 0) diffMs = 0;
+      let remaining = Math.floor(diffMs / 1000);
+      const seconds = remaining % 60; remaining = Math.floor(remaining / 60);
+      const minutes = remaining % 60; remaining = Math.floor(remaining / 60);
+      const hours = remaining % 24; remaining = Math.floor(remaining / 24);
+      const days = remaining;
+      const weeks = Math.floor(days / 7);
+      const years = Math.floor(days / 365.25);
+      const months = Math.floor((days - Math.floor(years * 365.25)) / 30.44);
+      const el = document.getElementById('sinceStartClock');
+      if (el) el.textContent = `${years}y ${months}m ${weeks}w ${days}d ${hours}h ${minutes}m ${seconds}s elapsed`;
+    }
+
+    function updateSinceCompleteClock() {
+      if (!hifzAllCompleteDate) return;
+      const now = new Date();
+      let diffMs = now.getTime() - hifzAllCompleteDate.getTime();
+      if (diffMs < 0) diffMs = 0;
+      let remaining = Math.floor(diffMs / 1000);
+      const seconds = remaining % 60; remaining = Math.floor(remaining / 60);
+      const minutes = remaining % 60; remaining = Math.floor(remaining / 60);
+      const hours = remaining % 24; remaining = Math.floor(remaining / 24);
+      const days = remaining;
+      const weeks = Math.floor(days / 7);
+      const years = Math.floor(days / 365.25);
+      const months = Math.floor((days - Math.floor(years * 365.25)) / 30.44);
+      const el = document.getElementById('sinceCompleteClock');
+      if (el) el.textContent = `${years}y ${months}m ${weeks}w ${days}d ${hours}h ${minutes}m ${seconds}s elapsed`;
+    }
+
+    function updateCountDownClock() {
+      if (!hifzTargetDate || isNaN(hifzTargetDate.getTime())) {
+        const el = document.getElementById('countDownClock'); if (el) el.textContent = 'Target date invalid'; return;
+      }
+      const now = new Date();
+      let diffMs = hifzTargetDate.getTime() - now.getTime();
+      const el = document.getElementById('countDownClock'); if (!el) return;
+      if (diffMs <= 0) { el.textContent = 'Target date reached!'; return; }
+      let remaining = Math.floor(diffMs / 1000);
+      const seconds = remaining % 60; remaining = Math.floor(remaining / 60);
+      const minutes = remaining % 60; remaining = Math.floor(remaining / 60);
+      const hours = remaining % 24; remaining = Math.floor(remaining / 24);
+      const days = remaining;
+      const weeks = Math.floor(days / 7);
+      const years = Math.floor(days / 365.25);
+      const months = Math.floor((days - Math.floor(years * 365.25)) / 30.44);
+      el.textContent = `${years}y ${months}m ${weeks}w ${days}d ${hours}h ${minutes}m ${seconds}s remaining`;
+    }
+
+    // ---------- Challenge countdown helper ----------
+    function startCountdown(id, targetIso) {
+      const el = document.getElementById(`countdown-${id}`);
+      if (!el) return;
+      function tick() {
+        const now = new Date().getTime();
+        const target = safeParseDate(targetIso);
+        if (!target || isNaN(target.getTime())) { el.textContent = 'Invalid date'; return; }
+        const diff = target.getTime() - now;
+        if (diff <= 0) { el.textContent = 'Deadline reached'; return; }
+        const days = Math.floor(diff / (1000*60*60*24));
+        const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+        const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
+        const seconds = Math.floor((diff % (1000*60)) / 1000);
+        el.textContent = `Time left: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+      }
+      tick();
+      setInterval(tick, 1000);
+    }
+
+    // ---------- Language toggle ----------
+    function setLang(lang) {
+      LANG = lang;
+      if (DATA) renderAll();
+    }
+
+    // ---------- Start ----------
+    loadData();
+  </script>
+</body>
+</html>

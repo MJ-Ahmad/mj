@@ -1,0 +1,68 @@
+{
+  "menu": [
+    {
+      "key": "overview",
+      "label": "Overview",
+      "label_bn": "ওভারভিউ",
+      "subtitle": "Institution summary",
+      "password_protected": false
+    },
+    {
+      "key": "teachers",
+      "label": "Teachers",
+      "label_bn": "শিক্ষকবৃন্দ",
+      "subtitle": "Staff directory",
+      "password_protected": false
+    },
+    {
+      "key": "students",
+      "label": "Students",
+      "label_bn": "শিক্ষার্থী",
+      "subtitle": "Master student list",
+      "password_protected": false
+    },
+    {
+      "key": "attendance",
+      "label": "Attendance",
+      "label_bn": "হাজিরা",
+      "subtitle": "Attendance master",
+      "password_protected": false
+    },
+    {
+      "key": "curriculum",
+      "label": "Curriculum",
+      "label_bn": "পাঠ্যক্রম",
+      "subtitle": "Curriculum & modules",
+      "password_protected": false
+    },
+    {
+      "key": "roadmap",
+      "label": "Roadmap",
+      "label_bn": "রোডম্যাপ",
+      "subtitle": "Strategic roadmap",
+      "password_protected": false
+    },
+    {
+      "key": "private_reports",
+      "label": "Private Reports",
+      "label_bn": "প্রাইভেট রিপোর্ট",
+      "subtitle": "Confidential",
+      "password_protected": true,
+      "password": "secret123",
+      "countdown_until": "2026-06-01T00:00:00+06:00",
+      "hide_after_countdown": false,
+      "show_countdown": true
+    },
+    {
+      "key": null,
+      "label": null,
+      "label_bn": null,
+      "subtitle": null,
+      "password_protected": false,
+      "password": "",
+      "countdown_until": null,
+      "hide_after_countdown": false,
+      "show_countdown": false
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "institution": {
+    "name": "Baitul Quran International Madrasha",
+    "short_name": "Bitul Quran",
+    "address": "Stadium Road, Nandibari, Muktagacha Upazila, Mymensingh, Bangladesh",
+    "phone": "+8801824401812",
+    "email": "info@baitulquran.example",
+    "website": "https://baitulquran.example",
+    "logo": "assets/logo.png",
+    "curated_by": "MJ Ahmad — Steward of Ethical Inheritance",
+    "established": "2018-09-01",
+    "mission": "To combine classical hifz pedagogy with modern learning technology.",
+    "vision": "A globally recognized center of excellence for Quran memorization.",
+    "document_type": "Institutional Master Record",
+    "last_updated": "2026-05-03T03:04:06+06:00"
+  },
+  "governance": {
+    "board": [
+      {"name": "Sheikh Rahman", "role": "Chairman"},
+      {"name": "Dr. Farida Khan", "role": "Secretary"}
+    ],
+    "director": {"name": "MJ Ahmad", "title": "Director"},
+    "roles_and_responsibilities": {
+      "director": "Strategic leadership and external relations",
+      "academic_head": "Curriculum and teacher training",
+      "operations_manager": "Facilities and scheduling",
+      "it_manager": "Systems and backups"
+    }
+  },
+  "staff": {
+    "teachers": [
+      {"id":"T01","name":"Ustad Arif","phone":"01824401812","role":"Senior Ustad","department":"Khatmi / Recitation"},
+      {"id":"T02","name":"Ustad Arif Robbani","phone":"01631940605","role":"Nurani Instructor","department":"Nurani Maktab"},
+      {"id":"T03","name":"Ustad Jafor","phone":"01892051303","role":"Hifz Instructor","department":"Hifz 1–29"}
+    ],
+    "administration": [
+      {"id":"A01","name":"Sadia Begum","role":"Office Manager","email":"office@baitulquran.example"}
+    ],
+    "it": [
+      {"id":"IT01","name":"Imran Hossain","role":"IT Manager","email":"it@baitulquran.example"}
+    ]
+  },
+  "students": {
+    "serial_master_list": [
+      {"serial":1,"name":"Faysal (1)","roll":"03","id":"BQSHK01","department":"Khatmi / Recitation"},
+      {"serial":2,"name":"Sown","roll":"04","id":"BQSHK02","department":"Khatmi / Recitation"},
+      {"serial":3,"name":"Jubayer","roll":"01","id":"BQSHS01","department":"Hifz 1–29"},
+      {"serial":4,"name":"Anamul Haqe","roll":"02","id":"BQSHS18","department":"Hifz 1–29"},
+      {"serial":5,"name":"Jidan","roll":"01","id":"BQSNU01","department":"Nurani Maktab"}
+    ],
+    "by_department": {
+      "Nurani Maktab": ["BQSNU01","BQSNU02"],
+      "Pre-Hifz Nazara": ["BQSNA01","BQSNA02"],
+      "Hifz 1–29": ["BQSHS01","BQSHS18"],
+      "Khatmi / Recitation": ["BQSHK01","BQSHK02"]
+    },
+    "policies": {
+      "attendance":"Daily attendance required; excused absences documented.",
+      "assessment":"Weekly recitation checks; monthly progress reports."
+    }
+  },
+  "curriculum": {
+    "principles":["Spaced repetition","Daily micro-practice","Teacher-led correction"],
+    "modules":[
+      {"code":"C01","title":"Nurani Foundations","hours":120},
+      {"code":"C02","title":"Nazara Preparation","hours":200},
+      {"code":"C03","title":"Hifz Core","hours":2000}
+    ],
+    "assessment_framework":{"weekly":"Recitation check","monthly":"Progress report"}
+  },
+  "attendance_integration": {
+    "master_file":"master/attendance_master.json",
+    "snapshots_dir":"outputs/",
+    "policies":{"retention_years":3,"backup":"daily"}
+  },
+  "roadmap": {
+    "2026-Q2":["Deploy web UI (Flask)","Add SQLite history","Teacher login"],
+    "2026-Q3":["QR check-in pilot","Automated reports","Parent portal (read-only)"],
+    "2027":["Mobile app planning","AI tajweed research"]
+  },
+  "meta":{"generated_at":"2026-05-03T03:04:06+06:00","version":"1.0.0"}
+}

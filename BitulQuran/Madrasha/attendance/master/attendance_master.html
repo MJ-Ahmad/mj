@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Baitul Quran International Madrasha — Attendance Master</title>
+<style>
+  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin:0; color:#222; }
+  header { background:#0b5a3a; color:#fff; padding:18px 20px; display:flex; align-items:center; gap:12px; }
+  header img { height:56px; }
+  header h1 { margin:0; font-size:20px; }
+  .container { display:flex; height:calc(100vh - 92px); }
+  nav { width:320px; border-right:1px solid #e6e6e6; overflow:auto; padding:12px; background:#fafafa; }
+  main { flex:1; padding:18px; overflow:auto; }
+  .record-item { padding:8px; border-radius:6px; margin-bottom:6px; cursor:pointer; }
+  .record-item:hover { background:#f0f8f4; }
+  .record-item.active { background:#e6f6ea; border-left:4px solid #0b5a3a; padding-left:10px; }
+  table { width:100%; border-collapse:collapse; margin-top:12px; }
+  th, td { border:1px solid #ddd; padding:8px; text-align:left; }
+  thead { background:#f7f7f7; }
+  .meta { font-size:0.95em; color:#444; margin-bottom:8px; }
+  .search { margin-top:8px; display:flex; gap:8px; }
+  .search input { flex:1; padding:8px; border:1px solid #ccc; border-radius:6px; }
+  footer { padding:12px; font-size:0.9em; color:#666; border-top:1px solid #eee; text-align:center; }
+</style>
+</head>
+<body>
+<header>
+  <img src="../assets/logo.png" alt="logo" onerror="this.style.display='none'">
+  <div>
+    <h1>Baitul Quran International Madrasha</h1>
+    <div style="font-size:0.9em">Attendance Master Viewer</div>
+  </div>
+</header>
+
+<div class="container">
+  <nav id="nav">
+    <h3>Records</h3>
+    <div id="recordsList">Loading…</div>
+  </nav>
+
+  <main>
+    <div id="content">
+      <h2>Overview</h2>
+      <div id="overview">Loading master data…</div>
+      <div class="search">
+        <input id="filterInput" placeholder="Search by name, roll, student id, status..." />
+        <select id="statusFilter">
+          <option value="">All statuses</option>
+          <option value="present">Present</option>
+          <option value="absent">Absent</option>
+          <option value="late">Late</option>
+          <option value="excused">Excused</option>
+        </select>
+      </div>
+      <div id="recordMeta" class="meta"></div>
+      <div id="tableWrap"></div>
+    </div>
+  </main>
+</div>
+
+<footer id="footer">Master file loaded from <code>attendance_master.json</code></footer>
+
+<script>
+async function loadMaster() {
+  try {
+    const resp = await fetch('attendance_master.json', {cache: "no-store"});
+    if (!resp.ok) throw new Error('Failed to fetch master JSON');
+    const master = await resp.json();
+    return master;
+  } catch (err) {
+    document.getElementById('overview').innerText = 'Error loading master JSON: ' + err.message;
+    return null;
+  }
+}
+
+function renderOverview(master) {
+  const md = master.madrasha || {};
+  const html = `
+    <strong>${md.name || ''}</strong><br>
+    ${md.address || ''}<br>
+    <em>Curated by:</em> ${md.curated_by || ''}<br>
+    <em>Last updated:</em> ${md.last_updated || ''}
+  `;
+  document.getElementById('overview').innerHTML = html;
+}
+
+function buildNav(records) {
+  const list = document.getElementById('recordsList');
+  list.innerHTML = '';
+  records.slice().reverse().forEach((rec, idx) => {
+    const el = document.createElement('div');
+    el.className = 'record-item';
+    el.dataset.index = idx;
+    const title = `${rec.meta.date} — ${rec.meta.department} (${rec.meta.scheduled_time})`;
+    el.innerHTML = `<strong>${title}</strong><div style="font-size:0.85em;color:#666">${rec.meta.mode} • ${rec.meta.recorder || ''}</div>`;
+    el.addEventListener('click', () => {
+      document.querySelectorAll('.record-item').forEach(x => x.classList.remove('active'));
+      el.classList.add('active');
+      renderRecord(rec);
+    });
+    list.appendChild(el);
+  });
+  // auto-click first
+  const first = list.querySelector('.record-item');
+  if (first) first.click();
+}
+
+function renderRecord(rec) {
+  document.getElementById('recordMeta').innerHTML = `
+    <strong>Record:</strong> ${rec.meta.id} &nbsp; | &nbsp;
+    <strong>Date:</strong> ${rec.meta.date} &nbsp; | &nbsp;
+    <strong>Time:</strong> ${rec.meta.scheduled_time} &nbsp; | &nbsp;
+    <strong>Recorded by:</strong> ${rec.meta.recorder || ''}
+  `;
+  renderTable(rec.attendance);
+}
+
+function renderTable(rows) {
+  const wrap = document.getElementById('tableWrap');
+  const filter = document.getElementById('filterInput').value.trim().toLowerCase();
+  const statusFilter = document.getElementById('statusFilter').value;
+  const filtered = rows.filter(r => {
+    if (statusFilter && r.status !== statusFilter) return false;
+    if (!filter) return true;
+    return (r.name || '').toLowerCase().includes(filter) ||
+           (r.roll || '').toLowerCase().includes(filter) ||
+           (r.student_id || '').toLowerCase().includes(filter) ||
+           (r.status_label || '').toLowerCase().includes(filter);
+  });
+  let html = '<table><thead><tr><th>Roll</th><th>Student ID</th><th>Name</th><th>Department</th><th>Status</th><th>Note</th></tr></thead><tbody>';
+  for (const r of filtered) {
+    html += `<tr><td>${r.roll}</td><td>${r.student_id}</td><td>${r.name}</td><td>${r.department}</td><td>${r.status_label}</td><td>${r.note || ''}</td></tr>`;
+  }
+  html += '</tbody></table>';
+  wrap.innerHTML = html;
+}
+
+document.getElementById('filterInput').addEventListener('input', () => {
+  const active = document.querySelector('.record-item.active');
+  if (!active) return;
+  const idx = active.dataset.index;
+  loadMaster().then(master => {
+    if (!master) return;
+    const rec = master.records.slice().reverse()[idx];
+    renderTable(rec.attendance);
+  });
+});
+document.getElementById('statusFilter').addEventListener('change', () => {
+  const active = document.querySelector('.record-item.active');
+  if (!active) return;
+  const idx = active.dataset.index;
+  loadMaster().then(master => {
+    if (!master) return;
+    const rec = master.records.slice().reverse()[idx];
+    renderTable(rec.attendance);
+  });
+});
+
+(async function init() {
+  const master = await loadMaster();
+  if (!master) return;
+  renderOverview(master);
+  if (!Array.isArray(master.records) || master.records.length === 0) {
+    document.getElementById('recordsList').innerText = 'No records yet';
+    document.getElementById('tableWrap').innerHTML = '<p>No attendance records available.</p>';
+    return;
+  }
+  buildNav(master.records);
+})();
+</script>
+</body>
+</html>
