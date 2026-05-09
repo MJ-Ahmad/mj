@@ -1,0 +1,120 @@
+{
+  "meta": {
+    "id": "rec_20260503_222735",
+    "madrasha_name": "Baitul Quran International Madrasha",
+    "address": "Stadium Road, Nandibari, Muktagacha Upazila, Mymensingh, Bangladesh",
+    "curated_by": "MJ Ahmad — Steward of Ethical Inheritance",
+    "document_type": "Institutional Record",
+    "mode": "Class-based",
+    "date": "2026-05-03",
+    "timestamp": "2026-05-03T22:27:35",
+    "department": "Khatmi / Recitation",
+    "scheduled_time": "10:24",
+    "recorder": "Ustad Arif",
+    "teachers_present": [
+      "T01",
+      "T03"
+    ]
+  },
+  "attendance": [
+    {
+      "name": "Faysal (1)",
+      "roll": "03",
+      "student_id": "BQSHK01",
+      "department": "Khatmi / Recitation",
+      "status": "absent",
+      "status_label": "Absent",
+      "note": ""
+    },
+    {
+      "name": "Sown",
+      "roll": "04",
+      "student_id": "BQSHK02",
+      "department": "Khatmi / Recitation",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Abu Talha",
+      "roll": "05",
+      "student_id": "BQSHK03",
+      "department": "Khatmi / Recitation",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Abdullah Al Mahi",
+      "roll": "06",
+      "student_id": "BQSHK04",
+      "department": "Khatmi / Recitation",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Faysal (2)",
+      "roll": "07",
+      "student_id": "BQSHK05",
+      "department": "Khatmi / Recitation",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Jarif",
+      "roll": "08",
+      "student_id": "BQSHK06",
+      "department": "Khatmi / Recitation",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Asif",
+      "roll": "09",
+      "student_id": "BQSHK07",
+      "department": "Khatmi / Recitation",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Jihad",
+      "roll": "10",
+      "student_id": "BQSHK08",
+      "department": "Khatmi / Recitation",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Sakib",
+      "roll": "11",
+      "student_id": "BQSHK09",
+      "department": "Khatmi / Recitation",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Tawfiq",
+      "roll": "12",
+      "student_id": "BQSHK10",
+      "department": "Khatmi / Recitation",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Mosaddek",
+      "roll": "31",
+      "student_id": "BQSHK11",
+      "department": "Khatmi / Recitation",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    }
+  ]
+}

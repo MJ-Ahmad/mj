@@ -1,0 +1,702 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Baitul Quran International Madrasha — Master</title>
+<meta name="description" content="Baitul Quran International Madrasha — institutional master viewer, attendance, curriculum, staff and roadmap." />
+<style>
+  :root{--accent:#0b5a3a;--muted:#666;--bg:#fafafa;--card:#fff}
+  html,body{height:100%}
+  body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;margin:0;color:#222;background:#fff;display:flex;flex-direction:column}
+  header{display:flex;align-items:center;gap:14px;padding:18px;background:linear-gradient(90deg,#f7fff9,#f0fff4);border-bottom:1px solid #e9f3ec}
+  header img{height:64px;width:auto;border-radius:6px;object-fit:contain}
+  header .title{font-size:18px;font-weight:700}
+  header .subtitle{font-size:0.95rem;color:var(--muted)}
+  .layout{display:flex;flex:1;min-height:0}
+  nav{width:320px;border-right:1px solid #eee;padding:14px;background:var(--bg);overflow:auto}
+  main{flex:1;padding:20px;overflow:auto}
+  footer{padding:12px;border-top:1px solid #eee;background:#fafafa;font-size:0.9em;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+  .menu-item{padding:10px;border-radius:8px;margin-bottom:8px;cursor:pointer;display:block}
+  .menu-item.locked{opacity:0.6}
+  .menu-item:hover{background:#f0fff4}
+  .menu-title{font-weight:600}
+  .menu-sub{font-size:0.85rem;color:#666;margin-top:4px}
+  .meta{color:var(--muted);font-size:0.95em;margin-bottom:8px}
+  .section{margin-bottom:20px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+  .card{border:1px solid #eee;padding:12px;border-radius:10px;background:var(--card);box-shadow:0 1px 2px rgba(0,0,0,0.02)}
+  table{width:100%;border-collapse:collapse}
+  th,td{border:1px solid #eee;padding:8px;text-align:left}
+  thead{background:#fafafa}
+  .search{display:flex;gap:8px;margin-bottom:12px}
+  .search input{flex:1;padding:8px;border:1px solid #ddd;border-radius:6px}
+  .lang-toggle{margin-left:auto;display:flex;gap:6px}
+  .btn{padding:8px 10px;border-radius:6px;border:1px solid #ddd;background:#fff;cursor:pointer}
+  .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .countdown{font-weight:700;color:var(--accent)}
+  .timeline{display:flex;flex-direction:column;gap:10px}
+  .timeline-item{display:flex;gap:12px;align-items:flex-start}
+  .timeline-date{min-width:110px;color:var(--muted);font-size:0.95em}
+  .role-list{list-style:disc;margin-left:18px}
+  @media (max-width:900px){
+    nav{width:100%;order:2;border-top:1px solid #eee}
+    .layout{flex-direction:column}
+  }
+</style>
+</head>
+<body>
+<header>
+  <img id="logo" src="assets/logo.png" alt="logo" onerror="this.style.display='none'">
+  <div>
+    <div class="title" id="instName">Baitul Quran International Madrasha</div>
+    <div class="subtitle" id="instAddress">Stadium Road, Nandibari, Muktagacha Upazila, Mymensingh, Bangladesh</div>
+  </div>
+  <div class="lang-toggle" aria-hidden="false">
+    <button id="langEn" class="btn">EN</button>
+    <button id="langBn" class="btn">BN</button>
+  </div>
+</header>
+
+<div class="layout" role="main">
+  <nav id="nav" aria-label="Primary navigation">
+    <h3 style="margin-top:0">Menu</h3>
+    <div id="menuList" aria-live="polite">Loading menu…</div>
+    <hr style="margin:12px 0">
+    <h4 style="margin:8px 0 6px 0">Quick Links</h4>
+    <div id="quickLinks"></div>
+  </nav>
+
+  <main id="main" aria-live="polite">
+    <div id="content">
+      <h2>Overview</h2>
+      <div id="overview" class="meta">Loading…</div>
+
+      <div class="search" role="search">
+        <input id="globalSearch" placeholder="Search students, staff, departments..." aria-label="Search">
+        <select id="filterDept" aria-label="Filter by department"><option value="">All departments</option></select>
+        <button id="clearSearch" class="btn">Clear</button>
+      </div>
+
+      <div id="pageArea"></div>
+    </div>
+  </main>
+</div>
+
+<footer id="footer" role="contentinfo">
+  <div id="footerLeft">© Baitul Quran International Madrasha</div>
+  <div id="footerRight">Last updated: <span id="lastUpdated">—</span></div>
+</footer>
+
+<script>
+/*
+index.html viewer (final production-ready)
+- Loads bq.json and site_config.json
+- Renders menu according to site_config
+- Supports password-protected items and countdown visibility
+- EN | BN toggle
+- Sections: Overview, People & Roles, Students, Groups, Attendance, Curriculum, Roadmap
+*/
+
+const MASTER_JSON = 'bq.json';
+const CONFIG_JSON = 'site_config.json';
+
+let master = null;
+let config = null;
+let lang = 'en';
+
+async function fetchJson(path) {
+  try {
+    const r = await fetch(path, {cache: 'no-store'});
+    if (!r.ok) throw new Error('Fetch failed: ' + r.status);
+    return await r.json();
+  } catch (e) {
+    console.error(e);
+    return null;
+  }
+}
+
+function formatHeader() {
+  const md = master.institution || {};
+  document.getElementById('instName').innerText = md.name || 'Baitul Quran International Madrasha';
+  document.getElementById('instAddress').innerText = md.address || '';
+  document.getElementById('lastUpdated').innerText = md.last_updated || master.meta?.generated_at || '';
+  const logo = document.getElementById('logo');
+  if (md.logo) logo.src = md.logo;
+}
+
+function buildMenu() {
+  const menuList = document.getElementById('menuList');
+  menuList.innerHTML = '';
+  const items = (config && config.menu) ? config.menu : [];
+  items.forEach(item => {
+    // countdown visibility
+    if (item.countdown_until) {
+      const until = new Date(item.countdown_until);
+      if (new Date() > until && item.hide_after_countdown) return;
+    }
+    const el = document.createElement('div');
+    el.className = 'menu-item' + (item.password_protected ? ' locked' : '');
+    el.dataset.key = item.key;
+    const title = document.createElement('div');
+    title.className = 'menu-title';
+    title.innerText = labelFor(item);
+    const sub = document.createElement('div');
+    sub.className = 'menu-sub';
+    sub.innerText = item.subtitle || '';
+    el.appendChild(title);
+    el.appendChild(sub);
+    el.addEventListener('click', () => onMenuClick(item));
+    menuList.appendChild(el);
+  });
+  // quick links
+  const q = document.getElementById('quickLinks');
+  q.innerHTML = '';
+  const links = [
+    {label: lang === 'bn' ? 'হোম' : 'Home', key: 'overview'},
+    {label: lang === 'bn' ? 'কর্মকর্তা' : 'People', key: 'people_roles'},
+    {label: lang === 'bn' ? 'শিক্ষার্থী' : 'Students', key: 'students'},
+    {label: lang === 'bn' ? 'হাজিরা' : 'Attendance', key: 'attendance'}
+  ];
+  links.forEach(l => {
+    const a = document.createElement('a');
+    a.href = '#';
+    a.innerText = l.label;
+    a.style.display = 'inline-block';
+    a.style.marginRight = '8px';
+    a.addEventListener('click', (e) => { e.preventDefault(); const item = (config.menu||[]).find(m=>m.key===l.key); if(item) onMenuClick(item); });
+    q.appendChild(a);
+  });
+}
+
+function labelFor(item) {
+  if (lang === 'bn' && item.label_bn) return item.label_bn;
+  return item.label || item.key;
+}
+
+function onMenuClick(item) {
+  if (item.password_protected) {
+    const pw = prompt('Enter password to view this section:');
+    if (pw !== item.password) {
+      alert('Incorrect password');
+      return;
+    }
+  }
+  if (item.countdown_until) {
+    const until = new Date(item.countdown_until);
+    if (new Date() < until && item.show_countdown) {
+      const ms = until - new Date();
+      const days = Math.floor(ms / (1000*60*60*24));
+      const hours = Math.floor((ms / (1000*60*60)) % 24);
+      alert('This item is available until ' + until.toLocaleString() + ' (remaining: ' + days + 'd ' + hours + 'h)');
+    }
+  }
+  renderSection(item);
+}
+
+function renderSection(item) {
+  const area = document.getElementById('pageArea');
+  area.innerHTML = '';
+  if (item.key === 'overview') { renderOverview(area); return; }
+  if (item.key === 'people_roles') { renderPeopleRoles(area); return; }
+  if (item.key === 'students') { renderStudents(area); return; }
+  if (item.key === 'groups') { renderGroups(area); return; }
+  if (item.key === 'attendance') { renderAttendance(area); return; }
+  if (item.key === 'curriculum') { renderCurriculum(area); return; }
+  if (item.key === 'roadmap') { renderRoadmap(area); return; }
+  if (item.json_path) {
+    const data = getByPath(master, item.json_path);
+    area.innerHTML = `<pre>${escapeHtml(JSON.stringify(data, null, 2))}</pre>`;
+    return;
+  }
+  area.innerHTML = `<p>Section "${item.key}" not implemented in viewer.</p>`;
+}
+
+/* --- Enhanced Overview renderer (hero + cards) --- */
+function renderOverview(area) {
+  const md = master.institution || {};
+  const hero = md.homepage?.hero || {};
+  const cards = md.homepage?.highlight_cards || [];
+  let html = `<div class="section card"><h2>${hero.title || md.name}</h2><p>${hero.subtitle || md.mission}</p>`;
+  if (hero.cta && hero.cta.length) {
+    html += '<div style="margin-top:10px">';
+    hero.cta.forEach(c => {
+      const label = (lang==='bn' && c.label_bn) ? c.label_bn : (c.label_en || c.label);
+      html += `<a class="btn primary" href="${c.href}" style="margin-right:8px">${label}</a>`;
+    });
+    html += '</div>';
+  }
+  html += `<div class="meta" style="margin-top:8px">Curated by: ${md.curated_by || ''} • Established: ${md.established || ''}</div></div>`;
+  // highlight cards
+  if (cards.length) {
+    html += '<div class="section grid">';
+    cards.forEach(card => {
+      const title = (lang==='bn' && card.title_bn) ? card.title_bn : (card.title_en || card.title);
+      const body = (lang==='bn' && card.body_bn) ? card.body_bn : (card.body_en || card.body);
+      html += `<div class="card"><strong>${title}</strong><div style="margin-top:8px">${body}</div></div>`;
+    });
+    html += '</div>';
+  }
+  // quick program tiles
+  const depts = master.departments || [];
+  if (depts.length) {
+    html += '<div class="section"><h3>Programs</h3><div class="grid">';
+    depts.forEach(d => {
+      html += `<div class="card"><strong>${d.name}</strong><div style="margin-top:8px">${d.description || ''}</div></div>`;
+    });
+    html += '</div></div>';
+  }
+  area.innerHTML = html;
+}
+
+/* --- People & Roles renderer --- */
+function renderPeopleRoles(area) {
+  const people = master.people || {};
+  let html = '<div class="section"><h3>People & Roles</h3>';
+  // Leadership
+  if (people.leadership && people.leadership.length) {
+    html += '<div class="card"><h4>Leadership</h4>';
+    people.leadership.forEach(p => {
+      html += `<div style="margin-bottom:10px"><strong>${p.position} — ${p.name}</strong><div style="font-size:0.95em;color:#666">${(p.contact?.email||'')}${p.contact?.phone?(' • '+p.contact.phone):''}</div><div style="margin-top:6px">${p.responsibilities.map(r=>'<div>• '+r+'</div>').join('')}</div><div style="font-size:0.9em;color:#777;margin-top:6px"><em>Accountability: ${p.accountability || '—'}</em></div></div>`;
+    });
+    html += '</div>';
+  }
+  // Teaching staff
+  if (people.teaching_staff && people.teaching_staff.length) {
+    html += '<div class="card"><h4>Teaching Staff</h4>';
+    people.teaching_staff.forEach(t => {
+      html += `<div style="margin-bottom:8px"><strong>${t.position} — ${t.name}</strong><div style="font-size:0.95em;color:#666">${t.department || ''} • ${t.phone || ''}</div><div style="margin-top:6px">${(t.responsibilities||[]).map(r=>'<div>• '+r+'</div>').join('')}</div><div style="font-size:0.9em;color:#777;margin-top:6px"><em>Reports to: ${t.accountability || '—'}</em></div></div>`;
+    });
+    html += '</div>';
+  }
+  // Residential & admin
+  if (people.residential_staff && people.residential_staff.length) {
+    html += '<div class="card"><h4>Residential & Support Staff</h4>';
+    people.residential_staff.forEach(r => {
+      html += `<div style="margin-bottom:8px"><strong>${r.position} — ${r.name || ''}</strong><div style="margin-top:6px">${(r.responsibilities||[]).map(x=>'<div>• '+x+'</div>').join('')}</div><div style="font-size:0.9em;color:#777;margin-top:6px"><em>Accountability: ${r.accountability || '—'}</em></div></div>`;
+    });
+    html += '</div>';
+  }
+  // Administration & committee
+  if (people.administration && people.administration.length) {
+    html += '<div class="card"><h4>Administration</h4>';
+    people.administration.forEach(a => {
+      html += `<div style="margin-bottom:8px"><strong>${a.position} — ${a.name}</strong><div style="font-size:0.95em;color:#666">${a.email || ''}</div><div style="margin-top:6px">${(a.responsibilities||[]).map(x=>'<div>• '+x+'</div>').join('')}</div><div style="font-size:0.9em;color:#777;margin-top:6px"><em>Accountability: ${a.accountability || '—'}</em></div></div>`;
+    });
+    html += '</div>';
+  }
+  if (people.committee && people.committee.length) {
+    html += '<div class="card"><h4>Committees</h4>';
+    people.committee.forEach(c => {
+      html += `<div style="margin-bottom:8px"><strong>${c.name}</strong><div style="margin-top:6px">${(c.members||[]).join(', ')}</div><div style="margin-top:6px">${(c.responsibilities||[]).map(x=>'<div>• '+x+'</div>').join('')}</div></div>`;
+    });
+    html += '</div>';
+  }
+  html += '</div>';
+  area.innerHTML = html;
+}
+
+/* --- Students renderer (serial master list) --- */
+function renderStudents(area) {
+  const s = master.students?.serial_master_list || [];
+  let html = '<div class="section"><h3>Students — Serial Master List</h3><table><thead><tr><th>Serial</th><th>Roll</th><th>ID</th><th>Name</th><th>Dept</th></tr></thead><tbody>';
+  s.forEach(x => {
+    html += `<tr><td>${x.serial}</td><td>${x.roll}</td><td>${x.id}</td><td>${x.name}</td><td>${x.department}</td></tr>`;
+  });
+  html += '</tbody></table></div>';
+  area.innerHTML = html;
+}
+
+/* --- Groups renderer (Group A, B, C) --- */
+function renderGroups1(area) {
+  const groups = master.students?.groups || [];
+  if (!groups.length) {
+    area.innerHTML = '<div class="card"><p>No groups defined in master JSON.</p></div>';
+    return;
+  }
+
+  let html = '<div class="section"><h3>Student Groups</h3>';
+  groups.forEach(g => {
+    html += `<div class="card" style="margin-bottom:16px">
+      <h4>Group ${g.group} — Ustad: ${g.ustad}</h4>
+      <table style="width:100%;border-collapse:collapse;margin-top:8px">
+        <thead><tr><th>Roll</th><th>ID</th><th>Name</th><th>Department</th></tr></thead>
+        <tbody>`;
+    g.students.forEach(s => {
+      html += `<tr>
+        <td style="border:1px solid #eee;padding:6px">${s.roll}</td>
+        <td style="border:1px solid #eee;padding:6px">${s.id}</td>
+        <td style="border:1px solid #eee;padding:6px">${s.name}</td>
+        <td style="border:1px solid #eee;padding:6px">${s.department}</td>
+      </tr>`;
+    });
+    html += `</tbody></table></div>`;
+  });
+  html += '</div>';
+  area.innerHTML = html;
+}
+
+/* --- Groups renderer --- */
+function renderGroups2(area) {
+  const groups = master.students?.groups || [];
+  if (!groups.length) {
+    area.innerHTML = '<div class="card"><p>No groups defined in master JSON.</p></div>';
+    return;
+  }
+
+  let html = '<div class="section"><h3>Student Groups</h3>';
+  groups.forEach(g => {
+    html += `<div class="card" style="margin-bottom:16px">
+      <h4>Group ${g.group} — Ustad: ${g.ustad}</h4>
+      <table style="width:100%;border-collapse:collapse;margin-top:8px">
+        <thead><tr><th>Roll</th><th>ID</th><th>Name</th><th>Department</th></tr></thead>
+        <tbody>`;
+    g.students.forEach(s => {
+      html += `<tr>
+        <td style="border:1px solid #eee;padding:6px">${s.roll}</td>
+        <td style="border:1px solid #eee;padding:6px">${s.id}</td>
+        <td style="border:1px solid #eee;padding:6px">${s.name}</td>
+        <td style="border:1px solid #eee;padding:6px">${s.department}</td>
+      </tr>`;
+    });
+    html += `</tbody></table></div>`;
+  });
+  html += '</div>';
+  area.innerHTML = html;
+}
+
+/* --- Groups renderer (serial, name, department, id) --- */
+function renderGroups3(area) {
+  const groups = master.students?.groups || [];
+  const serialList = master.students?.serial_master_list || [];
+
+  if (!groups.length) {
+    area.innerHTML = '<div class="card"><p>No groups defined in master JSON.</p></div>';
+    return;
+  }
+
+  let html = '<div class="section"><h3>Student Groups</h3>';
+  groups.forEach(g => {
+    html += `<div class="card" style="margin-bottom:16px">
+      <h4>Group ${g.group} — Ustad: ${g.ustad}</h4>
+      <table style="width:100%;border-collapse:collapse;margin-top:8px">
+        <thead><tr><th>Serial</th><th>Name</th><th>Department</th><th>ID</th></tr></thead>
+        <tbody>`;
+
+    g.students.forEach(s => {
+      // find serial from master list
+      const match = serialList.find(x => x.id === s.id);
+      const serial = match ? match.serial : '—';
+      html += `<tr>
+        <td style="border:1px solid #eee;padding:6px">${serial}</td>
+        <td style="border:1px solid #eee;padding:6px">${s.name}</td>
+        <td style="border:1px solid #eee;padding:6px">${s.department}</td>
+        <td style="border:1px solid #eee;padding:6px">${s.id}</td>
+      </tr>`;
+    });
+
+    html += `</tbody></table></div>`;
+  });
+  html += '</div>';
+  area.innerHTML = html;
+}
+
+/* --- Groups renderer (serial within group) --- */
+function renderGroups(area) {
+  const groups = master.students?.groups || [];
+  if (!groups.length) {
+    area.innerHTML = '<div class="card"><p>No groups defined in master JSON.</p></div>';
+    return;
+  }
+
+  let html = '<div class="section"><h3>Student Groups</h3>';
+  groups.forEach(g => {
+    html += `<div class="card" style="margin-bottom:16px">
+      <h4>Group ${g.group} — Ustad: ${g.ustad}</h4>
+      <table style="width:100%;border-collapse:collapse;margin-top:8px">
+        <thead><tr><th>Serial</th><th>Name</th><th>Department</th><th>ID</th></tr></thead>
+        <tbody>`;
+
+    g.students.forEach((s, idx) => {
+      const serial = idx + 1; // serial within group
+      html += `<tr>
+        <td style="border:1px solid #eee;padding:6px">${serial}</td>
+        <td style="border:1px solid #eee;padding:6px">${s.name}</td>
+        <td style="border:1px solid #eee;padding:6px">${s.department}</td>
+        <td style="border:1px solid #eee;padding:6px">${s.id}</td>
+      </tr>`;
+    });
+
+    html += `</tbody></table></div>`;
+  });
+  html += '</div>';
+  area.innerHTML = html;
+}
+
+const ATTENDANCE_JSON2 = 'master/attendance_master.json';
+
+/* --- Attendance renderer (separate file) --- */
+async function renderAttendance2(area) {
+  const att = await fetchJson(ATTENDANCE_JSON);
+  if (!att || !att.records || !att.records.length) {
+    area.innerHTML = '<div class="card"><p>No attendance records found.</p></div>';
+    return;
+  }
+  const recs = att.records;
+  let html = '<div class="section"><h3>Attendance Records (latest)</h3><div class="grid">';
+  recs.slice(-5).reverse().forEach(r => {
+    html += `<div class="card">
+      <strong>${r.meta.date} — ${r.meta.department}</strong>
+      <div class="meta">${r.meta.mode} • ${r.meta.scheduled_time}</div>
+      <div style="margin-top:8px"><a href="#" onclick="showAttendanceRecord(event, '${r.meta.id}')">View</a></div>
+    </div>`;
+  });
+  html += '</div></div><div id="attendanceDetail"></div>';
+  area.innerHTML = html;
+}
+
+/* --- Attendance detail viewer --- */
+async function showAttendanceRecord2(ev, id) {
+  ev.preventDefault();
+  const att = await fetchJson(ATTENDANCE_JSON);
+  if (!att) return;
+  const rec = (att.records || []).find(r => r.meta.id === id);
+  if (!rec) return alert('Record not found');
+  const detail = document.getElementById('attendanceDetail');
+  let html = `<h4>Record: ${rec.meta.id}</h4>
+    <table><thead><tr><th>Roll</th><th>ID</th><th>Name</th><th>Status</th></tr></thead><tbody>`;
+  rec.attendance.forEach(a => {
+    html += `<tr>
+      <td>${a.roll}</td>
+      <td>${a.student_id}</td>
+      <td>${a.name}</td>
+      <td>${a.status_label}</td>
+    </tr>`;
+  });
+  html += '</tbody></table>';
+  detail.innerHTML = html;
+}
+
+const ATTENDANCE_JSON = 'master/attendance_master.json';
+
+/* --- Attendance renderer with options --- */
+async function renderAttendance(area, mode="latest") {
+  const att = await fetchJson(ATTENDANCE_JSON);
+  if (!att || !att.records || !att.records.length) {
+    area.innerHTML = '<div class="card"><p>No attendance records found.</p></div>';
+    return;
+  }
+  const recs = att.records;
+
+  // filter by mode
+  let filtered = recs;
+  if (mode === "latest") {
+    filtered = recs.slice(-5).reverse();
+  } else if (mode === "month") {
+    // group by month
+    const byMonth = {};
+    recs.forEach(r => {
+      const m = r.meta.date.substring(0,7); // YYYY-MM
+      if (!byMonth[m]) byMonth[m] = [];
+      byMonth[m].push(r);
+    });
+    filtered = Object.keys(byMonth).map(m => ({meta:{id:m,date:m,department:"All"},attendance:[],records:byMonth[m]}));
+  } else if (mode === "day") {
+    // show all records day by day
+    filtered = recs;
+  } else if (mode === "all") {
+    filtered = recs;
+  }
+
+  // build HTML
+  let html = `<div class="section"><h3>Attendance Records (${mode})</h3>
+    <div style="margin-bottom:10px">
+      <button class="btn" onclick="renderAttendance(document.getElementById('pageArea'),'latest')">Latest</button>
+      <button class="btn" onclick="renderAttendance(document.getElementById('pageArea'),'all')">All</button>
+      <button class="btn" onclick="renderAttendance(document.getElementById('pageArea'),'month')">Month by Month</button>
+      <button class="btn" onclick="renderAttendance(document.getElementById('pageArea'),'day')">Day by Day</button>
+    </div>`;
+
+  if (mode === "month") {
+    html += '<div class="grid">';
+    filtered.forEach(group => {
+      html += `<div class="card"><strong>${group.meta.date}</strong>
+        <div style="margin-top:8px">${group.records.length} records</div></div>`;
+    });
+    html += '</div>';
+  } else {
+    html += '<div class="grid">';
+    filtered.forEach(r => {
+      html += `<div class="card"><strong>${r.meta.date} — ${r.meta.department}</strong>
+        <div class="meta">${r.meta.mode} • ${r.meta.scheduled_time}</div>
+        <div style="margin-top:8px"><a href="#" onclick="showAttendanceRecord(event, '${r.meta.id}')">View</a></div>
+      </div>`;
+    });
+    html += '</div>';
+  }
+
+  html += '</div><div id="attendanceDetail"></div>';
+  area.innerHTML = html;
+}
+
+/* --- Attendance detail viewer --- */
+async function showAttendanceRecord(ev, id) {
+  ev.preventDefault();
+  const att = await fetchJson(ATTENDANCE_JSON);
+  if (!att) return;
+  const rec = (att.records || []).find(r => r.meta.id === id);
+  if (!rec) return alert('Record not found');
+  const detail = document.getElementById('attendanceDetail');
+  let html = `<h4>Record: ${rec.meta.id}</h4>
+    <table><thead><tr><th>Roll</th><th>ID</th><th>Name</th><th>Status</th></tr></thead><tbody>`;
+  rec.attendance.forEach(a => {
+    html += `<tr><td>${a.roll}</td><td>${a.student_id}</td><td>${a.name}</td><td>${a.status_label}</td></tr>`;
+  });
+  html += '</tbody></table>';
+  detail.innerHTML = html;
+}
+
+
+/* --- Attendance renderer (summary) --- */
+function renderAttendance1(area) {
+  const att = master.attendance_master || master.attendance || null;
+  if (!att) {
+    area.innerHTML = '<div class="card"><p>No attendance master embedded. Use attendance system to append records to master/attendance_master.json.</p></div>';
+    return;
+  }
+  const recs = att.records || [];
+  let html = '<div class="section"><h3>Attendance Records (latest)</h3>';
+  if (recs.length === 0) html += '<p>No records yet.</p>';
+  else {
+    html += '<div class="grid">';
+    recs.slice(-6).reverse().forEach(r => {
+      html += `<div class="card"><strong>${r.meta.date} — ${r.meta.department}</strong><div class="meta">${r.meta.mode} • ${r.meta.scheduled_time}</div><div style="margin-top:8px"><a href="#" onclick="showAttendanceRecord(event, \\'${r.meta.id}\\')">View</a></div></div>`;
+    });
+    html += '</div>';
+  }
+  html += '</div><div id="attendanceDetail"></div>';
+  area.innerHTML = html;
+}
+
+function showAttendanceRecord1(ev, id) {
+  ev.preventDefault();
+  const att = master.attendance_master || master.attendance || null;
+  if (!att) return;
+  const rec = (att.records || []).find(r => r.meta.id === id);
+  if (!rec) return alert('Record not found');
+  const detail = document.getElementById('attendanceDetail');
+  let html = `<h4>Record: ${rec.meta.id}</h4><table><thead><tr><th>Roll</th><th>ID</th><th>Name</th><th>Status</th></tr></thead><tbody>`;
+  rec.attendance.forEach(a => {
+    html += `<tr><td>${a.roll}</td><td>${a.student_id}</td><td>${a.name}</td><td>${a.status_label}</td></tr>`;
+  });
+  html += '</tbody></table>';
+  detail.innerHTML = html;
+}
+
+/* --- Curriculum renderer (includes Hifz Revision & Technical Education) --- */
+function renderCurriculum(area) {
+  const cur = master.curriculum || {};
+  let html = `<div class="section"><h3>Curriculum</h3><div class="meta">${(cur.principles||[]).join(', ')}</div>`;
+  if (cur.modules) {
+    html += '<div class="grid">';
+    cur.modules.forEach(m => {
+      html += `<div class="card"><strong>${m.title}</strong><div style="font-size:0.95em;color:#666">Code: ${m.code} • Hours: ${m.hours}</div><div style="margin-top:8px">${m.description || ''}</div></div>`;
+    });
+    html += '</div>';
+  }
+  if (cur.assessment_framework) {
+    html += '<div class="section card"><h4>Assessment Framework</h4>';
+    for (const k in cur.assessment_framework) {
+      html += `<div>• <strong>${k}</strong>: ${cur.assessment_framework[k]}</div>`;
+    }
+    html += '</div>';
+  }
+  html += '</div>';
+  area.innerHTML = html;
+}
+
+/* --- Roadmap timeline renderer --- */
+function renderRoadmap(area) {
+  const timeline = master.roadmap?.timeline || [];
+  let html = '<div class="section"><h3>Roadmap & Timeline</h3>';
+  if (!timeline.length) {
+    html += '<p>No roadmap items defined.</p></div>';
+    area.innerHTML = html;
+    return;
+  }
+  html += '<div class="timeline">';
+  timeline.forEach(item => {
+    html += `<div class="timeline-item card"><div class="timeline-date">${item.target || ''}</div><div><strong>${item.milestone}</strong><div style="margin-top:6px;color:#444">${item.notes || ''}</div></div></div>`;
+  });
+  html += '</div></div>';
+  area.innerHTML = html;
+}
+
+/* --- Utility functions --- */
+function getByPath(obj, path) {
+  const parts = path.split('.');
+  let cur = obj;
+  for (const p of parts) {
+    if (!cur) return null;
+    cur = cur[p];
+  }
+  return cur;
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+/* --- Initialization & interactions --- */
+async function init() {
+  master = await fetchJson(MASTER_JSON);
+  config = await fetchJson(CONFIG_JSON) || {menu: []};
+  if (!master) {
+    document.getElementById('overview').innerText = 'Failed to load master JSON.';
+    return;
+  }
+  formatHeader();
+  buildMenu();
+  populateDeptFilter();
+  renderOverview(document.getElementById('pageArea'));
+}
+
+function populateDeptFilter() {
+  const sel = document.getElementById('filterDept');
+  const depts = (master.departments || []).map(d => d.name);
+  depts.forEach(d => {
+    const opt = document.createElement('option');
+    opt.value = d; opt.innerText = d;
+    sel.appendChild(opt);
+  });
+}
+
+document.getElementById('langEn').addEventListener('click', () => { lang='en'; buildMenu(); renderOverview(document.getElementById('pageArea')); });
+document.getElementById('langBn').addEventListener('click', () => { lang='bn'; buildMenu(); renderOverview(document.getElementById('pageArea')); });
+
+document.getElementById('globalSearch').addEventListener('input', (e) => {
+  const q = e.target.value.trim().toLowerCase();
+  const area = document.getElementById('pageArea');
+  if (!q) { renderOverview(area); return; }
+  const s = master.students?.serial_master_list || [];
+  const found = s.filter(x => (x.name||'').toLowerCase().includes(q) || (x.id||'').toLowerCase().includes(q) || (x.roll||'').toLowerCase().includes(q));
+  let html = '<div class="section"><h3>Search results</h3>';
+  if (found.length === 0) html += '<p>No results</p>';
+  else {
+    html += '<table><thead><tr><th>Serial</th><th>Roll</th><th>ID</th><th>Name</th><th>Dept</th></tr></thead><tbody>';
+    found.forEach(x => html += `<tr><td>${x.serial}</td><td>${x.roll}</td><td>${x.id}</td><td>${x.name}</td><td>${x.department}</td></tr>`);
+    html += '</tbody></table>';
+  }
+  html += '</div>';
+  area.innerHTML = html;
+});
+
+document.getElementById('clearSearch').addEventListener('click', () => {
+  document.getElementById('globalSearch').value = '';
+  renderOverview(document.getElementById('pageArea'));
+});
+
+init();
+</script>
+</body>
+</html>

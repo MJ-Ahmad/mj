@@ -1,0 +1,215 @@
+{
+  "meta": {
+    "madrasha": "Baitul Quran International Madrasha",
+    "address": "Stadium Road, Nandibari, Muktagacha Upazila, Mymensingh, Bangladesh",
+    "curated_by": "MJ Ahmad",
+    "mode": "Daily (main)",
+    "timestamp": "2026-05-03T12:45:08",
+    "department": "Selected at prompt",
+    "teachers": [
+      {
+        "name": "Ustad Arif",
+        "phone": "01824401812"
+      },
+      {
+        "name": "Ustad Arif Robbani",
+        "phone": "01631-940605"
+      },
+      {
+        "name": "Ustad Jafor",
+        "phone": "01892051303"
+      }
+    ]
+  },
+  "attendance": [
+    {
+      "name": "Jubayer",
+      "roll": "01",
+      "student_id": "BQSHS01",
+      "department": "Hifz 1–29",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Anamul Haqe",
+      "roll": "02",
+      "student_id": "BQSHS18",
+      "department": "Hifz 1–29",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Mafin",
+      "roll": "13",
+      "student_id": "BQSHS11",
+      "department": "Hifz 1–29",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Hasib",
+      "roll": "14",
+      "student_id": "BQSHS12",
+      "department": "Hifz 1–29",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Sahadat",
+      "roll": "15",
+      "student_id": "BQSHS13",
+      "department": "Hifz 1–29",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Arafat (1)",
+      "roll": "16",
+      "student_id": "BQSHS19",
+      "department": "Hifz 1–29",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Sabbir",
+      "roll": "17",
+      "student_id": "BQSHS02",
+      "department": "Hifz 1–29",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Hujayfa",
+      "roll": "18",
+      "student_id": "BQSHS14",
+      "department": "Hifz 1–29",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Afrad",
+      "roll": "19",
+      "student_id": "BQSHS03",
+      "department": "Hifz 1–29",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Rahat",
+      "roll": "20",
+      "student_id": "BQSHS04",
+      "department": "Hifz 1–29",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Abid",
+      "roll": "21",
+      "student_id": "BQSHS05",
+      "department": "Hifz 1–29",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Arafat (2)",
+      "roll": "22",
+      "student_id": "BQSHS06",
+      "department": "Hifz 1–29",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Al‑Amin",
+      "roll": "25",
+      "student_id": "BQSHS15",
+      "department": "Hifz 1–29",
+      "status": "absent",
+      "status_label": "Absent",
+      "note": ""
+    },
+    {
+      "name": "Sayem",
+      "roll": "26",
+      "student_id": "BQSHS20",
+      "department": "Hifz 1–29",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Tahmid",
+      "roll": "27",
+      "student_id": "BQSHS21",
+      "department": "Hifz 1–29",
+      "status": "absent",
+      "status_label": "Absent",
+      "note": ""
+    },
+    {
+      "name": "Akib",
+      "roll": "28",
+      "student_id": "BQSHS07",
+      "department": "Hifz 1–29",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Amir Hamja",
+      "roll": "29",
+      "student_id": "BQSHS08",
+      "department": "Hifz 1–29",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Nabil",
+      "roll": "30",
+      "student_id": "BQSHS09",
+      "department": "Hifz 1–29",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Junayed",
+      "roll": "33",
+      "student_id": "BQSHS10",
+      "department": "Hifz 1–29",
+      "status": "absent",
+      "status_label": "Absent",
+      "note": ""
+    },
+    {
+      "name": "Shoyab",
+      "roll": "34",
+      "student_id": "BQSHS16",
+      "department": "Hifz 1–29",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Junayed",
+      "roll": "35",
+      "student_id": "BQSHS17",
+      "department": "Hifz 1–29",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    }
+  ]
+}

@@ -1,0 +1,167 @@
+{
+  "institution": {
+    "name": "Baitul Quran International Madrasha",
+    "short_name": "Bitul Quran",
+    "address": "Stadium Road, Nandibari, Muktagacha Upazila, Mymensingh, Bangladesh",
+    "phone": "+8801824401812",
+    "email": "info@baitulquran.example",
+    "website": "https://baitulquran.example",
+    "logo": "assets/logo.png",
+    "curated_by": "MJ Ahmad — Steward of Ethical Inheritance",
+    "established": "2018-09-01",
+    "mission": "To combine classical hifz pedagogy with modern learning technology to produce confident, ethical, and proficient memorizers of the Qur'an.",
+    "vision": "A globally recognized center of excellence for Quran memorization and ethical leadership.",
+    "document_type": "Institutional Record",
+    "last_updated": "2026-05-03T02:45:02+06:00",
+    "homepage": {
+      "hero": {
+        "title": "Excellence in Hifz, Integrity in Character",
+        "subtitle": "Classical memorization methods enhanced by modern learning technology and ethical leadership.",
+        "cta": [
+          {"label_en":"Admissions","label_bn":"ভর্তি","href":"#admissions"},
+          {"label_en":"Visit","label_bn":"পরিদর্শন","href":"#visit"},
+          {"label_en":"Donate","label_bn":"দান করুন","href":"#donate"}
+        ]
+      },
+      "highlight_cards": [
+        {"title_en":"Pedagogy","title_bn":"পাঠদানের নীতি","body_en":"Spaced repetition, daily micro-practice, teacher-led correction and peer review.","body_bn":"স্পেসড রিপিটিশন, দৈনিক অনুশীলন, শিক্ষক-নিরীক্ষণ ও সহপাঠী পর্যালোচনা।"},
+        {"title_en":"Technology","title_bn":"প্রযুক্তি","body_en":"Attendance master, HTML viewer, snapshots, planned web UI and analytics.","body_bn":"হাজিরা মাস্টার, HTML ভিউয়ার, স্ন্যাপশট, ওয়েব UI ও বিশ্লেষণ।"},
+        {"title_en":"Ethics","title_bn":"নৈতিকতা","body_en":"Character formation, community service, accountability and transparency.","body_bn":"চরিত্র গঠন, সমাজসেবা, জবাবদিহিতা ও স্বচ্ছতা।"}
+      ]
+    }
+  },
+
+  "governance": {
+    "board": [
+      {"name": "Sheikh Rahman", "role": "Chairman"},
+      {"name": "Dr. Farida Khan", "role": "Secretary"}
+    ],
+    "director": {"name": "MJ Ahmad", "title": "Director"},
+    "management_committee": [
+      {"name":"Founder: Sheikh Rahman","role":"Founder & Patron"},
+      {"name":"Director: MJ Ahmad","role":"Executive Director"},
+      {"name":"Academic Head: Dr. Farida Khan","role":"Academic Leadership"},
+      {"name":"Operations Manager: Rafiq Ahmed","role":"Facilities & Logistics"}
+    ],
+    "roles_and_responsibilities": {
+      "director": "Strategic leadership, external relations, fundraising, final decision authority.",
+      "principal": "Day-to-day academic leadership, teacher supervision, curriculum implementation.",
+      "assistant_director": "Operational coordination, scheduling, compliance and reporting.",
+      "academic_head": "Curriculum design, teacher training, assessment frameworks.",
+      "operations_manager": "Facilities, transport, maintenance, safety and emergency response.",
+      "it_manager": "Systems administration, backups, security, attendance platform maintenance.",
+      "finance_officer": "Budgeting, payroll, procurement, financial reporting.",
+      "house_master": "Residential welfare, discipline, hostel scheduling and safety.",
+      "kitchen_manager": "Meal planning, hygiene, procurement for residential students.",
+      "housekeeping_supervisor": "Cleaning schedules, supplies, sanitation compliance."
+    }
+  },
+
+  "people": {
+    "leadership": [
+      {
+        "position": "Director",
+        "name": "MJ Ahmad",
+        "contact": {"email":"director@baitulquran.example","phone":"+8801712345678"},
+        "responsibilities": [
+          "Strategic leadership and external relations",
+          "Fundraising and partnerships",
+          "Final approval of institutional policies"
+        ],
+        "accountability": "Board of Trustees"
+      },
+      {
+        "position": "Principal",
+        "name": "Dr. Farida Khan",
+        "contact": {"email":"principal@baitulquran.example"},
+        "responsibilities": [
+          "Academic leadership and teacher supervision",
+          "Curriculum implementation and quality assurance",
+          "Student welfare oversight"
+        ],
+        "accountability": "Director"
+      },
+      {
+        "position": "Assistant Director",
+        "name": "Rafiq Ahmed",
+        "contact": {"phone":"018xxxxxxxx"},
+        "responsibilities": [
+          "Operational coordination",
+          "Scheduling and logistics",
+          "Compliance and reporting"
+        ],
+        "accountability": "Director"
+      }
+    ],
+    "teaching_staff": [
+      {"id":"T01","position":"Senior Ustad","name":"Ustad Arif","phone":"01824401812","department":"Khatmi / Recitation","responsibilities":["Lead recitation classes","Mentor junior ustads"],"accountability":"Principal"},
+      {"id":"T02","position":"Nurani Instructor","name":"Ustad Arif Robbani","phone":"01631940605","department":"Nurani Maktab","responsibilities":["Teach Nurani curriculum","Assess beginners"],"accountability":"Academic Head"},
+      {"id":"T03","position":"Hifz Instructor","name":"Ustad Jafor","phone":"01892051303","department":"Hifz 1–29","responsibilities":["Hifz instruction","Weekly recitation checks"],"accountability":"Principal"}
+    ],
+    "residential_staff": [
+      {"position":"House Master","name":"House Master Name","responsibilities":["Residential welfare","Discipline","Hostel safety"],"accountability":"Operations Manager"},
+      {"position":"Kitchen Manager","name":"Kitchen In-charge","responsibilities":["Meal planning","Hygiene","Inventory"],"accountability":"Operations Manager"},
+      {"position":"Housekeeping Supervisor","name":"Housekeeping Lead","responsibilities":["Cleaning schedules","Sanitation compliance"],"accountability":"Operations Manager"}
+    ],
+    "administration": [
+      {"id":"A01","position":"Office Manager","name":"Sadia Begum","email":"office@baitulquran.example","responsibilities":["Office administration","Parent communication"],"accountability":"Director"},
+      {"id":"A02","position":"Finance Officer","name":"Finance Officer Name","responsibilities":["Budgeting","Payroll","Procurement"],"accountability":"Director"}
+    ],
+    "committee": [
+      {"name":"Management Committee","members":["Director","Principal","Academic Head","Operations Manager"],"responsibilities":["Policy approval","Strategic oversight"]}
+    ]
+  },
+
+  "curriculum": {
+    "principles": ["Spaced repetition", "Daily micro-practice", "Teacher-led correction", "Peer review"],
+    "modules": [
+      {"code": "C01", "title": "Nurani Foundations", "hours": 120},
+      {"code": "C02", "title": "Nazara Preparation", "hours": 200},
+      {"code": "C03", "title": "Hifz Core", "hours": 2000},
+      {
+        "code": "C04",
+        "title": "Hifz Revision & Listening (Hifz Revision)",
+        "hours": 400,
+        "description": "Structured listening-based revision program focused on retention, revision cycles, and group listening sessions. Includes weekly listening tests, paired revision, and teacher-led correction sessions."
+      },
+      {
+        "code": "C05",
+        "title": "Technical Education",
+        "hours": 240,
+        "description": "Practical technical skills for students: basic IT literacy, audio recording for revision, simple device maintenance, and vocational skills (tailored to student age and capacity)."
+      }
+    ],
+    "assessment_framework": {
+      "weekly": "Recitation check by assigned Ustad",
+      "monthly": "Progress report and parent update",
+      "quarterly": "Formal assessment and placement review",
+      "revision_assessment": "Listening-based retention checks and oral revision exams"
+    }
+  },
+
+  "roadmap": {
+    "timeline": [
+      {"milestone":"Stabilize master JSON workflow","target":"2026-05-15","notes":"Finalize master data and backup automation"},
+      {"milestone":"Publish attendance viewer and train teachers","target":"2026-05-31","notes":"Teacher workshop and documentation"},
+      {"milestone":"Deploy Flask web UI (pilot)","target":"2026-06-30","notes":"Authentication and concurrent writes"},
+      {"milestone":"QR check-in pilot","target":"2026-08-15","notes":"Pilot in one class for 6 weeks"},
+      {"milestone":"Parent portal (read-only)","target":"2026-09-30","notes":"Publish monthly reports and read-only access"},
+      {"milestone":"Mobile app planning","target":"2027-03-31","notes":"Define scope and vendor selection"}
+    ],
+    "goals": {
+      "short_term": ["Stabilize master JSON workflow","Publish attendance viewer","Train 3 teachers on system"],
+      "mid_term": ["Deploy Flask web UI","Add authentication","Start QR pilot"],
+      "long_term": ["Global recognition for hifz pedagogy","Research center for memorization methods"]
+    }
+  },
+
+  "meta": {
+    "generated_at": "2026-05-04T11:00:00+06:00",
+    "version": "1.1.0",
+    "notes": "Extended curriculum and people & roles added; roadmap timeline included."
+  }
+}
+
+
+
+

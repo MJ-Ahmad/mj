@@ -1,0 +1,107 @@
+{
+  "meta": {
+    "madrasha": "Baitul Quran International Madrasha",
+    "address": "Stadium Road, Nandibari, Muktagacha Upazila, Mymensingh, Bangladesh",
+    "curated_by": "MJ Ahmad",
+    "mode": "Daily (main)",
+    "timestamp": "2026-05-03T12:48:06",
+    "department": "Selected at prompt",
+    "teachers": [
+      {
+        "name": "Ustad Arif",
+        "phone": "01824401812"
+      },
+      {
+        "name": "Ustad Arif Robbani",
+        "phone": "01631-940605"
+      },
+      {
+        "name": "Ustad Jafor",
+        "phone": "01892051303"
+      }
+    ]
+  },
+  "attendance": [
+    {
+      "name": "Jidan",
+      "roll": "01",
+      "student_id": "BQSNU01",
+      "department": "Nurani Maktab",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Safan",
+      "roll": "02",
+      "student_id": "BQSNU02",
+      "department": "Nurani Maktab",
+      "status": "absent",
+      "status_label": "Absent",
+      "note": ""
+    },
+    {
+      "name": "Moballig",
+      "roll": "03",
+      "student_id": "BQSNU03",
+      "department": "Nurani Maktab",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Shoyaib",
+      "roll": "04",
+      "student_id": "BQSNU04",
+      "department": "Nurani Maktab",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Sajjad",
+      "roll": "05",
+      "student_id": "BQSNU05",
+      "department": "Nurani Maktab",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Tamim",
+      "roll": "06",
+      "student_id": "BQSNU06",
+      "department": "Nurani Maktab",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Ruman",
+      "roll": "07",
+      "student_id": "BQSNU07",
+      "department": "Nurani Maktab",
+      "status": "absent",
+      "status_label": "Absent",
+      "note": ""
+    },
+    {
+      "name": "Mahdi",
+      "roll": "08",
+      "student_id": "BQSNU08",
+      "department": "Nurani Maktab",
+      "status": "absent",
+      "status_label": "Absent",
+      "note": ""
+    },
+    {
+      "name": "Soyad",
+      "roll": "09",
+      "student_id": "BQSNU09",
+      "department": "Nurani Maktab",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    }
+  ]
+}
