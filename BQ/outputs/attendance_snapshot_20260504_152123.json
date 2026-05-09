@@ -1,0 +1,102 @@
+{
+  "meta": {
+    "id": "rec_20260504_152123",
+    "madrasha_name": "Baitul Quran International Madrasha",
+    "address": "Stadium Road, Nandibari, Muktagacha Upazila, Mymensingh, Bangladesh",
+    "curated_by": "MJ Ahmad — Steward of Ethical Inheritance",
+    "document_type": "Institutional Record",
+    "mode": "Class-based",
+    "date": "2026-05-04",
+    "timestamp": "2026-05-04T15:21:23",
+    "department": "Pre-Hifz Nazara",
+    "scheduled_time": "12:15",
+    "recorder": "Ustad Arif Robbani",
+    "teachers_present": [
+      "T01",
+      "T02"
+    ]
+  },
+  "attendance": [
+    {
+      "name": "Abu Talha",
+      "roll": "01",
+      "student_id": "BQSNA01",
+      "department": "Pre-Hifz Nazara",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Kawser Ahmad",
+      "roll": "02",
+      "student_id": "BQSNA02",
+      "department": "Pre-Hifz Nazara",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Sifat",
+      "roll": "03",
+      "student_id": "BQSNA03",
+      "department": "Pre-Hifz Nazara",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Shahinur",
+      "roll": "04",
+      "student_id": "BQSNA04",
+      "department": "Pre-Hifz Nazara",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Miraj",
+      "roll": "05",
+      "student_id": "BQSNA05",
+      "department": "Pre-Hifz Nazara",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Minhaz",
+      "roll": "06",
+      "student_id": "BQSNA06",
+      "department": "Pre-Hifz Nazara",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Lijon",
+      "roll": "07",
+      "student_id": "BQSNA07",
+      "department": "Pre-Hifz Nazara",
+      "status": "absent",
+      "status_label": "Absent",
+      "note": ""
+    },
+    {
+      "name": "Rafan",
+      "roll": "08",
+      "student_id": "BQSNA08",
+      "department": "Pre-Hifz Nazara",
+      "status": "present",
+      "status_label": "Present",
+      "note": ""
+    },
+    {
+      "name": "Arshad",
+      "roll": "09",
+      "student_id": "BQSNA09",
+      "department": "Pre-Hifz Nazara",
+      "status": "absent",
+      "status_label": "Absent",
+      "note": ""
+    }
+  ]
+}

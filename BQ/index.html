@@ -35,6 +35,10 @@
   .btn{padding:8px 10px;border-radius:6px;border:1px solid #ddd;background:#fff;cursor:pointer}
   .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
   .countdown{font-weight:700;color:var(--accent)}
+  .timeline{display:flex;flex-direction:column;gap:10px}
+  .timeline-item{display:flex;gap:12px;align-items:flex-start}
+  .timeline-date{min-width:110px;color:var(--muted);font-size:0.95em}
+  .role-list{list-style:disc;margin-left:18px}
   @media (max-width:900px){
     nav{width:100%;order:2;border-top:1px solid #eee}
     .layout{flex-direction:column}
@@ -86,14 +90,15 @@
 
 <script>
 /*
-index.html viewer
-- Loads bitul_quran.json and site_config.json
+index.html viewer (final production-ready)
+- Loads bq.json and site_config.json
 - Renders menu according to site_config
 - Supports password-protected items and countdown visibility
 - EN | BN toggle
+- Sections: Overview, People & Roles, Students, Groups, Attendance, Curriculum, Roadmap
 */
 
-const MASTER_JSON = 'bitul_quran.json';
+const MASTER_JSON = 'bq.json';
 const CONFIG_JSON = 'site_config.json';
 
 let master = null;
@@ -149,7 +154,7 @@ function buildMenu() {
   q.innerHTML = '';
   const links = [
     {label: lang === 'bn' ? 'হোম' : 'Home', key: 'overview'},
-    {label: lang === 'bn' ? 'শিক্ষক' : 'Teachers', key: 'teachers'},
+    {label: lang === 'bn' ? 'কর্মকর্তা' : 'People', key: 'people_roles'},
     {label: lang === 'bn' ? 'শিক্ষার্থী' : 'Students', key: 'students'},
     {label: lang === 'bn' ? 'হাজিরা' : 'Attendance', key: 'attendance'}
   ];
@@ -193,8 +198,9 @@ function renderSection(item) {
   const area = document.getElementById('pageArea');
   area.innerHTML = '';
   if (item.key === 'overview') { renderOverview(area); return; }
-  if (item.key === 'teachers') { renderTeachers(area); return; }
+  if (item.key === 'people_roles') { renderPeopleRoles(area); return; }
   if (item.key === 'students') { renderStudents(area); return; }
+  if (item.key === 'groups') { renderGroups(area); return; }
   if (item.key === 'attendance') { renderAttendance(area); return; }
   if (item.key === 'curriculum') { renderCurriculum(area); return; }
   if (item.key === 'roadmap') { renderRoadmap(area); return; }
@@ -206,33 +212,91 @@ function renderSection(item) {
   area.innerHTML = `<p>Section "${item.key}" not implemented in viewer.</p>`;
 }
 
+/* --- Enhanced Overview renderer (hero + cards) --- */
 function renderOverview(area) {
   const md = master.institution || {};
-  const html = `
-    <div class="section card">
-      <h3>${md.name || ''}</h3>
-      <p>${md.mission || ''}</p>
-      <div class="meta">Curated by: ${md.curated_by || ''} • Established: ${md.established || ''}</div>
-    </div>
-    <div class="section grid">
-      <div class="card"><strong>Pedagogy</strong><p>Spaced repetition, daily micro-practice, teacher-led correction.</p></div>
-      <div class="card"><strong>Technology</strong><p>Attendance master, HTML viewer, snapshots, planned web UI.</p></div>
-      <div class="card"><strong>Ethics</strong><p>Character formation, community service, accountability.</p></div>
-    </div>
-  `;
+  const hero = md.homepage?.hero || {};
+  const cards = md.homepage?.highlight_cards || [];
+  let html = `<div class="section card"><h2>${hero.title || md.name}</h2><p>${hero.subtitle || md.mission}</p>`;
+  if (hero.cta && hero.cta.length) {
+    html += '<div style="margin-top:10px">';
+    hero.cta.forEach(c => {
+      const label = (lang==='bn' && c.label_bn) ? c.label_bn : (c.label_en || c.label);
+      html += `<a class="btn primary" href="${c.href}" style="margin-right:8px">${label}</a>`;
+    });
+    html += '</div>';
+  }
+  html += `<div class="meta" style="margin-top:8px">Curated by: ${md.curated_by || ''} • Established: ${md.established || ''}</div></div>`;
+  // highlight cards
+  if (cards.length) {
+    html += '<div class="section grid">';
+    cards.forEach(card => {
+      const title = (lang==='bn' && card.title_bn) ? card.title_bn : (card.title_en || card.title);
+      const body = (lang==='bn' && card.body_bn) ? card.body_bn : (card.body_en || card.body);
+      html += `<div class="card"><strong>${title}</strong><div style="margin-top:8px">${body}</div></div>`;
+    });
+    html += '</div>';
+  }
+  // quick program tiles
+  const depts = master.departments || [];
+  if (depts.length) {
+    html += '<div class="section"><h3>Programs</h3><div class="grid">';
+    depts.forEach(d => {
+      html += `<div class="card"><strong>${d.name}</strong><div style="margin-top:8px">${d.description || ''}</div></div>`;
+    });
+    html += '</div></div>';
+  }
   area.innerHTML = html;
 }
 
-function renderTeachers(area) {
-  const t = master.staff?.teachers || [];
-  let html = '<div class="section"><h3>Teachers</h3><div class="grid">';
-  t.forEach(x => {
-    html += `<div class="card"><strong>${x.name}</strong><div style="font-size:0.95em;color:#666">${x.role}</div><div style="margin-top:8px;font-size:0.9em">${x.phone || ''}</div></div>`;
-  });
-  html += '</div></div>';
+/* --- People & Roles renderer --- */
+function renderPeopleRoles(area) {
+  const people = master.people || {};
+  let html = '<div class="section"><h3>People & Roles</h3>';
+  // Leadership
+  if (people.leadership && people.leadership.length) {
+    html += '<div class="card"><h4>Leadership</h4>';
+    people.leadership.forEach(p => {
+      html += `<div style="margin-bottom:10px"><strong>${p.position} — ${p.name}</strong><div style="font-size:0.95em;color:#666">${(p.contact?.email||'')}${p.contact?.phone?(' • '+p.contact.phone):''}</div><div style="margin-top:6px">${p.responsibilities.map(r=>'<div>• '+r+'</div>').join('')}</div><div style="font-size:0.9em;color:#777;margin-top:6px"><em>Accountability: ${p.accountability || '—'}</em></div></div>`;
+    });
+    html += '</div>';
+  }
+  // Teaching staff
+  if (people.teaching_staff && people.teaching_staff.length) {
+    html += '<div class="card"><h4>Teaching Staff</h4>';
+    people.teaching_staff.forEach(t => {
+      html += `<div style="margin-bottom:8px"><strong>${t.position} — ${t.name}</strong><div style="font-size:0.95em;color:#666">${t.department || ''} • ${t.phone || ''}</div><div style="margin-top:6px">${(t.responsibilities||[]).map(r=>'<div>• '+r+'</div>').join('')}</div><div style="font-size:0.9em;color:#777;margin-top:6px"><em>Reports to: ${t.accountability || '—'}</em></div></div>`;
+    });
+    html += '</div>';
+  }
+  // Residential & admin
+  if (people.residential_staff && people.residential_staff.length) {
+    html += '<div class="card"><h4>Residential & Support Staff</h4>';
+    people.residential_staff.forEach(r => {
+      html += `<div style="margin-bottom:8px"><strong>${r.position} — ${r.name || ''}</strong><div style="margin-top:6px">${(r.responsibilities||[]).map(x=>'<div>• '+x+'</div>').join('')}</div><div style="font-size:0.9em;color:#777;margin-top:6px"><em>Accountability: ${r.accountability || '—'}</em></div></div>`;
+    });
+    html += '</div>';
+  }
+  // Administration & committee
+  if (people.administration && people.administration.length) {
+    html += '<div class="card"><h4>Administration</h4>';
+    people.administration.forEach(a => {
+      html += `<div style="margin-bottom:8px"><strong>${a.position} — ${a.name}</strong><div style="font-size:0.95em;color:#666">${a.email || ''}</div><div style="margin-top:6px">${(a.responsibilities||[]).map(x=>'<div>• '+x+'</div>').join('')}</div><div style="font-size:0.9em;color:#777;margin-top:6px"><em>Accountability: ${a.accountability || '—'}</em></div></div>`;
+    });
+    html += '</div>';
+  }
+  if (people.committee && people.committee.length) {
+    html += '<div class="card"><h4>Committees</h4>';
+    people.committee.forEach(c => {
+      html += `<div style="margin-bottom:8px"><strong>${c.name}</strong><div style="margin-top:6px">${(c.members||[]).join(', ')}</div><div style="margin-top:6px">${(c.responsibilities||[]).map(x=>'<div>• '+x+'</div>').join('')}</div></div>`;
+    });
+    html += '</div>';
+  }
+  html += '</div>';
   area.innerHTML = html;
 }
 
+/* --- Students renderer (serial master list) --- */
 function renderStudents(area) {
   const s = master.students?.serial_master_list || [];
   let html = '<div class="section"><h3>Students — Serial Master List</h3><table><thead><tr><th>Serial</th><th>Roll</th><th>ID</th><th>Name</th><th>Dept</th></tr></thead><tbody>';
@@ -243,62 +307,258 @@ function renderStudents(area) {
   area.innerHTML = html;
 }
 
-
-function renderGroups(area) {
-  const g = master.groups || [];
-  if (!g.length) {
-    area.innerHTML = '<div class="empty">No groups available</div>';
+/* --- Groups renderer (Group A, B, C) --- */
+function renderGroups1(area) {
+  const groups = master.students?.groups || [];
+  if (!groups.length) {
+    area.innerHTML = '<div class="card"><p>No groups defined in master JSON.</p></div>';
     return;
   }
 
-  let html = '<div class="section"><h3>Groups</h3><div class="grid">';
-  g.forEach(x => {
-    // Count students per department
-    const deptCounts = {};
-    x.students.forEach(s => {
-      const dept = s.department || 'Unknown';
-      deptCounts[dept] = (deptCounts[dept] || 0) + 1;
+  let html = '<div class="section"><h3>Student Groups</h3>';
+  groups.forEach(g => {
+    html += `<div class="card" style="margin-bottom:16px">
+      <h4>Group ${g.group} — Ustad: ${g.ustad}</h4>
+      <table style="width:100%;border-collapse:collapse;margin-top:8px">
+        <thead><tr><th>Roll</th><th>ID</th><th>Name</th><th>Department</th></tr></thead>
+        <tbody>`;
+    g.students.forEach(s => {
+      html += `<tr>
+        <td style="border:1px solid #eee;padding:6px">${s.roll}</td>
+        <td style="border:1px solid #eee;padding:6px">${s.id}</td>
+        <td style="border:1px solid #eee;padding:6px">${s.name}</td>
+        <td style="border:1px solid #eee;padding:6px">${s.department}</td>
+      </tr>`;
     });
-    const deptSummary = Object.entries(deptCounts)
-      .map(([dept, count]) => `${count} from ${dept}`)
-      .join(' • ');
-
-    // Student rows for expand/collapse
-    const studentRows = x.students.map(s =>
-      `<tr><td>${s.roll || ''}</td><td>${s.id || ''}</td><td>${s.name}</td><td>${s.department}</td></tr>`
-    ).join('');
-
-    html += `
-      <div class="card" data-group="${x.group}" data-ustad="${x.ustad}">
-        <strong>Group ${x.group}</strong>
-        <div style="font-size:0.95em;color:#666">${x.ustad}</div>
-        <div style="margin-top:8px;font-size:0.9em">${x.students.length} students</div>
-        <div style="margin-top:4px;font-size:0.85em;color:#444">${deptSummary}</div>
-        <div class="toggle" style="margin-top:8px">
-          <a href="#" onclick="toggleGroup(event, '${x.group}')">Show Students</a>
-        </div>
-        <div id="group-${x.group}" class="student-list" style="display:none;margin-top:8px">
-          <table><thead><tr><th>Roll</th><th>ID</th><th>Name</th><th>Dept</th></tr></thead><tbody>
-            ${studentRows}
-          </tbody></table>
-        </div>
-      </div>`;
+    html += `</tbody></table></div>`;
   });
-  html += '</div></div>';
+  html += '</div>';
   area.innerHTML = html;
 }
 
-function toggleGroup(ev, groupId) {
+/* --- Groups renderer --- */
+function renderGroups2(area) {
+  const groups = master.students?.groups || [];
+  if (!groups.length) {
+    area.innerHTML = '<div class="card"><p>No groups defined in master JSON.</p></div>';
+    return;
+  }
+
+  let html = '<div class="section"><h3>Student Groups</h3>';
+  groups.forEach(g => {
+    html += `<div class="card" style="margin-bottom:16px">
+      <h4>Group ${g.group} — Ustad: ${g.ustad}</h4>
+      <table style="width:100%;border-collapse:collapse;margin-top:8px">
+        <thead><tr><th>Roll</th><th>ID</th><th>Name</th><th>Department</th></tr></thead>
+        <tbody>`;
+    g.students.forEach(s => {
+      html += `<tr>
+        <td style="border:1px solid #eee;padding:6px">${s.roll}</td>
+        <td style="border:1px solid #eee;padding:6px">${s.id}</td>
+        <td style="border:1px solid #eee;padding:6px">${s.name}</td>
+        <td style="border:1px solid #eee;padding:6px">${s.department}</td>
+      </tr>`;
+    });
+    html += `</tbody></table></div>`;
+  });
+  html += '</div>';
+  area.innerHTML = html;
+}
+
+/* --- Groups renderer (serial, name, department, id) --- */
+function renderGroups3(area) {
+  const groups = master.students?.groups || [];
+  const serialList = master.students?.serial_master_list || [];
+
+  if (!groups.length) {
+    area.innerHTML = '<div class="card"><p>No groups defined in master JSON.</p></div>';
+    return;
+  }
+
+  let html = '<div class="section"><h3>Student Groups</h3>';
+  groups.forEach(g => {
+    html += `<div class="card" style="margin-bottom:16px">
+      <h4>Group ${g.group} — Ustad: ${g.ustad}</h4>
+      <table style="width:100%;border-collapse:collapse;margin-top:8px">
+        <thead><tr><th>Serial</th><th>Name</th><th>Department</th><th>ID</th></tr></thead>
+        <tbody>`;
+
+    g.students.forEach(s => {
+      // find serial from master list
+      const match = serialList.find(x => x.id === s.id);
+      const serial = match ? match.serial : '—';
+      html += `<tr>
+        <td style="border:1px solid #eee;padding:6px">${serial}</td>
+        <td style="border:1px solid #eee;padding:6px">${s.name}</td>
+        <td style="border:1px solid #eee;padding:6px">${s.department}</td>
+        <td style="border:1px solid #eee;padding:6px">${s.id}</td>
+      </tr>`;
+    });
+
+    html += `</tbody></table></div>`;
+  });
+  html += '</div>';
+  area.innerHTML = html;
+}
+
+/* --- Groups renderer (serial within group) --- */
+function renderGroups(area) {
+  const groups = master.students?.groups || [];
+  if (!groups.length) {
+    area.innerHTML = '<div class="card"><p>No groups defined in master JSON.</p></div>';
+    return;
+  }
+
+  let html = '<div class="section"><h3>Student Groups</h3>';
+  groups.forEach(g => {
+    html += `<div class="card" style="margin-bottom:16px">
+      <h4>Group ${g.group} — Ustad: ${g.ustad}</h4>
+      <table style="width:100%;border-collapse:collapse;margin-top:8px">
+        <thead><tr><th>Serial</th><th>Name</th><th>Department</th><th>ID</th></tr></thead>
+        <tbody>`;
+
+    g.students.forEach((s, idx) => {
+      const serial = idx + 1; // serial within group
+      html += `<tr>
+        <td style="border:1px solid #eee;padding:6px">${serial}</td>
+        <td style="border:1px solid #eee;padding:6px">${s.name}</td>
+        <td style="border:1px solid #eee;padding:6px">${s.department}</td>
+        <td style="border:1px solid #eee;padding:6px">${s.id}</td>
+      </tr>`;
+    });
+
+    html += `</tbody></table></div>`;
+  });
+  html += '</div>';
+  area.innerHTML = html;
+}
+
+const ATTENDANCE_JSON2 = 'master/attendance_master.json';
+
+/* --- Attendance renderer (separate file) --- */
+async function renderAttendance2(area) {
+  const att = await fetchJson(ATTENDANCE_JSON);
+  if (!att || !att.records || !att.records.length) {
+    area.innerHTML = '<div class="card"><p>No attendance records found.</p></div>';
+    return;
+  }
+  const recs = att.records;
+  let html = '<div class="section"><h3>Attendance Records (latest)</h3><div class="grid">';
+  recs.slice(-5).reverse().forEach(r => {
+    html += `<div class="card">
+      <strong>${r.meta.date} — ${r.meta.department}</strong>
+      <div class="meta">${r.meta.mode} • ${r.meta.scheduled_time}</div>
+      <div style="margin-top:8px"><a href="#" onclick="showAttendanceRecord(event, '${r.meta.id}')">View</a></div>
+    </div>`;
+  });
+  html += '</div></div><div id="attendanceDetail"></div>';
+  area.innerHTML = html;
+}
+
+/* --- Attendance detail viewer --- */
+async function showAttendanceRecord2(ev, id) {
   ev.preventDefault();
-  const el = document.getElementById('group-' + groupId);
-  if (!el) return;
-  const visible = el.style.display === 'block';
-  el.style.display = visible ? 'none' : 'block';
-  ev.target.textContent = visible ? 'Show Students' : 'Hide Students';
+  const att = await fetchJson(ATTENDANCE_JSON);
+  if (!att) return;
+  const rec = (att.records || []).find(r => r.meta.id === id);
+  if (!rec) return alert('Record not found');
+  const detail = document.getElementById('attendanceDetail');
+  let html = `<h4>Record: ${rec.meta.id}</h4>
+    <table><thead><tr><th>Roll</th><th>ID</th><th>Name</th><th>Status</th></tr></thead><tbody>`;
+  rec.attendance.forEach(a => {
+    html += `<tr>
+      <td>${a.roll}</td>
+      <td>${a.student_id}</td>
+      <td>${a.name}</td>
+      <td>${a.status_label}</td>
+    </tr>`;
+  });
+  html += '</tbody></table>';
+  detail.innerHTML = html;
+}
+
+const ATTENDANCE_JSON = 'master/attendance_master.json';
+
+/* --- Attendance renderer with options --- */
+async function renderAttendance(area, mode="latest") {
+  const att = await fetchJson(ATTENDANCE_JSON);
+  if (!att || !att.records || !att.records.length) {
+    area.innerHTML = '<div class="card"><p>No attendance records found.</p></div>';
+    return;
+  }
+  const recs = att.records;
+
+  // filter by mode
+  let filtered = recs;
+  if (mode === "latest") {
+    filtered = recs.slice(-5).reverse();
+  } else if (mode === "month") {
+    // group by month
+    const byMonth = {};
+    recs.forEach(r => {
+      const m = r.meta.date.substring(0,7); // YYYY-MM
+      if (!byMonth[m]) byMonth[m] = [];
+      byMonth[m].push(r);
+    });
+    filtered = Object.keys(byMonth).map(m => ({meta:{id:m,date:m,department:"All"},attendance:[],records:byMonth[m]}));
+  } else if (mode === "day") {
+    // show all records day by day
+    filtered = recs;
+  } else if (mode === "all") {
+    filtered = recs;
+  }
+
+  // build HTML
+  let html = `<div class="section"><h3>Attendance Records (${mode})</h3>
+    <div style="margin-bottom:10px">
+      <button class="btn" onclick="renderAttendance(document.getElementById('pageArea'),'latest')">Latest</button>
+      <button class="btn" onclick="renderAttendance(document.getElementById('pageArea'),'all')">All</button>
+      <button class="btn" onclick="renderAttendance(document.getElementById('pageArea'),'month')">Month by Month</button>
+      <button class="btn" onclick="renderAttendance(document.getElementById('pageArea'),'day')">Day by Day</button>
+    </div>`;
+
+  if (mode === "month") {
+    html += '<div class="grid">';
+    filtered.forEach(group => {
+      html += `<div class="card"><strong>${group.meta.date}</strong>
+        <div style="margin-top:8px">${group.records.length} records</div></div>`;
+    });
+    html += '</div>';
+  } else {
+    html += '<div class="grid">';
+    filtered.forEach(r => {
+      html += `<div class="card"><strong>${r.meta.date} — ${r.meta.department}</strong>
+        <div class="meta">${r.meta.mode} • ${r.meta.scheduled_time}</div>
+        <div style="margin-top:8px"><a href="#" onclick="showAttendanceRecord(event, '${r.meta.id}')">View</a></div>
+      </div>`;
+    });
+    html += '</div>';
+  }
+
+  html += '</div><div id="attendanceDetail"></div>';
+  area.innerHTML = html;
+}
+
+/* --- Attendance detail viewer --- */
+async function showAttendanceRecord(ev, id) {
+  ev.preventDefault();
+  const att = await fetchJson(ATTENDANCE_JSON);
+  if (!att) return;
+  const rec = (att.records || []).find(r => r.meta.id === id);
+  if (!rec) return alert('Record not found');
+  const detail = document.getElementById('attendanceDetail');
+  let html = `<h4>Record: ${rec.meta.id}</h4>
+    <table><thead><tr><th>Roll</th><th>ID</th><th>Name</th><th>Status</th></tr></thead><tbody>`;
+  rec.attendance.forEach(a => {
+    html += `<tr><td>${a.roll}</td><td>${a.student_id}</td><td>${a.name}</td><td>${a.status_label}</td></tr>`;
+  });
+  html += '</tbody></table>';
+  detail.innerHTML = html;
 }
 
 
-function renderAttendance(area) {
+/* --- Attendance renderer (summary) --- */
+function renderAttendance1(area) {
   const att = master.attendance_master || master.attendance || null;
   if (!att) {
     area.innerHTML = '<div class="card"><p>No attendance master embedded. Use attendance system to append records to master/attendance_master.json.</p></div>';
@@ -318,7 +578,7 @@ function renderAttendance(area) {
   area.innerHTML = html;
 }
 
-function showAttendanceRecord(ev, id) {
+function showAttendanceRecord1(ev, id) {
   ev.preventDefault();
   const att = master.attendance_master || master.attendance || null;
   if (!att) return;
@@ -333,30 +593,46 @@ function showAttendanceRecord(ev, id) {
   detail.innerHTML = html;
 }
 
+/* --- Curriculum renderer (includes Hifz Revision & Technical Education) --- */
 function renderCurriculum(area) {
   const cur = master.curriculum || {};
   let html = `<div class="section"><h3>Curriculum</h3><div class="meta">${(cur.principles||[]).join(', ')}</div>`;
   if (cur.modules) {
     html += '<div class="grid">';
     cur.modules.forEach(m => {
-      html += `<div class="card"><strong>${m.title}</strong><div>Code: ${m.code}</div><div>Hours: ${m.hours}</div></div>`;
+      html += `<div class="card"><strong>${m.title}</strong><div style="font-size:0.95em;color:#666">Code: ${m.code} • Hours: ${m.hours}</div><div style="margin-top:8px">${m.description || ''}</div></div>`;
     });
+    html += '</div>';
+  }
+  if (cur.assessment_framework) {
+    html += '<div class="section card"><h4>Assessment Framework</h4>';
+    for (const k in cur.assessment_framework) {
+      html += `<div>• <strong>${k}</strong>: ${cur.assessment_framework[k]}</div>`;
+    }
     html += '</div>';
   }
   html += '</div>';
   area.innerHTML = html;
 }
 
+/* --- Roadmap timeline renderer --- */
 function renderRoadmap(area) {
-  const r = master.roadmap || {};
-  let html = '<div class="section"><h3>Roadmap</h3>';
-  for (const k of Object.keys(r)) {
-    html += `<div class="card"><strong>${k}</strong><div style="margin-top:8px">${r[k].join(', ')}</div></div>`;
+  const timeline = master.roadmap?.timeline || [];
+  let html = '<div class="section"><h3>Roadmap & Timeline</h3>';
+  if (!timeline.length) {
+    html += '<p>No roadmap items defined.</p></div>';
+    area.innerHTML = html;
+    return;
   }
-  html += '</div>';
+  html += '<div class="timeline">';
+  timeline.forEach(item => {
+    html += `<div class="timeline-item card"><div class="timeline-date">${item.target || ''}</div><div><strong>${item.milestone}</strong><div style="margin-top:6px;color:#444">${item.notes || ''}</div></div></div>`;
+  });
+  html += '</div></div>';
   area.innerHTML = html;
 }
 
+/* --- Utility functions --- */
 function getByPath(obj, path) {
   const parts = path.split('.');
   let cur = obj;
@@ -371,6 +647,7 @@ function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 
+/* --- Initialization & interactions --- */
 async function init() {
   master = await fetchJson(MASTER_JSON);
   config = await fetchJson(CONFIG_JSON) || {menu: []};
