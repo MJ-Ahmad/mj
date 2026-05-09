@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MJ Documentation Hub Schema",
+  "type": "object",
+  "required": [
+    "meta",
+    "modules",
+    "nav"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": [
+        "title",
+        "curated_by",
+        "document_type",
+        "last_updated",
+        "declaration",
+        "quote"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "curated_by": {
+          "type": "string"
+        },
+        "document_type": {
+          "type": "string"
+        },
+        "last_updated": {
+          "type": "string"
+        },
+        "declaration": {
+          "type": "string"
+        },
+        "quote": {
+          "type": "object",
+          "required": [
+            "text",
+            "author"
+          ],
+          "properties": {
+            "text": {
+              "type": "string"
+            },
+            "author": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "modules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "items"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "nav": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}

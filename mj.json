@@ -1,0 +1,147 @@
+{
+  "meta": {
+    "title": "MJ-Ahmad Documentation Hub — Constitutional Index",
+    "curated_by": "MJ Ahmad — Steward of Ethical Inheritance",
+    "document_type": "System Index",
+    "last_updated": "October 19, 2025",
+    "declaration": "This index is not a directory. It is a declaration — that every module, every steward, and every learner deserves clarity, dignity, and traceable inheritance.",
+    "quote": {
+      "text": "Let no file be lost, no steward forgotten, and no learner left behind.",
+      "author": "MJ Ahmad"
+    }
+  },
+  "modules": [
+    {
+      "name": "🏛️ Core Modules",
+      "items": [
+        "Constitution",
+        "Whitepaper",
+        "Roadmap",
+        "Glossary",
+        "Contributor Registry"
+      ]
+    },
+    {
+      "name": "🧠 Logic & Ethics",
+      "items": [
+        "NXN Genesis",
+        "Ethics Manifesto",
+        "Violation Ledger"
+      ]
+    },
+    {
+      "name": "🧾 Governance",
+      "items": [
+        "Role Activation",
+        "Voting Policy",
+        "Emergency Protocol",
+        "Ratification Ledger"
+      ]
+    },
+    {
+      "name": "🧠 Behavioral Governance",
+      "items": [
+        "Persona Consistency and Ethical Tone"
+      ]
+    },
+    {
+      "name": "🛡️ Security Protocols",
+      "items": [
+        "Threat Model",
+        "Incident Response",
+        "Guardian Handbook"
+      ]
+    },
+    {
+      "name": "💰 Treasury System",
+      "items": [
+        "Purpose Registry",
+        "Disbursement Log"
+      ]
+    },
+    {
+      "name": "🧮 Merit System",
+      "items": [
+        "Contribution Scorecard and Recognition Logic"
+      ]
+    },
+    {
+      "name": "📦 Distribution",
+      "items": [
+        "Copy logistics and dissemination protocols"
+      ]
+    },
+    {
+      "name": "🚀 Deployment Records",
+      "items": [
+        "Setup instructions and activation history"
+      ]
+    },
+    {
+      "name": "🪙 Tokenomics",
+      "items": [
+        "Value logic and ethical circulation"
+      ]
+    },
+    {
+      "name": "📚 Quraner Fariwala",
+      "items": [
+        "Research",
+        "Restoration",
+        "Legal Continuity",
+        "Campaign",
+        "Donation Gateway"
+      ]
+    },
+    {
+      "name": "🧾 Support & Clarity",
+      "items": [
+        "FAQ",
+        "Vision",
+        "Personal Fund Declaration",
+        "Public Support Page"
+      ]
+    }
+  ],
+  "nav": {
+    "Home": "index.md",
+    "Constitution": "constitution.md",
+    "Whitepaper": "whitepaper.md",
+    "Roadmap": "roadmap.md",
+    "Glossary": "glossary.md",
+    "Governance": {
+      "Visionary Roles": "visionary-roles.md",
+      "Persona Consistency": "behavior/persona-consistency.md",
+      "Proposal Template": "governance/proposal-template.md",
+      "Decision Tree": "https://github.com/mj-nexara/nexaragov-core/blob/main/decision-tree.md",
+      "Voting Policy": "governance/voting-policy.md",
+      "Emergency Protocol": "governance/emergency-protocol.md",
+      "Ratification Process": "governance/ratification-process.md",
+      "Ratified Actions": "governance/ratified-actions.md"
+    },
+    "Treasury": {
+      "Treasury Policy": "https://github.com/mj-nexara/nexara-treasury/blob/main/README.md",
+      "Purpose Registry": "treasury/purpose-registry.md",
+      "Disbursement Log": "treasury/disbursement-log.md"
+    },
+    "Merit System": "merit-policy.md",
+    "Deployment": {
+      "Deployment Guide": "deployment-guide.md",
+      "Deployment Record": "deployment-record.md"
+    },
+    "Tokenomics": "tokenomics.md",
+    "Security": {
+      "Threat Model": "security/threat-model.md",
+      "Audit Log Policy": "audit-policy.md",
+      "Incident Response": "security/incident-response.md",
+      "Guardian Handbook": "security/guardian-handbook.md"
+    },
+    "Ethics Manifesto": "ethics.md",
+    "Community": {
+      "Community Charter": "community-charter.md",
+      "FAQ": "faq.md",
+      "Contributing": "CONTRIBUTING.md",
+      "Vision": "vision.md"
+    }
+  }
+}

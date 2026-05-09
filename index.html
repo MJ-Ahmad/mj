@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MJ-Ahmad Documentation Hub</title>
+  <style>
+    :root{
+      --bg:#f6f8fa; --card:#ffffff; --muted:#6b7280; --accent:#0b5fff; --border:#e6e9ee;
+      --maxw:1100px;
+    }
+    html,body{height:100%;margin:0;background:var(--bg);font-family:Inter,Segoe UI,Arial,sans-serif;color:#111827}
+    .wrap{max-width:var(--maxw);margin:28px auto;padding:24px}
+    header{display:flex;align-items:flex-start;gap:18px}
+    .brand{background:linear-gradient(135deg,#0b5fff,#6c8cff);color:#fff;padding:14px;border-radius:10px;min-width:72px;text-align:center}
+    .brand h1{font-size:18px;margin:0;line-height:1.05}
+    .meta{flex:1}
+    .meta p{margin:4px 0;color:var(--muted);font-size:14px}
+    .declaration{margin:18px 0;padding:16px;border-radius:8px;background:linear-gradient(180deg,rgba(11,95,255,0.03),transparent);border:1px solid var(--border);color:#1f2937}
+    .grid{display:grid;grid-template-columns:1fr 320px;gap:20px}
+    .card{background:var(--card);border:1px solid var(--border);padding:16px;border-radius:10px;box-shadow:0 1px 2px rgba(16,24,40,0.03)}
+    .modules h2{margin:0 0 10px 0}
+    .module{margin-bottom:14px}
+    .module h3{margin:0 0 6px 0;font-size:15px}
+    .module ul{margin:0;padding-left:18px;color:var(--muted)}
+    nav ul{list-style:none;padding:0;margin:0}
+    nav li{margin:6px 0}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .search{display:flex;gap:8px;margin-bottom:12px}
+    .search input{flex:1;padding:10px;border:1px solid var(--border);border-radius:8px}
+    .search button{padding:10px 12px;border-radius:8px;border:1px solid var(--border);background:#fff;cursor:pointer}
+    footer{margin-top:20px;color:var(--muted);font-size:13px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <h1>MJ-Ahmad<br/>Documentation Hub</h1>
+      </div>
+      <div class="meta">
+        <h2 id="title">Loading…</h2>
+        <p><strong>Curated by</strong> <span id="curated_by"></span></p>
+        <p><strong>Type</strong> <span id="document_type"></span> · <strong>Updated</strong> <span id="last_updated"></span></p>
+      </div>
+    </header>
+
+    <div class="declaration card" id="declaration">Loading declaration…</div>
+
+    <div class="grid">
+      <main class="card modules" id="main">
+        <div class="search">
+          <input id="searchInput" placeholder="Search modules, pages, or nav items" aria-label="Search documentation">
+          <button id="clearBtn">Clear</button>
+        </div>
+        <div id="modules">Loading modules…</div>
+      </main>
+
+      <aside class="card">
+        <h3>Navigation</h3>
+        <nav id="nav">Loading navigation…</nav>
+        <footer>
+          <p id="quote" style="margin-top:12px;font-style:italic"></p>
+        </footer>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    async function load() {
+      const res = await fetch('mj.json', {cache: 'no-store'});
+      if (!res.ok) {
+        document.getElementById('title').textContent = 'Documentation Hub (mj.json not found)';
+        return;
+      }
+      const data = await res.json();
+      const meta = data.meta || {};
+      document.getElementById('title').textContent = meta.title || '';
+      document.getElementById('curated_by').textContent = meta.curated_by || '';
+      document.getElementById('document_type').textContent = meta.document_type || '';
+      document.getElementById('last_updated').textContent = meta.last_updated || '';
+      document.getElementById('declaration').textContent = meta.declaration || '';
+      document.getElementById('quote').textContent = meta.quote ? `"${meta.quote.text}" — ${meta.quote.author}` : '';
+
+      // Render modules
+      const modulesEl = document.getElementById('modules');
+      modulesEl.innerHTML = '';
+      (data.modules || []).forEach(m => {
+        const div = document.createElement('div');
+        div.className = 'module';
+        div.dataset.name = m.name || '';
+        const itemsHtml = (m.items || []).map(i => `<li>${escapeHtml(i)}</li>`).join('');
+        div.innerHTML = `<h3>${escapeHtml(m.name)}</h3><ul>${itemsHtml}</ul>`;
+        modulesEl.appendChild(div);
+      });
+
+      // Render nav (recursive)
+      const navEl = document.getElementById('nav');
+      navEl.innerHTML = '';
+      function renderNav(obj) {
+        const ul = document.createElement('ul');
+        for (const key in obj) {
+          const value = obj[key];
+          const li = document.createElement('li');
+          if (typeof value === 'string') {
+            li.innerHTML = `<a href="${escapeAttr(value)}" target="_blank" rel="noopener noreferrer">${escapeHtml(key)}</a>`;
+            li.dataset.search = key + ' ' + value;
+          } else {
+            li.innerHTML = `<strong>${escapeHtml(key)}</strong>`;
+            li.appendChild(renderNav(value));
+            li.dataset.search = key;
+          }
+          ul.appendChild(li);
+        }
+        return ul;
+      }
+      navEl.appendChild(renderNav(data.nav || {}));
+
+      // Search/filter
+      const input = document.getElementById('searchInput');
+      const clearBtn = document.getElementById('clearBtn');
+      input.addEventListener('input', () => applyFilter(input.value.trim().toLowerCase()));
+      clearBtn.addEventListener('click', () => { input.value=''; applyFilter(''); });
+
+      function applyFilter(q) {
+        // modules
+        document.querySelectorAll('.module').forEach(node => {
+          const name = node.dataset.name.toLowerCase();
+          const items = Array.from(node.querySelectorAll('li')).map(li => li.textContent.toLowerCase()).join(' ');
+          const match = !q || name.includes(q) || items.includes(q);
+          node.style.display = match ? '' : 'none';
+        });
+        // nav
+        document.querySelectorAll('#nav li').forEach(li => {
+          const text = (li.textContent || '').toLowerCase();
+          const match = !q || text.includes(q);
+          li.style.display = match ? '' : 'none';
+        });
+      }
+
+      // small helper escapes
+      function escapeHtml(s){ return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+      function escapeAttr(s){ return String(s).replace(/"/g, '&quot;'); }
+    }
+
+    load().catch(err => {
+      console.error(err);
+      document.getElementById('title').textContent = 'Error loading mj.json';
+    });
+  </script>
+</body>
+</html>
