@@ -1,0 +1,35 @@
+{
+  "institution": {
+    "name": "Baitul Quran International Madrasha",
+    "address": "Stadium Road, Nandibari, Muktagacha Upazila, Mymensingh, Bangladesh",
+    "logo": "assets/logo.png"
+  },
+  "navigation": [
+    { "id": "home", "label": { "en": "Home", "bn": "হোম", "ar": "الرئيسية" } },
+    { "id": "about", "label": { "en": "About Us", "bn": "আমাদের সম্পর্কে", "ar": "معلومات عنا" } },
+    { "id": "departments", "label": { "en": "Departments", "bn": "বিভাগসমূহ", "ar": "الأقسام" } },
+    { "id": "students", "label": { "en": "Students", "bn": "শিক্ষার্থীরা", "ar": "الطلاب" } },
+    { "id": "contact", "label": { "en": "Contact", "bn": "যোগাযোগ", "ar": "اتصل بنا" } }
+  ],
+  "footer": {
+    "text": {
+      "en": "© 2026 Baitul Quran International Madrasha. All rights reserved.",
+      "bn": "© ২০২৬ বাইতুল কুরআন ইন্টারন্যাশনাল মাদ্রাসা। সর্বস্বত্ব সংরক্ষিত।",
+      "ar": "© ٢٠٢٦ مدرسة بيت القرآن الدولية. جميع الحقوق محفوظة."
+    }
+  },
+  "content": {
+    "home": {
+      "title": {
+        "en": "Welcome to Baitul Quran",
+        "bn": "বাইতুল কুরআনে স্বাগতম",
+        "ar": "مرحبًا بكم في بيت القرآن"
+      },
+      "description": {
+        "en": "A sanctuary for Quran memorization, ethical inheritance, and educational empowerment.",
+        "bn": "কুরআন হিফজ, নৈতিক উত্তরাধিকার এবং শিক্ষাগত ক্ষমতায়নের জন্য একটি আশ্রয়স্থল।",
+        "ar": "ملاذ لحفظ القرآن، الإرث الأخلاقي، وتمكين التعليم."
+      }
+    }
+  }
+}

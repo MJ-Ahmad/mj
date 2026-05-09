@@ -1,0 +1,122 @@
+{
+  "meta": { "file": "BitulQuran.json", "version": "1.3", "generated_by": "Copilot", "last_updated": "2026-05-09T17:40:00" },
+  "institution": {
+    "name": "Baitul Quran International Madrasha",
+    "short_name": "BitulQuran",
+    "address": "Stadium Road, Nandibari, Muktagacha Upazila, Mymensingh, Bangladesh",
+    "logo": "assets/logo.png"
+  },
+  "homepage": {
+    "title": { "en": "🕌 Baitul Quran International Madrasha", "bn": "🕌 বাইতুল কুরআন ইন্টারন্যাশনাল মাদ্রাসা", "ar": "🕌 مدرسة بيت القرآن الدولية" },
+    "hero": {
+      "heading": { "en": "Welcome", "bn": "স্বাগতম", "ar": "مرحبًا" },
+      "lead": {
+        "en": "This is the central hub for students, teachers, and supervisors. Access dashboards, track Hifz progress, and engage with AI-assisted memorization tools.",
+        "bn": "এটি শিক্ষার্থী, শিক্ষক ও তত্ত্বাবধায়কদের জন্য কেন্দ্রীয় হাব। ড্যাশবোর্ড দেখুন, হিফজ অগ্রগতি ট্র্যাক করুন, এবং AI-সহায়িত স্মরণ কৌশল ব্যবহার করুন।",
+        "ar": "هذا هو المركز الرئيسي للطلاب والمعلمين والمشرفين. الوصول إلى لوحات المعلومات، تتبع تقدم الحفظ، والتفاعل مع أدوات الحفظ المدعومة بالذكاء الاصطناعي."
+      }
+    },
+    "nav": [
+      { "id": "home", "label": { "en": "Home", "bn": "হোম", "ar": "الرئيسية" }, "href": "index.html" },
+      { "id": "about", "label": { "en": "About Us", "bn": "আমাদের সম্পর্কে", "ar": "معلومات عنا" }, "href": "about.html" },
+      { "id": "departments", "label": { "en": "Departments", "bn": "বিভাগসমূহ", "ar": "الأقسام" }, "href": "departments.html" },
+      { "id": "students", "label": { "en": "Students", "bn": "শিক্ষার্থীরা", "ar": "الطلاب" }, "href": "students.html" },
+      { "id": "group_A", "label": { "en": "Group A", "bn": "গ্রুপ A", "ar": "المجموعة A" }, "href": "groups/group_A.html" },
+      { "id": "group_B", "label": { "en": "Group B", "bn": "গ্রুপ B", "ar": "المجموعة B" }, "href": "groups/group_B.html" },
+      { "id": "group_C", "label": { "en": "Group C", "bn": "গ্রুপ C", "ar": "المجموعة C" }, "href": "groups/group_C.html" },
+      { "id": "hifz_tracker", "label": { "en": "Hifz Tracker", "bn": "হিফজ ট্র্যাকার", "ar": "متعقب الحفظ" }, "href": "frontend/hifz_tracker/tracker.html" },
+      { "id": "ai_memorize", "label": { "en": "AI Memorization", "bn": "AI স্মরণ সহায়ক", "ar": "مساعد الحفظ بالذكاء الاصطناعي" }, "href": "frontend/ai_memorize/ai_helper.html" },
+      { "id": "attendance", "label": { "en": "Attendance", "bn": "উপস্থিতি", "ar": "الحضور" }, "href": "attendance.html" },
+      { "id": "dashboards", "label": { "en": "Dashboards", "bn": "ড্যাশবোর্ড", "ar": "لوحات التحكم" }, "href": "dashboards/principal_dashboard.html" },
+      { "id": "contact", "label": { "en": "Contact", "bn": "যোগাযোগ", "ar": "اتصل بنا" }, "href": "contact.html" }
+    ]
+  },
+  "data_files": {
+    "groups": {
+      "A": "data/groups/group_A.json",
+      "B": "data/groups/group_B.json",
+      "C": "data/groups/group_C.json"
+    },
+    "departments": {
+      "khatmi": "data/departments/khatmi.json",
+      "nazara": "data/departments/nazara.json",
+      "nurani": "data/departments/nurani.json",
+      "hifz_1_10": "data/departments/hifz_1_10.json",
+      "hifz_1_20": "data/departments/hifz_1_20.json",
+      "hifz_1_29": "data/departments/hifz_1_29.json"
+    }
+  },
+  "groups": [
+    {
+      "ustad": "Ustad Jafor Ahmad",
+      "group": "A",
+      "students": [
+        { "name": "Faysal (1)", "roll": "03", "id": "BQSHK01", "department": "Khatmi" },
+        { "name": "Sown", "roll": "04", "id": "BQSHK02", "department": "Khatmi" },
+        { "name": "Abu Talha", "roll": "05", "id": "BQSHK03", "department": "Khatmi" },
+        { "name": "Abdullah Al Mahi", "roll": "06", "id": "BQSHK04", "department": "Khatmi" },
+        { "name": "Faysal (2)", "roll": "07", "id": "BQSHK05", "department": "Khatmi" },
+        { "name": "Jarif", "roll": "08", "id": "BQSHK06", "department": "Khatmi" },
+        { "name": "Asif", "roll": "09", "id": "BQSHK07", "department": "Khatmi" },
+        { "name": "Jihad", "roll": "10", "id": "BQSHK08", "department": "Khatmi" },
+        { "name": "Sakib", "roll": "11", "id": "BQSHK09", "department": "Khatmi" },
+        { "name": "Tawfiq", "roll": "12", "id": "BQSHK10", "department": "Khatmi" },
+        { "name": "Mosaddek", "roll": "31", "id": "BQSHK11", "department": "Khatmi" },
+        { "name": "Riyad Ahmad", "roll": "pending", "id": "pending", "department": "Khatmi" },
+        { "name": "Shafin", "roll": "pending", "id": "pending", "department": "Khatmi" },
+        { "name": "Junayed bin Ali", "roll": "pending", "id": "BQSHS17", "department": "Sabaki" },
+        { "name": "Afrad", "roll": "19", "id": "BQSHS03", "department": "Sabaki" },
+        { "name": "Akib", "roll": "28", "id": "BQSHS07", "department": "Sabaki" },
+        { "name": "Jubayer", "roll": "01", "id": "BQSHS01", "department": "Sabaki" },
+        { "name": "Rafid", "roll": "pending", "id": "pending", "department": "Sabaki" },
+        { "name": "Abid", "roll": "21", "id": "BQSHS05", "department": "Sabaki" },
+        { "name": "Kawser Ahmad", "roll": "02", "id": "BQSNA02", "department": "Nazara" },
+        { "name": "Sahinur", "roll": "04", "id": "BQSNA04", "department": "Nazara" },
+        { "name": "Rafan", "roll": "08", "id": "BQSNA08", "department": "Nazara" },
+        { "name": "Meraj", "roll": "05", "id": "BQSNA05", "department": "Nazara" }
+      ]
+    },
+    {
+      "ustad": "Ustad Arif",
+      "group": "B",
+      "students": [
+        { "name": "Sabbir", "roll": "17", "id": "BQSHS02", "department": "Sabaki" },
+        { "name": "Rahat", "roll": "20", "id": "BQSHS04", "department": "Sabaki" },
+        { "name": "Arafat (2)", "roll": "22", "id": "BQSHS06", "department": "Sabaki" },
+        { "name": "Akib", "roll": "28", "id": "BQSHS07", "department": "Sabaki" },
+        { "name": "Amir Hamja", "roll": "29", "id": "BQSHS08", "department": "Sabaki" },
+        { "name": "Nabil", "roll": "30", "id": "BQSHS09", "department": "Sabaki" },
+        { "name": "Mafin", "roll": "13", "id": "BQSHS11", "department": "Sabaki" },
+        { "name": "Hasib", "roll": "14", "id": "BQSHS12", "department": "Sabaki" },
+        { "name": "Sahadat", "roll": "15", "id": "BQSHS13", "department": "Sabaki" },
+        { "name": "Hujayfa", "roll": "18", "id": "BQSHS14", "department": "Sabaki" },
+        { "name": "Al-Amin", "roll": "25", "id": "BQSHS15", "department": "Sabaki" },
+        { "name": "Junayed", "roll": "33", "id": "BQSHS10", "department": "Sabaki" },
+        { "name": "Anamul Haqe", "roll": "02", "id": "BQSHS18", "department": "Sabaki" },
+        { "name": "Arafat (1)", "roll": "16", "id": "BQSHS19", "department": "Sabaki" },
+        { "name": "Sayem", "roll": "26", "id": "BQSHS20", "department": "Sabaki" },
+        { "name": "Tahmid", "roll": "27", "id": "BQSHS21", "department": "Sabaki" },
+        { "name": "Abu Talha", "roll": "01", "id": "BQSNA01", "department": "Nazara" },
+        { "name": "Sifat", "roll": "03", "id": "BQSNA03", "department": "Nazara" },
+        { "name": "Minhaz", "roll": "06", "id": "BQSNA06", "department": "Nazara" },
+        { "name": "Lijon", "roll": "07", "id": "BQSNA07", "department": "Nazara" },
+        { "name": "Arshad", "roll": "09", "id": "BQSNA09", "department": "Nazara" }
+      ]
+    },
+    {
+      "ustad": "Ustad Arif Robbani",
+      "group": "C",
+      "students": [
+        { "name": "Jidan", "roll": "01", "id": "BQSNU01", "department": "Nurani" },
+        { "name": "Safan", "roll": "02", "id": "BQSNU02", "department": "Nurani" },
+        { "name": "Moballig", "roll": "03", "id": "BQSNU03", "department": "Nurani" },
+        { "name": "Shoyaib", "roll": "04", "id": "BQSNU04", "department": "Nurani" },
+        { "name": "Sajjad", "roll": "05", "id": "BQSNU05", "department": "Nurani" },
+        { "name": "Tamim", "roll": "06", "id": "BQSNU06", "department": "Nurani" },
+        { "name": "Ruman", "roll": "07", "id": "BQSNU07", "department": "Nurani" },
+        { "name": "Mahdi", "roll": "08", "id": "BQSNU08", "department": "Nurani" },
+        { "name": "Soyad", "roll": "09", "id": "BQSNU09", "department": "Nurani" }
+      ]
+    }
+  ]
+}

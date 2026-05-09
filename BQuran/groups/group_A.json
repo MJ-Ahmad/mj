@@ -1,0 +1,9 @@
+{
+  "ustad": "Ustad Jafor Ahmad",
+  "group": "A",
+  "students": [
+    { "name": "Faysal (1)", "roll": "03", "id": "BQSHK01", "department": "Khatmi" },
+    { "name": "Sown", "roll": "04", "id": "BQSHK02", "department": "Khatmi" },
+    { "name": "Abu Talha", "roll": "05", "id": "BQSHK03", "department": "Khatmi" }
+  ]
+}
