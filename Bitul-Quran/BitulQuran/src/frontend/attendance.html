@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BaitulQuran Attendance</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;margin:20px;background:#f7faf9;color:#0b1220}
+    table{width:100%;border-collapse:collapse;margin-top:20px}
+    th,td{border:1px solid #ddd;padding:8px;text-align:center}
+    th{background:#f4f4f4}
+    .present{background:#d4edda}
+    .absent{background:#f8d7da}
+    .btn{padding:6px 10px;border-radius:6px;border:0;cursor:pointer}
+  </style>
+</head>
+<body>
+  <h1>📖 BitulQuran Attendance System</h1>
+  <p>Date: <span id="today"></span></p>
+  <table>
+    <thead>
+      <tr><th>Roll No</th><th>Name</th><th>Department</th><th>Attendance</th></tr>
+    </thead>
+    <tbody id="attendanceTable"></tbody>
+  </table>
+
+  <script>
+    // Load students from data/students_group.json (fallback to sample)
+    async function loadStudents() {
+      let data = null;
+      try {
+        const res = await fetch('/data/students_group.json', {cache:'no-store'});
+        if (res.ok) data = await res.json();
+      } catch (e) {}
+
+      // fallback sample
+      const sample = [
+        { roll: "03", name: "Faysal (1)", department: "Khatmi" },
+        { roll: "04", name: "Sown", department: "Khatmi" },
+        { roll: "17", name: "Sabbir", department: "Sabaki" },
+        { roll: "01", name: "Jidan", department: "Nurani" }
+      ];
+
+      const students = (data && data.groups && data.groups.length) ? data.groups.flatMap(g => g.students || []) : sample;
+
+      document.getElementById('today').textContent = new Date().toLocaleDateString();
+      const table = document.getElementById('attendanceTable');
+      table.innerHTML = '';
+
+      students.forEach(s => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${s.roll || ''}</td>
+          <td>${s.name || ''}</td>
+          <td>${s.department || ''}</td>
+          <td>
+            <button class="btn" onclick="markAttendance('${s.roll}','present', this)">Present</button>
+            <button class="btn" onclick="markAttendance('${s.roll}','absent', this)">Absent</button>
+          </td>
+        `;
+        table.appendChild(row);
+      });
+    }
+
+    function markAttendance(roll, status, btn) {
+      const row = btn.closest('tr');
+      row.className = status;
+
+      const log = { roll: roll, status: status, timestamp: new Date().toISOString() };
+
+      // send to backend API if available, otherwise store in localStorage
+      fetch('/api/attendance/log', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(log)
+      }).then(res => {
+        if (!res.ok) {
+          // fallback to localStorage
+          let audit = JSON.parse(localStorage.getItem('audit_trail') || '[]');
+          audit.push(log);
+          localStorage.setItem('audit_trail', JSON.stringify(audit));
+          console.log('Saved to localStorage', log);
+        } else {
+          console.log('Logged to server', log);
+        }
+      }).catch(err => {
+        let audit = JSON.parse(localStorage.getItem('audit_trail') || '[]');
+        audit.push(log);
+        localStorage.setItem('audit_trail', JSON.stringify(audit));
+        console.log('Saved to localStorage (error)', log);
+      });
+    }
+
+    loadStudents();
+  </script>
+</body>
+</html>

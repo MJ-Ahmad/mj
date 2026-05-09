@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "file": "BitulQuran.json",
+    "version": "1.0",
+    "generated_by": "create_bitulquran_structure.py",
+    "last_updated": "2026-05-09T10:59:00"
+  },
+  "institution": {
+    "name": "Baitul Quran International Madrasha",
+    "short_name": "BitulQuran",
+    "address": "Stadium Road, Nandibari, Muktagacha Upazila, Mymensingh, Bangladesh",
+    "curated_by": "MJ Ahmad — Steward of Ethical Inheritance",
+    "contact": {
+      "phone": null,
+      "email": null
+    }
+  },
+  "homepage": {
+    "title": "🕌 Baitul Quran International Madrasha",
+    "subtitle": "Center for Quran Memorization and Ethical Stewardship",
+    "hero": {
+      "heading": "Welcome",
+      "lead": "This is the central hub for students, teachers, and supervisors. Access dashboards, track Hifz progress, and engage with AI-assisted memorization tools."
+    },
+    "nav": [
+      {
+        "id": "hifz_tracker",
+        "label": "Hifz Tracker",
+        "href": "hifz_tracker/tracker.html"
+      },
+      {
+        "id": "challenges",
+        "label": "Memorize Challenges",
+        "href": "hifz_tracker/challenges.html"
+      },
+      {
+        "id": "count_since_start",
+        "label": "Count Since Start",
+        "href": "hifz_tracker/count_since_start.html"
+      },
+      {
+        "id": "count_since_complete",
+        "label": "30 Para Complete",
+        "href": "hifz_tracker/count_since_complete.html"
+      },
+      {
+        "id": "countdown_target",
+        "label": "Countdown to Target",
+        "href": "hifz_tracker/countdown_target.html"
+      },
+      {
+        "id": "ai_memorize",
+        "label": "AI Memorization",
+        "href": "ai_memorize/ai_helper.html"
+      },
+      {
+        "id": "attendance",
+        "label": "Attendance",
+        "href": "attendance.html"
+      }
+    ],
+    "features": [
+      "Attendance system",
+      "Hifz Tracker",
+      "Memorization Challenges",
+      "Countdown to Target",
+      "AI-assisted Quran memorization"
+    ],
+    "departments": [
+      "Khatmi",
+      "Hifz 1–10",
+      "Hifz 1–20",
+      "Hifz 1–29",
+      "Nazara",
+      "Nurani Maktab"
+    ]
+  }
+}

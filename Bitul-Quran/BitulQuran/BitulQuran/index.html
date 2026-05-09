@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BaitulQuran Home</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f9f9f9; }
+    header { background: #004d40; color: white; padding: 20px; text-align: center; }
+    section { padding: 20px; border-bottom: 1px solid #ddd; }
+    h2 { color: #00796b; }
+    footer { background: #004d40; color: white; text-align: center; padding: 10px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="title"></h1>
+    <p id="subtitle"></p>
+  </header>
+
+  <main id="homepageSections"></main>
+
+  <footer>
+    <p id="curatedBy"></p>
+    <small id="lastUpdated"></small>
+  </footer>
+
+  <script>
+    fetch("BitulQuran.json")
+      .then(response => response.json())
+      .then(data => {
+        // Load header
+        document.getElementById("title").textContent = data.homepage.title;
+        document.getElementById("subtitle").textContent = data.homepage.subtitle;
+
+        // Load sections
+        const container = document.getElementById("homepageSections");
+        data.homepage.sections.forEach(sec => {
+          const section = document.createElement("section");
+          section.innerHTML = `<h2>${sec.heading}</h2><p>${sec.content}</p>`;
+          container.appendChild(section);
+        });
+
+        // Footer
+        document.getElementById("curatedBy").textContent = data.institution.curated_by;
+        document.getElementById("lastUpdated").textContent = "Last Updated: " + data.institution.last_updated;
+      });
+  </script>
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Baitul Quran International Madrasha — Master</title>
+<meta name="description" content="Baitul Quran International Madrasha — institutional master viewer, attendance, curriculum, staff and roadmap." />
+<style>
+  :root{--accent:#0b5a3a;--muted:#666;--bg:#fafafa;--card:#fff}
+  html,body{height:100%}
+  body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;margin:0;color:#222;background:#fff;display:flex;flex-direction:column}
+  header{display:flex;align-items:center;gap:14px;padding:18px;background:linear-gradient(90deg,#f7fff9,#f0fff4);border-bottom:1px solid #e9f3ec}
+  header img{height:64px;width:auto;border-radius:6px;object-fit:contain}
+  header .title{font-size:18px;font-weight:700}
+  header .subtitle{font-size:0.95rem;color:var(--muted)}
+  .layout{display:flex;flex:1;min-height:0}
+  nav{width:320px;border-right:1px solid #eee;padding:14px;background:var(--bg);overflow:auto}
+  main{flex:1;padding:20px;overflow:auto}
+  footer{padding:12px;border-top:1px solid #eee;background:#fafafa;font-size:0.9em;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
+  .menu-item{padding:10px;border-radius:8px;margin-bottom:8px;cursor:pointer;display:block}
+  .menu-item.locked{opacity:0.6}
+  .menu-item:hover{background:#f0fff4}
+  .menu-title{font-weight:600}
+  .menu-sub{font-size:0.85rem;color:#666;margin-top:4px}
+  .meta{color:var(--muted);font-size:0.95em;margin-bottom:8px}
+  .section{margin-bottom:20px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+  .card{border:1px solid #eee;padding:12px;border-radius:10px;background:var(--card);box-shadow:0 1px 2px rgba(0,0,0,0.02)}
+  table{width:100%;border-collapse:collapse}
+  th,td{border:1px solid #eee;padding:8px;text-align:left}
+  thead{background:#fafafa}
+  .search{display:flex;gap:8px;margin-bottom:12px}
+  .search input{flex:1;padding:8px;border:1px solid #ddd;border-radius:6px}
+  .lang-toggle{margin-left:auto;display:flex;gap:6px}
+  .btn{padding:8px 10px;border-radius:6px;border:1px solid #ddd;background:#fff;cursor:pointer}
+  .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .countdown{font-weight:700;color:var(--accent)}
+  @media (max-width:900px){
+    nav{width:100%;order:2;border-top:1px solid #eee}
+    .layout{flex-direction:column}
+  }
+</style>
+</head>
+<body>
+<header>
+  <img id="logo" src="assets/logo.png" alt="logo" onerror="this.style.display='none'">
+  <div>
+    <div class="title" id="instName">Baitul Quran International Madrasha</div>
+    <div class="subtitle" id="instAddress">Stadium Road, Nandibari, Muktagacha Upazila, Mymensingh, Bangladesh</div>
+  </div>
+  <div class="lang-toggle" aria-hidden="false">
+    <button id="langEn" class="btn">EN</button>
+    <button id="langBn" class="btn">BN</button>
+  </div>
+</header>
+
+<div class="layout" role="main">
+  <nav id="nav" aria-label="Primary navigation">
+    <h3 style="margin-top:0">Menu</h3>
+    <div id="menuList" aria-live="polite">Loading menu…</div>
+    <hr style="margin:12px 0">
+    <h4 style="margin:8px 0 6px 0">Quick Links</h4>
+    <div id="quickLinks"></div>
+  </nav>
+
+  <main id="main" aria-live="polite">
+    <div id="content">
+      <h2>Overview</h2>
+      <div id="overview" class="meta">Loading…</div>
+
+      <div class="search" role="search">
+        <input id="globalSearch" placeholder="Search students, staff, departments..." aria-label="Search">
+        <select id="filterDept" aria-label="Filter by department"><option value="">All departments</option></select>
+        <button id="clearSearch" class="btn">Clear</button>
+      </div>
+
+      <div id="pageArea"></div>
+    </div>
+  </main>
+</div>
+
+<footer id="footer" role="contentinfo">
+  <div id="footerLeft">© Baitul Quran International Madrasha</div>
+  <div id="footerRight">Last updated: <span id="lastUpdated">—</span></div>
+</footer>
+
+<script>
+/*
+index.html viewer
+- Loads bitul_quran.json and site_config.json
+- Renders menu according to site_config
+- Supports password-protected items and countdown visibility
+- EN | BN toggle
+*/
+
+const MASTER_JSON = 'bitul_quran.json';
+const CONFIG_JSON = 'site_config.json';
+
+let master = null;
+let config = null;
+let lang = 'en';
+
+async function fetchJson(path) {
+  try {
+    const r = await fetch(path, {cache: 'no-store'});
+    if (!r.ok) throw new Error('Fetch failed: ' + r.status);
+    return await r.json();
+  } catch (e) {
+    console.error(e);
+    return null;
+  }
+}
+
+function formatHeader() {
+  const md = master.institution || {};
+  document.getElementById('instName').innerText = md.name || 'Baitul Quran International Madrasha';
+  document.getElementById('instAddress').innerText = md.address || '';
+  document.getElementById('lastUpdated').innerText = md.last_updated || master.meta?.generated_at || '';
+  const logo = document.getElementById('logo');
+  if (md.logo) logo.src = md.logo;
+}
+
+function buildMenu() {
+  const menuList = document.getElementById('menuList');
+  menuList.innerHTML = '';
+  const items = (config && config.menu) ? config.menu : [];
+  items.forEach(item => {
+    // countdown visibility
+    if (item.countdown_until) {
+      const until = new Date(item.countdown_until);
+      if (new Date() > until && item.hide_after_countdown) return;
+    }
+    const el = document.createElement('div');
+    el.className = 'menu-item' + (item.password_protected ? ' locked' : '');
+    el.dataset.key = item.key;
+    const title = document.createElement('div');
+    title.className = 'menu-title';
+    title.innerText = labelFor(item);
+    const sub = document.createElement('div');
+    sub.className = 'menu-sub';
+    sub.innerText = item.subtitle || '';
+    el.appendChild(title);
+    el.appendChild(sub);
+    el.addEventListener('click', () => onMenuClick(item));
+    menuList.appendChild(el);
+  });
+  // quick links
+  const q = document.getElementById('quickLinks');
+  q.innerHTML = '';
+  const links = [
+    {label: lang === 'bn' ? 'হোম' : 'Home', key: 'overview'},
+    {label: lang === 'bn' ? 'শিক্ষক' : 'Teachers', key: 'teachers'},
+    {label: lang === 'bn' ? 'শিক্ষার্থী' : 'Students', key: 'students'},
+    {label: lang === 'bn' ? 'হাজিরা' : 'Attendance', key: 'attendance'}
+  ];
+  links.forEach(l => {
+    const a = document.createElement('a');
+    a.href = '#';
+    a.innerText = l.label;
+    a.style.display = 'inline-block';
+    a.style.marginRight = '8px';
+    a.addEventListener('click', (e) => { e.preventDefault(); const item = (config.menu||[]).find(m=>m.key===l.key); if(item) onMenuClick(item); });
+    q.appendChild(a);
+  });
+}
+
+function labelFor(item) {
+  if (lang === 'bn' && item.label_bn) return item.label_bn;
+  return item.label || item.key;
+}
+
+function onMenuClick(item) {
+  if (item.password_protected) {
+    const pw = prompt('Enter password to view this section:');
+    if (pw !== item.password) {
+      alert('Incorrect password');
+      return;
+    }
+  }
+  if (item.countdown_until) {
+    const until = new Date(item.countdown_until);
+    if (new Date() < until && item.show_countdown) {
+      const ms = until - new Date();
+      const days = Math.floor(ms / (1000*60*60*24));
+      const hours = Math.floor((ms / (1000*60*60)) % 24);
+      alert('This item is available until ' + until.toLocaleString() + ' (remaining: ' + days + 'd ' + hours + 'h)');
+    }
+  }
+  renderSection(item);
+}
+
+function renderSection(item) {
+  const area = document.getElementById('pageArea');
+  area.innerHTML = '';
+  if (item.key === 'overview') { renderOverview(area); return; }
+  if (item.key === 'teachers') { renderTeachers(area); return; }
+  if (item.key === 'students') { renderStudents(area); return; }
+  if (item.key === 'attendance') { renderAttendance(area); return; }
+  if (item.key === 'curriculum') { renderCurriculum(area); return; }
+  if (item.key === 'roadmap') { renderRoadmap(area); return; }
+  if (item.json_path) {
+    const data = getByPath(master, item.json_path);
+    area.innerHTML = `<pre>${escapeHtml(JSON.stringify(data, null, 2))}</pre>`;
+    return;
+  }
+  area.innerHTML = `<p>Section "${item.key}" not implemented in viewer.</p>`;
+}
+
+function renderOverview(area) {
+  const md = master.institution || {};
+  const html = `
+    <div class="section card">
+      <h3>${md.name || ''}</h3>
+      <p>${md.mission || ''}</p>
+      <div class="meta">Curated by: ${md.curated_by || ''} • Established: ${md.established || ''}</div>
+    </div>
+    <div class="section grid">
+      <div class="card"><strong>Pedagogy</strong><p>Spaced repetition, daily micro-practice, teacher-led correction.</p></div>
+      <div class="card"><strong>Technology</strong><p>Attendance master, HTML viewer, snapshots, planned web UI.</p></div>
+      <div class="card"><strong>Ethics</strong><p>Character formation, community service, accountability.</p></div>
+    </div>
+  `;
+  area.innerHTML = html;
+}
+
+function renderTeachers(area) {
+  const t = master.staff?.teachers || [];
+  let html = '<div class="section"><h3>Teachers</h3><div class="grid">';
+  t.forEach(x => {
+    html += `<div class="card"><strong>${x.name}</strong><div style="font-size:0.95em;color:#666">${x.role}</div><div style="margin-top:8px;font-size:0.9em">${x.phone || ''}</div></div>`;
+  });
+  html += '</div></div>';
+  area.innerHTML = html;
+}
+
+function renderStudents(area) {
+  const s = master.students?.serial_master_list || [];
+  let html = '<div class="section"><h3>Students — Serial Master List</h3><table><thead><tr><th>Serial</th><th>Roll</th><th>ID</th><th>Name</th><th>Dept</th></tr></thead><tbody>';
+  s.forEach(x => {
+    html += `<tr><td>${x.serial}</td><td>${x.roll}</td><td>${x.id}</td><td>${x.name}</td><td>${x.department}</td></tr>`;
+  });
+  html += '</tbody></table></div>';
+  area.innerHTML = html;
+}
+
+function renderAttendance(area) {
+  const att = master.attendance_master || master.attendance || null;
+  if (!att) {
+    area.innerHTML = '<div class="card"><p>No attendance master embedded. Use attendance system to append records to master/attendance_master.json.</p></div>';
+    return;
+  }
+  const recs = att.records || [];
+  let html = '<div class="section"><h3>Attendance Records (latest)</h3>';
+  if (recs.length === 0) html += '<p>No records yet.</p>';
+  else {
+    html += '<div class="grid">';
+    recs.slice(-6).reverse().forEach(r => {
+      html += `<div class="card"><strong>${r.meta.date} — ${r.meta.department}</strong><div class="meta">${r.meta.mode} • ${r.meta.scheduled_time}</div><div style="margin-top:8px"><a href="#" onclick="showAttendanceRecord(event, \\'${r.meta.id}\\')">View</a></div></div>`;
+    });
+    html += '</div>';
+  }
+  html += '</div><div id="attendanceDetail"></div>';
+  area.innerHTML = html;
+}
+
+function showAttendanceRecord(ev, id) {
+  ev.preventDefault();
+  const att = master.attendance_master || master.attendance || null;
+  if (!att) return;
+  const rec = (att.records || []).find(r => r.meta.id === id);
+  if (!rec) return alert('Record not found');
+  const detail = document.getElementById('attendanceDetail');
+  let html = `<h4>Record: ${rec.meta.id}</h4><table><thead><tr><th>Roll</th><th>ID</th><th>Name</th><th>Status</th></tr></thead><tbody>`;
+  rec.attendance.forEach(a => {
+    html += `<tr><td>${a.roll}</td><td>${a.student_id}</td><td>${a.name}</td><td>${a.status_label}</td></tr>`;
+  });
+  html += '</tbody></table>';
+  detail.innerHTML = html;
+}
+
+function renderCurriculum(area) {
+  const cur = master.curriculum || {};
+  let html = `<div class="section"><h3>Curriculum</h3><div class="meta">${(cur.principles||[]).join(', ')}</div>`;
+  if (cur.modules) {
+    html += '<div class="grid">';
+    cur.modules.forEach(m => {
+      html += `<div class="card"><strong>${m.title}</strong><div>Code: ${m.code}</div><div>Hours: ${m.hours}</div></div>`;
+    });
+    html += '</div>';
+  }
+  html += '</div>';
+  area.innerHTML = html;
+}
+
+function renderRoadmap(area) {
+  const r = master.roadmap || {};
+  let html = '<div class="section"><h3>Roadmap</h3>';
+  for (const k of Object.keys(r)) {
+    html += `<div class="card"><strong>${k}</strong><div style="margin-top:8px">${r[k].join(', ')}</div></div>`;
+  }
+  html += '</div>';
+  area.innerHTML = html;
+}
+
+function getByPath(obj, path) {
+  const parts = path.split('.');
+  let cur = obj;
+  for (const p of parts) {
+    if (!cur) return null;
+    cur = cur[p];
+  }
+  return cur;
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+async function init() {
+  master = await fetchJson(MASTER_JSON);
+  config = await fetchJson(CONFIG_JSON) || {menu: []};
+  if (!master) {
+    document.getElementById('overview').innerText = 'Failed to load master JSON.';
+    return;
+  }
+  formatHeader();
+  buildMenu();
+  populateDeptFilter();
+  renderOverview(document.getElementById('pageArea'));
+}
+
+function populateDeptFilter() {
+  const sel = document.getElementById('filterDept');
+  const depts = (master.departments || []).map(d => d.name);
+  depts.forEach(d => {
+    const opt = document.createElement('option');
+    opt.value = d; opt.innerText = d;
+    sel.appendChild(opt);
+  });
+}
+
+document.getElementById('langEn').addEventListener('click', () => { lang='en'; buildMenu(); renderOverview(document.getElementById('pageArea')); });
+document.getElementById('langBn').addEventListener('click', () => { lang='bn'; buildMenu(); renderOverview(document.getElementById('pageArea')); });
+
+document.getElementById('globalSearch').addEventListener('input', (e) => {
+  const q = e.target.value.trim().toLowerCase();
+  const area = document.getElementById('pageArea');
+  if (!q) { renderOverview(area); return; }
+  const s = master.students?.serial_master_list || [];
+  const found = s.filter(x => (x.name||'').toLowerCase().includes(q) || (x.id||'').toLowerCase().includes(q) || (x.roll||'').toLowerCase().includes(q));
+  let html = '<div class="section"><h3>Search results</h3>';
+  if (found.length === 0) html += '<p>No results</p>';
+  else {
+    html += '<table><thead><tr><th>Serial</th><th>Roll</th><th>ID</th><th>Name</th><th>Dept</th></tr></thead><tbody>';
+    found.forEach(x => html += `<tr><td>${x.serial}</td><td>${x.roll}</td><td>${x.id}</td><td>${x.name}</td><td>${x.department}</td></tr>`);
+    html += '</tbody></table>';
+  }
+  html += '</div>';
+  area.innerHTML = html;
+});
+
+document.getElementById('clearSearch').addEventListener('click', () => {
+  document.getElementById('globalSearch').value = '';
+  renderOverview(document.getElementById('pageArea'));
+});
+
+init();
+</script>
+</body>
+</html>

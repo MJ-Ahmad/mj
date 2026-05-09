@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Baitul Quran International Madrasha — Home</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    :root{--brand:#00695c;--accent:#00796b;--muted:#6b7280;--bg:#f7faf9;--card:#ffffff;--max-width:1100px;--radius:8px;--gap:16px}
+    html,body{height:100%;margin:0;background:var(--bg);color:#0f172a;font-family:Segoe UI, Roboto, Arial, sans-serif}
+    .wrap{max-width:var(--max-width);margin:28px auto;padding:20px;display:grid;grid-template-columns:1fr 320px;gap:var(--gap)}
+    header.site-header{grid-column:1/-1;background:linear-gradient(90deg,var(--brand),var(--accent));color:#fff;padding:18px;border-radius:var(--radius);display:flex;align-items:center;gap:16px}
+    .logo svg{width:56px;height:56px}
+    nav.main-nav{grid-column:1/-1;margin-top:12px;display:flex;gap:12px;flex-wrap:wrap}
+    nav a{background:var(--card);padding:10px 14px;border-radius:8px;color:var(--brand);text-decoration:none;font-weight:600}
+    main{background:var(--card);padding:18px;border-radius:var(--radius)}
+    aside{background:var(--card);padding:14px;border-radius:var(--radius);height:fit-content}
+    footer.site-footer{grid-column:1/-1;margin-top:18px;padding:12px;border-radius:6px;background:#fff;text-align:center;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap" id="app">
+    <header class="site-header" role="banner" aria-label="Baitul Quran header">
+      <div style="display:flex;align-items:center;gap:12px">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="BitulQuran logo">
+          <rect width="64" height="64" rx="10" fill="#004d40"/>
+          <path d="M32 12c-6 0-11 5-11 11v18h22V23c0-6-5-11-11-11z" fill="#a7ffeb"/>
+        </svg>
+        <div>
+          <div id="siteTitle" style="font-weight:700;font-size:18px">Baitul Quran International Madrasha</div>
+          <div id="siteSub" style="font-size:13px;opacity:0.95">Center for Quran Memorization and Ethical Stewardship</div>
+        </div>
+      </div>
+      <div style="margin-left:auto;display:flex;gap:8px;align-items:center">
+        <div style="background:rgba(255,255,255,0.12);padding:6px 8px;border-radius:6px;font-weight:700">EN</div>
+      </div>
+    </header>
+
+    <nav class="main-nav" id="mainNav" aria-label="Main navigation"></nav>
+
+    <main role="main" id="homeMain">
+      <section id="hero">
+        <h2 id="heroHeading">Welcome</h2>
+        <p id="heroLead">Loading content…</p>
+      </section>
+
+      <section id="features" style="margin-top:18px">
+        <h3>Features</h3>
+        <div id="featuresList">Loading features…</div>
+      </section>
+
+      <section id="departments" style="margin-top:18px">
+        <h3>Departments</h3>
+        <div id="departmentsList">Loading departments…</div>
+      </section>
+    </main>
+
+    <aside aria-label="Quick info">
+      <h3>Institution</h3>
+      <div id="instMeta">Loading institution info…</div>
+    </aside>
+
+    <footer class="site-footer" role="contentinfo">
+      <div id="footerText">Curated by MJ Ahmad — Steward of Ethical Inheritance</div>
+      <div id="lastUpdated" style="font-size:12px;color:#6b7280">Last updated: —</div>
+    </footer>
+  </div>
+
+  <script>
+    // Load homepage section from data/BitulQuran.json if available, otherwise use embedded fallback.
+    async function loadHome() {
+      let data = null;
+      try {
+        const res = await fetch('BitulQuran.json', {cache:'no-store'});
+        if (res.ok) data = await res.json();
+      } catch (e) {
+        // ignore
+      }
+
+      if (!data) {
+        // fallback embedded minimal
+        data = {
+          institution: {
+            name: "Baitul Quran International Madrasha",
+            curated_by: "MJ Ahmad — Steward of Ethical Inheritance",
+            last_updated: "2026-05-09T10:59:00",
+            address: "Stadium Road, Nandibari, Muktagacha Upazila, Mymensingh, Bangladesh"
+          },
+          homepage: {
+            title: "🕌 Baitul Quran International Madrasha",
+            subtitle: "Center for Quran Memorization and Ethical Stewardship",
+            hero: { heading: "Welcome", lead: "This is the central hub for students, teachers, and supervisors. Access dashboards, track Hifz progress, and engage with AI-assisted memorization tools." },
+            nav: [
+              { id: "hifz_tracker", label: "Hifz Tracker", href: "hifz_tracker/tracker.html" },
+              { id: "attendance", label: "Attendance", href: "attendance.html" }
+            ],
+            features: ["Attendance system","Hifz Tracker","AI-assisted memorization"],
+            departments: ["Khatmi","Nazara","Nurani"]
+          }
+        };
+      }
+
+      document.getElementById('siteTitle').textContent = data.institution.name;
+      document.getElementById('siteSub').textContent = data.homepage.subtitle || '';
+      document.getElementById('heroHeading').textContent = data.homepage.hero.heading;
+      document.getElementById('heroLead').textContent = data.homepage.hero.lead;
+
+      const nav = document.getElementById('mainNav');
+      nav.innerHTML = '';
+      (data.homepage.nav || []).forEach(item => {
+        const a = document.createElement('a');
+        a.href = item.href;
+        a.textContent = item.label;
+        nav.appendChild(a);
+      });
+
+      const featuresList = document.getElementById('featuresList');
+      featuresList.innerHTML = '';
+      const ul = document.createElement('ul');
+      (data.homepage.features || []).forEach(f => {
+        const li = document.createElement('li');
+        li.textContent = f;
+        ul.appendChild(li);
+      });
+      featuresList.appendChild(ul);
+
+      const dept = document.getElementById('departmentsList');
+      dept.innerHTML = '';
+      (data.homepage.departments || []).forEach(d => {
+        const div = document.createElement('div');
+        div.textContent = d;
+        div.style.padding = '6px';
+        dept.appendChild(div);
+      });
+
+      document.getElementById('instMeta').textContent = data.institution.address || '';
+      document.getElementById('lastUpdated').textContent = 'Last updated: ' + (data.institution.last_updated || '—');
+    }
+
+    loadHome();
+  </script>
+</body>
+</html>

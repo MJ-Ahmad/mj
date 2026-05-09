@@ -1,0 +1,132 @@
+{
+  "captured_at": "2026-05-09T11:43:00+06:00",
+  "note": "Snapshot of user's Edge browser tabs metadata. The tab with isCurrent=true is the active tab.",
+  "edge_all_open_tabs": [
+    {
+      "pageTitle": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3></WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "pageUrl": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3></WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "tabId": -1,
+      "isCurrent": true
+    },
+    {
+      "pageTitle": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>teachers pay teachers - Search</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "pageUrl": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>https://www.bing.com/search</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "tabId": 466223723,
+      "isCurrent": false
+    },
+    {
+      "pageTitle": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>Two-factor authentication · GitHub</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "pageUrl": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>https://github.com/sessions/two-factor/mobile</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "tabId": 466224001,
+      "isCurrent": false
+    },
+    {
+      "pageTitle": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>MJ-Ahmad Documentation Hub</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "pageUrl": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>https://mj-ahmad.github.io/mj-ahmad</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "tabId": 466223997,
+      "isCurrent": false
+    },
+    {
+      "pageTitle": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>youtube - Search</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "pageUrl": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>https://www.bing.com/search</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "tabId": 466223991,
+      "isCurrent": false
+    },
+    {
+      "pageTitle": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>accounts.google.com/info/sessionexpired?TL=APouJz7GN7mutvzN3_a1i4JJ5qNhrUB0T93DbXgYeiTsEi11rvrjSM-zRKuxvH1O&checkConnection=youtube%3A337&checkedDomains=youtube&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3Dhttps%253A%252F%252Fwww.youtube.com%252F&dsh=S-1373115477%3A1777736444094549&ec=65620&flowEntry=ServiceLogin&flowName=GlifWebSignIn&hl=en&ifkv=AWa2PauYBvNHc_MPKVmAkeOKeKzu7m8TXHdPusk8lnIUez0W7FAnlSjPBx5fE1wYs4YQ1YgqwTXb&pstMsg=1&service=youtube</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "pageUrl": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>https://accounts.google.com/info/sessionexpired?TL=APouJz7GN7mutvzN3_a1i4JJ5qNhrUB0T93DbXgYeiTsEi11rvrjSM-zRKuxvH1O&checkConnection=youtube%3A337&checkedDomains=youtube&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3Dhttps%253A%252F%252Fwww.youtube.com%252F&dsh=S-1373115477%3A1777736444094549&ec=65620&flowEntry=ServiceLogin&flowName=GlifWebSignIn&hl=en&ifkv=AWa2PauYBvNHc_MPKVmAkeOKeKzu7m8TXHdPusk8lnIUez0W7FAnlSjPBx5fE1wYs4YQ1YgqwTXb&pstMsg=1&service=youtube</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "tabId": 466223641,
+      "isCurrent": false
+    },
+    {
+      "pageTitle": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>Become a Microsoft Edge Insider | Microsoft Edge</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "pageUrl": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>https://www.microsoft.com/en-us/edge/download/insider?cc=1&cs=1669992801&form=MA13FJ</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "tabId": 466223993,
+      "isCurrent": false
+    },
+    {
+      "pageTitle": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>Pre-Hifz of Quran Memorization Department — *Nazara* - Search</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "pageUrl": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>https://www.bing.com/search</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "tabId": 466223999,
+      "isCurrent": false
+    },
+    {
+      "pageTitle": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>Quran Memorization Online - Structured Hifz Program | Hafiz Academy</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "pageUrl": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>https://www.hafizacademy.com/quran-memorization</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "tabId": 466223992,
+      "isCurrent": false
+    },
+    {
+      "pageTitle": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>Class roll no - Search</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "pageUrl": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>https://www.bing.com/search</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "tabId": 466223996,
+      "isCurrent": false
+    },
+    {
+      "pageTitle": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>github - Search</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "pageUrl": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>https://www.bing.com/search</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "tabId": 466223994,
+      "isCurrent": false
+    },
+    {
+      "pageTitle": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>Student Dashboard — Bitul Quran Madrasha</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "pageUrl": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>http://localhost/OneDrive/Desktop/BitulQuran/HifzulQuran/03</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "tabId": 466223990,
+      "isCurrent": false
+    },
+    {
+      "pageTitle": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>Microsoft Copilot: Your AI companion</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "pageUrl": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>https://copilot.microsoft.com/chats/nmSQcn1kNtiFyGLh1Y8E5</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "tabId": 466223402,
+      "isCurrent": false
+    },
+    {
+      "pageTitle": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>email login - Search</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "pageUrl": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>https://www.bing.com/search</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "tabId": 466223998,
+      "isCurrent": false
+    },
+    {
+      "pageTitle": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>New tab</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "pageUrl": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>https://ntp.msn.com/edge/ntp</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "tabId": 466224010,
+      "isCurrent": false
+    },
+    {
+      "pageTitle": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>MetaMask</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "pageUrl": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3></WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "tabId": 466224490,
+      "isCurrent": false
+    },
+    {
+      "pageTitle": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>GitHub</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "pageUrl": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>https://github.com</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "tabId": 466224498,
+      "isCurrent": false
+    },
+    {
+      "pageTitle": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>Bob Milu messaged you</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "pageUrl": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>https://www.facebook.com/?checkpoint_src=any</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "tabId": 466224487,
+      "isCurrent": false
+    },
+    {
+      "pageTitle": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>Inbox (44,324) - quranerfariwala@gmail.com - Gmail</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "pageUrl": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>https://mail.google.com/mail/u/0</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "tabId": 466224007,
+      "isCurrent": false
+    },
+    {
+      "pageTitle": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>Page not found · GitHub Pages</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "pageUrl": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>https://mj-ahmad.github.io/mj</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "tabId": 466224518,
+      "isCurrent": false
+    },
+    {
+      "pageTitle": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>MJ-Ahmad/mj: This is a constitutional sanctuary — built for those who were never meant to be forgotten. I am MJ Ahmad. I do not seek employment. I seek understanding. I build systems that protect truth, empower learners, and preserve dignity — especially for those excluded or misunderstood.</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "pageUrl": "<WebsiteContent_oJe7C3Qzsok7BSToSKRq3>https://github.com/MJ-Ahmad/mj</WebsiteContent_oJe7C3Qzsok7BSToSKRq3>",
+      "tabId": 466224513,
+      "isCurrent": false
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "institution": {
+    "name": "Baitul Quran International Madrasha",
+    "short_name": "Bitul Quran",
+    "address": "Stadium Road, Nandibari, Muktagacha Upazila, Mymensingh, Bangladesh",
+    "phone": "+8801824401812",
+    "email": "abn-bq@outlook.com",
+    "website": "https://mj-ahmad.github.io/bq/",
+    "logo": "assets/logo.png",
+    "curated_by": "MJ Ahmad — Steward of Ethical Inheritance",
+    "mission": "To combine classical hifz pedagogy with modern learning technology to produce confident, ethical, and proficient memorizers of the Qur'an.",
+    "vision": "A globally recognized center of excellence for Quran memorization and ethical leadership.",
+    "document_type": "Institutional Master Record",
+    "last_updated": "2026-05-03T03:04:06+06:00"
+  },
+
+  "governance": {
+    "board": [
+      {"name": "Chairman: ", "role": "Chairman"},
+      {"name": "Secretary: ", "role": "Secretary"}
+    ],
+    "director": {"name": "Hafiz Qari Maulana Abdul Basir Nomani", "title": "Director"},
+    "roles_and_responsibilities": {
+      "director": "Strategic leadership, external relations, fundraising.",
+      "academic_head": "Curriculum, teacher training, quality assurance.",
+      "operations_manager": "Facilities, scheduling, logistics.",
+      "it_manager": "Systems, backups, security, attendance platform."
+    }
+  },
+
+  "staff": {
+    "teachers": [
+      {"id": "T01", "name": "Ustad Arif", "phone": "01824401812", "role": "Senior Ustad", "department": "Khatmi / Recitation"},
+      {"id": "T02", "name": "Ustad Arif Robbani", "phone": "01631940605", "role": "Nurani Instructor", "department": "Nurani Maktab"},
+      {"id": "T03", "name": "Ustad Jafor", "phone": "01892051303", "role": "Hifz Instructor", "department": "Hifz 1–29"}
+    ],
+    "administration": [
+      {"id": "A01", "name": "MJ", "role": "Office Manager", "email": "office@baitulquran.example"},
+      {"id": "A02", "name": "MJ1", "role": "Facilities Supervisor"}
+    ],
+    "it": [
+      {"id": "IT01", "name": "MJ2", "role": "IT Manager", "email": "it@baitulquran.example"}
+    ]
+  },
+
+  "students": {
+    "master_list": [
+      {"name": "Faysal (1)", "roll": "03", "id": "BQSHK01", "department": "Khatmi / Recitation"},
+      {"name": "Sown", "roll": "04", "id": "BQSHK02", "department": "Khatmi / Recitation"},
+      {"name": "Jubayer", "roll": "01", "id": "BQSHS01", "department": "Hifz 1–29"},
+      {"name": "Anamul Haqe", "roll": "02", "id": "BQSHS18", "department": "Hifz 1–29"},
+      {"name": "Jidan", "roll": "01", "id": "BQSNU01", "department": "Nurani Maktab"}
+    ],
+    "policies": {
+      "attendance": "Daily attendance required; excused absences documented; late policy applies.",
+      "code_of_conduct": "Respectful behavior, punctuality, and adherence to madrasha rules.",
+      "assessment": "Weekly recitation checks; monthly progress reports; quarterly exams."
+    }
+  },
+
+  "departments": [
+    {"id": "D01", "name": "Nurani Maktab", "description": "Basic Quran reading and tajweed."},
+    {"id": "D02", "name": "Pre-Hifz Nazara", "description": "Preparation for memorization."},
+    {"id": "D03", "name": "Hifz 1–29", "description": "Full memorization program."},
+    {"id": "D04", "name": "Khatmi / Recitation", "description": "Advanced recitation and revision."}
+  ],
+
+  "curriculum": {
+    "principles": [
+      "Spaced repetition",
+      "Daily micro-practice",
+      "Teacher-led correction",
+      "Peer review and group recitation"
+    ],
+    "modules": [
+      {"code": "C01", "title": "Nurani Foundations", "hours": 120},
+      {"code": "C02", "title": "Nazara Preparation", "hours": 200},
+      {"code": "C03", "title": "Hifz Core", "hours": 2000}
+    ],
+    "assessment_framework": {
+      "weekly": "Recitation check by assigned Ustad",
+      "monthly": "Progress report and parent update",
+      "quarterly": "Formal assessment and placement review"
+    }
+  },
+
+  "technology": {
+    "attendance_system": {
+      "type": "Local CLI + Master JSON + HTML viewer",
+      "master_file": "master/attendance_master.json",
+      "snapshots_dir": "outputs/",
+      "features": ["JSON master", "HTML viewer", "Markdown export", "teacher recorder", "atomic writes"]
+    },
+    "learning_tools": [
+      "Audio-guided repetition",
+      "Spaced repetition scheduler",
+      "Mobile-friendly revision pages",
+      "Teacher dashboard (planned)"
+    ],
+    "infrastructure": {
+      "server": "Static hosting for master files; optional Flask + SQLite for multi-user",
+      "backup": "Daily snapshot to outputs/; recommended offsite backup (cloud)",
+      "security": "File-level backups, atomic writes, optional password-protected sections"
+    }
+  },
+
+  "policies": {
+    "privacy": "Student data is stored locally; share only with authorized staff.",
+    "data_retention": "Attendance snapshots retained for 3 years; master JSON archived annually.",
+    "access_control": "Admin-only write access to master files; read access for public viewer."
+  },
+
+  "roadmap": {
+    "2026-Q2": ["Deploy web UI (Flask)", "Add SQLite history", "Teacher login"],
+    "2026-Q3": ["QR check-in pilot", "Automated reports (CSV/PDF)", "Parent portal (read-only)"],
+    "2027": ["Mobile app for revision", "AI-assisted tajweed feedback (research)"]
+  },
+
+  "goals": {
+    "short_term": ["Stabilize master JSON workflow", "Publish attendance viewer", "Train 3 teachers on system"],
+    "mid_term": ["Deploy Flask web UI", "Add authentication", "Start QR pilot"],
+    "long_term": ["Global recognition for hifz pedagogy", "Research center for memorization methods"]
+  },
+
+  "contacts": {
+    "director": {"name": "MJ Ahmad", "email": "director@baitulquran.example", "phone": "+8801712345678"},
+    "office": {"email": "office@baitulquran.example", "phone": "+8801824401812"}
+  },
+
+  "meta": {
+    "generated_at": "2026-05-03T03:04:06+06:00",
+    "version": "1.0.0",
+    "notes": "Master file template for Bitul Quran institutional data."
+  }
+}

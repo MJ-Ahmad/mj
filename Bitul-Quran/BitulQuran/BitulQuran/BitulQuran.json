@@ -1,0 +1,29 @@
+{
+  "institution": {
+    "name": "Baitul Quran International Madrasha",
+    "address": "Stadium Road, Nandibari, Muktagacha Upazila, Mymensingh, Bangladesh",
+    "curated_by": "MJ Ahmad — Steward of Ethical Inheritance",
+    "last_updated": "2026-05-09T10:57:00"
+  },
+  "homepage": {
+    "title": "🕌 Baitul Quran International Madrasha",
+    "subtitle": "Center for Quran Memorization and Ethical Stewardship",
+    "sections": [
+      {
+        "id": "welcome",
+        "heading": "Welcome",
+        "content": "This is the central hub for students, teachers, and supervisors. Access dashboards, track Hifz progress, and engage with AI‑assisted memorization tools."
+      },
+      {
+        "id": "departments",
+        "heading": "Departments",
+        "content": "Khatmi, Hifz (1–10, 1–20, 1–29), Nazara, and Nurani Maktab."
+      },
+      {
+        "id": "features",
+        "heading": "Features",
+        "content": "Attendance system, Hifz Tracker, Memorization Challenges, Countdown to Target, and AI‑assisted Quran memorization."
+      }
+    ]
+  }
+}

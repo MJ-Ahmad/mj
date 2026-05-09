@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Edge Tabs Dashboard — BitulQuran</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    :root{--brand:#00695c;--muted:#6b7280;--card:#fff;--bg:#f7faf9}
+    body{font-family:Inter, "Segoe UI", Roboto, Arial, sans-serif;margin:0;background:var(--bg);color:#0b1220}
+    .container{max-width:980px;margin:28px auto;padding:18px}
+    header{display:flex;align-items:center;gap:12px}
+    header h1{margin:0;font-size:20px;color:var(--brand)}
+    .grid{display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:18px}
+    .card{background:var(--card);padding:14px;border-radius:10px;box-shadow:0 6px 18px rgba(2,6,23,0.06)}
+    .tab-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+    .tab-item{padding:10px;border-radius:8px;border:1px solid #eef6f4;background:#fcfffe}
+    .tab-item.active{border-color:var(--brand);box-shadow:0 6px 18px rgba(0,105,92,0.06)}
+    .tab-title{font-weight:700}
+    .tab-url{font-size:13px;color:var(--muted);margin-top:6px;word-break:break-all}
+    .actions{margin-top:8px;display:flex;gap:8px}
+    .btn{padding:8px 10px;border-radius:8px;border:0;cursor:pointer;font-weight:700}
+    .btn.open{background:var(--brand);color:#fff}
+    .btn.copy{background:#eef6f4;color:var(--brand)}
+    .meta{font-size:13px;color:var(--muted);margin-top:8px}
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.45)}
+    .modal .box{background:#fff;padding:18px;border-radius:10px;max-width:420px;width:100%}
+    footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <svg width="44" height="44" viewBox="0 0 64 64" aria-hidden="true">
+        <rect width="64" height="64" rx="10" fill="#004d40"/>
+        <path d="M32 12c-6 0-11 5-11 11v18h22V23c0-6-5-11-11-11z" fill="#a7ffeb"/>
+      </svg>
+      <h1>Edge Tabs Dashboard — BitulQuran</h1>
+    </header>
+
+    <div class="grid">
+      <main class="card" id="mainCard" aria-live="polite">
+        <h2 style="margin-top:0">Open Tabs (sanitized)</h2>
+        <p class="meta">This view displays a sanitized snapshot of your Edge tabs. URLs are stripped of query strings and tokens. Titles are cleaned of WebsiteContent wrappers.</p>
+
+        <ul class="tab-list" id="tabsList"></ul>
+      </main>
+
+      <aside class="card">
+        <h3 style="margin-top:0">Summary</h3>
+        <div id="summaryMeta" class="meta">Loading…</div>
+        <div style="margin-top:12px">
+          <button id="refreshBtn" class="btn copy">Refresh Summary</button>
+          <button id="downloadBtn" class="btn copy">Download JSON</button>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      Snapshot generated from data/edge_context/edge_summary.json — displayed read-only. Do not follow links unless you trust them.
+    </footer>
+  </div>
+
+  <div id="confirmModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="box">
+      <h3 id="modalTitle">Open link</h3>
+      <p id="modalText" class="meta">You are about to open an external link. Confirm to proceed.</p>
+      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px">
+        <button id="cancelBtn" class="btn copy">Cancel</button>
+        <button id="confirmBtn" class="btn open">Open</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const SUMMARY_PATH = '/data/edge_context/edge_summary.json';
+
+    async function fetchSummary() {
+      try {
+        const res = await fetch(SUMMARY_PATH, {cache: 'no-store'});
+        if (!res.ok) throw new Error('Not found');
+        return await res.json();
+      } catch (err) {
+        try {
+          const res2 = await fetch('data/edge_context/edge_summary.json', {cache:'no-store'});
+          if (!res2.ok) throw err;
+          return await res2.json();
+        } catch (e) {
+          console.error('Failed to load summary:', e);
+          return null;
+        }
+      }
+    }
+
+    function createTabItem(tab) {
+      const li = document.createElement('li');
+      li.className = 'tab-item' + (tab.isCurrent ? ' active' : '');
+      const title = document.createElement('div');
+      title.className = 'tab-title';
+      title.textContent = tab.title || '(no title)';
+      li.appendChild(title);
+
+      const excerpt = document.createElement('div');
+      excerpt.className = 'tab-url';
+      excerpt.textContent = tab.title_excerpt || '';
+      li.appendChild(excerpt);
+
+      if (tab.sanitizedUrl) {
+        const url = document.createElement('div');
+        url.className = 'tab-url';
+        url.textContent = tab.sanitizedUrl;
+        li.appendChild(url);
+
+        const actions = document.createElement('div');
+        actions.className = 'actions';
+
+        const openBtn = document.createElement('button');
+        openBtn.className = 'btn open';
+        openBtn.textContent = 'Open';
+        openBtn.addEventListener('click', () => confirmOpen(tab.sanitizedUrl));
+        actions.appendChild(openBtn);
+
+        const copyBtn = document.createElement('button');
+        copyBtn.className = 'btn copy';
+        copyBtn.textContent = 'Copy URL';
+        copyBtn.addEventListener('click', () => {
+          navigator.clipboard.writeText(tab.sanitizedUrl).then(() => {
+            copyBtn.textContent = 'Copied';
+            setTimeout(()=> copyBtn.textContent = 'Copy URL', 1200);
+          });
+        });
+        actions.appendChild(copyBtn);
+
+        li.appendChild(actions);
+      } else {
+        const note = document.createElement('div');
+        note.className = 'meta';
+        note.textContent = 'URL omitted or unsafe';
+        li.appendChild(note);
+      }
+
+      return li;
+    }
+
+    function renderSummary(summary) {
+      const list = document.getElementById('tabsList');
+      list.innerHTML = '';
+      if (!summary || !Array.isArray(summary.tabs)) {
+        list.innerHTML = '<li class="tab-item">No summary available</li>';
+        document.getElementById('summaryMeta').textContent = 'No summary found';
+        return;
+      }
+
+      summary.tabs.forEach(t => {
+        list.appendChild(createTabItem(t));
+      });
+
+      const meta = `Captured: ${summary.captured_at || '—'} • Generated: ${summary.generated_at || '—'} • Tabs: ${summary.tabs.length}`;
+      document.getElementById('summaryMeta').textContent = meta;
+    }
+
+    const modal = document.getElementById('confirmModal');
+    let pendingUrl = null;
+
+    function confirmOpen(url) {
+      pendingUrl = url;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+      document.getElementById('confirmBtn').focus();
+    }
+
+    document.getElementById('cancelBtn').addEventListener('click', () => {
+      pendingUrl = null;
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+    });
+
+    document.getElementById('confirmBtn').addEventListener('click', () => {
+      if (pendingUrl) {
+        window.open(pendingUrl, '_blank', 'noopener,noreferrer');
+      }
+      pendingUrl = null;
+      modal.style.display = 'none';
+      modal.setAttribute('aria-hidden', 'true');
+    });
+
+    document.getElementById('refreshBtn').addEventListener('click', async () => {
+      const s = await fetchSummary();
+      renderSummary(s);
+    });
+
+    document.getElementById('downloadBtn').addEventListener('click', async () => {
+      const s = await fetchSummary();
+      if (!s) return;
+      const blob = new Blob([JSON.stringify(s, null, 2)], {type: 'application/json'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'edge_summary.json';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    });
+
+    (async function init(){
+      const s = await fetchSummary();
+      renderSummary(s);
+    })();
+  </script>
+</body>
+</html>

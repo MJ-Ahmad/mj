@@ -1,0 +1,170 @@
+{
+  "institution": {
+    "name": "Baitul Quran International Madrasha",
+    "short_name": "Bitul Quran",
+    "address": "Stadium Road, Nandibari, Muktagacha Upazila, Mymensingh, Bangladesh",
+    "phone": "+8801824401812",
+    "email": "info@baitulquran.example",
+    "website": "https://baitulquran.example",
+    "logo": "assets/logo.png",
+    "curated_by": "MJ Ahmad — Steward of Ethical Inheritance",
+    "established": "2018-09-01",
+    "mission": "To combine classical hifz pedagogy with modern learning technology to produce confident, ethical, and proficient memorizers of the Qur'an.",
+    "vision": "A globally recognized center of excellence for Quran memorization and ethical leadership.",
+    "document_type": "Institutional Record",
+    "last_updated": "2026-05-03T02:45:02+06:00"
+  },
+
+  "governance": {
+    "board": [
+      {"name": "Sheikh Rahman", "role": "Chairman"},
+      {"name": "Dr. Farida Khan", "role": "Secretary"}
+    ],
+    "director": {"name": "MJ Ahmad", "title": "Director"},
+    "roles_and_responsibilities": {
+      "director": "Strategic leadership, external relations, fundraising.",
+      "academic_head": "Curriculum, teacher training, quality assurance.",
+      "operations_manager": "Facilities, scheduling, logistics.",
+      "it_manager": "Systems, backups, security, attendance platform."
+    }
+  },
+
+  "staff": {
+    "teachers": [
+      {"id": "T01", "name": "Ustad Arif", "phone": "01824401812", "role": "Senior Ustad", "department": "Khatmi / Recitation"},
+      {"id": "T02", "name": "Ustad Arif Robbani", "phone": "01631940605", "role": "Nurani Instructor", "department": "Nurani Maktab"},
+      {"id": "T03", "name": "Ustad Jafor", "phone": "01892051303", "role": "Hifz Instructor", "department": "Hifz 1–29"}
+    ],
+    "administration": [
+      {"id": "A01", "name": "Sadia Begum", "role": "Office Manager", "email": "office@baitulquran.example"},
+      {"id": "A02", "name": "Rafiq Ahmed", "role": "Facilities Supervisor"}
+    ],
+    "it": [
+      {"id": "IT01", "name": "Imran Hossain", "role": "IT Manager", "email": "it@baitulquran.example"}
+    ]
+  },
+
+  "students": {
+    "serial_master_list": [
+      {"serial": 1, "name": "Faysal (1)", "roll": "03", "id": "BQSHK01", "department": "Khatmi / Recitation"},
+      {"serial": 2, "name": "Sown", "roll": "04", "id": "BQSHK02", "department": "Khatmi / Recitation"},
+      {"serial": 3, "name": "Abu Talha", "roll": "05", "id": "BQSHK03", "department": "Khatmi / Recitation"},
+      {"serial": 4, "name": "Abdullah Al Mahi", "roll": "06", "id": "BQSHK04", "department": "Khatmi / Recitation"},
+      {"serial": 5, "name": "Faysal (2)", "roll": "07", "id": "BQSHK05", "department": "Khatmi / Recitation"},
+      {"serial": 6, "name": "Jarif", "roll": "08", "id": "BQSHK06", "department": "Khatmi / Recitation"},
+      {"serial": 7, "name": "Asif", "roll": "09", "id": "BQSHK07", "department": "Khatmi / Recitation"},
+      {"serial": 8, "name": "Jihad", "roll": "10", "id": "BQSHK08", "department": "Khatmi / Recitation"},
+      {"serial": 9, "name": "Sakib", "roll": "11", "id": "BQSHK09", "department": "Khatmi / Recitation"},
+      {"serial": 10, "name": "Tawfiq", "roll": "12", "id": "BQSHK10", "department": "Khatmi / Recitation"},
+      {"serial": 11, "name": "Mosaddek", "roll": "31", "id": "BQSHK11", "department": "Khatmi / Recitation"},
+      {"serial": 12, "name": "Jubayer", "roll": "01", "id": "BQSHS01", "department": "Hifz 1–10"},
+      {"serial": 13, "name": "Sabbir", "roll": "17", "id": "BQSHS02", "department": "Hifz 1–10"},
+      {"serial": 14, "name": "Afrad", "roll": "19", "id": "BQSHS03", "department": "Hifz 1–10"},
+      {"serial": 15, "name": "Rahat", "roll": "20", "id": "BQSHS04", "department": "Hifz 1–10"},
+      {"serial": 16, "name": "Abid", "roll": "21", "id": "BQSHS05", "department": "Hifz 1–10"},
+      {"serial": 17, "name": "Arafat (2)", "roll": "22", "id": "BQSHS06", "department": "Hifz 1–10"},
+      {"serial": 18, "name": "Akib", "roll": "28", "id": "BQSHS07", "department": "Hifz 1–10"},
+      {"serial": 19, "name": "Amir Hamja", "roll": "29", "id": "BQSHS08", "department": "Hifz 1–10"},
+      {"serial": 20, "name": "Nabil", "roll": "30", "id": "BQSHS09", "department": "Hifz 1–10"},
+      {"serial": 21, "name": "Junayed", "roll": "33", "id": "BQSHS10", "department": "Hifz 1–10"},
+      {"serial": 22, "name": "Mafin", "roll": "13", "id": "BQSHS11", "department": "Hifz 1–20"},
+      {"serial": 23, "name": "Hasib", "roll": "14", "id": "BQSHS12", "department": "Hifz 1–20"},
+      {"serial": 24, "name": "Sahadat", "roll": "15", "id": "BQSHS13", "department": "Hifz 1–20"},
+      {"serial": 25, "name": "Hujayfa", "roll": "18", "id": "BQSHS14", "department": "Hifz 1–20"},
+      {"serial": 26, "name": "Al‑Amin", "roll": "25", "id": "BQSHS15", "department": "Hifz 1–20"},
+      {"serial": 27, "name": "Shoyab", "roll": "34", "id": "BQSHS16", "department": "Hifz 1–20"},
+      {"serial": 28, "name": "Junayed", "roll": "35", "id": "BQSHS17", "department": "Hifz 1–20"},
+      {"serial": 29, "name": "Anamul Haqe", "roll": "02", "id": "BQSHS18", "department": "Hifz 1–29"},
+      {"serial": 30, "name": "Arafat (1)", "roll": "16", "id": "BQSHS19", "department": "Hifz 1–29"},
+      {"serial": 31, "name": "Sayem", "roll": "26", "id": "BQSHS20", "department": "Hifz 1–29"},
+      {"serial": 32, "name": "Tahmid", "roll": "27", "id": "BQSHS21", "department": "Hifz 1–29"},
+      {"serial": 33, "name": "Abu Talha", "roll": "01", "id": "BQSNA01", "department": "Pre-Hifz Nazara"},
+      {"serial": 34, "name": "Kawser Ahmad", "roll": "02", "id": "BQSNA02", "department": "Pre-Hifz Nazara"},
+      {"serial": 35, "name": "Sifat", "roll": "03", "id": "BQSNA03", "department": "Pre-Hifz Nazara"},
+      {"serial": 36, "name": "Shahinur", "roll": "04", "id": "BQSNA04", "department": "Pre-Hifz Nazara"},
+      {"serial": 37, "name": "Miraj", "roll": "05", "id": "BQSNA05", "department": "Pre-Hifz Nazara"},
+      {"serial": 38, "name": "Minhaz", "roll": "06", "id": "BQSNA06", "department": "Pre-Hifz Nazara"},
+      {"serial": 39, "name": "Lijon", "roll": "07", "id": "BQSNA07", "department": "Pre-Hifz Nazara"},
+      {"serial": 40, "name": "Rafan", "roll": "08", "id": "BQSNA08", "department": "Pre-Hifz Nazara"},
+      {"serial": 41, "name": "Arshad", "roll": "09", "id": "BQSNA09", "department": "Pre-Hifz Nazara"},
+      {"serial": 42, "name": "Jidan", "roll": "01", "id": "BQSNU01", "department": "Nurani Maktab"},
+      {"serial": 43, "name": "Safan", "roll": "02", "id": "BQSNU02", "department": "Nurani Maktab"},
+      {"serial": 44, "name": "Moballig", "roll": "03", "id": "BQSNU03", "department": "Nurani Maktab"},
+      {"serial": 45, "name": "Shoyaib", "roll": "04", "id": "BQSNU04", "department": "Nurani Maktab"},
+      {"serial": 46, "name": "Sajjad", "roll": "05", "id": "BQSNU05", "department": "Nurani Maktab"},
+      {"serial": 47, "name": "Tamim", "roll": "06", "id": "BQSNU06", "department": "Nurani Maktab"},
+      {"serial": 48, "name": "Ruman", "roll": "07", "id": "BQSNU07", "department": "Nurani Maktab"},
+      {"serial": 49, "name": "Mahdi", "roll": "08", "id": "BQSNU08", "department": "Nurani Maktab"},
+      {"serial": 50, "name": "Soyad", "roll": "09", "id": "BQSNU09", "department": "Nurani Maktab"}
+    ],
+    "by_department": {
+      "Khatmi / Recitation": ["BQSHK01","BQSHK02","BQSHK03","BQSHK04","BQSHK05","BQSHK06","BQSHK07","BQSHK08","BQSHK09","BQSHK10","BQSHK11"],
+      "Hifz 1–10": ["BQSHS01","BQSHS02","BQSHS03","BQSHS04","BQSHS05","BQSHS06","BQSHS07","BQSHS08","BQSHS09","BQSHS10"],
+      "Hifz 1–20": ["BQSHS11","BQSHS12","BQSHS13","BQSHS14","BQSHS15","BQSHS16","BQSHS17"],
+      "Hifz 1–29": ["BQSHS18","BQSHS19","BQSHS20","BQSHS21"],
+      "Pre-Hifz Nazara": ["BQSNA01","BQSNA02","BQSNA03","BQSNA04","BQSNA05","BQSNA06","BQSNA07","BQSNA08","BQSNA09"],
+      "Nurani Maktab": ["BQSNU01","BQSNU02","BQSNU03","BQSNU04","BQSNU05","BQSNU06","BQSNU07","BQSNU08","BQSNU09"]
+    },
+    "policies": {
+      "attendance": "Daily attendance required; excused absences documented; late policy applies.",
+      "code_of_conduct": "Respectful behavior, punctuality, and adherence to madrasha rules.",
+      "assessment": "Weekly recitation checks; monthly progress reports; quarterly exams."
+    }
+  },
+
+  "departments": [
+    {"id": "D01", "name": "Nurani Maktab", "description": "Basic Quran reading and tajweed."},
+    {"id": "D02", "name": "Pre-Hifz Nazara", "description": "Preparation for memorization."},
+    {"id": "D03", "name": "Hifz 1–29", "description": "Full memorization program."},
+    {"id": "D04", "name": "Khatmi / Recitation", "description": "Advanced recitation and revision."}
+  ],
+
+  "curriculum": {
+    "principles": ["Spaced repetition", "Daily micro-practice", "Teacher-led correction", "Peer review"],
+    "modules": [
+      {"code": "C01", "title": "Nurani Foundations", "hours": 120},
+      {"code": "C02", "title": "Nazara Preparation", "hours": 200},
+      {"code": "C03", "title": "Hifz Core", "hours": 2000}
+    ],
+    "assessment_framework": {
+      "weekly": "Recitation check by assigned Ustad",
+      "monthly": "Progress report and parent update",
+      "quarterly": "Formal assessment and placement review"
+    }
+  },
+
+  "attendance_integration": {
+    "master_file": "master/attendance_master.json",
+    "snapshots_dir": "outputs/",
+    "features": ["JSON master", "HTML viewer", "Markdown export", "teacher recorder", "atomic writes"],
+    "policies": {"retention_years": 3, "backup": "daily"}
+  },
+
+  "technology": {
+    "learning_tools": ["Audio-guided repetition", "Spaced repetition scheduler", "Mobile-friendly revision pages"],
+    "infrastructure": {"server": "Static hosting; optional Flask + SQLite for multi-user", "backup": "Daily snapshot to outputs/"}
+  },
+
+  "roadmap": {
+    "2026-Q2": ["Deploy web UI (Flask)", "Add SQLite history", "Teacher login"],
+    "2026-Q3": ["QR check-in pilot", "Automated reports (CSV/PDF)", "Parent portal (read-only)"],
+    "2027": ["Mobile app for revision", "AI-assisted tajweed feedback (research)"]
+  },
+
+  "goals": {
+    "short_term": ["Stabilize master JSON workflow", "Publish attendance viewer", "Train 3 teachers on system"],
+    "mid_term": ["Deploy Flask web UI", "Add authentication", "Start QR pilot"],
+    "long_term": ["Global recognition for hifz pedagogy", "Research center for memorization methods"]
+  },
+
+  "contacts": {
+    "director": {"name": "MJ Ahmad", "email": "director@baitulquran.example", "phone": "+8801712345678"},
+    "office": {"email": "office@baitulquran.example", "phone": "+8801824401812"}
+  },
+
+  "meta": {
+    "generated_at": "2026-05-03T02:45:02+06:00",
+    "version": "1.0.0",
+    "notes": "Master file for Bitul Quran institutional data; serial student list included."
+  }
+}

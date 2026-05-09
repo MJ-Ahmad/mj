@@ -1,0 +1,341 @@
+<!-- touched:2026-05-04T04:42:34.763331-->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Baitul Quran International Madrasha — Master</title>
+<style>
+  :root{--accent:#0b5a3a;--muted:#666;--bg:#fafafa}
+  body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial;margin:0;color:#222;background:#fff}
+  header{display:flex;align-items:center;gap:12px;padding:18px;background:linear-gradient(90deg,#f7fff9,#f0fff4)}
+  header img{height:64px}
+  header .title{font-size:18px;font-weight:700}
+  .layout{display:flex;height:calc(100vh - 132px)}
+  nav{width:300px;border-right:1px solid #eee;padding:12px;background:var(--bg);overflow:auto}
+  main{flex:1;padding:18px;overflow:auto}
+  footer{padding:12px;border-top:1px solid #eee;background:#fafafa;font-size:0.9em;color:var(--muted)}
+  .menu-item{padding:8px;border-radius:6px;margin-bottom:6px;cursor:pointer}
+  .menu-item.locked{opacity:0.6}
+  .menu-item:hover{background:#f0fff4}
+  .meta{color:var(--muted);font-size:0.95em;margin-bottom:8px}
+  .section{margin-bottom:18px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+  .card{border:1px solid #eee;padding:12px;border-radius:8px;background:#fff}
+  .search{display:flex;gap:8px;margin-bottom:12px}
+  .search input{flex:1;padding:8px;border:1px solid #ddd;border-radius:6px}
+  .lang-toggle{margin-left:auto}
+  .countdown{font-weight:700;color:var(--accent)}
+</style>
+</head>
+<body>
+<header>
+  <img id="logo" src="assets/logo.png" alt="logo" onerror="this.style.display='none'">
+  <div>
+    <div class="title" id="instName">Baitul Quran International Madrasha</div>
+    <div class="meta" id="instAddress">Stadium Road, Nandibari, Muktagacha Upazila, Mymensingh, Bangladesh</div>
+  </div>
+  <div class="lang-toggle">
+    <button id="langEn">EN</button> <button id="langBn">BN</button>
+  </div>
+</header>
+
+<div class="layout">
+  <nav id="nav">
+    <h3>Menu</h3>
+    <div id="menuList">Loading menu…</div>
+    <hr>
+    <h4>Quick Links</h4>
+    <div id="quickLinks"></div>
+  </nav>
+
+  <main id="main">
+    <div id="content">
+      <h2>Overview</h2>
+      <div id="overview">Loading…</div>
+      <div class="search">
+        <input id="globalSearch" placeholder="Search students, staff, departments..." />
+        <select id="filterDept"><option value="">All departments</option></select>
+      </div>
+      <div id="pageArea"></div>
+    </div>
+  </main>
+</div>
+
+<footer id="footer">
+  <div id="footerLeft">© Baitul Quran International Madrasha</div>
+  <div id="footerRight" style="float:right">Last updated: <span id="lastUpdated">—</span></div>
+</footer>
+
+<script>
+/*
+index.html viewer
+- Loads bitul_quran.json and site_config.json
+- Renders menu according to site_config
+- Supports password-protected items and countdown visibility
+*/
+
+const MASTER_JSON = 'bitul_quran.json';
+const CONFIG_JSON = 'site_config.json';
+
+let master = null;
+let config = null;
+let lang = 'en';
+
+async function fetchJson(path) {
+  try {
+    const r = await fetch(path, {cache: 'no-store'});
+    if (!r.ok) throw new Error('Fetch failed: ' + r.status);
+    return await r.json();
+  } catch (e) {
+    console.error(e);
+    return null;
+  }
+}
+
+function formatHeader() {
+  const md = master.institution;
+  document.getElementById('instName').innerText = md.name;
+  document.getElementById('instAddress').innerText = md.address;
+  document.getElementById('lastUpdated').innerText = md.last_updated || md.last_updated || master.meta?.generated_at || '';
+  const logo = document.getElementById('logo');
+  if (md.logo) logo.src = md.logo;
+}
+
+function buildMenu() {
+  const menuList = document.getElementById('menuList');
+  menuList.innerHTML = '';
+  const items = config.menu || [];
+  items.forEach(item => {
+    // check countdown
+    if (item.countdown_until) {
+      const until = new Date(item.countdown_until);
+      if (new Date() > until && item.hide_after_countdown) return; // skip
+    }
+    const el = document.createElement('div');
+    el.className = 'menu-item' + (item.password_protected ? ' locked' : '');
+    el.dataset.key = item.key;
+    el.innerHTML = `<strong>${labelFor(item)}</strong><div style="font-size:0.85em;color:#666">${item.subtitle || ''}</div>`;
+    el.addEventListener('click', () => onMenuClick(item));
+    menuList.appendChild(el);
+  });
+}
+
+function labelFor(item) {
+  if (lang === 'bn' && item.label_bn) return item.label_bn;
+  return item.label || item.key;
+}
+
+function onMenuClick(item) {
+  // password-protected
+  if (item.password_protected) {
+    const pw = prompt('Enter password to view this section:');
+    if (pw !== item.password) {
+      alert('Incorrect password');
+      return;
+    }
+  }
+  // countdown notice
+  if (item.countdown_until) {
+    const until = new Date(item.countdown_until);
+    if (new Date() < until && item.show_countdown) {
+      const ms = until - new Date();
+      const days = Math.floor(ms / (1000*60*60*24));
+      const hours = Math.floor((ms / (1000*60*60)) % 24);
+      alert('This item is available until ' + until.toLocaleString() + ' (remaining: ' + days + 'd ' + hours + 'h)');
+    }
+  }
+  renderSection(item);
+}
+
+function renderSection(item) {
+  const area = document.getElementById('pageArea');
+  area.innerHTML = '';
+  if (item.key === 'overview') {
+    renderOverview(area);
+    return;
+  }
+  if (item.key === 'teachers') {
+    renderTeachers(area);
+    return;
+  }
+  if (item.key === 'students') {
+    renderStudents(area);
+    return;
+  }
+  if (item.key === 'attendance') {
+    renderAttendance(area);
+    return;
+  }
+  if (item.key === 'curriculum') {
+    renderCurriculum(area);
+    return;
+  }
+  if (item.key === 'roadmap') {
+    renderRoadmap(area);
+    return;
+  }
+  // fallback: show raw JSON path if specified
+  if (item.json_path) {
+    const data = getByPath(master, item.json_path);
+    area.innerHTML = `<pre>${escapeHtml(JSON.stringify(data, null, 2))}</pre>`;
+    return;
+  }
+  area.innerHTML = `<p>Section "${item.key}" not implemented in viewer.</p>`;
+}
+
+function renderOverview(area) {
+  const md = master.institution;
+  area.innerHTML = `
+    <div class="section">
+      <h3>${md.name}</h3>
+      <p>${md.mission}</p>
+      <div class="meta">Curated by: ${md.curated_by} • Established: ${md.established}</div>
+    </div>
+  `;
+}
+
+function renderTeachers(area) {
+  const t = master.staff.teachers || [];
+  let html = '<div class="section"><h3>Teachers</h3><div class="grid">';
+  t.forEach(x => {
+    html += `<div class="card"><strong>${x.name}</strong><div>${x.role}</div><div style="font-size:0.9em;color:#666">${x.phone || ''}</div></div>`;
+  });
+  html += '</div></div>';
+  area.innerHTML = html;
+}
+
+function renderStudents(area) {
+  const s = master.students.master_list || [];
+  let html = '<div class="section"><h3>Students</h3><table style="width:100%;border-collapse:collapse"><thead><tr><th>Roll</th><th>ID</th><th>Name</th><th>Dept</th></tr></thead><tbody>';
+  s.forEach(x => {
+    html += `<tr><td style="padding:6px;border:1px solid #eee">${x.roll}</td><td style="padding:6px;border:1px solid #eee">${x.id}</td><td style="padding:6px;border:1px solid #eee">${x.name}</td><td style="padding:6px;border:1px solid #eee">${x.department}</td></tr>`;
+  });
+  html += '</tbody></table></div>';
+  area.innerHTML = html;
+}
+
+function renderAttendance(area) {
+  // attendance viewer is separate; if master has attendance master, show summary
+  const att = master.attendance_master || master.attendance || null;
+  if (!att) {
+    area.innerHTML = '<p>No attendance master embedded in bitul_quran.json. Use the attendance system to append records to master/attendance_master.json.</p>';
+    return;
+  }
+  // show last 5 records
+  const recs = att.records || [];
+  let html = '<div class="section"><h3>Attendance Records (latest)</h3>';
+  if (recs.length === 0) html += '<p>No records yet.</p>';
+  else {
+    html += '<div class="grid">';
+    recs.slice(-5).reverse().forEach(r => {
+      html += `<div class="card"><strong>${r.meta.date} — ${r.meta.department}</strong><div class="meta">${r.meta.mode} • ${r.meta.scheduled_time}</div><div style="margin-top:8px"><a href="#" onclick="showAttendanceRecord(event, \\'${r.meta.id}\\')">View</a></div></div>`;
+    });
+    html += '</div>';
+  }
+  html += '</div><div id="attendanceDetail"></div>';
+  area.innerHTML = html;
+}
+
+function showAttendanceRecord(ev, id) {
+  ev.preventDefault();
+  const att = master.attendance_master || master.attendance || null;
+  if (!att) return;
+  const rec = (att.records || []).find(r => r.meta.id === id);
+  if (!rec) return alert('Record not found');
+  const detail = document.getElementById('attendanceDetail');
+  let html = `<h4>Record: ${rec.meta.id}</h4><table style="width:100%;border-collapse:collapse"><thead><tr><th>Roll</th><th>ID</th><th>Name</th><th>Status</th></tr></thead><tbody>`;
+  rec.attendance.forEach(a => {
+    html += `<tr><td style="padding:6px;border:1px solid #eee">${a.roll}</td><td style="padding:6px;border:1px solid #eee">${a.student_id}</td><td style="padding:6px;border:1px solid #eee">${a.name}</td><td style="padding:6px;border:1px solid #eee">${a.status_label}</td></tr>`;
+  });
+  html += '</tbody></table>';
+  detail.innerHTML = html;
+}
+
+function renderCurriculum(area) {
+  const cur = master.curriculum || {};
+  let html = `<div class="section"><h3>Curriculum</h3><div class="meta">${cur.principles ? cur.principles.join(', ') : ''}</div>`;
+  if (cur.modules) {
+    html += '<div class="grid">';
+    cur.modules.forEach(m => {
+      html += `<div class="card"><strong>${m.title}</strong><div>Code: ${m.code}</div><div>Hours: ${m.hours}</div></div>`;
+    });
+    html += '</div>';
+  }
+  html += '</div>';
+  area.innerHTML = html;
+}
+
+function renderRoadmap(area) {
+  const r = master.roadmap || {};
+  let html = '<div class="section"><h3>Roadmap</h3>';
+  for (const k of Object.keys(r)) {
+    html += `<div class="card"><strong>${k}</strong><div>${r[k].join(', ')}</div></div>`;
+  }
+  html += '</div>';
+  area.innerHTML = html;
+}
+
+function getByPath(obj, path) {
+  const parts = path.split('.');
+  let cur = obj;
+  for (const p of parts) {
+    if (!cur) return null;
+    cur = cur[p];
+  }
+  return cur;
+}
+
+function escapeHtml(s) {
+  return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+async function init() {
+  master = await fetchJson(MASTER_JSON);
+  config = await fetchJson(CONFIG_JSON) || {menu: []};
+  if (!master) {
+    document.getElementById('overview').innerText = 'Failed to load master JSON.';
+    return;
+  }
+  formatHeader();
+  buildMenu();
+  populateDeptFilter();
+  // default open overview
+  renderOverview(document.getElementById('pageArea'));
+}
+
+function populateDeptFilter() {
+  const sel = document.getElementById('filterDept');
+  const depts = (master.departments || []).map(d => d.name);
+  depts.forEach(d => {
+    const opt = document.createElement('option');
+    opt.value = d; opt.innerText = d;
+    sel.appendChild(opt);
+  });
+}
+
+document.getElementById('langEn').addEventListener('click', () => { lang='en'; buildMenu(); });
+document.getElementById('langBn').addEventListener('click', () => { lang='bn'; buildMenu(); });
+
+document.getElementById('globalSearch').addEventListener('input', (e) => {
+  const q = e.target.value.trim().toLowerCase();
+  if (!q) return;
+  // quick search students
+  const s = master.students.master_list || [];
+  const found = s.filter(x => (x.name||'').toLowerCase().includes(q) || (x.id||'').toLowerCase().includes(q));
+  const area = document.getElementById('pageArea');
+  let html = '<div class="section"><h3>Search results</h3>';
+  if (found.length === 0) html += '<p>No results</p>';
+  else {
+    html += '<table style="width:100%;border-collapse:collapse"><thead><tr><th>Roll</th><th>ID</th><th>Name</th><th>Dept</th></tr></thead><tbody>';
+    found.forEach(x => html += `<tr><td style="padding:6px;border:1px solid #eee">${x.roll}</td><td style="padding:6px;border:1px solid #eee">${x.id}</td><td style="padding:6px;border:1px solid #eee">${x.name}</td><td style="padding:6px;border:1px solid #eee">${x.department}</td></tr>`);
+    html += '</tbody></table>';
+  }
+  html += '</div>';
+  area.innerHTML = html;
+});
+
+init();
+</script>
+</body>
+</html>

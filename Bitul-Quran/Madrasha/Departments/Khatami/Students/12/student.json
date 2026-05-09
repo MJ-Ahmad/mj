@@ -1,0 +1,2659 @@
+{
+  "meta": {
+    "generated_at": "2026-04-26T12:00:00+06:00",
+    "source": "Bitul Quran Madrasha Student Data"
+  },
+  "ui": {
+    "lang": [
+      "en",
+      "bn"
+    ],
+    "strings": {
+      "en": {
+        "title": "Bitul Quran Madrasha",
+        "student_profile": "Student Profile",
+        "memorization_progress": "Memorization Progress",
+        "hifz_tracker": "Hifz Tracker",
+        "challenges": "Current Memorize Challenges",
+        "commitment": "Commitment & Code of Conduct",
+        "mj_message": "Message from MJ Ahmad",
+        "summary_section": "Summary (Completed / In Progress)",
+        "comments_section": "Teacher / Guardian Notes",
+        "access_note": "This dashboard is available only to Principal, Class Teacher and Guardian devices.",
+        "clock_title": "Dhaka Time"
+      },
+      "bn": {
+        "title": "বায়তুল কুরআন ইন্টারন্যাশনাল মাদরাসা",
+        "student_profile": "শিক্ষার্থী প্রোফাইল",
+        "memorization_progress": "কোরআন মুখস্থকরন অগ্রগতি",
+        "hifz_tracker": "হিফজ ট্র্যাকার",
+        "challenges": "নতুন সবক/ভুলে যাওয়া ‌পারা এয়াদ ক‌রা‌র জন্য বর্তমান চ্যালেঞ্জসমূহ",
+        "commitment": "অঙ্গীকার ও আচরণবিধি",
+        "mj_message": "এমজে আহমাদের বার্তা",
+        "summary_section": "সারসংক্ষেপ (সম্পন্ন)",
+        "comments_section": "শিক্ষক / অভিভাবক মন্তব্য",
+        "access_note": "এই ড্যাশবোর্ডটি শুধুমাত্র প্রিন্সিপাল স্যার, ক্লাস শিক্ষক ও অভিভাবকের ডিভাইসে উপলব্ধ।",
+        "clock_title": "ঢাকা সময়"
+      }
+    }
+  },
+  "student": {
+    "name": "Tawfiq Ahmad",
+    "department": "Hifzul Quran",
+    "guardian": {
+      "name": "Mr. Sirajul Islam",
+      "contact": "+8801733165526"
+    },
+    "group": "Khatami",
+    "group_ustad": "Ustad Arif",
+    "hifz_start_date": "2023-10-28T00:00:00+06:00",
+    "hifz_all_complete_date": "2025-12-03T00:00:00+06:00",
+    "memorization": {
+      "current_juz": 15,
+      "target_juz": 30,
+      "completed_by": "2025-12-03T00:00:00+06:00",
+      "upcoming_deadline": "2027-02-28T23:59:59+06:00"
+    },
+    "hifz_tracker": [
+      {
+        "para_number": 1,
+        "pages": [
+          {
+            "page_number": 1,
+            "status": "completed"
+          },
+          {
+            "page_number": 2,
+            "status": "completed"
+          },
+          {
+            "page_number": 3,
+            "status": "completed"
+          },
+          {
+            "page_number": 4,
+            "status": "completed"
+          },
+          {
+            "page_number": 5,
+            "status": "completed"
+          },
+          {
+            "page_number": 6,
+            "status": "completed"
+          },
+          {
+            "page_number": 7,
+            "status": "completed"
+          },
+          {
+            "page_number": 8,
+            "status": "completed"
+          },
+          {
+            "page_number": 9,
+            "status": "completed"
+          },
+          {
+            "page_number": 10,
+            "status": "completed"
+          },
+          {
+            "page_number": 11,
+            "status": "completed"
+          },
+          {
+            "page_number": 12,
+            "status": "completed"
+          },
+          {
+            "page_number": 13,
+            "status": "completed"
+          },
+          {
+            "page_number": 14,
+            "status": "completed"
+          },
+          {
+            "page_number": 15,
+            "status": "completed"
+          },
+          {
+            "page_number": 16,
+            "status": "completed"
+          },
+          {
+            "page_number": 17,
+            "status": "completed"
+          },
+          {
+            "page_number": 18,
+            "status": "completed"
+          },
+          {
+            "page_number": 19,
+            "status": "completed"
+          },
+          {
+            "page_number": 20,
+            "status": "completed"
+          }
+        ]
+      },
+      {
+        "para_number": 2,
+        "pages": [
+          {
+            "page_number": 1,
+            "status": "completed"
+          },
+          {
+            "page_number": 2,
+            "status": "completed"
+          },
+          {
+            "page_number": 3,
+            "status": "completed"
+          },
+          {
+            "page_number": 4,
+            "status": "completed"
+          },
+          {
+            "page_number": 5,
+            "status": "completed"
+          },
+          {
+            "page_number": 6,
+            "status": "completed"
+          },
+          {
+            "page_number": 7,
+            "status": "completed"
+          },
+          {
+            "page_number": 8,
+            "status": "completed"
+          },
+          {
+            "page_number": 9,
+            "status": "completed"
+          },
+          {
+            "page_number": 10,
+            "status": "completed"
+          },
+          {
+            "page_number": 11,
+            "status": "in progress"
+          },
+          {
+            "page_number": 12,
+            "status": "in progress"
+          },
+          {
+            "page_number": 13,
+            "status": "in progress"
+          },
+          {
+            "page_number": 14,
+            "status": "in progress"
+          },
+          {
+            "page_number": 15,
+            "status": "in progress"
+          },
+          {
+            "page_number": 16,
+            "status": "in progress"
+          },
+          {
+            "page_number": 17,
+            "status": "in progress"
+          },
+          {
+            "page_number": 18,
+            "status": "in progress"
+          },
+          {
+            "page_number": 19,
+            "status": "in progress"
+          },
+          {
+            "page_number": 20,
+            "status": "completed"
+          }
+        ]
+      },
+      {
+        "para_number": 3,
+        "pages": [
+          {
+            "page_number": 1,
+            "status": "completed"
+          },
+          {
+            "page_number": 2,
+            "status": "completed"
+          },
+          {
+            "page_number": 3,
+            "status": "completed"
+          },
+          {
+            "page_number": 4,
+            "status": "in progress"
+          },
+          {
+            "page_number": 5,
+            "status": "in progress"
+          },
+          {
+            "page_number": 6,
+            "status": "completed"
+          },
+          {
+            "page_number": 7,
+            "status": "completed"
+          },
+          {
+            "page_number": 8,
+            "status": "completed"
+          },
+          {
+            "page_number": 9,
+            "status": "completed"
+          },
+          {
+            "page_number": 10,
+            "status": "in progress"
+          },
+          {
+            "page_number": 11,
+            "status": "completed"
+          },
+          {
+            "page_number": 12,
+            "status": "completed"
+          },
+          {
+            "page_number": 13,
+            "status": "completed"
+          },
+          {
+            "page_number": 14,
+            "status": "completed"
+          },
+          {
+            "page_number": 15,
+            "status": "completed"
+          },
+          {
+            "page_number": 16,
+            "status": "completed"
+          },
+          {
+            "page_number": 17,
+            "status": "in progress"
+          },
+          {
+            "page_number": 18,
+            "status": "in progress"
+          },
+          {
+            "page_number": 19,
+            "status": "in progress"
+          },
+          {
+            "page_number": 20,
+            "status": "in progress"
+          }
+        ]
+      },
+      {
+        "para_number": 4,
+        "pages": [
+          {
+            "page_number": 1,
+            "status": "completed"
+          },
+          {
+            "page_number": 2,
+            "status": "completed"
+          },
+          {
+            "page_number": 3,
+            "status": "completed"
+          },
+          {
+            "page_number": 4,
+            "status": "completed"
+          },
+          {
+            "page_number": 5,
+            "status": "completed"
+          },
+          {
+            "page_number": 6,
+            "status": "completed"
+          },
+          {
+            "page_number": 7,
+            "status": "completed"
+          },
+          {
+            "page_number": 8,
+            "status": "completed"
+          },
+          {
+            "page_number": 9,
+            "status": "pending"
+          },
+          {
+            "page_number": 10,
+            "status": "completed"
+          },
+          {
+            "page_number": 11,
+            "status": "completed"
+          },
+          {
+            "page_number": 12,
+            "status": "completed"
+          },
+          {
+            "page_number": 13,
+            "status": "completed"
+          },
+          {
+            "page_number": 14,
+            "status": "completed"
+          },
+          {
+            "page_number": 15,
+            "status": "completed"
+          },
+          {
+            "page_number": 16,
+            "status": "pending"
+          },
+          {
+            "page_number": 17,
+            "status": "pending"
+          },
+          {
+            "page_number": 18,
+            "status": "pending"
+          },
+          {
+            "page_number": 19,
+            "status": "pending"
+          },
+          {
+            "page_number": 20,
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "para_number": 5,
+        "pages": [
+          {
+            "page_number": 1,
+            "status": "completed"
+          },
+          {
+            "page_number": 2,
+            "status": "completed"
+          },
+          {
+            "page_number": 3,
+            "status": "completed"
+          },
+          {
+            "page_number": 4,
+            "status": "completed"
+          },
+          {
+            "page_number": 5,
+            "status": "pending"
+          },
+          {
+            "page_number": 6,
+            "status": "pending"
+          },
+          {
+            "page_number": 7,
+            "status": "pending"
+          },
+          {
+            "page_number": 8,
+            "status": "pending"
+          },
+          {
+            "page_number": 9,
+            "status": "completed"
+          },
+          {
+            "page_number": 10,
+            "status": "completed"
+          },
+          {
+            "page_number": 11,
+            "status": "completed"
+          },
+          {
+            "page_number": 12,
+            "status": "completed"
+          },
+          {
+            "page_number": 13,
+            "status": "pending"
+          },
+          {
+            "page_number": 14,
+            "status": "pending"
+          },
+          {
+            "page_number": 15,
+            "status": "pending"
+          },
+          {
+            "page_number": 16,
+            "status": "pending"
+          },
+          {
+            "page_number": 17,
+            "status": "pending"
+          },
+          {
+            "page_number": 18,
+            "status": "pending"
+          },
+          {
+            "page_number": 19,
+            "status": "pending"
+          },
+          {
+            "page_number": 20,
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "para_number": 6,
+        "pages": [
+          {
+            "page_number": 1,
+            "status": "completed"
+          },
+          {
+            "page_number": 2,
+            "status": "completed"
+          },
+          {
+            "page_number": 3,
+            "status": "completed"
+          },
+          {
+            "page_number": 4,
+            "status": "completed"
+          },
+          {
+            "page_number": 5,
+            "status": "completed"
+          },
+          {
+            "page_number": 6,
+            "status": "pending"
+          },
+          {
+            "page_number": 7,
+            "status": "pending"
+          },
+          {
+            "page_number": 8,
+            "status": "pending"
+          },
+          {
+            "page_number": 9,
+            "status": "pending"
+          },
+          {
+            "page_number": 10,
+            "status": "pending"
+          },
+          {
+            "page_number": 11,
+            "status": "completed"
+          },
+          {
+            "page_number": 12,
+            "status": "completed"
+          },
+          {
+            "page_number": 13,
+            "status": "completed"
+          },
+          {
+            "page_number": 14,
+            "status": "completed"
+          },
+          {
+            "page_number": 15,
+            "status": "completed"
+          },
+          {
+            "page_number": 16,
+            "status": "completed"
+          },
+          {
+            "page_number": 17,
+            "status": "pending"
+          },
+          {
+            "page_number": 18,
+            "status": "pending"
+          },
+          {
+            "page_number": 19,
+            "status": "pending"
+          },
+          {
+            "page_number": 20,
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "para_number": 7,
+        "pages": [
+          {
+            "page_number": 1,
+            "status": "completed"
+          },
+          {
+            "page_number": 2,
+            "status": "completed"
+          },
+          {
+            "page_number": 3,
+            "status": "completed"
+          },
+          {
+            "page_number": 4,
+            "status": "completed"
+          },
+          {
+            "page_number": 5,
+            "status": "completed"
+          },
+          {
+            "page_number": 6,
+            "status": "completed"
+          },
+          {
+            "page_number": 7,
+            "status": "completed"
+          },
+          {
+            "page_number": 8,
+            "status": "completed"
+          },
+          {
+            "page_number": 9,
+            "status": "completed"
+          },
+          {
+            "page_number": 10,
+            "status": "completed"
+          },
+          {
+            "page_number": 11,
+            "status": "pending"
+          },
+          {
+            "page_number": 12,
+            "status": "pending"
+          },
+          {
+            "page_number": 13,
+            "status": "completed"
+          },
+          {
+            "page_number": 14,
+            "status": "completed"
+          },
+          {
+            "page_number": 15,
+            "status": "completed"
+          },
+          {
+            "page_number": 16,
+            "status": "completed"
+          },
+          {
+            "page_number": 17,
+            "status": "pending"
+          },
+          {
+            "page_number": 18,
+            "status": "pending"
+          },
+          {
+            "page_number": 19,
+            "status": "pending"
+          },
+          {
+            "page_number": 20,
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "para_number": 8,
+        "pages": [
+          {
+            "page_number": 1,
+            "status": "completed"
+          },
+          {
+            "page_number": 2,
+            "status": "completed"
+          },
+          {
+            "page_number": 3,
+            "status": "completed"
+          },
+          {
+            "page_number": 4,
+            "status": "completed"
+          },
+          {
+            "page_number": 5,
+            "status": "pending"
+          },
+          {
+            "page_number": 6,
+            "status": "completed"
+          },
+          {
+            "page_number": 7,
+            "status": "pending"
+          },
+          {
+            "page_number": 8,
+            "status": "pending"
+          },
+          {
+            "page_number": 9,
+            "status": "pending"
+          },
+          {
+            "page_number": 10,
+            "status": "pending"
+          },
+          {
+            "page_number": 11,
+            "status": "completed"
+          },
+          {
+            "page_number": 12,
+            "status": "completed"
+          },
+          {
+            "page_number": 13,
+            "status": "completed"
+          },
+          {
+            "page_number": 14,
+            "status": "completed"
+          },
+          {
+            "page_number": 15,
+            "status": "completed"
+          },
+          {
+            "page_number": 16,
+            "status": "completed"
+          },
+          {
+            "page_number": 17,
+            "status": "completed"
+          },
+          {
+            "page_number": 18,
+            "status": "pending"
+          },
+          {
+            "page_number": 19,
+            "status": "pending"
+          },
+          {
+            "page_number": 20,
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "para_number": 9,
+        "pages": [
+          {
+            "page_number": 1,
+            "status": "completed"
+          },
+          {
+            "page_number": 2,
+            "status": "completed"
+          },
+          {
+            "page_number": 3,
+            "status": "completed"
+          },
+          {
+            "page_number": 4,
+            "status": "completed"
+          },
+          {
+            "page_number": 5,
+            "status": "completed"
+          },
+          {
+            "page_number": 6,
+            "status": "completed"
+          },
+          {
+            "page_number": 7,
+            "status": "completed"
+          },
+          {
+            "page_number": 8,
+            "status": "pending"
+          },
+          {
+            "page_number": 9,
+            "status": "pending"
+          },
+          {
+            "page_number": 10,
+            "status": "pending"
+          },
+          {
+            "page_number": 11,
+            "status": "pending"
+          },
+          {
+            "page_number": 12,
+            "status": "pending"
+          },
+          {
+            "page_number": 13,
+            "status": "pending"
+          },
+          {
+            "page_number": 14,
+            "status": "pending"
+          },
+          {
+            "page_number": 15,
+            "status": "pending"
+          },
+          {
+            "page_number": 16,
+            "status": "pending"
+          },
+          {
+            "page_number": 17,
+            "status": "pending"
+          },
+          {
+            "page_number": 18,
+            "status": "pending"
+          },
+          {
+            "page_number": 19,
+            "status": "pending"
+          },
+          {
+            "page_number": 20,
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "para_number": 10,
+        "pages": [
+          {
+            "page_number": 1,
+            "status": "completed"
+          },
+          {
+            "page_number": 2,
+            "status": "completed"
+          },
+          {
+            "page_number": 3,
+            "status": "completed"
+          },
+          {
+            "page_number": 4,
+            "status": "completed"
+          },
+          {
+            "page_number": 5,
+            "status": "completed"
+          },
+          {
+            "page_number": 6,
+            "status": "completed"
+          },
+          {
+            "page_number": 7,
+            "status": "completed"
+          },
+          {
+            "page_number": 8,
+            "status": "completed"
+          },
+          {
+            "page_number": 9,
+            "status": "pending"
+          },
+          {
+            "page_number": 10,
+            "status": "pending"
+          },
+          {
+            "page_number": 11,
+            "status": "completed"
+          },
+          {
+            "page_number": 12,
+            "status": "completed"
+          },
+          {
+            "page_number": 13,
+            "status": "completed"
+          },
+          {
+            "page_number": 14,
+            "status": "completed"
+          },
+          {
+            "page_number": 15,
+            "status": "pending"
+          },
+          {
+            "page_number": 16,
+            "status": "pending"
+          },
+          {
+            "page_number": 17,
+            "status": "pending"
+          },
+          {
+            "page_number": 18,
+            "status": "pending"
+          },
+          {
+            "page_number": 19,
+            "status": "pending"
+          },
+          {
+            "page_number": 20,
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "para_number": 11,
+        "pages": [
+          {
+            "page_number": 1,
+            "status": "completed"
+          },
+          {
+            "page_number": 2,
+            "status": "completed"
+          },
+          {
+            "page_number": 3,
+            "status": "completed"
+          },
+          {
+            "page_number": 4,
+            "status": "completed"
+          },
+          {
+            "page_number": 5,
+            "status": "pending"
+          },
+          {
+            "page_number": 6,
+            "status": "pending"
+          },
+          {
+            "page_number": 7,
+            "status": "pending"
+          },
+          {
+            "page_number": 8,
+            "status": "pending"
+          },
+          {
+            "page_number": 9,
+            "status": "pending"
+          },
+          {
+            "page_number": 10,
+            "status": "pending"
+          },
+          {
+            "page_number": 11,
+            "status": "pending"
+          },
+          {
+            "page_number": 12,
+            "status": "pending"
+          },
+          {
+            "page_number": 13,
+            "status": "pending"
+          },
+          {
+            "page_number": 14,
+            "status": "pending"
+          },
+          {
+            "page_number": 15,
+            "status": "completed"
+          },
+          {
+            "page_number": 16,
+            "status": "completed"
+          },
+          {
+            "page_number": 17,
+            "status": "completed"
+          },
+          {
+            "page_number": 18,
+            "status": "completed"
+          },
+          {
+            "page_number": 19,
+            "status": "completed"
+          },
+          {
+            "page_number": 20,
+            "status": "completed"
+          }
+        ]
+      },
+      {
+        "para_number": 12,
+        "pages": [
+          {
+            "page_number": 1,
+            "status": "completed"
+          },
+          {
+            "page_number": 2,
+            "status": "completed"
+          },
+          {
+            "page_number": 3,
+            "status": "completed"
+          },
+          {
+            "page_number": 4,
+            "status": "completed"
+          },
+          {
+            "page_number": 5,
+            "status": "completed"
+          },
+          {
+            "page_number": 6,
+            "status": "pending"
+          },
+          {
+            "page_number": 7,
+            "status": "pending"
+          },
+          {
+            "page_number": 8,
+            "status": "completed"
+          },
+          {
+            "page_number": 9,
+            "status": "pending"
+          },
+          {
+            "page_number": 10,
+            "status": "pending"
+          },
+          {
+            "page_number": 11,
+            "status": "pending"
+          },
+          {
+            "page_number": 12,
+            "status": "pending"
+          },
+          {
+            "page_number": 13,
+            "status": "pending"
+          },
+          {
+            "page_number": 14,
+            "status": "pending"
+          },
+          {
+            "page_number": 15,
+            "status": "pending"
+          },
+          {
+            "page_number": 16,
+            "status": "pending"
+          },
+          {
+            "page_number": 17,
+            "status": "pending"
+          },
+          {
+            "page_number": 18,
+            "status": "pending"
+          },
+          {
+            "page_number": 19,
+            "status": "pending"
+          },
+          {
+            "page_number": 20,
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "para_number": 13,
+        "pages": [
+          {
+            "page_number": 1,
+            "status": "completed"
+          },
+          {
+            "page_number": 2,
+            "status": "completed"
+          },
+          {
+            "page_number": 3,
+            "status": "completed"
+          },
+          {
+            "page_number": 4,
+            "status": "completed"
+          },
+          {
+            "page_number": 5,
+            "status": "pending"
+          },
+          {
+            "page_number": 6,
+            "status": "pending"
+          },
+          {
+            "page_number": 7,
+            "status": "pending"
+          },
+          {
+            "page_number": 8,
+            "status": "pending"
+          },
+          {
+            "page_number": 9,
+            "status": "pending"
+          },
+          {
+            "page_number": 10,
+            "status": "pending"
+          },
+          {
+            "page_number": 11,
+            "status": "pending"
+          },
+          {
+            "page_number": 12,
+            "status": "pending"
+          },
+          {
+            "page_number": 13,
+            "status": "pending"
+          },
+          {
+            "page_number": 14,
+            "status": "completed"
+          },
+          {
+            "page_number": 15,
+            "status": "completed"
+          },
+          {
+            "page_number": 16,
+            "status": "completed"
+          },
+          {
+            "page_number": 17,
+            "status": "completed"
+          },
+          {
+            "page_number": 18,
+            "status": "completed"
+          },
+          {
+            "page_number": 19,
+            "status": "completed"
+          },
+          {
+            "page_number": 20,
+            "status": "completed"
+          }
+        ]
+      },
+      {
+        "para_number": 14,
+        "pages": [
+          {
+            "page_number": 1,
+            "status": "completed"
+          },
+          {
+            "page_number": 2,
+            "status": "completed"
+          },
+          {
+            "page_number": 3,
+            "status": "completed"
+          },
+          {
+            "page_number": 4,
+            "status": "completed"
+          },
+          {
+            "page_number": 5,
+            "status": "completed"
+          },
+          {
+            "page_number": 6,
+            "status": "completed"
+          },
+          {
+            "page_number": 7,
+            "status": "completed"
+          },
+          {
+            "page_number": 8,
+            "status": "completed"
+          },
+          {
+            "page_number": 9,
+            "status": "completed"
+          },
+          {
+            "page_number": 10,
+            "status": "pending"
+          },
+          {
+            "page_number": 11,
+            "status": "pending"
+          },
+          {
+            "page_number": 12,
+            "status": "pending"
+          },
+          {
+            "page_number": 13,
+            "status": "pending"
+          },
+          {
+            "page_number": 14,
+            "status": "pending"
+          },
+          {
+            "page_number": 15,
+            "status": "pending"
+          },
+          {
+            "page_number": 16,
+            "status": "pending"
+          },
+          {
+            "page_number": 17,
+            "status": "completed"
+          },
+          {
+            "page_number": 18,
+            "status": "completed"
+          },
+          {
+            "page_number": 19,
+            "status": "pending"
+          },
+          {
+            "page_number": 20,
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "para_number": 15,
+        "pages": [
+          {
+            "page_number": 1,
+            "status": "completed"
+          },
+          {
+            "page_number": 2,
+            "status": "completed"
+          },
+          {
+            "page_number": 3,
+            "status": "pending"
+          },
+          {
+            "page_number": 4,
+            "status": "pending"
+          },
+          {
+            "page_number": 5,
+            "status": "pending"
+          },
+          {
+            "page_number": 6,
+            "status": "pending"
+          },
+          {
+            "page_number": 7,
+            "status": "pending"
+          },
+          {
+            "page_number": 8,
+            "status": "pending"
+          },
+          {
+            "page_number": 9,
+            "status": "pending"
+          },
+          {
+            "page_number": 10,
+            "status": "pending"
+          },
+          {
+            "page_number": 11,
+            "status": "pending"
+          },
+          {
+            "page_number": 12,
+            "status": "completed"
+          },
+          {
+            "page_number": 13,
+            "status": "completed"
+          },
+          {
+            "page_number": 14,
+            "status": "completed"
+          },
+          {
+            "page_number": 15,
+            "status": "completed"
+          },
+          {
+            "page_number": 16,
+            "status": "completed"
+          },
+          {
+            "page_number": 17,
+            "status": "completed"
+          },
+          {
+            "page_number": 18,
+            "status": "completed"
+          },
+          {
+            "page_number": 19,
+            "status": "completed"
+          },
+          {
+            "page_number": 20,
+            "status": "completed"
+          }
+        ]
+      },
+      {
+        "para_number": 16,
+        "pages": [
+          {
+            "page_number": 1,
+            "status": "completed"
+          },
+          {
+            "page_number": 2,
+            "status": "completed"
+          },
+          {
+            "page_number": 3,
+            "status": "completed"
+          },
+          {
+            "page_number": 4,
+            "status": "completed"
+          },
+          {
+            "page_number": 5,
+            "status": "completed"
+          },
+          {
+            "page_number": 6,
+            "status": "completed"
+          },
+          {
+            "page_number": 7,
+            "status": "completed"
+          },
+          {
+            "page_number": 8,
+            "status": "completed"
+          },
+          {
+            "page_number": 9,
+            "status": "pending"
+          },
+          {
+            "page_number": 10,
+            "status": "completed"
+          },
+          {
+            "page_number": 11,
+            "status": "completed"
+          },
+          {
+            "page_number": 12,
+            "status": "completed"
+          },
+          {
+            "page_number": 13,
+            "status": "completed"
+          },
+          {
+            "page_number": 14,
+            "status": "completed"
+          },
+          {
+            "page_number": 15,
+            "status": "pending"
+          },
+          {
+            "page_number": 16,
+            "status": "pending"
+          },
+          {
+            "page_number": 17,
+            "status": "pending"
+          },
+          {
+            "page_number": 18,
+            "status": "pending"
+          },
+          {
+            "page_number": 19,
+            "status": "pending"
+          },
+          {
+            "page_number": 20,
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "para_number": 17,
+        "pages": [
+          {
+            "page_number": 1,
+            "status": "completed"
+          },
+          {
+            "page_number": 2,
+            "status": "completed"
+          },
+          {
+            "page_number": 3,
+            "status": "completed"
+          },
+          {
+            "page_number": 4,
+            "status": "completed"
+          },
+          {
+            "page_number": 5,
+            "status": "completed"
+          },
+          {
+            "page_number": 6,
+            "status": "completed"
+          },
+          {
+            "page_number": 7,
+            "status": "completed"
+          },
+          {
+            "page_number": 8,
+            "status": "completed"
+          },
+          {
+            "page_number": 9,
+            "status": "pending"
+          },
+          {
+            "page_number": 10,
+            "status": "completed"
+          },
+          {
+            "page_number": 11,
+            "status": "completed"
+          },
+          {
+            "page_number": 12,
+            "status": "completed"
+          },
+          {
+            "page_number": 13,
+            "status": "completed"
+          },
+          {
+            "page_number": 14,
+            "status": "pending"
+          },
+          {
+            "page_number": 15,
+            "status": "pending"
+          },
+          {
+            "page_number": 16,
+            "status": "pending"
+          },
+          {
+            "page_number": 17,
+            "status": "pending"
+          },
+          {
+            "page_number": 18,
+            "status": "pending"
+          },
+          {
+            "page_number": 19,
+            "status": "pending"
+          },
+          {
+            "page_number": 20,
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "para_number": 18,
+        "pages": [
+          {
+            "page_number": 1,
+            "status": "completed"
+          },
+          {
+            "page_number": 2,
+            "status": "completed"
+          },
+          {
+            "page_number": 3,
+            "status": "completed"
+          },
+          {
+            "page_number": 4,
+            "status": "completed"
+          },
+          {
+            "page_number": 5,
+            "status": "completed"
+          },
+          {
+            "page_number": 6,
+            "status": "completed"
+          },
+          {
+            "page_number": 7,
+            "status": "completed"
+          },
+          {
+            "page_number": 8,
+            "status": "completed"
+          },
+          {
+            "page_number": 9,
+            "status": "pending"
+          },
+          {
+            "page_number": 10,
+            "status": "pending"
+          },
+          {
+            "page_number": 11,
+            "status": "completed"
+          },
+          {
+            "page_number": 12,
+            "status": "completed"
+          },
+          {
+            "page_number": 13,
+            "status": "completed"
+          },
+          {
+            "page_number": 14,
+            "status": "completed"
+          },
+          {
+            "page_number": 15,
+            "status": "completed"
+          },
+          {
+            "page_number": 16,
+            "status": "completed"
+          },
+          {
+            "page_number": 17,
+            "status": "completed"
+          },
+          {
+            "page_number": 18,
+            "status": "pending"
+          },
+          {
+            "page_number": 19,
+            "status": "pending"
+          },
+          {
+            "page_number": 20,
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "para_number": 19,
+        "pages": [
+          {
+            "page_number": 1,
+            "status": "pending"
+          },
+          {
+            "page_number": 2,
+            "status": "pending"
+          },
+          {
+            "page_number": 3,
+            "status": "pending"
+          },
+          {
+            "page_number": 4,
+            "status": "pending"
+          },
+          {
+            "page_number": 5,
+            "status": "pending"
+          },
+          {
+            "page_number": 6,
+            "status": "pending"
+          },
+          {
+            "page_number": 7,
+            "status": "pending"
+          },
+          {
+            "page_number": 8,
+            "status": "pending"
+          },
+          {
+            "page_number": 9,
+            "status": "completed"
+          },
+          {
+            "page_number": 10,
+            "status": "completed"
+          },
+          {
+            "page_number": 11,
+            "status": "completed"
+          },
+          {
+            "page_number": 12,
+            "status": "completed"
+          },
+          {
+            "page_number": 13,
+            "status": "completed"
+          },
+          {
+            "page_number": 14,
+            "status": "completed"
+          },
+          {
+            "page_number": 15,
+            "status": "pending"
+          },
+          {
+            "page_number": 16,
+            "status": "pending"
+          },
+          {
+            "page_number": 17,
+            "status": "pending"
+          },
+          {
+            "page_number": 18,
+            "status": "pending"
+          },
+          {
+            "page_number": 19,
+            "status": "pending"
+          },
+          {
+            "page_number": 20,
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "para_number": 20,
+        "pages": [
+          {
+            "page_number": 1,
+            "status": "completed"
+          },
+          {
+            "page_number": 2,
+            "status": "completed"
+          },
+          {
+            "page_number": 3,
+            "status": "completed"
+          },
+          {
+            "page_number": 4,
+            "status": "completed"
+          },
+          {
+            "page_number": 5,
+            "status": "completed"
+          },
+          {
+            "page_number": 6,
+            "status": "completed"
+          },
+          {
+            "page_number": 7,
+            "status": "completed"
+          },
+          {
+            "page_number": 8,
+            "status": "completed"
+          },
+          {
+            "page_number": 9,
+            "status": "pending"
+          },
+          {
+            "page_number": 10,
+            "status": "pending"
+          },
+          {
+            "page_number": 11,
+            "status": "completed"
+          },
+          {
+            "page_number": 12,
+            "status": "completed"
+          },
+          {
+            "page_number": 13,
+            "status": "completed"
+          },
+          {
+            "page_number": 14,
+            "status": "pending"
+          },
+          {
+            "page_number": 15,
+            "status": "pending"
+          },
+          {
+            "page_number": 16,
+            "status": "pending"
+          },
+          {
+            "page_number": 17,
+            "status": "pending"
+          },
+          {
+            "page_number": 18,
+            "status": "pending"
+          },
+          {
+            "page_number": 19,
+            "status": "pending"
+          },
+          {
+            "page_number": 20,
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "para_number": 21,
+        "pages": [
+          {
+            "page_number": 1,
+            "status": "completed"
+          },
+          {
+            "page_number": 2,
+            "status": "completed"
+          },
+          {
+            "page_number": 3,
+            "status": "completed"
+          },
+          {
+            "page_number": 4,
+            "status": "completed"
+          },
+          {
+            "page_number": 5,
+            "status": "completed"
+          },
+          {
+            "page_number": 6,
+            "status": "completed"
+          },
+          {
+            "page_number": 7,
+            "status": "completed"
+          },
+          {
+            "page_number": 8,
+            "status": "completed"
+          },
+          {
+            "page_number": 9,
+            "status": "pending"
+          },
+          {
+            "page_number": 10,
+            "status": "completed"
+          },
+          {
+            "page_number": 11,
+            "status": "completed"
+          },
+          {
+            "page_number": 12,
+            "status": "completed"
+          },
+          {
+            "page_number": 13,
+            "status": "pending"
+          },
+          {
+            "page_number": 14,
+            "status": "pending"
+          },
+          {
+            "page_number": 15,
+            "status": "pending"
+          },
+          {
+            "page_number": 16,
+            "status": "pending"
+          },
+          {
+            "page_number": 17,
+            "status": "pending"
+          },
+          {
+            "page_number": 18,
+            "status": "pending"
+          },
+          {
+            "page_number": 19,
+            "status": "pending"
+          },
+          {
+            "page_number": 20,
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "para_number": 22,
+        "pages": [
+          {
+            "page_number": 1,
+            "status": "completed"
+          },
+          {
+            "page_number": 2,
+            "status": "completed"
+          },
+          {
+            "page_number": 3,
+            "status": "completed"
+          },
+          {
+            "page_number": 4,
+            "status": "completed"
+          },
+          {
+            "page_number": 5,
+            "status": "completed"
+          },
+          {
+            "page_number": 6,
+            "status": "completed"
+          },
+          {
+            "page_number": 7,
+            "status": "completed"
+          },
+          {
+            "page_number": 8,
+            "status": "completed"
+          },
+          {
+            "page_number": 9,
+            "status": "completed"
+          },
+          {
+            "page_number": 10,
+            "status": "pending"
+          },
+          {
+            "page_number": 11,
+            "status": "pending"
+          },
+          {
+            "page_number": 12,
+            "status": "pending"
+          },
+          {
+            "page_number": 13,
+            "status": "pending"
+          },
+          {
+            "page_number": 14,
+            "status": "pending"
+          },
+          {
+            "page_number": 15,
+            "status": "completed"
+          },
+          {
+            "page_number": 16,
+            "status": "completed"
+          },
+          {
+            "page_number": 17,
+            "status": "completed"
+          },
+          {
+            "page_number": 18,
+            "status": "completed"
+          },
+          {
+            "page_number": 19,
+            "status": "completed"
+          },
+          {
+            "page_number": 20,
+            "status": "completed"
+          }
+        ]
+      },
+      {
+        "para_number": 23,
+        "pages": [
+          {
+            "page_number": 1,
+            "status": "completed"
+          },
+          {
+            "page_number": 2,
+            "status": "completed"
+          },
+          {
+            "page_number": 3,
+            "status": "completed"
+          },
+          {
+            "page_number": 4,
+            "status": "completed"
+          },
+          {
+            "page_number": 5,
+            "status": "completed"
+          },
+          {
+            "page_number": 6,
+            "status": "completed"
+          },
+          {
+            "page_number": 7,
+            "status": "completed"
+          },
+          {
+            "page_number": 8,
+            "status": "completed"
+          },
+          {
+            "page_number": 9,
+            "status": "completed"
+          },
+          {
+            "page_number": 10,
+            "status": "completed"
+          },
+          {
+            "page_number": 11,
+            "status": "completed"
+          },
+          {
+            "page_number": 12,
+            "status": "completed"
+          },
+          {
+            "page_number": 13,
+            "status": "completed"
+          },
+          {
+            "page_number": 14,
+            "status": "completed"
+          },
+          {
+            "page_number": 15,
+            "status": "completed"
+          },
+          {
+            "page_number": 16,
+            "status": "completed"
+          },
+          {
+            "page_number": 17,
+            "status": "pending"
+          },
+          {
+            "page_number": 18,
+            "status": "pending"
+          },
+          {
+            "page_number": 19,
+            "status": "pending"
+          },
+          {
+            "page_number": 20,
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "para_number": 24,
+        "pages": [
+          {
+            "page_number": 1,
+            "status": "completed"
+          },
+          {
+            "page_number": 2,
+            "status": "completed"
+          },
+          {
+            "page_number": 3,
+            "status": "completed"
+          },
+          {
+            "page_number": 4,
+            "status": "completed"
+          },
+          {
+            "page_number": 5,
+            "status": "completed"
+          },
+          {
+            "page_number": 6,
+            "status": "completed"
+          },
+          {
+            "page_number": 7,
+            "status": "completed"
+          },
+          {
+            "page_number": 8,
+            "status": "completed"
+          },
+          {
+            "page_number": 9,
+            "status": "completed"
+          },
+          {
+            "page_number": 10,
+            "status": "completed"
+          },
+          {
+            "page_number": 11,
+            "status": "completed"
+          },
+          {
+            "page_number": 12,
+            "status": "completed"
+          },
+          {
+            "page_number": 13,
+            "status": "completed"
+          },
+          {
+            "page_number": 14,
+            "status": "completed"
+          },
+          {
+            "page_number": 15,
+            "status": "pending"
+          },
+          {
+            "page_number": 16,
+            "status": "pending"
+          },
+          {
+            "page_number": 17,
+            "status": "pending"
+          },
+          {
+            "page_number": 18,
+            "status": "pending"
+          },
+          {
+            "page_number": 19,
+            "status": "pending"
+          },
+          {
+            "page_number": 20,
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "para_number": 25,
+        "pages": [
+          {
+            "page_number": 1,
+            "status": "completed"
+          },
+          {
+            "page_number": 2,
+            "status": "completed"
+          },
+          {
+            "page_number": 3,
+            "status": "completed"
+          },
+          {
+            "page_number": 4,
+            "status": "completed"
+          },
+          {
+            "page_number": 5,
+            "status": "completed"
+          },
+          {
+            "page_number": 6,
+            "status": "completed"
+          },
+          {
+            "page_number": 7,
+            "status": "completed"
+          },
+          {
+            "page_number": 8,
+            "status": "completed"
+          },
+          {
+            "page_number": 9,
+            "status": "completed"
+          },
+          {
+            "page_number": 10,
+            "status": "completed"
+          },
+          {
+            "page_number": 11,
+            "status": "completed"
+          },
+          {
+            "page_number": 12,
+            "status": "pending"
+          },
+          {
+            "page_number": 13,
+            "status": "pending"
+          },
+          {
+            "page_number": 14,
+            "status": "completed"
+          },
+          {
+            "page_number": 15,
+            "status": "completed"
+          },
+          {
+            "page_number": 16,
+            "status": "completed"
+          },
+          {
+            "page_number": 17,
+            "status": "completed"
+          },
+          {
+            "page_number": 18,
+            "status": "completed"
+          },
+          {
+            "page_number": 19,
+            "status": "completed"
+          },
+          {
+            "page_number": 20,
+            "status": "completed"
+          }
+        ]
+      },
+      {
+        "para_number": 26,
+        "pages": [
+          {
+            "page_number": 1,
+            "status": "completed"
+          },
+          {
+            "page_number": 2,
+            "status": "completed"
+          },
+          {
+            "page_number": 3,
+            "status": "completed"
+          },
+          {
+            "page_number": 4,
+            "status": "completed"
+          },
+          {
+            "page_number": 5,
+            "status": "completed"
+          },
+          {
+            "page_number": 6,
+            "status": "completed"
+          },
+          {
+            "page_number": 7,
+            "status": "pending"
+          },
+          {
+            "page_number": 8,
+            "status": "pending"
+          },
+          {
+            "page_number": 9,
+            "status": "pending"
+          },
+          {
+            "page_number": 10,
+            "status": "pending"
+          },
+          {
+            "page_number": 11,
+            "status": "completed"
+          },
+          {
+            "page_number": 12,
+            "status": "completed"
+          },
+          {
+            "page_number": 13,
+            "status": "completed"
+          },
+          {
+            "page_number": 14,
+            "status": "completed"
+          },
+          {
+            "page_number": 15,
+            "status": "completed"
+          },
+          {
+            "page_number": 16,
+            "status": "completed"
+          },
+          {
+            "page_number": 17,
+            "status": "completed"
+          },
+          {
+            "page_number": 18,
+            "status": "completed"
+          },
+          {
+            "page_number": 19,
+            "status": "completed"
+          },
+          {
+            "page_number": 20,
+            "status": "completed"
+          }
+        ]
+      },
+      {
+        "para_number": 27,
+        "pages": [
+          {
+            "page_number": 1,
+            "status": "completed"
+          },
+          {
+            "page_number": 2,
+            "status": "completed"
+          },
+          {
+            "page_number": 3,
+            "status": "completed"
+          },
+          {
+            "page_number": 4,
+            "status": "completed"
+          },
+          {
+            "page_number": 5,
+            "status": "completed"
+          },
+          {
+            "page_number": 6,
+            "status": "completed"
+          },
+          {
+            "page_number": 7,
+            "status": "completed"
+          },
+          {
+            "page_number": 8,
+            "status": "completed"
+          },
+          {
+            "page_number": 9,
+            "status": "completed"
+          },
+          {
+            "page_number": 10,
+            "status": "completed"
+          },
+          {
+            "page_number": 11,
+            "status": "completed"
+          },
+          {
+            "page_number": 12,
+            "status": "completed"
+          },
+          {
+            "page_number": 13,
+            "status": "completed"
+          },
+          {
+            "page_number": 14,
+            "status": "completed"
+          },
+          {
+            "page_number": 15,
+            "status": "completed"
+          },
+          {
+            "page_number": 16,
+            "status": "completed"
+          },
+          {
+            "page_number": 17,
+            "status": "pending"
+          },
+          {
+            "page_number": 18,
+            "status": "pending"
+          },
+          {
+            "page_number": 19,
+            "status": "pending"
+          },
+          {
+            "page_number": 20,
+            "status": "pending"
+          }
+        ]
+      },
+      {
+        "para_number": 28,
+        "pages": [
+          {
+            "page_number": 1,
+            "status": "completed"
+          },
+          {
+            "page_number": 2,
+            "status": "completed"
+          },
+          {
+            "page_number": 3,
+            "status": "completed"
+          },
+          {
+            "page_number": 4,
+            "status": "completed"
+          },
+          {
+            "page_number": 5,
+            "status": "completed"
+          },
+          {
+            "page_number": 6,
+            "status": "pending"
+          },
+          {
+            "page_number": 7,
+            "status": "completed"
+          },
+          {
+            "page_number": 8,
+            "status": "pending"
+          },
+          {
+            "page_number": 9,
+            "status": "pending"
+          },
+          {
+            "page_number": 10,
+            "status": "pending"
+          },
+          {
+            "page_number": 11,
+            "status": "pending"
+          },
+          {
+            "page_number": 12,
+            "status": "pending"
+          },
+          {
+            "page_number": 13,
+            "status": "pending"
+          },
+          {
+            "page_number": 14,
+            "status": "pending"
+          },
+          {
+            "page_number": 15,
+            "status": "completed"
+          },
+          {
+            "page_number": 16,
+            "status": "completed"
+          },
+          {
+            "page_number": 17,
+            "status": "completed"
+          },
+          {
+            "page_number": 18,
+            "status": "completed"
+          },
+          {
+            "page_number": 19,
+            "status": "completed"
+          },
+          {
+            "page_number": 20,
+            "status": "completed"
+          }
+        ]
+      },
+      {
+        "para_number": 29,
+        "pages": [
+          {
+            "page_number": 1,
+            "status": "completed"
+          },
+          {
+            "page_number": 2,
+            "status": "completed"
+          },
+          {
+            "page_number": 3,
+            "status": "completed"
+          },
+          {
+            "page_number": 4,
+            "status": "completed"
+          },
+          {
+            "page_number": 5,
+            "status": "completed"
+          },
+          {
+            "page_number": 6,
+            "status": "completed"
+          },
+          {
+            "page_number": 7,
+            "status": "completed"
+          },
+          {
+            "page_number": 8,
+            "status": "completed"
+          },
+          {
+            "page_number": 9,
+            "status": "completed"
+          },
+          {
+            "page_number": 10,
+            "status": "completed"
+          },
+          {
+            "page_number": 11,
+            "status": "completed"
+          },
+          {
+            "page_number": 12,
+            "status": "completed"
+          },
+          {
+            "page_number": 13,
+            "status": "pending"
+          },
+          {
+            "page_number": 14,
+            "status": "pending"
+          },
+          {
+            "page_number": 15,
+            "status": "completed"
+          },
+          {
+            "page_number": 16,
+            "status": "completed"
+          },
+          {
+            "page_number": 17,
+            "status": "completed"
+          },
+          {
+            "page_number": 18,
+            "status": "completed"
+          },
+          {
+            "page_number": 19,
+            "status": "completed"
+          },
+          {
+            "page_number": 20,
+            "status": "completed"
+          }
+        ]
+      },
+      {
+        "para_number": 30,
+        "pages": [
+          {
+            "page_number": 1,
+            "status": "completed"
+          },
+          {
+            "page_number": 2,
+            "status": "completed"
+          },
+          {
+            "page_number": 3,
+            "status": "completed"
+          },
+          {
+            "page_number": 4,
+            "status": "completed"
+          },
+          {
+            "page_number": 5,
+            "status": "completed"
+          },
+          {
+            "page_number": 6,
+            "status": "completed"
+          },
+          {
+            "page_number": 7,
+            "status": "completed"
+          },
+          {
+            "page_number": 8,
+            "status": "completed"
+          },
+          {
+            "page_number": 9,
+            "status": "completed"
+          },
+          {
+            "page_number": 10,
+            "status": "completed"
+          },
+          {
+            "page_number": 11,
+            "status": "completed"
+          },
+          {
+            "page_number": 12,
+            "status": "completed"
+          },
+          {
+            "page_number": 13,
+            "status": "completed"
+          },
+          {
+            "page_number": 14,
+            "status": "completed"
+          },
+          {
+            "page_number": 15,
+            "status": "completed"
+          },
+          {
+            "page_number": 16,
+            "status": "completed"
+          },
+          {
+            "page_number": 17,
+            "status": "completed"
+          },
+          {
+            "page_number": 18,
+            "status": "completed"
+          },
+          {
+            "page_number": 19,
+            "status": "completed"
+          },
+          {
+            "page_number": 20,
+            "status": "completed"
+          }
+        ]
+      }
+    ],
+    "challenges": [
+      {
+        "id": "c1",
+        "title": "Memorize Para 03",
+        "description": "Complete memorization and revision of Para 03.",
+        "target_juz": 3,
+        "start_date": "2026-04-26T00:00:00+06:00",
+        "target_date": "2026-04-28T00:00:00+06:00"
+      },
+      {
+        "id": "c2",
+        "title": "Daily Revision: 5 Juz",
+        "description": "Daily revision target to maintain fluency.",
+        "start_date": "2026-04-26T00:00:00+06:00",
+        "target_date": "2026-04-28T23:59:59+06:00"
+      }
+    ],
+    "commitment": {
+      "en": "I, Tawfiq Ahmad, commit to diligently memorizing the Quran, respecting my teachers and peers, and upholding the values of discipline, sincerity, and honesty in my studies.",
+      "bn": "আমি, তাওফিক আহমদ, আমি একমাত্র মহান রাব্বুল আলামীনের সন্তুষ্টি অর্জনের জন্যই কোরআন মাজিদ মুখস্থ করছি। মহান রাব্বুল আলামীন যেন আমাকে কোরআন মাজিদ মুখস্থ করার এবং কোরআন অনুযায়ী জীবন পরিচালনা করার তৌফিক দান করেন। এবং কোরআন মাজিদ পরিপূর্ণ ভাবে এয়াদ ক‌রা‌র তৌফিক দান করেন।"
+    },
+    "mj_ahmad_message": {
+      "en": "Every page you memorize is a step closer to light. Stay steadfast, Zubair — your journey is noble.",
+      "bn": "মহা গ্রন্থ আল কোরআন পরম করুণাময় রাব্বুল আলামীনের কালাম।"
+    },
+    "comments": [
+      {
+        "role": "principal",
+        "name": "Principal Sir",
+        "message": "",
+        "timestamp": ""
+      },
+      {
+        "role": "teacher",
+        "name": "Ustad Arif",
+        "message": "",
+        "timestamp": ""
+      },
+      {
+        "role": "guardian",
+        "name": "Mr. Ahmed Ali",
+        "message": "",
+        "timestamp": ""
+      }
+    ],
+    "access_note": {
+      "en": "This dashboard is available only to Principal, Class Teacher and Guardian devices. For the student's improvement, anyone may leave suggestions, feedback or complaints.",
+      "bn": "এই ড্যাশবোর্ডটি শুধুমাত্র প্রিন্সিপাল স্যার, ক্লাস শিক্ষক ও অভিভাবকের ডিভাইসে উপলব্ধ। শিক্ষার্থীর উন্নতির স্বার্থে যে কেউ পরামর্শ, মতামত বা অভিযোগ লিখতে পারেন।"
+    }
+  }
+}

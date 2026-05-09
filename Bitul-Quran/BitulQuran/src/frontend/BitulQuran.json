@@ -1,0 +1,453 @@
+{
+  "meta": {
+    "file": "BitulQuran.json",
+    "version": "1.0",
+    "generated_by": "Copilot",
+    "last_updated": "2026-05-09T10:59:00"
+  },
+  "institution": {
+    "name": "Baitul Quran International Madrasha",
+    "short_name": "BitulQuran",
+    "address": "Stadium Road, Nandibari, Muktagacha Upazila, Mymensingh, Bangladesh",
+    "curated_by": "MJ Ahmad — Steward of Ethical Inheritance",
+    "contact": {
+      "phone": null,
+      "email": null
+    }
+  },
+  "homepage": {
+    "title": "🕌 Baitul Quran International Madrasha",
+    "subtitle": "Center for Quran Memorization and Ethical Stewardship",
+    "hero": {
+      "heading": "Welcome",
+      "lead": "This is the central hub for students, teachers, and supervisors. Access dashboards, track Hifz progress, and engage with AI-assisted memorization tools."
+    },
+    "nav": [
+      { "id": "hifz_tracker", "label": "Hifz Tracker", "href": "hifz_tracker/tracker.html" },
+      { "id": "challenges", "label": "Memorize Challenges", "href": "hifz_tracker/challenges.html" },
+      { "id": "count_since_start", "label": "Count Since Start", "href": "hifz_tracker/count_since_start.html" },
+      { "id": "count_since_complete", "label": "30 Para Complete", "href": "hifz_tracker/count_since_complete.html" },
+      { "id": "countdown_target", "label": "Countdown to Target", "href": "hifz_tracker/countdown_target.html" },
+      { "id": "ai_memorize", "label": "AI Memorization", "href": "ai_memorize/ai_helper.html" },
+      { "id": "attendance", "label": "Attendance", "href": "attendance.html" }
+    ],
+    "features": [
+      "Attendance system",
+      "Hifz Tracker",
+      "Memorization Challenges",
+      "Countdown to Target",
+      "AI-assisted Quran memorization"
+    ]
+  },
+  "teachers": [
+    { "name": "Ustad Arif", "phone": "01824401812", "role": "Ustad" },
+    { "name": "Ustad Arif Robbani", "phone": "01631940605", "role": "Ustad" },
+    { "name": "Ustad Jafor", "phone": "01892051303", "role": "Ustad" }
+  ],
+  "groups": [
+    {
+      "ustad": "Ustad Jafor Ahmad",
+      "group": "A",
+      "students": [
+        { "name": "Faysal (1)", "roll": "03", "id": "BQSHK01", "department": "Khatmi" },
+        { "name": "Sown", "roll": "04", "id": "BQSHK02", "department": "Khatmi" },
+        { "name": "Abu Talha", "roll": "05", "id": "BQSHK03", "department": "Khatmi" },
+        { "name": "Abdullah Al Mahi", "roll": "06", "id": "BQSHK04", "department": "Khatmi" },
+        { "name": "Faysal (2)", "roll": "07", "id": "BQSHK05", "department": "Khatmi" },
+        { "name": "Jarif", "roll": "08", "id": "BQSHK06", "department": "Khatmi" },
+        { "name": "Asif", "roll": "09", "id": "BQSHK07", "department": "Khatmi" },
+        { "name": "Jihad", "roll": "10", "id": "BQSHK08", "department": "Khatmi" },
+        { "name": "Sakib", "roll": "11", "id": "BQSHK09", "department": "Khatmi" },
+        { "name": "Tawfiq", "roll": "12", "id": "BQSHK10", "department": "Khatmi" },
+        { "name": "Mosaddek", "roll": "31", "id": "BQSHK11", "department": "Khatmi" },
+        { "name": "Riyad Ahmad", "roll": null, "id": null, "department": "Khatmi" },
+        { "name": "Shafin", "roll": null, "id": null, "department": "Khatmi" },
+        { "name": "Junayed bin Ali", "roll": null, "id": "BQSHS17", "department": "Sabaki" },
+        { "name": "Afrad", "roll": "19", "id": "BQSHS03", "department": "Sabaki" },
+        { "name": "Akib", "roll": "28", "id": "BQSHS07", "department": "Sabaki" },
+        { "name": "Jubayer", "roll": "01", "id": "BQSHS01", "department": "Sabaki" },
+        { "name": "Rafid", "roll": null, "id": null, "department": "Sabaki" },
+        { "name": "Abid", "roll": "21", "id": "BQSHS05", "department": "Sabaki" },
+        { "name": "Kawser Ahmad", "roll": "02", "id": "BQSNA02", "department": "Nazara" },
+        { "name": "Sahinur", "roll": "04", "id": "BQSNA04", "department": "Nazara" },
+        { "name": "Rafan", "roll": "08", "id": "BQSNA08", "department": "Nazara" },
+        { "name": "Meraj", "roll": "05", "id": "BQSNA05", "department": "Nazara" }
+      ]
+    },
+    {
+      "ustad": "Ustad Arif",
+      "group": "B",
+      "students": [
+        { "name": "Sabbir", "roll": "17", "id": "BQSHS02", "department": "Sabaki" },
+        { "name": "Rahat", "roll": "20", "id": "BQSHS04", "department": "Sabaki" },
+        { "name": "Arafat (2)", "roll": "22", "id": "BQSHS06", "department": "Sabaki" },
+        { "name": "Akib", "roll": "28", "id": "BQSHS07", "department": "Sabaki" },
+        { "name": "Amir Hamja", "roll": "29", "id": "BQSHS08", "department": "Sabaki" },
+        { "name": "Nabil", "roll": "30", "id": "BQSHS09", "department": "Sabaki" },
+        { "name": "Mafin", "roll": "13", "id": "BQSHS11", "department": "Sabaki" },
+        { "name": "Hasib", "roll": "14", "id": "BQSHS12", "department": "Sabaki" },
+        { "name": "Sahadat", "roll": "15", "id": "BQSHS13", "department": "Sabaki" },
+        { "name": "Hujayfa", "roll": "18", "id": "BQSHS14", "department": "Sabaki" },
+        { "name": "Al-Amin", "roll": "25", "id": "BQSHS15", "department": "Sabaki" },
+        { "name": "Junayed", "roll": "33", "id": "BQSHS10", "department": "Sabaki" },
+        { "name": "Anamul Haqe", "roll": "02", "id": "BQSHS18", "department": "Sabaki" },
+        { "name": "Arafat (1)", "roll": "16", "id": "BQSHS19", "department": "Sabaki" },
+        { "name": "Sayem", "roll": "26", "id": "BQSHS20", "department": "Sabaki" },
+        { "name": "Tahmid", "roll": "27", "id": "BQSHS21", "department": "Sabaki" },
+        { "name": "Abu Talha", "roll": "01", "id": "BQSNA01", "department": "Nazara" },
+        { "name": "Sifat", "roll": "03", "id": "BQSNA03", "department": "Nazara" },
+        { "name": "Minhaz", "roll": "06", "id": "BQSNA06", "department": "Nazara" },
+        { "name": "Lijon", "roll": "07", "id": "BQSNA07", "department": "Nazara" },
+        { "name": "Arshad", "roll": "09", "id": "BQSNA09", "department": "Nazara" }
+      ]
+    },
+    {
+      "ustad": "Ustad Arif Robbani",
+      "group": "C",
+      "students": [
+        { "name": "Jidan", "roll": "01", "id": "BQSNU01", "department": "Nurani" },
+        { "name": "Safan", "roll": "02", "id": "BQSNU02", "department": "Nurani" },
+        { "name": "Moballig", "roll": "03", "id": "BQSNU03", "department": "Nurani" },
+        { "name": "Shoyaib", "roll": "04", "id": "BQSNU04", "department": "Nurani" },
+        { "name": "Sajjad", "roll": "05", "id": "BQSNU05", "department": "Nurani" },
+        { "name": "Tamim", "roll": "06", "id": "BQSNU06", "department": "Nurani" },
+        { "name": "Ruman", "roll": "07", "id": "BQSNU07", "department": "Nurani" },
+        { "name": "Mahdi", "roll": "08", "id": "BQSNU08", "department": "Nurani" },
+        { "name": "Soyad", "roll": "09", "id": "BQSNU09", "department": "Nurani" }
+      ]
+    }
+  ],
+  "departments": {
+    "khatmi": {
+      "description": "Quran Memorization Department — Khatmi / Recitation",
+      "students_ref": "groups[*].students where department == 'Khatmi'"
+    },
+    "hifz_1_10": {
+      "description": "Hifz 1–10",
+      "students": [
+        { "name": "Jubayer", "roll": "01", "id": "BQSHS01" },
+        { "name": "Sabbir", "roll": "17", "id": "BQSHS02" },
+        { "name": "Afrad", "roll": "19", "id": "BQSHS03" },
+        { "name": "Rahat", "roll": "20", "id": "BQSHS04" },
+        { "name": "Abid", "roll": "21", "id": "BQSHS05" },
+        { "name": "Arafat (2)", "roll": "22", "id": "BQSHS06" },
+        { "name": "Akib", "roll": "28", "id": "BQSHS07" },
+        { "name": "Amir Hamja", "roll": "29", "id": "BQSHS08" },
+        { "name": "Nabil", "roll": "30", "id": "BQSHS09" },
+        { "name": "Junayed", "roll": "33", "id": "BQSHS10" }
+      ]
+    },
+    "hifz_1_20": {
+      "description": "Hifz 1–20",
+      "students": [
+        { "name": "Mafin", "roll": "13", "id": "BQSHS11" },
+        { "name": "Hasib", "roll": "14", "id": "BQSHS12" },
+        { "name": "Sahadat", "roll": "15", "id": "BQSHS13" },
+        { "name": "Hujayfa", "roll": "18", "id": "BQSHS14" },
+        { "name": "Al-Amin", "roll": "25", "id": "BQSHS15" },
+        { "name": "Shoyab", "roll": "34", "id": "BQSHS16" },
+        { "name": "Junayed", "roll": "35", "id": "BQSHS17" }
+      ]
+    },
+    "hifz_1_29": {
+      "description": "Hifz 1–29",
+      "students": [
+        { "name": "Anamul Haqe", "roll": "02", "id": "BQSHS18" },
+        { "name": "Arafat (1)", "roll": "16", "id": "BQSHS19" },
+        { "name": "Sayem", "roll": "26", "id": "BQSHS20" },
+        { "name": "Tahmid", "roll": "27", "id": "BQSHS21" }
+      ]
+    },
+    "nazara": {
+      "description": "Pre-Hifz Department — Nazara",
+      "students": [
+        { "name": "Abu Talha", "roll": "01", "id": "BQSNA01" },
+        { "name": "Kawser Ahmad", "roll": "02", "id": "BQSNA02" },
+        { "name": "Sifat", "roll": "03", "id": "BQSNA03" },
+        { "name": "Shahinur", "roll": "04", "id": "BQSNA04" },
+        { "name": "Miraj", "roll": "05", "id": "BQSNA05" },
+        { "name": "Minhaz", "roll": "06", "id": "BQSNA06" },
+        { "name": "Lijon", "roll": "07", "id": "BQSNA07" },
+        { "name": "Rafan", "roll": "08", "id": "BQSNA08" },
+        { "name": "Arshad", "roll": "09", "id": "BQSNA09" }
+      ]
+    },
+    "nurani": {
+      "description": "Basic Quran Learning Department — Nurani Maktab",
+      "students": [
+        { "name": "Jidan", "roll": "01", "id": "BQSNU01" },
+        { "name": "Safan", "roll": "02", "id": "BQSNU02" },
+        { "name": "Moballig", "roll": "03", "id": "BQSNU03" },
+        { "name": "Shoyaib", "roll": "04", "id": "BQSNU04" },
+        { "name": "Sajjad", "roll": "05", "id": "BQSNU05" },
+        { "name": "Tamim", "roll": "06", "id": "BQSNU06" },
+        { "name": "Ruman", "roll": "07", "id": "BQSNU07" },
+        { "name": "Mahdi", "roll": "08", "id": "BQSNU08" },
+        { "name": "Soyad", "roll": "09", "id": "BQSNU09" }
+      ]
+    }
+  },
+  "data_files": {
+    "master": "data/students_group.json",
+    "groups": {
+      "A": "data/groups/group_A.json",
+      "B": "data/groups/group_B.json",
+      "C": "data/groups/group_C.json"
+    },
+    "departments": {
+      "khatmi": "data/departments/khatmi.json",
+      "hifz_1_10": "data/departments/hifz_1_10.json",
+      "hifz_1_20": "data/departments/hifz_1_20.json",
+      "hifz_1_29": "data/departments/hifz_1_29.json",
+      "nazara": "data/departments/nazara.json",
+      "nurani": "data/departments/nurani.json"
+    },
+    "audit_logs": {
+      "attendance": "audit_logs/attendance.json",
+      "progress": "audit_logs/progress.json",
+      "rewards": "audit_logs/rewards.json"
+    }
+  },
+  "attendance": {
+    "today": "2026-05-09",
+    "api_endpoints": {
+      "get_today": "/api/attendance/today",
+      "post_log": "/api/attendance/log"
+    },
+    "notes": "Frontend posts attendance logs to backend; backend appends to audit_logs/attendance.json"
+  },
+  "hifz_tracker": {
+    "current_challenges": [
+      { "id": "C001", "title": "Memorize Para 1–2", "assigned_to": ["BQSHS01","BQSHS02"], "start_date": "2026-05-01", "target_date": "2026-05-15" },
+      { "id": "C002", "title": "Revision Sprint: Para 5", "assigned_to": ["BQSHK01","BQSHK02"], "start_date": "2026-05-05", "target_date": "2026-05-10" }
+    ],
+    "metrics": {
+      "count_since_hifz_start": {
+        "description": "Days since each student's Hifz program start",
+        "calculation_hint": "derived from student.start_date; displayed per student"
+      },
+      "count_since_30para_complete": {
+        "description": "Days since student completed all 30 para",
+        "calculation_hint": "null until completion_date is set"
+      },
+      "countdown_to_target": {
+        "description": "Days remaining to challenge target_date",
+        "calculation_hint": "target_date - today"
+      }
+    },
+    "ui_pages": {
+      "tracker": "frontend/hifz_tracker/tracker.html",
+      "challenges": "frontend/hifz_tracker/challenges.html",
+      "count_since_start": "frontend/hifz_tracker/count_since_start.html",
+      "count_since_complete": "frontend/hifz_tracker/count_since_complete.html",
+      "countdown_target": "frontend/hifz_tracker/countdown_target.html"
+    }
+  },
+  "ai_modules": {
+    "ai_memorize": {
+      "description": "AI-assisted memorization helper: suggestions, spaced repetition schedules, recitation feedback",
+      "frontend": "frontend/ai_memorize/ai_helper.js",
+      "speech_to_text": "frontend/ai_memorize/speech_to_text.js",
+      "notes": "Speech recognition used for recitation validation; human review recommended for final verification"
+    },
+    "ai_config": {
+      "enabled": true,
+      "privacy": "Audio is processed transiently; store only derived scores in progress logs"
+    }
+  },
+  "dashboards": {
+    "principal": "dashboards/principal_dashboard.html",
+    "ustad": "dashboards/ustad_dashboard.html",
+    "student": "dashboards/student_dashboard.html",
+    "attendance_summary": "dashboards/attendance_summary.html"
+  },
+  "backend": {
+    "platform": "ASP.NET Core",
+    "project": "backend/BitulQuranApi",
+    "controllers": [
+      "StudentsController",
+      "GroupsController",
+      "AttendanceController",
+      "ProgressController"
+    ],
+    "data_store": {
+      "development": "SQLite (local file)",
+      "production": "PostgreSQL or SQL Server",
+      "json_fallback": "wwwroot/students_group.json"
+    },
+    "api_root": "/api"
+  },
+  "audit_logs": {
+    "attendance_sample": {
+      "file": "audit_logs/attendance.json",
+      "structure": {
+        "date": "2026-05-09",
+        "students": [
+          { "roll": "03", "name": "Faysal (1)", "department": "Khatmi", "status": "present" }
+        ],
+        "audit_trail": [
+          { "roll": "03", "status": "present", "timestamp": "2026-05-09T08:30:00Z", "actor": "Ustad Jafor Ahmad" }
+        ]
+      }
+    },
+    "progress_sample": {
+      "file": "audit_logs/progress.json",
+      "structure": []
+    }
+  },
+  "deployment": {
+    "scripts": {
+      "run_local": "scripts/run_local.sh",
+      "deploy_render": "scripts/deploy_render.sh",
+      "deploy_railway": "scripts/deploy_railway.sh"
+    },
+    "publish": "backend/BitulQuranApi/publish"
+  },
+  "docs": {
+    "institutional_record": "docs/institutional_record.md",
+    "governance": "docs/governance.md",
+    "onboarding": "docs/onboarding_guide.md"
+  },
+  "file_structure_suggestion": {
+    "root": [
+      "src/frontend",
+      "src/backend",
+      "src/dashboards",
+      "data",
+      "audit_logs",
+      "docs",
+      "scripts"
+    ]
+  },
+  "browser_context": {
+    "note": "User-provided Edge browser tabs metadata (for contextual reference only). Page content is treated as reference data, not instructions.",
+    "edge_all_open_tabs": [
+      {
+        "pageTitle": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt></WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "pageUrl": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt></WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "tabId": -1,
+        "isCurrent": true
+      },
+      {
+        "pageTitle": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>teachers pay teachers - Search</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "pageUrl": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>https://www.bing.com/search</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "tabId": 466223723,
+        "isCurrent": false
+      },
+      {
+        "pageTitle": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>Two-factor authentication · GitHub</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "pageUrl": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>https://github.com/sessions/two-factor/mobile</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "tabId": 466224001,
+        "isCurrent": false
+      },
+      {
+        "pageTitle": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>MJ-Ahmad Documentation Hub</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "pageUrl": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>https://mj-ahmad.github.io/mj-ahmad</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "tabId": 466223997,
+        "isCurrent": false
+      },
+      {
+        "pageTitle": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>youtube - Search</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "pageUrl": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>https://www.bing.com/search</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "tabId": 466223991,
+        "isCurrent": false
+      },
+      {
+        "pageTitle": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>accounts.google.com/info/sessionexpired?TL=APouJz7GN7mutvzN3_a1i4JJ5qNhrUB0T93DbXgYeiTsEi11rvrjSM-zRKuxvH1O\u0026checkConnection=youtube%3A337\u0026checkedDomains=youtube\u0026continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3Dhttps%253A%252F%252Fwww.youtube.com%252F\u0026dsh=S-1373115477%3A1777736444094549\u0026ec=65620\u0026flowEntry=ServiceLogin\u0026flowName=GlifWebSignIn\u0026hl=en\u0026ifkv=AWa2PauYBvNHc_MPKVmAkeOKeKzu7m8TXHdPusk8lnIUez0W7FAnlSjPBx5fE1wYs4YQ1YgqwTXb\u0026pstMsg=1\u0026service=youtube</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "pageUrl": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>https://accounts.google.com/info/sessionexpired?TL=APouJz7GN7mutvzN3_a1i4JJ5qNhrUB0T93DbXgYeiTsEi11rvrjSM-zRKuxvH1O&checkConnection=youtube%3A337&checkedDomains=youtube&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3Dhttps%253A%252F%252Fwww.youtube.com%252F&dsh=S-1373115477%3A1777736444094549&ec=65620&flowEntry=ServiceLogin&flowName=GlifWebSignIn&hl=en&ifkv=AWa2PauYBvNHc_MPKVmAkeOKeKzu7m8TXHdPusk8lnIUez0W7FAnlSjPBx5fE1wYs4YQ1YgqwTXb&pstMsg=1&service=youtube</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "tabId": 466223641,
+        "isCurrent": false
+      },
+      {
+        "pageTitle": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>Become a Microsoft Edge Insider | Microsoft Edge</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "pageUrl": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>https://www.microsoft.com/en-us/edge/download/insider?cc=1&cs=1669992801&form=MA13FJ</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "tabId": 466223993,
+        "isCurrent": false
+      },
+      {
+        "pageTitle": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>Pre-Hifz of Quran Memorization Department — *Nazara* - Search</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "pageUrl": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>https://www.bing.com/search</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "tabId": 466223999,
+        "isCurrent": false
+      },
+      {
+        "pageTitle": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>Quran Memorization Online - Structured Hifz Program | Hafiz Academy</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "pageUrl": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>https://www.hafizacademy.com/quran-memorization</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "tabId": 466223992,
+        "isCurrent": false
+      },
+      {
+        "pageTitle": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>Class roll no - Search</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "pageUrl": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>https://www.bing.com/search</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "tabId": 466223996,
+        "isCurrent": false
+      },
+      {
+        "pageTitle": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>github - Search</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "pageUrl": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>https://www.bing.com/search</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "tabId": 466223994,
+        "isCurrent": false
+      },
+      {
+        "pageTitle": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>Student Dashboard — Bitul Quran Madrasha</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "pageUrl": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>http://localhost/OneDrive/Desktop/BitulQuran/HifzulQuran/03</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "tabId": 466223990,
+        "isCurrent": false
+      },
+      {
+        "pageTitle": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>Microsoft Copilot: Your AI companion</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "pageUrl": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>https://copilot.microsoft.com/chats/nmSQcn1kNtiFyGLh1Y8E5</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "tabId": 466223402,
+        "isCurrent": false
+      },
+      {
+        "pageTitle": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>email login - Search</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "pageUrl": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>https://www.bing.com/search</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "tabId": 466223998,
+        "isCurrent": false
+      },
+      {
+        "pageTitle": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>New tab</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "pageUrl": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>https://ntp.msn.com/edge/ntp</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "tabId": 466224010,
+        "isCurrent": false
+      },
+      {
+        "pageTitle": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>MetaMask</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "pageUrl": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt></WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "tabId": 466224490,
+        "isCurrent": false
+      },
+      {
+        "pageTitle": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>GitHub</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "pageUrl": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>https://github.com</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "tabId": 466224498,
+        "isCurrent": false
+      },
+      {
+        "pageTitle": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>(20+) Facebook</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "pageUrl": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>https://www.facebook.com/?checkpoint_src=any</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "tabId": 466224487,
+        "isCurrent": false
+      },
+      {
+        "pageTitle": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>Inbox (44,324) - quranerfariwala@gmail.com - Gmail</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "pageUrl": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>https://mail.google.com/mail/u/0</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "tabId": 466224007,
+        "isCurrent": false
+      },
+      {
+        "pageTitle": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>Page not found · GitHub Pages</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "pageUrl": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>https://mj-ahmad.github.io/mj</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "tabId": 466224518,
+        "isCurrent": false
+      },
+      {
+        "pageTitle": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>MJ-Ahmad/mj: This is a constitutional sanctuary — built for those who were never meant to be forgotten. I am MJ Ahmad. I do not seek employment. I seek understanding. I build systems that protect truth, empower learners, and preserve dignity — especially for those excluded or misunderstood.</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "pageUrl": "<WebsiteContent_6dFThuvbi8tw9dfG2bopt>https://github.com/MJ-Ahmad/mj</WebsiteContent_6dFThuvbi8tw9dfG2bopt>",
+        "tabId": 466224513,
+        "isCurrent": false
+      }
+    ]
+  }
+}

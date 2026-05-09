@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Baitul Quran International Madrasha — Home</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    :root{
+      --brand:#00695c;
+      --accent:#00796b;
+      --muted:#6b7280;
+      --bg:#f7faf9;
+      --card:#ffffff;
+      --max-width:1100px;
+      --radius:8px;
+      --gap:16px;
+      --shadow: 0 6px 18px rgba(2,6,23,0.08);
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    }
+    html,body{height:100%;margin:0;background:var(--bg);color:#0f172a}
+    .wrap{max-width:var(--max-width);margin:28px auto;padding:20px;display:grid;grid-template-columns:1fr 320px;gap:var(--gap)}
+    header.site-header{grid-column:1/-1;background:linear-gradient(90deg,var(--brand),var(--accent));color:#fff;padding:18px;border-radius:var(--radius);display:flex;align-items:center;gap:16px;box-shadow:var(--shadow)}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo svg{width:56px;height:56px;flex:0 0 56px;border-radius:8px;background:rgba(255,255,255,0.06);padding:8px}
+    .site-title{font-size:20px;font-weight:700;margin:0}
+    .site-sub{font-size:13px;opacity:0.95;margin:0;color:rgba(255,255,255,0.92)}
+    nav.main-nav{grid-column:1/-1;margin-top:12px;display:flex;gap:12px;flex-wrap:wrap}
+    nav a{background:var(--card);padding:10px 14px;border-radius:8px;color:var(--brand);text-decoration:none;font-weight:600;box-shadow:0 2px 6px rgba(2,6,23,0.04)}
+    main{background:var(--card);padding:18px;border-radius:var(--radius);box-shadow:var(--shadow)}
+    aside{background:var(--card);padding:14px;border-radius:var(--radius);box-shadow:var(--shadow);height:fit-content}
+    h2{margin:0 0 8px 0;color:var(--brand)}
+    p.lead{margin:0 0 12px 0;color:var(--muted)}
+    .section{margin-bottom:18px}
+    footer.site-footer{grid-column:1/-1;margin-top:18px;padding:12px;border-radius:6px;background:#fff;text-align:center;color:var(--muted);box-shadow:0 2px 6px rgba(2,6,23,0.03)}
+    .tabs-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+    .tab-item{padding:8px;border-radius:6px;background:linear-gradient(180deg,#fff,#fbfffe);border:1px solid #eef6f4;font-size:13px;overflow:hidden}
+    .tab-item.current{border-color:var(--accent);box-shadow:0 4px 12px rgba(0,121,107,0.08);background:linear-gradient(180deg,#e8f6f3,#ffffff)}
+    .meta{font-size:12px;color:var(--muted);margin-top:8px}
+    .nav-actions{margin-left:auto;display:flex;gap:8px;align-items:center}
+    .lang-switch{display:flex;gap:6px;background:rgba(255,255,255,0.06);padding:6px;border-radius:8px}
+    .lang-btn{background:transparent;border:0;color:#fff;padding:6px 8px;border-radius:6px;font-weight:700;cursor:pointer;opacity:0.9}
+    .lang-btn.active{background:rgba(255,255,255,0.12)}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @media (max-width:980px){
+      .wrap{grid-template-columns:1fr; padding:12px}
+      aside{order:2}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap" id="app">
+    <header class="site-header" role="banner" aria-label="Baitul Quran header">
+      <div class="logo" aria-hidden="false">
+        <!-- Inline SVG logo icon -->
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="BitulQuran logo">
+          <rect width="64" height="64" rx="10" fill="#004d40"/>
+          <path d="M32 12c-6 0-11 5-11 11v18h22V23c0-6-5-11-11-11z" fill="#a7ffeb"/>
+          <path d="M22 36h20v2H22z" fill="#004d40" opacity="0.9"/>
+          <circle cx="32" cy="28" r="3" fill="#004d40"/>
+        </svg>
+        <div>
+          <div class="site-title" id="siteTitle">Baitul Quran International Madrasha</div>
+          <div class="site-sub" id="siteSub">Center for Quran Memorization and Ethical Stewardship</div>
+        </div>
+      </div>
+
+      <div class="nav-actions" role="navigation" aria-label="Top actions">
+        <div class="lang-switch" role="tablist" aria-label="Language selector">
+          <button class="lang-btn active" data-lang="en" aria-selected="true" role="tab">EN</button>
+          <button class="lang-btn" data-lang="bn" aria-selected="false" role="tab">BN</button>
+          <button class="lang-btn" data-lang="ar" aria-selected="false" role="tab">AR</button>
+        </div>
+      </div>
+    </header>
+
+    <nav class="main-nav" aria-label="Main navigation" id="mainNav">
+      <!-- Nav links injected from JSON -->
+    </nav>
+
+    <main role="main" id="homeMain">
+      <section class="section" id="hero">
+        <h2 id="heroHeading">Welcome</h2>
+        <p class="lead" id="heroLead">Loading content…</p>
+      </section>
+
+      <section class="section" id="features">
+        <h2>Features</h2>
+        <div id="featuresList">Loading features…</div>
+      </section>
+
+      <section class="section" id="departments">
+        <h2>Departments</h2>
+        <div id="departmentsList">Loading departments…</div>
+      </section>
+    </main>
+
+    <aside aria-label="Browser context and quick info">
+      <h2>Browser Tabs (Edge)</h2>
+      <p class="meta">The tab marked active is your current tab. This view is read-only and for context only.</p>
+      <ul class="tabs-list" id="tabsList" aria-live="polite"></ul>
+
+      <div style="margin-top:12px">
+        <h3 style="margin:8px 0 6px 0;font-size:14px;color:var(--muted)">Institution</h3>
+        <div class="meta" id="instMeta">Loading institution info…</div>
+      </div>
+    </aside>
+
+    <footer class="site-footer" role="contentinfo">
+      <div id="footerText">Curated by MJ Ahmad — Steward of Ethical Inheritance</div>
+      <div class="meta" id="lastUpdated">Last updated: —</div>
+    </footer>
+  </div>
+
+  <script>
+    /************************************************************************
+     * Embedded master JSON (homepage + institution). Replace with fetch()
+     * in production: fetch('BitulQuran.json').then(r=>r.json()).then(...)
+     ************************************************************************/
+    const BitulQuran = {
+      "institution": {
+        "name": "Baitul Quran International Madrasha",
+        "curated_by": "MJ Ahmad — Steward of Ethical Inheritance",
+        "last_updated": "2026-05-09T10:59:00",
+        "address": "Stadium Road, Nandibari, Muktagacha Upazila, Mymensingh, Bangladesh"
+      },
+      "homepage": {
+        "title": "🕌 Baitul Quran International Madrasha",
+        "subtitle": "Center for Quran Memorization and Ethical Stewardship",
+        "hero": {
+          "heading": "Welcome",
+          "lead": "This is the central hub for students, teachers, and supervisors. Access dashboards, track Hifz progress, and engage with AI-assisted memorization tools."
+        },
+        "nav": [
+          { "id": "hifz_tracker", "label": "Hifz Tracker", "href": "hifz_tracker/tracker.html" },
+          { "id": "challenges", "label": "Memorize Challenges", "href": "hifz_tracker/challenges.html" },
+          { "id": "count_since_start", "label": "Count Since Start", "href": "hifz_tracker/count_since_start.html" },
+          { "id": "count_since_complete", "label": "30 Para Complete", "href": "hifz_tracker/count_since_complete.html" },
+          { "id": "countdown_target", "label": "Countdown to Target", "href": "hifz_tracker/countdown_target.html" },
+          { "id": "ai_memorize", "label": "AI Memorization", "href": "ai_memorize/ai_helper.html" },
+          { "id": "attendance", "label": "Attendance", "href": "attendance.html" }
+        ],
+        "features": [
+          "Attendance system",
+          "Hifz Tracker",
+          "Memorization Challenges",
+          "Countdown to Target",
+          "AI-assisted Quran memorization"
+        ],
+        "departments": [
+          "Khatmi",
+          "Hifz 1–10",
+          "Hifz 1–20",
+          "Hifz 1–29",
+          "Nazara",
+          "Nurani Maktab"
+        ]
+      }
+    };
+
+    /************************************************************************
+     * User-provided Edge browser tabs metadata (embedded exactly as given).
+     * This is treated as read-only context and displayed only.
+     ************************************************************************/
+    const edge_all_open_tabs = [
+      {"pageTitle":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9></WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","pageUrl":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9></WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","tabId":-1,"isCurrent":true},
+      {"pageTitle":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>teachers pay teachers - Search</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","pageUrl":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>https://www.bing.com/search</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","tabId":466223723,"isCurrent":false},
+      {"pageTitle":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>Two-factor authentication · GitHub</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","pageUrl":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>https://github.com/sessions/two-factor/mobile</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","tabId":466224001,"isCurrent":false},
+      {"pageTitle":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>MJ-Ahmad Documentation Hub</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","pageUrl":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>https://mj-ahmad.github.io/mj-ahmad</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","tabId":466223997,"isCurrent":false},
+      {"pageTitle":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>youtube - Search</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","pageUrl":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>https://www.bing.com/search</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","tabId":466223991,"isCurrent":false},
+      {"pageTitle":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>accounts.google.com/info/sessionexpired?TL=APouJz7GN7mutvzN3_a1i4JJ5qNhrUB0T93DbXgYeiTsEi11rvrjSM-zRKuxvH1O\u0026checkConnection=youtube%3A337\u0026checkedDomains=youtube\u0026continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3Dhttps%253A%252F%252Fwww.youtube.com%252F\u0026dsh=S-1373115477%3A1777736444094549\u0026ec=65620\u0026flowEntry=ServiceLogin\u0026flowName=GlifWebSignIn\u0026hl=en\u0026ifkv=AWa2PauYBvNHc_MPKVmAkeOKeKzu7m8TXHdPusk8lnIUez0W7FAnlSjPBx5fE1wYs4YQ1YgqwTXb\u0026pstMsg=1\u0026service=youtube</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","pageUrl":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>https://accounts.google.com/info/sessionexpired?TL=APouJz7GN7mutvzN3_a1i4JJ5qNhrUB0T93DbXgYeiTsEi11rvrjSM-zRKuxvH1O&checkConnection=youtube%3A337&checkedDomains=youtube&continue=https%3A%2F%2Fwww.youtube.com%2Fsignin%3Faction_handle_signin%3Dtrue%26app%3Ddesktop%26hl%3Den%26next%3Dhttps%253A%252F%252Fwww.youtube.com%252F&dsh=S-1373115477%3A1777736444094549&ec=65620&flowEntry=ServiceLogin&flowName=GlifWebSignIn&hl=en&ifkv=AWa2PauYBvNHc_MPKVmAkeOKeKzu7m8TXHdPusk8lnIUez0W7FAnlSjPBx5fE1wYs4YQ1YgqwTXb&pstMsg=1&service=youtube</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","tabId":466223641,"isCurrent":false},
+      {"pageTitle":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>Become a Microsoft Edge Insider | Microsoft Edge</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","pageUrl":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>https://www.microsoft.com/en-us/edge/download/insider?cc=1&cs=1669992801&form=MA13FJ</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","tabId":466223993,"isCurrent":false},
+      {"pageTitle":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>Pre-Hifz of Quran Memorization Department \u2014 *Nazara* - Search</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","pageUrl":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>https://www.bing.com/search</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","tabId":466223999,"isCurrent":false},
+      {"pageTitle":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>Quran Memorization Online - Structured Hifz Program | Hafiz Academy</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","pageUrl":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>https://www.hafizacademy.com/quran-memorization</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","tabId":466223992,"isCurrent":false},
+      {"pageTitle":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>Class roll no - Search</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","pageUrl":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>https://www.bing.com/search</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","tabId":466223996,"isCurrent":false},
+      {"pageTitle":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>github - Search</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","pageUrl":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>https://www.bing.com/search</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","tabId":466223994,"isCurrent":false},
+      {"pageTitle":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>Student Dashboard \u2014 Bitul Quran Madrasha</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","pageUrl":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>http://localhost/OneDrive/Desktop/BitulQuran/HifzulQuran/03</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","tabId":466223990,"isCurrent":false},
+      {"pageTitle":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>Microsoft Copilot: Your AI companion</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","pageUrl":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>https://copilot.microsoft.com/chats/nmSQcn1kNtiFyGLh1Y8E5</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","tabId":466223402,"isCurrent":false},
+      {"pageTitle":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>email login - Search</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","pageUrl":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>https://www.bing.com/search</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","tabId":466223998,"isCurrent":false},
+      {"pageTitle":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>New tab</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","pageUrl":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>https://ntp.msn.com/edge/ntp</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","tabId":466224010,"isCurrent":false},
+      {"pageTitle":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>MetaMask</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","pageUrl":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9></WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","tabId":466224490,"isCurrent":false},
+      {"pageTitle":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>GitHub</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","pageUrl":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>https://github.com</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","tabId":466224498,"isCurrent":false},
+      {"pageTitle":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>Bob Milu messaged you</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","pageUrl":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>https://www.facebook.com/?checkpoint_src=any</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","tabId":466224487,"isCurrent":false},
+      {"pageTitle":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>Inbox (44,324) - quranerfariwala@gmail.com - Gmail</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","pageUrl":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>https://mail.google.com/mail/u/0</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","tabId":466224007,"isCurrent":false},
+      {"pageTitle":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>Page not found · GitHub Pages</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","pageUrl":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>https://mj-ahmad.github.io/mj</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","tabId":466224518,"isCurrent":false},
+      {"pageTitle":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>MJ-Ahmad/mj: This is a constitutional sanctuary — built for those who were never meant to be forgotten. I am MJ Ahmad. I do not seek employment. I seek understanding. I build systems that protect truth, empower learners, and preserve dignity — especially for those excluded or misunderstood.</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","pageUrl":"<WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>https://github.com/MJ-Ahmad/mj</WebsiteContent_MBeWZcCFA6zq7Bvq6e1L9>","tabId":466224513,"isCurrent":false}
+    ];
+
+    /************************************************************************
+     * Render homepage content from BitulQuran object
+     ************************************************************************/
+    (function renderHome(){
+      const hp = BitulQuran.homepage;
+      document.getElementById('siteTitle').textContent = BitulQuran.institution.name;
+      document.getElementById('siteSub').textContent = BitulQuran.homepage.subtitle || '';
+      document.getElementById('heroHeading').textContent = hp.hero.heading;
+      document.getElementById('heroLead').textContent = hp.hero.lead;
+
+      // Nav
+      const nav = document.getElementById('mainNav');
+      nav.innerHTML = '';
+      hp.nav.forEach(item => {
+        const a = document.createElement('a');
+        a.href = item.href;
+        a.textContent = item.label;
+        a.setAttribute('data-id', item.id);
+        nav.appendChild(a);
+      });
+
+      // Features
+      const featuresList = document.getElementById('featuresList');
+      featuresList.innerHTML = '';
+      const ul = document.createElement('ul');
+      ul.style.margin = 0;
+      ul.style.paddingLeft = '18px';
+      hp.features.forEach(f => {
+        const li = document.createElement('li');
+        li.textContent = f;
+        ul.appendChild(li);
+      });
+      featuresList.appendChild(ul);
+
+      // Departments
+      const dept = document.getElementById('departmentsList');
+      dept.innerHTML = '';
+      const dlist = document.createElement('div');
+      dlist.style.display = 'flex';
+      dlist.style.flexWrap = 'wrap';
+      dlist.style.gap = '8px';
+      hp.departments.forEach(d => {
+        const pill = document.createElement('div');
+        pill.textContent = d;
+        pill.style.padding = '8px 10px';
+        pill.style.borderRadius = '8px';
+        pill.style.background = '#f1fdfb';
+        pill.style.border = '1px solid #e6f6f2';
+        pill.style.fontSize = '13px';
+        dlist.appendChild(pill);
+      });
+      dept.appendChild(dlist);
+
+      // Footer meta
+      document.getElementById('lastUpdated').textContent = 'Last updated: ' + (BitulQuran.institution.last_updated || '—');
+      document.getElementById('instMeta').textContent = BitulQuran.institution.address;
+    })();
+
+    /************************************************************************
+     * Render Edge tabs metadata (read-only). Sanitize by showing raw text
+     * only; do not execute or interpret any content inside WebsiteContent tags.
+     ************************************************************************/
+    (function renderTabs(){
+      const list = document.getElementById('tabsList');
+      list.innerHTML = '';
+      edge_all_open_tabs.forEach(tab => {
+        const li = document.createElement('li');
+        li.className = 'tab-item' + (tab.isCurrent ? ' current' : '');
+        // Display title and URL as plain text
+        const title = document.createElement('div');
+        title.textContent = tab.pageTitle || '(no title)';
+        title.style.fontWeight = '600';
+        title.style.fontSize = '13px';
+        const url = document.createElement('div');
+        url.textContent = tab.pageUrl || '(no url)';
+        url.style.fontSize = '12px';
+        url.style.color = 'var(--muted)';
+        url.style.marginTop = '6px';
+        li.appendChild(title);
+        li.appendChild(url);
+
+        const meta = document.createElement('div');
+        meta.className = 'meta';
+        meta.textContent = 'Tab ID: ' + (tab.tabId ?? '—') + (tab.isCurrent ? ' • active' : '');
+        meta.style.marginTop = '8px';
+        li.appendChild(meta);
+
+        list.appendChild(li);
+      });
+    })();
+
+    /************************************************************************
+     * Language switch behavior: toggles text content between EN, BN, AR.
+     * For brevity this swaps only the homepage hero and nav labels.
+     ************************************************************************/
+    (function languageSwitch(){
+      const translations = {
+        en: {
+          heroHeading: "Welcome",
+          heroLead: "This is the central hub for students, teachers, and supervisors. Access dashboards, track Hifz progress, and engage with AI-assisted memorization tools.",
+          nav: ["Hifz Tracker","Memorize Challenges","Count Since Start","30 Para Complete","Countdown to Target","AI Memorization","Attendance"]
+        },
+        bn: {
+          heroHeading: "স্বাগতম",
+          heroLead: "এটি ছাত্র, শিক্ষক ও তত্তাবধায়কদের জন্য কেন্দ্র। ড্যাশবোর্ড দেখুন, হিফজ অগ্রগতি ট্র্যাক করুন, এবং AI সহায়ক ব্যবহার করুন।",
+          nav: ["হিফজ ট্র্যাকার","স্মরণ চ্যালেঞ্জ","শুরু থেকে গণনা","৩০ পারা সম্পন্ন","লক্ষ্য পর্যন্ত কাউন্টডাউন","AI স্মরণ","উপস্থিতি"]
+        },
+        ar: {
+          heroHeading: "مرحباً",
+          heroLead: "هذا هو المركز للطلاب والمعلمين والمشرفين. تصفح اللوحات، تتبع تقدم الحفظ، واستخدم أدوات الذكاء الاصطناعي للمساعدة.",
+          nav: ["متعقب الحفظ","تحديات الحفظ","العد منذ البداية","إكمال 30 جزء","العد التنازلي للهدف","مساعدة AI","الحضور"]
+        }
+      };
+
+      const buttons = document.querySelectorAll('.lang-btn');
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => b.classList.remove('active'));
+          buttons.forEach(b => b.setAttribute('aria-selected','false'));
+          btn.classList.add('active');
+          btn.setAttribute('aria-selected','true');
+          const lang = btn.getAttribute('data-lang');
+          const t = translations[lang] || translations.en;
+          document.getElementById('heroHeading').textContent = t.heroHeading;
+          document.getElementById('heroLead').textContent = t.heroLead;
+
+          // update nav labels (preserve hrefs)
+          const navLinks = document.querySelectorAll('#mainNav a');
+          navLinks.forEach((a, i) => {
+            a.textContent = t.nav[i] || a.textContent;
+          });
+
+          // set document language attribute for accessibility
+          document.documentElement.lang = (lang === 'bn' ? 'bn' : (lang === 'ar' ? 'ar' : 'en'));
+        });
+      });
+    })();
+
+    // Accessibility: focus first nav link for keyboard users
+    (function focusNav(){
+      const first = document.querySelector('nav.main-nav a');
+      if(first) first.setAttribute('tabindex','0');
+    })();
+  </script>
+</body>
+</html>
