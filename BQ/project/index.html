@@ -2,61 +2,62 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Baitul Quran International Madrasha</title>
-  <link rel="stylesheet" href="assets/style.css">
-  <script src="scripts/app.js" defer></script>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header class="main-header">
-    <div class="logo">
-      <h1>Baitul Quran International Madrasha</h1>
+  <!-- Header -->
+  <header class="bg-primary text-white p-3 d-flex justify-content-between align-items-center">
+    <div class="d-flex align-items-center">
+      <img src="assets/logo.png" alt="Logo" class="me-2" style="height:50px;">
+      <h1 class="h4 mb-0">Baitul Quran International Madrasha</h1>
     </div>
-    <nav class="language-switch">
-      <button onclick="setLanguage('en')">EN</button>
-      <button onclick="setLanguage('bn')">BN</button>
-      <button onclick="setLanguage('ar')">AR</button>
-    </nav>
+    <div>
+      <button class="btn btn-light btn-sm" onclick="setLanguage('en')">EN</button>
+      <button class="btn btn-light btn-sm" onclick="setLanguage('bn')">BN</button>
+      <button class="btn btn-light btn-sm" onclick="setLanguage('ar')">AR</button>
+    </div>
   </header>
 
-  <nav class="main-nav">
-    <ul>
-      <li><a href="#">Admin</a></li>
-      <li><a href="#">Teacher</a></li>
-      <li><a href="#">Student</a></li>
-      <li><a href="#">Parent</a></li>
-    </ul>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" href="admin/index.html">Admin</a></li>
+          <li class="nav-item"><a class="nav-link" href="teacher/index.html">Teacher</a></li>
+          <li class="nav-item"><a class="nav-link" href="student/index.html">Student</a></li>
+          <li class="nav-item"><a class="nav-link" href="parent/index.html">Parent</a></li>
+        </ul>
+      </div>
+    </div>
   </nav>
 
-  <section class="hero">
+  <!-- Hero -->
+  <section class="bg-info text-white text-center p-5">
     <h2>Welcome to Digital Madrasha Management System</h2>
     <p>Empowering education with technology — English, Bangla & Arabic support.</p>
   </section>
 
-  <!-- Dashboard Widgets -->
-  <section class="dashboard">
-    <div class="card" id="notifications">
-      <h3>📢 Notifications</h3>
-      <ul id="notif-list"></ul>
-    </div>
-    <div class="card" id="class-schedule">
-      <h3>📅 Class Schedule</h3>
-      <ul id="schedule-list"></ul>
-    </div>
-    <div class="card" id="fees">
-      <h3>💳 Fee Status</h3>
-      <ul id="fees-list"></ul>
-    </div>
-    <div class="card" id="library">
-      <h3>📚 Library Booking</h3>
-      <ul id="library-list"></ul>
-    </div>
-  </section>
+  <!-- Dashboard Cards -->
 
-  <footer class="main-footer">
+
+  <!-- Footer -->
+  <footer class="bg-primary text-white text-center p-3">
     <p>📍 Stadium Road, Nandibari, Muktagacha, Mymensingh</p>
-    <p>☎ Contact: +880-XXXX-XXXXXX</p>
-    <p>© 2026 Baitul Quran International Madrasha</p>
-  </footer>
+    <p>☎ Contact: +880-1892051303</p>
+    <p>© 2026 Baitul Quran International Madrasha | All Rights Reserved</p>
+    <p>With a Vision for Tomorrow's Leaders - By <a class="text-white" href="https://mj-ahmad.github.io/mj-ahmad/" target="_blank">MJ Ahmad</a></p>
+    </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
