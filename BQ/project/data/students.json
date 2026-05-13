@@ -1,0 +1,32 @@
+[
+  {
+    "id": "STU101",
+    "name": "Rahim Ahmed",
+    "roll": "01",
+    "class": "Nursery",
+    "age": 6,
+    "residential": "Yes",
+    "language": ["English", "Bangla", "Arabic"],
+    "progress": "Completed 5 Paras"
+  },
+  {
+    "id": "STU102",
+    "name": "Karima Akter",
+    "roll": "02",
+    "class": "Class 1",
+    "age": 7,
+    "residential": "No",
+    "language": ["English", "Bangla"],
+    "progress": "Completed 3 Paras"
+  },
+  {
+    "id": "STU103",
+    "name": "Mahmud Hasan",
+    "roll": "03",
+    "class": "Class 2",
+    "age": 8,
+    "residential": "Yes",
+    "language": ["English", "Bangla", "Arabic"],
+    "progress": "Completed 10 Paras"
+  }
+]

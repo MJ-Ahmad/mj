@@ -1,0 +1,29 @@
+[
+  {
+    "id": "TCH201",
+    "name": "Ustad Arif",
+    "department": "Basic Quran Learning",
+    "phone": "01824401812",
+    "email": "arif@bqim.edu",
+    "language": ["Bangla", "Arabic"],
+    "assigned_students": ["STU101", "STU102"]
+  },
+  {
+    "id": "TCH202",
+    "name": "Ustad Jafor",
+    "department": "Quran Memorization (Hifz)",
+    "phone": "01892051303",
+    "email": "jafor@bqim.edu",
+    "language": ["English", "Arabic"],
+    "assigned_students": ["STU103"]
+  },
+  {
+    "id": "TCH203",
+    "name": "Ustad Arif Robbani",
+    "department": "Pre-Hifz (Nazara)",
+    "phone": "01631940605",
+    "email": "robbani@bqim.edu",
+    "language": ["Bangla", "English"],
+    "assigned_students": []
+  }
+]
