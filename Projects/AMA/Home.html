@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Al Mahmud Academy — Project Plan</title>
+  <meta name="description" content="Project plan, roadmap and hourly Gantt for Al Mahmud Academy digital transformation." />
+  <style>
+    :root{
+      --bg:#ffffff; --text:#0f172a; --muted:#6b7280; --accent:#0b74da;
+      --card:#ffffff; --border:#e6e9ef; --container:1100px;
+    }
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Noto Sans",Arial;}
+    body{background:var(--bg);color:var(--text);line-height:1.5}
+    .wrap{max-width:var(--container);margin:0 auto;padding:18px;}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+    nav{display:flex;gap:12px;align-items:center}
+    .nav-links{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+    .nav-links button{background:transparent;border:0;padding:8px 10px;border-radius:6px;cursor:pointer;color:var(--text)}
+    .nav-links button:hover{background:#f3f4f6}
+    .lang-switch{display:flex;gap:6px;align-items:center}
+    .lang-btn{padding:6px 10px;border-radius:6px;border:1px solid #e5e7eb;background:#fff;cursor:pointer}
+    .lang-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+    main{padding:22px 0}
+    .grid{display:grid;grid-template-columns:1fr 360px;gap:18px}
+    .card{background:var(--card);border:1px solid var(--border);padding:16px;border-radius:8px;box-shadow:0 1px 0 rgba(15,23,42,0.02)}
+    .section-title{display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+    footer{border-top:1px solid var(--border);padding:18px 0;margin-top:28px;color:var(--muted);font-size:14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap}
+    .toc{display:flex;flex-direction:column;gap:8px}
+    .toc button{text-align:left;background:transparent;border:0;padding:8px;border-radius:6px;cursor:pointer}
+    .toc button.active{background:#f8fafc}
+    .content-section{display:none}
+    .content-section.active{display:block}
+    details{margin-top:8px}
+    pre{white-space:pre-wrap;background:#0f172a;color:#fff;padding:12px;border-radius:6px;overflow:auto}
+    table{width:100%;border-collapse:collapse;margin-top:8px}
+    table th, table td{border:1px solid var(--border);padding:8px;text-align:left;font-size:13px}
+    @media(max-width:980px){
+      .grid{grid-template-columns:1fr}
+      nav{display:none}
+      .mobile-nav{display:flex;gap:8px}
+    }
+    /* RTL support */
+    :root[dir="rtl"]{direction:rtl}
+    :root[dir="rtl"] .nav-links button{text-align:right}
+    .btn{padding:8px 12px;border-radius:6px;border:0;background:var(--accent);color:#fff;cursor:pointer}
+    .btn-ghost{background:transparent;border:1px solid var(--border);padding:8px 12px;border-radius:6px;cursor:pointer}
+  </style>
+</head>
+<body>
+  <div class="wrap" id="page">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true">AM</div>
+        <div>
+          <div style="font-weight:700">আল মাহমুদ একাডেমি</div>
+          <div class="muted small" data-lang="en">Al Mahmud Academy — Handwriting & Computer Training Center</div>
+          <div class="muted small" data-lang="bn" hidden>আল মাহমুদ একাডেমি — সুন্দর দ্রুত হাতের লেখা ও কম্পিউটার ট্রেনিং সেন্টার</div>
+          <div class="muted small" data-lang="ar" hidden>أكاديمية الماحمود — مركز تدريب الخط والكمبيوتر</div>
+        </div>
+      </div>
+
+      <nav aria-label="Main navigation">
+        <div class="nav-links" role="menubar" id="navDesktop">
+          <button onclick="showSection('overview')" data-lang="en">Project Plan</button>
+          <button onclick="showSection('phases')" data-lang="en">High‑level Phases</button>
+          <button onclick="showSection('hours')" data-lang="en">Hours & Deliverables</button>
+          <button onclick="showSection('tasks')" data-lang="en">Detailed Tasks</button>
+          <button onclick="showSection('team')" data-lang="en">Team & Rates</button>
+          <button onclick="showSection('timeline')" data-lang="en">Hourly Timeline</button>
+          <button onclick="showSection('milestones')" data-lang="en">Milestones</button>
+          <button onclick="showSection('risks')" data-lang="en">Risks & Mitigation</button>
+          <button onclick="showSection('budget')" data-lang="en">Budgeting</button>
+          <button onclick="showSection('next')" data-lang="en">Next Steps</button>
+
+          <!-- BN / AR nav labels (hidden by default) -->
+          <button onclick="showSection('overview')" data-lang="bn" hidden>প্রকল্প পরিকল্পনা</button>
+          <button onclick="showSection('phases')" data-lang="bn" hidden>উচ্চ স্তরের ধাপ</button>
+          <button onclick="showSection('hours')" data-lang="bn" hidden>ঘণ্টা ও ডেলিভারেবল</button>
+
+          <button onclick="showSection('overview')" data-lang="ar" hidden>خطة المشروع</button>
+          <button onclick="showSection('phases')" data-lang="ar" hidden>المراحل</button>
+          <button onclick="showSection('hours')" data-lang="ar" hidden>الساعات والتسليمات</button>
+        </div>
+      </nav>
+
+      <div style="display:flex;gap:10px;align-items:center">
+        <div class="lang-switch" role="navigation" aria-label="Language switcher">
+          <button class="lang-btn" id="btn-en" data-lang="en" aria-pressed="false">EN</button>
+          <button class="lang-btn" id="btn-bn" data-lang="bn" aria-pressed="false">BN</button>
+          <button class="lang-btn" id="btn-ar" data-lang="ar" aria-pressed="false">AR</button>
+        </div>
+        <button class="btn-ghost" onclick="printSection()">Print</button>
+      </div>
+    </header>
+
+    <main>
+      <div class="grid">
+        <div>
+          <!-- Overview / Project Plan -->
+          <section id="overview" class="card content-section active" aria-labelledby="overview-title">
+            <div class="section-title">
+              <h2 id="overview-title" data-lang="en">Project Plan — Al Mahmud Academy Digital Transformation</h2>
+              <h2 data-lang="bn" hidden>প্রকল্প পরিকল্পনা — আল মাহমুদ একাডেমি</h2>
+              <h2 data-lang="ar" hidden>خطة المشروع — أكاديمية الماحمود</h2>
+            </div>
+
+            <p data-lang="en" class="small muted">Goal: Deliver a complete management system, responsive website, UI kit, student & admin portals, payment integration, certificate generation, and launch an MVP within the planned hours.</p>
+
+            <h3 data-lang="en">Scope</h3>
+            <ul data-lang="en">
+              <li>Public website with course pages, schedule, contact and registration form.</li>
+              <li>Admin panel for course, batch, seat and fee management.</li>
+              <li>Student portal for enrollment, attendance, results and certificate download.</li>
+              <li>Payment integration (bKash/Nagad/bank), email & SMS notifications.</li>
+              <li>UI/UX design, localization (EN/BN/AR), and training for staff.</li>
+            </ul>
+
+            <h3 data-lang="en">Quick summary (one line)</h3>
+            <p data-lang="en" class="small">MVP: Website + Core CMS + Student Portal + Payment + Certificate — target ~760 hours.</p>
+          </section>
+
+          <!-- High-level Phases -->
+          <section id="phases" class="card content-section" aria-labelledby="phases-title">
+            <div class="section-title">
+              <h2 id="phases-title" data-lang="en">High‑level Phases</h2>
+            </div>
+
+            <ol data-lang="en">
+              <li><strong>Discovery (60 hrs)</strong> — Stakeholder interviews, SRS, course & fee confirmation.</li>
+              <li><strong>Design (120 hrs)</strong> — Wireframes, clickable prototype, UI kit, branding.</li>
+              <li><strong>Core Development (280 hrs)</strong> — Backend, frontend, auth, course & batch logic.</li>
+              <li><strong>Integrations (100 hrs)</strong> — Payments, email/SMS, certificate engine.</li>
+              <li><strong>Content & Localization (60 hrs)</strong> — Course copy, translations, SEO basics.</li>
+              <li><strong>QA & UAT (60 hrs)</strong> — Testing, fixes, trainer acceptance.</li>
+              <li><strong>Launch & Support (40 hrs)</strong> — Deployment, training, monitoring.</li>
+              <li><strong>Buffer (40 hrs)</strong> — Contingency and minor enhancements.</li>
+            </ol>
+          </section>
+
+          <!-- Hours & Deliverables -->
+          <section id="hours" class="card content-section" aria-labelledby="hours-title">
+            <div class="section-title">
+              <h2 id="hours-title" data-lang="en">Hours, Deliverables</h2>
+            </div>
+
+            <table aria-label="Phase hours">
+              <thead>
+                <tr><th>Phase</th><th>Hours</th><th>Primary Deliverable</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Discovery & SRS</td><td>60</td><td>SRS document, prioritized features</td></tr>
+                <tr><td>UI/UX & Branding</td><td>120</td><td>Wireframes, clickable prototype, UI kit</td></tr>
+                <tr><td>Core Development</td><td>280</td><td>Admin panel, Student portal (MVP)</td></tr>
+                <tr><td>Integrations</td><td>100</td><td>Payment + Email/SMS + Certificate engine</td></tr>
+                <tr><td>Content & Localization</td><td>60</td><td>Populated course pages (EN/BN/AR)</td></tr>
+                <tr><td>QA & UAT</td><td>60</td><td>Test reports, fixes</td></tr>
+                <tr><td>Training & Launch</td><td>40</td><td>Admin training, production deploy</td></tr>
+                <tr><td>Buffer</td><td>40</td><td>Post‑launch fixes</td></tr>
+                <tr><th>Total</th><th>760</th><th></th></tr>
+              </tbody>
+            </table>
+          </section>
+
+          <!-- Detailed Task Breakdown -->
+          <section id="tasks" class="card content-section" aria-labelledby="tasks-title">
+            <div class="section-title">
+              <h2 id="tasks-title" data-lang="en">Detailed Task Breakdown (hours per major activity)</h2>
+            </div>
+
+            <ul data-lang="en">
+              <li><strong>Kickoff & discovery:</strong> 20 hrs</li>
+              <li><strong>Requirements & SRS writing:</strong> 40 hrs</li>
+              <li><strong>Wireframing (desktop + mobile):</strong> 40 hrs</li>
+              <li><strong>Visual design & UI kit:</strong> 80 hrs</li>
+              <li><strong>Frontend development (responsive):</strong> 140 hrs</li>
+              <li><strong>Backend development (APIs, DB):</strong> 120 hrs</li>
+              <li><strong>Auth & role management:</strong> 30 hrs</li>
+              <li><strong>Course & batch logic (seat limit 6):</strong> 40 hrs</li>
+              <li><strong>Student MIS (attendance, results, certificates):</strong> 60 hrs</li>
+              <li><strong>Payment gateway integration:</strong> 40 hrs</li>
+              <li><strong>Email/SMS integration:</strong> 20 hrs</li>
+              <li><strong>Certificate PDF generation:</strong> 20 hrs</li>
+              <li><strong>Content population & localization:</strong> 60 hrs</li>
+              <li><strong>QA & bug fixes:</strong> 60 hrs</li>
+              <li><strong>Admin/trainer training & docs:</strong> 24 hrs</li>
+              <li><strong>Deployment & monitoring:</strong> 16 hrs</li>
+              <li><strong>Buffer / contingency:</strong> 40 hrs</li>
+            </ul>
+
+            <details>
+              <summary class="small">Copyable task list (click to expand)</summary>
+              <pre>
+Kickoff & discovery: 20
+Requirements & SRS: 40
+Wireframes: 40
+Visual design & UI kit: 80
+Frontend dev: 140
+Backend dev: 120
+Auth & roles: 30
+Course & batch logic: 40
+Student MIS: 60
+Payment integration: 40
+Email/SMS: 20
+Certificate engine: 20
+Content & localization: 60
+QA & fixes: 60
+Training & docs: 24
+Deployment & monitoring: 16
+Buffer: 40
+              </pre>
+            </details>
+          </section>
+
+          <!-- Team Allocation -->
+          <section id="team" class="card content-section" aria-labelledby="team-title">
+            <div class="section-title">
+              <h2 id="team-title" data-lang="en">Team Allocation and Hourly Role Estimates</h2>
+            </div>
+
+            <table>
+              <thead><tr><th>Role</th><th>Hours</th><th>Notes</th></tr></thead>
+              <tbody>
+                <tr><td>Project Manager / BA</td><td>120</td><td>Discovery, SRS, coordination</td></tr>
+                <tr><td>UI/UX Designer</td><td>160</td><td>Wireframes, prototype, UI kit</td></tr>
+                <tr><td>Frontend Developer(s)</td><td>220</td><td>Responsive site, student portal</td></tr>
+                <tr><td>Backend Developer(s)</td><td>240</td><td>APIs, DB, integrations</td></tr>
+                <tr><td>QA / Tester</td><td>60</td><td>Test plans, execution</td></tr>
+                <tr><td>Content / SEO</td><td>60</td><td>Copy, localization</td></tr>
+                <tr><td>Trainer / Admin (onboarding)</td><td>40</td><td>UAT, training</td></tr>
+              </tbody>
+            </table>
+
+            <p class="small muted">Tip: parallelize frontend & backend after UI kit is stable to compress calendar time.</p>
+          </section>
+
+          <!-- Hourly Timeline -->
+          <section id="timeline" class="card content-section" aria-labelledby="timeline-title">
+            <div class="section-title">
+              <h2 id="timeline-title" data-lang="en">Hourly Timeline (example start = Day 0)</h2>
+            </div>
+
+            <p data-lang="en" class="small">All hours measured from project start (Hour 0). Convert hours → calendar days using your team's working hours (e.g., 8 hrs/day).</p>
+
+            <table>
+              <thead><tr><th>Range (hrs)</th><th>Activity</th></tr></thead>
+              <tbody>
+                <tr><td>0–20</td><td>Kickoff, stakeholder interviews</td></tr>
+                <tr><td>21–60</td><td>SRS drafting & approval</td></tr>
+                <tr><td>61–100</td><td>Wireframes (desktop & mobile)</td></tr>
+                <tr><td>101–180</td><td>Visual design & UI kit</td></tr>
+                <tr><td>141–280</td><td>Frontend scaffolding & templates (overlap)</td></tr>
+                <tr><td>141–260</td><td>Backend architecture & DB design (overlap)</td></tr>
+                <tr><td>261–354</td><td>Auth, course CRUD, seat locking, MIS</td></tr>
+                <tr><td>355–460</td><td>Frontend integration & certificate engine</td></tr>
+                <tr><td>421–460</td><td>Payment gateway integration</td></tr>
+                <tr><td>461–540</td><td>Email/SMS setup & content population</td></tr>
+                <tr><td>541–600</td><td>QA & testing</td></tr>
+                <tr><td>601–664</td><td>UAT, trainer onboarding</td></tr>
+                <tr><td>665–680</td><td>Deployment & production setup</td></tr>
+                <tr><td>681–760</td><td>Post‑launch monitoring, hotfixes, buffer</td></tr>
+              </tbody>
+            </table>
+          </section>
+
+          <!-- Milestones -->
+          <section id="milestones" class="card content-section" aria-labelledby="milestones-title">
+            <div class="section-title">
+              <h2 id="milestones-title" data-lang="en">Milestones (hours and acceptance criteria)</h2>
+            </div>
+
+            <ul data-lang="en">
+              <li><strong>M1 — SRS Approved (60 hrs)</strong>: SRS signed; course list, fees, seat rules confirmed.</li>
+              <li><strong>M2 — Prototype Approved (180 hrs)</strong>: Clickable UI approved for desktop & mobile.</li>
+              <li><strong>M3 — Core MVP Ready (460 hrs)</strong>: Admin + Student portal with enrollments and seat locking functional.</li>
+              <li><strong>M4 — Payments Live (520 hrs)</strong>: Payment flows tested end‑to‑end; fallback manual flow available.</li>
+              <li><strong>M5 — UAT Complete (640 hrs)</strong>: Critical bugs fixed; trainers can issue certificates.</li>
+              <li><strong>M6 — Public Launch (760 hrs)</strong>: Live site; first enrollments processed; monitoring active.</li>
+            </ul>
+          </section>
+
+          <!-- Risks -->
+          <section id="risks" class="card content-section" aria-labelledby="risks-title">
+            <div class="section-title">
+              <h2 id="risks-title" data-lang="en">Risk, Mitigation, and Constraints (hours impact)</h2>
+            </div>
+
+            <table>
+              <thead><tr><th>Risk</th><th>Mitigation</th><th>Hours Impact</th></tr></thead>
+              <tbody>
+                <tr><td>Payment gateway approval delays</td><td>Implement manual bank/bKash fallback; start integration early</td><td>+40 hrs buffer</td></tr>
+                <tr><td>Content/translation delays</td><td>Publish minimal viable content first; parallelize translations</td><td>+24 hrs</td></tr>
+                <tr><td>Small batch seat enforcement issues</td><td>Seat lock at checkout + admin override</td><td>+24 hrs dev</td></tr>
+                <tr><td>Trainer availability for UAT</td><td>Schedule UAT early; record training sessions</td><td>+8–16 hrs</td></tr>
+                <tr><td>Hosting or DNS issues</td><td>Preconfigure staging and rollback plan</td><td>+8–16 hrs</td></tr>
+              </tbody>
+            </table>
+          </section>
+
+          <!-- Budget -->
+          <section id="budget" class="card content-section" aria-labelledby="budget-title">
+            <div class="section-title">
+              <h2 id="budget-title" data-lang="en">Budgeting Guidance (hour × rate examples)</h2>
+            </div>
+
+            <p data-lang="en" class="small">Estimate using blended hourly rates. Adjust after final SRS and staffing decisions.</p>
+
+            <table>
+              <thead><tr><th>Blended Rate</th><th>760 hrs Cost</th></tr></thead>
+              <tbody>
+                <tr><td>৳1,200 / hr (full service)</td><td>৳912,000</td></tr>
+                <tr><td>৳600 / hr (lean local team)</td><td>৳456,000</td></tr>
+                <tr><td>Fixed MVP estimate (mid-range)</td><td>৳550,000 — ৳750,000 (negotiable)</td></tr>
+              </tbody>
+            </table>
+
+            <p class="small muted">Other recurring costs: hosting & domain (৳6,000–12,000/yr), SMS gateway credits, payment gateway fees (per transaction).</p>
+          </section>
+
+          <!-- Next Steps -->
+          <section id="next" class="card content-section" aria-labelledby="next-title">
+            <div class="section-title">
+              <h2 id="next-title" data-lang="en">Immediate Next Steps (actionable, hours to complete)</h2>
+            </div>
+
+            <ol data-lang="en">
+              <li><strong>Approve scope & total hours</strong> — PM: 2 hrs</li>
+              <li><strong>Provide final course syllabi, trainer list, branding assets</strong> — Owner: 8–16 hrs</li>
+              <li><strong>Decide payment options (bKash/Nagad/bank)</strong> — Owner: 2 hrs</li>
+              <li><strong>Sign MoU / kickoff meeting</strong> — PM & Owner: 2 hrs</li>
+              <li><strong>Assign core team & schedule</strong> — PM: 4 hrs</li>
+            </ol>
+
+            <div style="margin-top:12px;display:flex;gap:8px">
+              <button class="btn" onclick="downloadCSV()">Export Task CSV</button>
+              <button class="btn-ghost" onclick="copySummary()">Copy Summary</button>
+            </div>
+          </section>
+        </div>
+
+        <!-- Right column: TOC, Quick Info -->
+        <aside>
+          <div class="card">
+            <h3 data-lang="en">Quick Navigation</h3>
+            <div class="toc" id="toc">
+              <button onclick="showSection('overview')" class="active" data-section="overview" data-lang="en">Project Plan</button>
+              <button onclick="showSection('phases')" data-section="phases" data-lang="en">High‑level Phases</button>
+              <button onclick="showSection('hours')" data-section="hours" data-lang="en">Hours & Deliverables</button>
+              <button onclick="showSection('tasks')" data-section="tasks" data-lang="en">Detailed Tasks</button>
+              <button onclick="showSection('team')" data-section="team" data-lang="en">Team & Rates</button>
+              <button onclick="showSection('timeline')" data-section="timeline" data-lang="en">Hourly Timeline</button>
+              <button onclick="showSection('milestones')" data-section="milestones" data-lang="en">Milestones</button>
+              <button onclick="showSection('risks')" data-section="risks" data-lang="en">Risks</button>
+              <button onclick="showSection('budget')" data-section="budget" data-lang="en">Budget</button>
+              <button onclick="showSection('next')" data-section="next" data-lang="en">Next Steps</button>
+            </div>
+          </div>
+
+          <div class="card" style="margin-top:12px">
+            <h4 data-lang="en">Contact</h4>
+            <p class="small contact" data-lang="en">Director: Md Nazmul Hasan Farazi</p>
+            <p class="small" data-lang="en">Address: House no 205, South Kutubkhali, Jatrabari, Dhaka - 1232</p>
+            <p class="small contact" data-lang="en">Phone: 01770 40 70 51 / 01941 921 102</p>
+            <p class="small">Email: <a href="mailto:mdnazmulislam57848@gmail.com">mdnazmulislam57848@gmail.com</a></p>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <footer>
+      <div class="muted small" data-lang="en">© Al Mahmud Academy — Project Plan & Roadmap</div>
+      <div class="muted small">Email: mdnazmulislam57848@gmail.com</div>
+    </footer>
+  </div>
+
+  <script>
+    (function(){
+      const LANGS = ['en','bn','ar'];
+      const root = document.documentElement;
+
+      // Show section by id and update TOC active state
+      window.showSection = function(id){
+        document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+        const el = document.getElementById(id);
+        if(el) el.classList.add('active');
+
+        // update TOC buttons
+        document.querySelectorAll('.toc button').forEach(b => b.classList.toggle('active', b.getAttribute('data-section') === id));
+        // scroll to top of section
+        setTimeout(()=> {
+          el.scrollIntoView({behavior:'smooth', block:'start'});
+        }, 50);
+      };
+
+      // Language switcher
+      function setLang(lang){
+        if(!LANGS.includes(lang)) lang = 'en';
+        root.lang = lang;
+        root.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
+        document.querySelectorAll('[data-lang]').forEach(el=>{
+          el.hidden = el.getAttribute('data-lang') !== lang;
+        });
+
+        document.querySelectorAll('.lang-btn').forEach(btn=>{
+          const bLang = btn.getAttribute('data-lang');
+          btn.classList.toggle('active', bLang === lang);
+          btn.setAttribute('aria-pressed', bLang === lang ? 'true' : 'false');
+        });
+
+        try{ localStorage.setItem('almahmud_lang', lang); }catch(e){}
+      }
+
+      document.querySelectorAll('.lang-btn').forEach(btn=>{
+        btn.addEventListener('click', ()=> setLang(btn.getAttribute('data-lang')));
+      });
+
+      // Init language
+      const saved = (function(){ try{ return localStorage.getItem('almahmud_lang'); }catch(e){return null;} })();
+      const browser = navigator.language ? navigator.language.slice(0,2) : 'en';
+      setLang(saved || (LANGS.includes(browser) ? browser : 'en'));
+
+      // Copy summary to clipboard
+      window.copySummary = function(){
+        const summary = [
+          'Al Mahmud Academy — Project Plan Summary',
+          'Goal: Deliver website, CMS, student & admin portals, payments, certificates.',
+          'Total estimated hours: 760',
+          'Next steps: Approve scope, provide syllabi & branding, choose payment gateway.'
+        ].join('\\n');
+        navigator.clipboard.writeText(summary).then(()=> alert('Summary copied to clipboard.'));
+      };
+
+      // Export CSV of tasks (simple)
+      window.downloadCSV = function(){
+        const rows = [
+          ['Task','StartHour','EndHour','Duration','Owner'],
+          ['Kickoff meeting & stakeholder interviews','0','20','20','PM / Owner'],
+          ['Requirements gathering & SRS writing','21','60','40','PM / BA'],
+          ['Wireframes desktop & mobile','61','100','40','UI/UX'],
+          ['Visual design and UI kit','101','180','80','UI/UX'],
+          ['Frontend scaffolding & templates','141','280','140','Frontend Dev'],
+          ['Backend architecture & DB design','141','260','120','Backend Dev'],
+          ['Auth and role management','261','290','30','Backend Dev'],
+          ['Course CRUD and batch scheduling','291','330','40','Backend Dev'],
+          ['Seat locking and enrollment logic','331','354','24','Backend Dev'],
+          ['Student MIS profiles attendance results','331','390','60','Backend Dev'],
+          ['Certificate PDF generation engine','355','374','20','Backend Dev'],
+          ['Frontend integration for student portal','361','460','100','Frontend Dev'],
+          ['Payment gateway integration','421','460','40','Backend Dev / PM'],
+          ['Email and SMS notification setup','461','480','20','Backend Dev / Content'],
+          ['Content population and localization','481','540','60','Content'],
+          ['QA test planning and execution','541','600','60','QA'],
+          ['UAT with admin and trainers','601','640','40','QA / Trainer'],
+          ['Admin and trainer onboarding sessions','641','664','24','Trainer / PM'],
+          ['Deployment and production setup','665','680','16','Backend Dev / PM'],
+          ['Post launch monitoring and hotfixes','681','720','40','All'],
+          ['Buffer and minor enhancements','721','760','40','All']
+        ];
+        const csv = rows.map(r => r.map(c => '"' + String(c).replace(/"/g,'""') + '"').join(',')).join('\\n');
+        const blob = new Blob([csv], {type: 'text/csv;charset=utf-8;'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'almahmud_tasks.csv';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+      };
+
+      // Print current active section
+      window.printSection = function(){
+        const active = document.querySelector('.content-section.active');
+        if(!active){ window.print(); return; }
+        const w = window.open('', '_blank');
+        const html = '<!doctype html><html><head><meta charset="utf-8"><title>Print</title><style>body{font-family:Arial,Helvetica,sans-serif;padding:20px;color:#111}</style></head><body>' + active.innerHTML + '</body></html>';
+        w.document.write(html);
+        w.document.close();
+        w.focus();
+        setTimeout(()=> w.print(), 300);
+      };
+
+      // Keyboard navigation: numbers 1..9 to open sections
+      document.addEventListener('keydown', (e)=>{
+        if(e.altKey || e.ctrlKey || e.metaKey) return;
+        const map = {
+          '1':'overview','2':'phases','3':'hours','4':'tasks','5':'team','6':'timeline','7':'milestones','8':'risks','9':'budget','0':'next'
+        };
+        if(map[e.key]) showSection(map[e.key]);
+      });
+    })();
+  </script>
+</body>
+</html>
