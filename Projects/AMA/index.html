@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Al Mahmud Academy</title>
+  <meta name="description" content="Al Mahmud Academy - Handwriting & Computer Training Center" />
+  <style>
+    :root{
+      --bg:#ffffff; --text:#111827; --accent:#0b74da; --muted:#6b7280;
+      --container:1100px;
+    }
+    html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Noto Sans","Helvetica Neue",Arial;}
+    body{background:var(--bg);color:var(--text);line-height:1.5}
+    .wrap{max-width:var(--container);margin:0 auto;padding:16px;}
+    header{border-bottom:1px solid #e6e6e6;padding:12px 0;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+    nav{display:flex;gap:12px;align-items:center}
+    .nav-links{display:flex;gap:12px;align-items:center}
+    .nav-links a{color:var(--text);text-decoration:none;padding:8px 10px;border-radius:6px}
+    .nav-links a:hover{background:#f3f4f6}
+    .lang-switch{display:flex;gap:6px;align-items:center}
+    .lang-btn{padding:6px 10px;border-radius:6px;border:1px solid #e5e7eb;background:#fff;cursor:pointer}
+    .lang-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+    main{padding:28px 0}
+    .hero{display:grid;grid-template-columns:1fr;gap:18px;align-items:center}
+    .card{border:1px solid #eef2f7;padding:16px;border-radius:8px;background:#fff}
+    footer{border-top:1px solid #e6e6e6;padding:18px 0;margin-top:28px;color:var(--muted);font-size:14px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+    .contact{font-weight:600}
+    /* Responsive */
+    @media(min-width:800px){
+      .hero{grid-template-columns:1fr 360px}
+    }
+    /* RTL support for Arabic */
+    :root[dir="rtl"]{direction:rtl}
+    :root[dir="rtl"] .nav-links a{text-align:right}
+    /* small utilities */
+    .muted{color:var(--muted)}
+    .btn-primary{background:var(--accent);color:#fff;padding:8px 12px;border-radius:6px;border:none;cursor:pointer}
+    .small{font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="wrap" id="page">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true">AM</div>
+        <div>
+          <div style="font-weight:700">আল মাহমুদ একাডেমি</div>
+          <div class="muted small" data-lang="en">Al Mahmud Academy — Handwriting & Computer Training</div>
+          <div class="muted small" data-lang="bn" hidden>আল মাহমুদ একাডেমি — সুন্দর দ্রুত হাতের লেখা ও কম্পিউটার ট্রেনিং সেন্টার</div>
+          <div class="muted small" data-lang="ar" hidden>أكاديمية الماحمود — مركز تدريب الخط والكمبيوتر</div>
+        </div>
+      </div>
+
+      <nav aria-label="Main navigation">
+        <div class="nav-links" role="menubar">
+          <a href="#home" role="menuitem" data-lang="en">Home</a>
+          <a href="#courses" role="menuitem" data-lang="en">Courses</a>
+          <a href="#schedule" role="menuitem" data-lang="en">Schedule</a>
+          <a href="#contact" role="menuitem" data-lang="en">Contact</a>
+
+          <a href="#home" role="menuitem" data-lang="bn" hidden>হোম</a>
+          <a href="#courses" role="menuitem" data-lang="bn" hidden>কোর্সসমূহ</a>
+          <a href="#schedule" role="menuitem" data-lang="bn" hidden>সময়সূচী</a>
+          <a href="#contact" role="menuitem" data-lang="bn" hidden>যোগাযোগ</a>
+
+          <a href="#home" role="menuitem" data-lang="ar" hidden>الرئيسية</a>
+          <a href="#courses" role="menuitem" data-lang="ar" hidden>الدورات</a>
+          <a href="#schedule" role="menuitem" data-lang="ar" hidden>الجدول</a>
+          <a href="#contact" role="menuitem" data-lang="ar" hidden>اتصل</a>
+        </div>
+      </nav>
+
+      <div class="lang-switch" role="navigation" aria-label="Language switcher">
+        <button class="lang-btn" id="btn-en" data-lang="en" aria-pressed="false">EN</button>
+        <button class="lang-btn" id="btn-bn" data-lang="bn" aria-pressed="false">BN</button>
+        <button class="lang-btn" id="btn-ar" data-lang="ar" aria-pressed="false">AR</button>
+      </div>
+    </header>
+
+    <main>
+      <section id="home" class="hero" aria-labelledby="hero-title">
+        <div>
+          <h1 id="hero-title" data-lang="en">Welcome to Al Mahmud Academy</h1>
+          <h1 data-lang="bn" hidden>আল মাহমুদ একাডেমিতে স্বাগতম</h1>
+          <h1 data-lang="ar" hidden>مرحبًا بكم في أكاديمية الماحمود</h1>
+
+          <p class="muted" data-lang="en">Handwriting courses, calligraphy, and computer training — short intensive batches throughout the year.</p>
+          <p class="muted" data-lang="bn" hidden>হাতের লেখা, ক্যালিগ্রাফি এবং কম্পিউটার প্রশিক্ষণ — সারাবছর সংক্ষিপ্ত ব্যাচ।</p>
+          <p class="muted" data-lang="ar" hidden>دورات الخط، الخط العربي، وتدريب الكمبيوتر — دفعات مكثفة طوال العام.</p>
+
+          <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn-primary" href="#courses" data-lang="en">View Courses</a>
+            <a class="btn-primary" href="#courses" data-lang="bn" hidden>কোর্স দেখুন</a>
+            <a class="btn-primary" href="#courses" data-lang="ar" hidden>عرض الدورات</a>
+
+            <a class="btn-primary" href="#contact" style="background:#10b981" data-lang="en">Register</a>
+            <a class="btn-primary" href="#contact" style="background:#10b981" data-lang="bn" hidden>রেজিস্ট্রেশন</a>
+            <a class="btn-primary" href="#contact" style="background:#10b981" data-lang="ar" hidden>التسجيل</a>
+          </div>
+        </div>
+
+        <aside class="card" aria-labelledby="info-title">
+          <h3 id="info-title" data-lang="en">Quick Info</h3>
+          <h3 data-lang="bn" hidden>দ্রুত তথ্য</h3>
+          <h3 data-lang="ar" hidden>معلومات سريعة</h3>
+
+          <p class="small" data-lang="en"><strong>Address:</strong> House no 205, South Kutubkhali, Jatrabari, Dhaka - 1232</p>
+          <p class="small" data-lang="bn" hidden><strong>ঠিকানা:</strong> ২০৫ দক্ষিণ কুতুবখালী, যাত্রাবাড়ী, ঢাকা - 1232</p>
+          <p class="small" data-lang="ar" hidden><strong>العنوان:</strong> 205 جنوب كوتوبخالي، جتراباري، دكا - 1232</p>
+
+          <p class="small contact" data-lang="en">Contact: 01770 40 70 51 / 01941 921 102</p>
+          <p class="small contact" data-lang="bn" hidden>যোগাযোগ: 01770 40 70 51 / 01941 921 102</p>
+          <p class="small contact" data-lang="ar" hidden>اتصل: 01770 40 70 51 / 01941 921 102</p>
+
+          <p class="small muted" data-lang="en">Director: Md Nazmul Hasan Farazi</p>
+          <p class="small muted" data-lang="bn" hidden>পরিচালক: নাজমুল ইসলাম ফরাজী</p>
+          <p class="small muted" data-lang="ar" hidden>المدير: محمد نازمول حسن فرازي</p>
+        </aside>
+      </section>
+
+      <section id="courses" style="margin-top:22px">
+        <h2 data-lang="en">Courses & Fees</h2>
+        <h2 data-lang="bn" hidden>কোর্স ও ফি</h2>
+        <h2 data-lang="ar" hidden>الدورات والرسوم</h2>
+
+        <div style="display:grid;grid-template-columns:1fr;gap:12px;margin-top:12px">
+          <div class="card">
+            <h3 data-lang="en">Computer Training (10 days)</h3>
+            <h3 data-lang="bn" hidden>কম্পিউটার প্রশিক্ষণ (১০ দিন)</h3>
+            <h3 data-lang="ar" hidden>تدريب الكمبيوتر (10 أيام)</h3>
+
+            <p data-lang="en" class="small">Residential: ৳6000; Non-residential: ৳4000. Seats: 6 per batch.</p>
+            <p data-lang="bn" hidden class="small">আবাসিক: ৬০০০; অনাবাসিক: ৪০০০। আসন: ৬ জন।</p>
+            <p data-lang="ar" hidden class="small">سكني: 6000; غير مقيم: 4000. المقاعد: 6 لكل دفعة.</p>
+          </div>
+
+          <div class="card">
+            <h3 data-lang="en">Handwriting (4 days) & Calligraphy (5 days)</h3>
+            <h3 data-lang="bn" hidden>হাতের লেখা (৪ দিন) ও ক্যালিগ্রাফি (৫ দিন)</h3>
+            <h3 data-lang="ar" hidden>الخط اليدوي (4 أيام) والخط العربي (5 أيام)</h3>
+
+            <p data-lang="en" class="small">Handwriting: Residential ৳2200 / Non-residential ৳1200. Calligraphy: Residential ৳3500 / Non-residential ৳2500.</p>
+            <p data-lang="bn" hidden class="small">হাতের লেখা: আবাসিক ২২০০ / অনাবাসিক ১২০০। ক্যালিগ্রাফি: আবাসিক ৩৫০০ / অনাবাসিক ২৫০০।</p>
+            <p data-lang="ar" hidden class="small">الخط: سكني 2200 / غير مقيم 1200. الخط العربي: سكني 3500 / غير مقيم 2500.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="schedule" style="margin-top:22px">
+        <h2 data-lang="en">Schedule</h2>
+        <h2 data-lang="bn" hidden>সময়সূচী</h2>
+        <h2 data-lang="ar" hidden>الجدول</h2>
+
+        <p data-lang="en" class="muted small">Computer batches run 1–10 and 15–25 each month. Handwriting 4 days; Calligraphy 5 days.</p>
+        <p data-lang="bn" hidden class="muted small">কম্পিউটার ব্যাচ প্রতি মাসে ১–১০ এবং ১৫–২৫। হাতের লেখা ৪ দিন; ক্যালিগ্রাফি ৫ দিন।</p>
+        <p data-lang="ar" hidden class="muted small">تُعقد دفعات الكمبيوتر من 1–10 و 15–25 كل شهر. الخط اليدوي 4 أيام؛ الخط العربي 5 أيام.</p>
+      </section>
+
+      <section id="contact" style="margin-top:22px">
+        <h2 data-lang="en">Contact & Registration</h2>
+        <h2 data-lang="bn" hidden>যোগাযোগ ও রেজিস্ট্রেশন</h2>
+        <h2 data-lang="ar" hidden>اتصل والتسجيل</h2>
+
+        <div class="card">
+          <p data-lang="en">Email: <a href="mailto:mdnazmulislam57848@gmail.com">mdnazmulislam57848@gmail.com</a></p>
+          <p data-lang="bn" hidden>ইমেইল: <a href="mailto:mdnazmulislam57848@gmail.com">mdnazmulislam57848@gmail.com</a></p>
+          <p data-lang="ar" hidden>البريد الإلكتروني: <a href="mailto:mdnazmulislam57848@gmail.com">mdnazmulislam57848@gmail.com</a></p>
+
+          <form id="regForm" style="margin-top:12px" aria-label="Registration form">
+            <label class="small" data-lang="en">Full name</label>
+            <label class="small" data-lang="bn" hidden>পূর্ণ নাম</label>
+            <label class="small" data-lang="ar" hidden>الاسم الكامل</label>
+            <input type="text" name="name" required style="width:100%;padding:8px;margin:6px 0;border:1px solid #e5e7eb;border-radius:6px" />
+
+            <label class="small" data-lang="en">Phone</label>
+            <label class="small" data-lang="bn" hidden>ফোন</label>
+            <label class="small" data-lang="ar" hidden>الهاتف</label>
+            <input type="tel" name="phone" required style="width:100%;padding:8px;margin:6px 0;border:1px solid #e5e7eb;border-radius:6px" />
+
+            <label class="small" data-lang="en">Select course</label>
+            <label class="small" data-lang="bn" hidden>কোর্স নির্বাচন</label>
+            <label class="small" data-lang="ar" hidden>اختر الدورة</label>
+            <select name="course" style="width:100%;padding:8px;margin:6px 0;border:1px solid #e5e7eb;border-radius:6px">
+              <option data-lang="en">Computer Training (10 days)</option>
+              <option data-lang="bn" hidden>কম্পিউটার প্রশিক্ষণ (১০ দিন)</option>
+              <option data-lang="ar" hidden>تدريب الكمبيوتر (10 أيام)</option>
+
+              <option data-lang="en">Handwriting (4 days)</option>
+              <option data-lang="bn" hidden>হাতের লেখা (৪ দিন)</option>
+              <option data-lang="ar" hidden>الخط اليدوي (4 أيام)</option>
+
+              <option data-lang="en">Calligraphy (5 days)</option>
+              <option data-lang="bn" hidden>ক্যালিগ্রাফি (৫ দিন)</option>
+              <option data-lang="ar" hidden>الخط العربي (5 أيام)</option>
+            </select>
+
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <button type="submit" class="btn-primary" data-lang="en">Submit</button>
+              <button type="submit" class="btn-primary" data-lang="bn" hidden>জমা দিন</button>
+              <button type="submit" class="btn-primary" data-lang="ar" hidden>إرسال</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="muted small" data-lang="en">© Al Mahmud Academy — House no 205, South Kutubkhali, Jatrabari, Dhaka</div>
+      <div class="muted small" data-lang="bn" hidden>© আল মাহমুদ একাডেমি — ২০৫ দক্ষিণ কুতুবখালী, যাত্রাবাড়ী, ঢাকা</div>
+      <div class="muted small" data-lang="ar" hidden>© أكاديمية الماحمود — 205 جنوب كوتوبخالي، جتراباري، دكا</div>
+
+      <div class="small muted">Email: mdnazmulislam57848@gmail.com</div>
+    </footer>
+  </div>
+
+  <script>
+    (function(){
+      const LANGS = ['en','bn','ar'];
+      const root = document.documentElement;
+      const page = document.getElementById('page');
+
+      // Utility: show elements for selected lang, hide others
+      function setLang(lang){
+        if(!LANGS.includes(lang)) lang = 'en';
+        // set html lang and dir
+        root.lang = lang;
+        root.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
+        // toggle visible elements
+        document.querySelectorAll('[data-lang]').forEach(el=>{
+          if(el.getAttribute('data-lang') === lang){
+            el.hidden = false;
+          } else {
+            el.hidden = true;
+          }
+        });
+
+        // update active buttons
+        document.querySelectorAll('.lang-btn').forEach(btn=>{
+          const bLang = btn.getAttribute('data-lang');
+          btn.classList.toggle('active', bLang === lang);
+          btn.setAttribute('aria-pressed', bLang === lang ? 'true' : 'false');
+        });
+
+        // persist
+        try{ localStorage.setItem('almahmud_lang', lang); }catch(e){}
+      }
+
+      // attach events
+      document.querySelectorAll('.lang-btn').forEach(btn=>{
+        btn.addEventListener('click', ()=> setLang(btn.getAttribute('data-lang')));
+      });
+
+      // form submit (demo: prevent default and show simple alert)
+      document.getElementById('regForm').addEventListener('submit', function(e){
+        e.preventDefault();
+        const lang = document.documentElement.lang || 'en';
+        const messages = {
+          en: 'Thank you! Your registration request has been received.',
+          bn: 'ধন্যবাদ! আপনার রেজিস্ট্রেশন অনুরোধ গ্রহণ করা হয়েছে।',
+          ar: 'شكرًا! تم استلام طلب التسجيل الخاص بك.'
+        };
+        alert(messages[lang] || messages.en);
+        this.reset();
+      });
+
+      // init from storage or browser default
+      const saved = (function(){ try{ return localStorage.getItem('almahmud_lang'); }catch(e){return null;} })();
+      const browser = navigator.language ? navigator.language.slice(0,2) : 'en';
+      setLang(saved || (LANGS.includes(browser) ? browser : 'en'));
+    })();
+  </script>
+</body>
+</html>
