@@ -1,3 +1,7 @@
+2026-07-26
+
+---
+
 # **MJSovereign**
 
 ## **The Ethical Invocation Constitution**

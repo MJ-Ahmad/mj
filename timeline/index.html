@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>The Ethical Invocation Constitution — Timelines</title>
+  <style>
+    :root{
+      --bg:#f4f6f9; --card:#fff; --accent:#1e90ff; --muted:#374151;
+      --success:#27ae60; --warning:#e67e22; --danger:#ef4444;
+      --radius:10px; --shadow:0 6px 18px rgba(2,6,23,0.06);
+      --sidebar-width:320px; --max-width:1200px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--muted);-webkit-font-smoothing:antialiased}
+    header{display:flex;align-items:center;gap:14px;padding:16px;background:#0b1220;color:#fff}
+    header img{height:52px;width:52px;border-radius:8px;object-fit:contain;background:#fff;padding:6px}
+    .brand{display:flex;flex-direction:column}
+    .brand .title{font-weight:700;font-size:1.05rem}
+    .brand .sub{font-size:0.85rem;color:#cbd5e1;margin-top:4px}
+    .brand .system-line{font-size:0.85rem;color:#93c5fd;margin-top:6px}
+
+    .wrap{max-width:var(--max-width);margin:18px auto;display:flex;gap:18px;padding:0 16px}
+    nav.sidebar{width:var(--sidebar-width);background:var(--card);border-radius:var(--radius);padding:12px;box-shadow:var(--shadow);height:calc(100vh - 160px);position:sticky;top:20px;overflow:auto}
+    nav h3{margin:6px 0 10px;font-size:0.95rem}
+    .day-group{margin-bottom:12px}
+    .day-title{display:flex;align-items:center;justify-content:space-between;gap:8px;font-weight:700;color:var(--accent);margin:8px 0}
+    .day-toggle{background:none;border:0;color:var(--accent);font-weight:700;cursor:pointer;padding:6px;border-radius:6px}
+    .menu-list{padding-left:6px;margin:6px 0}
+    .menu-item{display:block;padding:8px 10px;border-radius:8px;color:#0b1220;text-decoration:none;margin:4px 0;cursor:pointer}
+    .menu-item:hover,.menu-item.active{background:#eef6ff}
+
+    main{flex:1;min-height:60vh}
+    .hero{background:var(--card);padding:16px;border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:14px}
+    .hero .subtitle{font-weight:700;color:#0b1220}
+    .hero .system-quote{margin-top:8px;color:#475569;font-style:italic}
+    .hero .slogan{margin-top:10px;color:#334155;font-weight:600}
+
+    .controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:12px 0}
+    .controls select,.controls input{padding:8px 10px;border-radius:8px;border:1px solid #e6e9ee;background:#fff}
+
+    .overview { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:12px; }
+    .clock { background:var(--card); padding:10px 12px; border-radius:8px; box-shadow:var(--shadow); font-weight:700; color:var(--accent); }
+    .overall-progress { flex:1; min-width:220px; background:var(--card); padding:10px 12px; border-radius:8px; box-shadow:var(--shadow); }
+    .progress-bar { height:18px; background:#eef2f7; border-radius:999px; overflow:hidden; margin-top:8px; }
+    .progress-fill { height:100%; background:var(--success); color:#fff; font-weight:700; text-align:center; font-size:0.85rem; line-height:18px; transition:width 400ms ease; }
+
+    .timelines-root{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .timeline-card{background:var(--card);padding:12px;border-radius:10px;box-shadow:var(--shadow)}
+    .timeline-card h2{margin:0 0 8px;font-size:1rem;color:#0b1220;display:flex;justify-content:space-between;align-items:center}
+    .timeline-meta{font-size:0.85rem;color:#64748b}
+    .timeline-percent { font-weight:700; color:var(--muted); font-size:0.95rem; margin-left:8px; }
+
+    .step{padding:10px;border-left:6px solid var(--accent);margin:8px 0;border-radius:6px;background:#fbfdff;display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+    .step.completed{border-color:var(--success)}
+    .step.in-progress{border-color:var(--warning)}
+    .step.pending{border-color:var(--danger)}
+    .step .left{flex:1}
+    .step .right{min-width:140px;text-align:right}
+    .meta{font-size:0.85rem;color:#64748b;margin-top:6px}
+
+    .timeline-progress { height:12px; background:#f1f5f9; border-radius:999px; overflow:hidden; margin-top:8px; }
+    .timeline-progress .fill { height:100%; background:var(--accent); transition:width 400ms ease; }
+
+    .edge-info { background:var(--card); padding:10px; border-radius:8px; box-shadow:var(--shadow); margin-top:12px; font-size:0.9rem; color:#0b1220; }
+
+    footer{margin-top:18px;padding:14px 20px;background:#0b1220;color:#cbd5e1;text-align:center;border-top:4px solid rgba(255,255,255,0.02)}
+    footer a{color:#93c5fd;text-decoration:none;margin-left:8px}
+
+    @media (max-width:980px){
+      .timelines-root{grid-template-columns:1fr}
+      nav.sidebar{position:relative;height:auto;width:100%}
+      .wrap{flex-direction:column}
+    }
+    @media (prefers-reduced-motion: reduce){
+      .progress-fill, .timeline-progress .fill { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://mj-ahmad.github.io/mj/docs/assets/logo.jpg" alt="Logo" id="logo">
+    <div class="brand">
+      <div class="title">The Ethical Invocation Constitution</div>
+      <div class="system-line" style="font-style:italic;color:#93c5fd">“A platform for ethical governance and finance.”</div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <nav class="sidebar" id="sidebar" aria-label="Daily timelines navigation">
+      <h3>Timelines</h3>
+      <div id="menu-root" aria-live="polite"></div>
+
+      <hr style="border:none;border-top:1px solid #eef2f7;margin:12px 0">
+
+      <h3>Show</h3>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <select id="showFilter" onchange="applyShowFilter()" aria-label="Show filter">
+          <option value="all">Show all</option>
+          <option value="day">Show day</option>
+          <option value="Project-based">Show projects</option>
+          <option value="Agenda-based">Show agendas</option>
+          <option value="Task-based">Show tasks</option>
+          <option value="MyDay-Based">Show myday</option>
+          <option value="Status-based">Show status</option>
+        </select>
+        <label for="daySelect" style="margin-top:6px">Day</label>
+        <select id="daySelect" onchange="filterDay(this.value)" aria-label="Day select"><option value="all">All days</option></select>
+      </div>
+
+      <hr style="border:none;border-top:1px solid #eef2f7;margin:12px 0">
+      <div>
+        <h3>Views</h3>
+        <a class="menu-item" href="#" onclick="setView('timeline');return false;">Timeline</a>
+        <a class="menu-item" href="#" onclick="setView('compact');return false;">Compact</a>
+      </div>
+
+      <div class="edge-info" id="edge-info" aria-live="polite" style="margin-top:14px"></div>
+    </nav>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div id="hero-title" class="subtitle">Where every script is a verdict, every invocation a vote, and every log a legacy.</div>
+        <div class="system-quote">“Write the soul of a nation. Invoke the dignity of all beings.”</div>
+      </section>
+
+      <div class="overview">
+        <div class="clock" id="clock" aria-live="polite">🕒 Dhaka Time Loading...</div>
+        <div class="overall-progress" role="region" aria-label="Overall progress">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div><strong>Overall Progress</strong></div>
+            <div id="overall-percent" class="timeline-percent">0%</div>
+          </div>
+          <div class="progress-bar" aria-hidden="true">
+            <div id="overall-fill" class="progress-fill" style="width:0%">0%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls" role="region" aria-label="Timeline controls">
+        <input id="search" placeholder="Search steps, descriptions, roles" oninput="searchSteps(this.value)" aria-label="Search steps">
+        <select id="statusFilter" onchange="applyStatusFilter()" aria-label="Status filter">
+          <option value="all">All statuses</option>
+          <option value="Completed">Completed</option>
+          <option value="In Progress">In Progress</option>
+          <option value="Pending">Pending</option>
+        </select>
+      </div>
+
+      <div id="timelines-root" class="timelines-root" aria-live="polite"></div>
+    </main>
+  </div>
+
+  <footer>
+    <div>&copy; 2026 MJ — All rights reserved.</div>
+    <div style="margin-top:6px">
+      <a href="">Terms</a>
+      <a href="">Privacy</a>
+      <a href="">Copyright</a>
+    </div>
+  </footer>
+
+  <script>
+    // --- Edge tabs metadata (read-only context) ---
+    const EDGE_TABS = [
+      {"pageTitle":"<WebsiteContent_Go1A9Qr1HTKJ8pY5FkjFs></WebsiteContent_Go1A9Qr1HTKJ8pY5FkjFs>","pageUrl":"<WebsiteContent_Go1A9Qr1HTKJ8pY5FkjFs></WebsiteContent_Go1A9Qr1HTKJ8pY5FkjFs>","tabId":-1,"isCurrent":true},
+      {"pageTitle":"<WebsiteContent_Go1A9Qr1HTKJ8pY5FkjFs>Copilot in Edge Preview | Microsoft Edge</WebsiteContent_Go1A9Qr1HTKJ8pY5FkjFs>","pageUrl":"<WebsiteContent_Go1A9Qr1HTKJ8pY5FkjFs>https://explore.microsoft.com/en-us/edge/copilot/preview?form=MG0AXR&cs=1969008524&ch=1</WebsiteContent_Go1A9Qr1HTKJ8pY5FkjFs>","tabId":713106992,"isCurrent":false}
+      // ... truncated for brevity
+    ];
+
+    // --- Real-time Dhaka clock (ISO 8601) ---
+    (function(){
+      const clockEl = document.getElementById('clock');
+      function formatDhakaISO(date){
+        const fmt = new Intl.DateTimeFormat('en-GB', {
+          timeZone: 'Asia/Dhaka',
+          year: 'numeric', month: '2-digit', day: '2-digit',
+          hour: '2-digit', minute: '2-digit', second: '2-digit',
+          hour12: false
+        });
+        const parts = fmt.formatToParts(date);
+        const map = {}; parts.forEach(p => map[p.type] = p.value);
+        return `${map.year}-${map.month}-${map.day}T${map.hour}:${map.minute}:${map.second}+06:00`;
+      }
+      function tick(){
+        clockEl.textContent = "🕒 Dhaka Time: " + formatDhakaISO(new Date());
+        const now = Date.now(); const delay = 1000 - (now % 1000);
+        setTimeout(tick, delay);
+      }
+      tick();
+    })();
+
+    // Helpers
+    const qs = s => document.querySelector(s);
+    const qsa = s => Array.from(document.querySelectorAll(s));
+    function escapeHtml(s){ return String(s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+    function encodeId(day, tid){ return day.replace(/[^a-z0-9\-]/gi,'_') + '__' + tid.replace(/[^a-z0-9\-]/gi,'_'); }
+
+    // Role-trigger dispatcher
+    function dispatchRoleTrigger(stepMeta){
+      const payload = {
+        id: stepMeta.id || `${stepMeta.tid}-${stepMeta.step}`,
+        step: stepMeta.step || '',
+        role: stepMeta.role || null,
+        trigger: stepMeta.trigger || null,
+        status: stepMeta.status || null,
+        assignee: stepMeta.assignee || null,
+        emittedAt: new Date().toISOString()
+      };
+      const ev = new CustomEvent('role-trigger', { detail: payload, bubbles: true, composed: true });
+      document.dispatchEvent(ev);
+      console.debug('role-trigger dispatched', payload);
+    }
+
+    // Example listener (other modules can subscribe)
+    document.addEventListener('role-trigger', (e) => {
+      const d = e.detail;
+      if(!d) return;
+      // Example mapping: when a Project-based step completes, emit a CI trigger
+      if(d.role === 'DevelopmentTeam' && String(d.status).toLowerCase() === 'completed'){
+        document.dispatchEvent(new CustomEvent('trigger:CI:deploy', { detail: { stepId: d.id, reason: d.trigger || 'step-complete' }, bubbles:true, composed:true }));
+        console.info('trigger:CI:deploy emitted for', d.id);
+      }
+    });
+
+    // Load mj.json and render UI
+    let DATA = {};
+    async function loadData(){
+      try{
+        const res = await fetch('https://mj-ahmad.github.io/mj/timeline/mj.json', {cache:'no-store'});
+        if(!res.ok) throw new Error('Network');
+        const raw = await res.json();
+        const projects = (raw && raw.MJAhmad && raw.MJAhmad.Timeline && raw.MJAhmad.Timeline.Projects) || [];
+        DATA = buildDataFromProjects(projects);
+        buildMenu(DATA, projects);
+        buildTimelines(DATA);
+        renderEdgeInfo();
+        computeOverallPercent();
+      } catch(e){
+        qs('#timelines-root').innerHTML = '<div class="timeline-card">⚠️ Timeline data could not be loaded. অনুগ্রহ করে পরে আবার চেষ্টা করুন।</div>';
+      }
+    }
+
+    // Convert Projects -> day keyed structure (pseudo-day per project)
+    function buildDataFromProjects(projects){
+      const days = {};
+      projects.forEach(proj => {
+        const key = proj.Key || proj.Name || ('proj-' + proj.Id);
+        const pseudoDay = 'project-' + key;
+        days[pseudoDay] = days[pseudoDay] || {};
+        days[pseudoDay][proj.Name || key] = [];
+        (proj.Phases || []).forEach(phase => {
+          const step = {
+            Step: phase.Step || '',
+            Description: phase.Title || '',
+            Status: phase.Status || 'Pending',
+            EstimatedDurationDays: phase.EstimatedDurationDays || '',
+            Role: phase.Role || '',
+            Type: phase.Type || 'Project-based',
+            Notes: phase.Goal || '',
+            Trigger: phase.Trigger || null,
+            Assignee: phase.Assignee || null
+          };
+          days[pseudoDay][proj.Name || key].push(step);
+        });
+      });
+      return days;
+    }
+
+    // Build left menu with collapsible day groups (aria-expanded)
+    function buildMenu(data, projects){
+      const root = qs('#menu-root');
+      root.innerHTML = '';
+
+      // Projects header
+      const projHeader = document.createElement('div');
+      projHeader.className = 'day-title';
+      projHeader.textContent = 'Projects';
+      root.appendChild(projHeader);
+
+      projects.forEach(proj => {
+        const dayId = 'project-' + (proj.Key || proj.Name || proj.Id);
+        const group = document.createElement('div');
+        group.className = 'day-group';
+        const titleRow = document.createElement('div');
+        titleRow.className = 'day-title';
+        const titleText = document.createElement('span');
+        titleText.textContent = proj.Name + ' (' + proj.Key + ')';
+        const toggle = document.createElement('button');
+        toggle.className = 'day-toggle';
+        toggle.setAttribute('aria-expanded','false');
+        toggle.setAttribute('aria-controls', encodeId(dayId, proj.Name));
+        toggle.textContent = '+';
+        toggle.onclick = () => toggleGroup(toggle, encodeId(dayId, proj.Name));
+        titleRow.appendChild(titleText);
+        titleRow.appendChild(toggle);
+        group.appendChild(titleRow);
+
+        const list = document.createElement('div');
+        list.className = 'menu-list';
+        list.id = 'menu-' + encodeId(dayId, proj.Name);
+        list.style.display = 'none';
+        const a = document.createElement('a');
+        a.className = 'menu-item';
+        a.href = '#'+encodeId(dayId, proj.Name);
+        a.textContent = 'Open project timeline';
+        a.onclick = (ev) => { ev.preventDefault(); scrollToTimeline(dayId, proj.Name); setActiveMenu(a); };
+        list.appendChild(a);
+        group.appendChild(list);
+        root.appendChild(group);
+      });
+
+      // Days (real date keys)
+      const dayKeys = Object.keys(data).filter(k => /^\d{4}-\d{2}-\d{2}$/.test(k));
+      if(dayKeys.length){
+        const dayHeader = document.createElement('div');
+        dayHeader.className = 'day-title';
+        dayHeader.textContent = 'Days';
+        root.appendChild(dayHeader);
+        dayKeys.forEach(day => {
+          const group = document.createElement('div');
+          group.className = 'day-group';
+          const titleRow = document.createElement('div');
+          titleRow.className = 'day-title';
+          const titleText = document.createElement('span');
+          titleText.textContent = day;
+          const toggle = document.createElement('button');
+          toggle.className = 'day-toggle';
+          toggle.setAttribute('aria-expanded','false');
+          toggle.setAttribute('aria-controls', 'day-' + day);
+          toggle.textContent = '+';
+          toggle.onclick = () => toggleGroup(toggle, 'day-' + day);
+          titleRow.appendChild(titleText);
+          titleRow.appendChild(toggle);
+          group.appendChild(titleRow);
+
+          const list = document.createElement('div');
+          list.className = 'menu-list';
+          list.id = 'day-' + day;
+          list.style.display = 'none';
+          Object.keys(data[day]).forEach(tid => {
+            const a = document.createElement('a');
+            a.className = 'menu-item';
+            a.href = '#'+encodeId(day, tid);
+            a.textContent = tid;
+            a.onclick = (ev) => { ev.preventDefault(); scrollToTimeline(day, tid); setActiveMenu(a); };
+            list.appendChild(a);
+          });
+          group.appendChild(list);
+          root.appendChild(group);
+        });
+      }
+    }
+
+    function toggleGroup(button, controlledId){
+      const expanded = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', String(!expanded));
+      button.textContent = expanded ? '+' : '−';
+      const list = document.getElementById(controlledId) || document.getElementById('menu-' + controlledId);
+      if(list) list.style.display = expanded ? 'none' : '';
+    }
+
+    function setActiveMenu(el){
+      qsa('.menu-item').forEach(i => i.classList.remove('active'));
+      if(el) el.classList.add('active');
+    }
+
+    function scrollToTimeline(day, tid){
+      const id = encodeId(day, tid);
+      const el = document.getElementById(id);
+      if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+
+    // Build timelines with per-timeline percent and attach status toggle to emit role-trigger
+    function buildTimelines(data){
+      const root = qs('#timelines-root');
+      root.innerHTML = '';
+      Object.keys(data).forEach(day => {
+        const dayObj = data[day];
+        Object.keys(dayObj).forEach(tid => {
+          const id = encodeId(day, tid);
+          const card = document.createElement('div');
+          card.className = 'timeline-card';
+          card.id = id;
+          const header = document.createElement('h2');
+          header.innerHTML = `<span>${escapeHtml(day)} — ${escapeHtml(tid)}</span><span id="${id}-percent" class="timeline-percent">0%</span>`;
+          card.appendChild(header);
+
+          const steps = dayObj[tid];
+          const total = steps.length;
+          const completed = steps.filter(s => String(s.Status||'').toLowerCase() === 'completed').length;
+          const percent = total > 0 ? Math.round((completed/total)*100) : 0;
+
+          const progressWrap = document.createElement('div');
+          progressWrap.className = 'timeline-progress';
+          const fill = document.createElement('div');
+          fill.className = 'fill';
+          fill.style.width = percent + '%';
+          progressWrap.appendChild(fill);
+          card.appendChild(progressWrap);
+
+          const meta = document.createElement('div');
+          meta.className = 'timeline-meta';
+          meta.textContent = `Steps: ${total} • Completed: ${completed} • Percent: ${percent}%`;
+          card.appendChild(meta);
+
+          steps.forEach((step, idx) => {
+            const s = document.createElement('div');
+            const st = (step.Status || 'Pending').toLowerCase().replace(/\s+/g,'-');
+            s.className = 'step ' + st;
+            s.innerHTML = `<div class="left"><div><strong>Step ${escapeHtml(step.Step)}</strong> — ${escapeHtml(step.Description)}</div>
+                           <div class="meta">Status: <span class="status-text">${escapeHtml(step.Status || 'Pending')}</span> | Days: ${escapeHtml(step.EstimatedDurationDays || 'N/A')} ${step.Role ? '| Role: ' + escapeHtml(step.Role) : ''}</div></div>
+                           <div class="right">
+                             <button class="toggle-status" data-day="${day}" data-tid="${tid}" data-idx="${idx}" aria-label="Toggle status">Toggle</button>
+                           </div>`;
+            s.dataset.day = day;
+            s.dataset.tid = tid;
+            s.dataset.status = step.Status || '';
+            s.dataset.type = step.Type || '';
+            s.dataset.text = (step.Description || '') + ' ' + (step.Notes || '') + ' ' + (step.Role || '');
+            card.appendChild(s);
+          });
+
+          root.appendChild(card);
+          const percentLabel = document.getElementById(id + '-percent');
+          if(percentLabel) percentLabel.textContent = percent + '%';
+        });
+      });
+
+      // Attach toggle handlers after DOM insertion
+      qsa('.toggle-status').forEach(btn => {
+        btn.addEventListener('click', (ev) => {
+          const day = btn.dataset.day;
+          const tid = btn.dataset.tid;
+          const idx = Number(btn.dataset.idx);
+          const step = DATA[day][tid][idx];
+          // Cycle status: Pending -> In Progress -> Completed -> Pending
+          const order = ['Pending','In Progress','Completed'];
+          const cur = String(step.Status || 'Pending');
+          const next = order[(order.indexOf(cur) + 1) % order.length];
+          step.Status = next;
+          // Update UI
+          const cardId = encodeId(day, tid);
+          const card = document.getElementById(cardId);
+          const stepEls = Array.from(card.querySelectorAll('.step'));
+          const stepEl = stepEls[idx];
+          if(stepEl){
+            stepEl.classList.remove('pending','in-progress','completed');
+            stepEl.classList.add(next.toLowerCase().replace(/\s+/g,'-'));
+            stepEl.querySelector('.status-text').textContent = next;
+            stepEl.dataset.status = next;
+          }
+          // Recompute percent for timeline and overall
+          recomputeTimelinePercent(day, tid);
+          computeOverallPercent();
+          // Dispatch role-trigger for this step change
+          dispatchRoleTrigger({
+            id: `${tid}-${day}-s${step.Step}`,
+            step: step.Step,
+            role: step.Role,
+            trigger: step.Trigger || null,
+            status: step.Status,
+            assignee: step.Assignee || null,
+            tid: tid
+          });
+        });
+      });
+    }
+
+    function recomputeTimelinePercent(day, tid){
+      const steps = DATA[day][tid];
+      const total = steps.length;
+      const completed = steps.filter(s => String(s.Status||'').toLowerCase() === 'completed').length;
+      const percent = total > 0 ? Math.round((completed/total)*100) : 0;
+      const id = encodeId(day, tid);
+      const fill = document.querySelector('#' + id + ' .timeline-progress .fill');
+      if(fill) fill.style.width = percent + '%';
+      const label = document.getElementById(id + '-percent');
+      if(label) label.textContent = percent + '%';
+      const meta = document.querySelector('#' + id + ' .timeline-meta');
+      if(meta) meta.textContent = `Steps: ${total} • Completed: ${completed} • Percent: ${percent}%`;
+    }
+
+    // Compute overall percent across all timelines
+    function computeOverallPercent(){
+      const allSteps = [];
+      Object.keys(DATA).forEach(day => {
+        Object.keys(DATA[day]).forEach(tid => {
+          DATA[day][tid].forEach(s => allSteps.push(s));
+        });
+      });
+      const total = allSteps.length;
+      const completed = allSteps.filter(s => String(s.Status||'').toLowerCase() === 'completed').length;
+      const percent = total > 0 ? Math.round((completed/total)*100) : 0;
+      const overallFill = document.getElementById('overall-fill');
+      const overallPercent = document.getElementById('overall-percent');
+      if(overallFill){ overallFill.style.width = percent + '%'; overallFill.textContent = percent + '%'; }
+      if(overallPercent) overallPercent.textContent = percent + '%';
+    }
+
+    // Populate day select
+    function populateDaySelect(days){
+      const sel = qs('#daySelect');
+      sel.innerHTML = '<option value="all">All days</option>';
+      days.forEach(d => {
+        const opt = document.createElement('option');
+        opt.value = d; opt.textContent = d;
+        sel.appendChild(opt);
+      });
+    }
+
+    // Filters and search
+    function filterDay(day){
+      const cards = qsa('.timeline-card');
+      cards.forEach(c => {
+        if(day === 'all') c.style.display = '';
+        else c.style.display = c.id.startsWith(day.replace(/[^a-z0-9\-]/gi,'_')) ? '' : 'none';
+      });
+    }
+
+    function applyShowFilter(){
+      const v = qs('#showFilter').value;
+      if(v === 'all' || v === 'day'){
+        qsa('.timeline-card').forEach(c => c.style.display = '');
+      } else {
+        qsa('.timeline-card').forEach(card => {
+          const steps = Array.from(card.querySelectorAll('.step'));
+          const any = steps.some(s => (s.dataset.type || '') === v);
+          card.style.display = any ? '' : 'none';
+        });
+      }
+    }
+
+    function applyStatusFilter(){
+      const v = qs('#statusFilter').value;
+      qsa('.step').forEach(s => {
+        s.style.display = (v === 'all' || s.dataset.status === v) ? '' : 'none';
+      });
+    }
+
+    function searchSteps(q){
+      const ql = q.trim().toLowerCase();
+      qsa('.step').forEach(s => {
+        const text = (s.dataset.text || '').toLowerCase();
+        s.style.display = ql === '' || text.includes(ql) ? '' : 'none';
+      });
+    }
+
+    function setView(v){
+      if(v === 'compact') qs('#timelines-root').style.gridTemplateColumns = '1fr';
+      else qs('#timelines-root').style.gridTemplateColumns = window.innerWidth < 980 ? '1fr' : 'repeat(2,1fr)';
+    }
+
+    // Render safe Edge tabs summary
+    function renderEdgeInfo(){
+      const info = document.getElementById('edge-info');
+      if(!EDGE_TABS || !EDGE_TABS.length){ info.textContent = 'No browser tab metadata available.'; return; }
+      const current = EDGE_TABS.find(t => t.isCurrent) || EDGE_TABS[0];
+      const total = EDGE_TABS.length;
+      const title = (current.pageTitle || '').replace(/<[^>]*>/g,'').trim() || 'Active tab';
+      info.innerHTML = `<strong>Active tab:</strong> ${escapeHtml(title)}<br><strong>Open tabs:</strong> ${total}`;
+    }
+
+    // Initialize
+    loadData();
+    window.addEventListener('resize', () => setView('timeline'));
+  </script>
+</body>
+</html>

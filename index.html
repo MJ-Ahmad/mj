@@ -1,154 +1,96 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>MJ-Ahmad Documentation Hub</title>
-  <style>
-    :root{
-      --bg:#f6f8fa; --card:#ffffff; --muted:#6b7280; --accent:#0b5fff; --border:#e6e9ee;
-      --maxw:1100px;
-    }
-    html,body{height:100%;margin:0;background:var(--bg);font-family:Inter,Segoe UI,Arial,sans-serif;color:#111827}
-    .wrap{max-width:var(--maxw);margin:28px auto;padding:24px}
-    header{display:flex;align-items:flex-start;gap:18px}
-    .brand{background:linear-gradient(135deg,#0b5fff,#6c8cff);color:#fff;padding:14px;border-radius:10px;min-width:72px;text-align:center}
-    .brand h1{font-size:18px;margin:0;line-height:1.05}
-    .meta{flex:1}
-    .meta p{margin:4px 0;color:var(--muted);font-size:14px}
-    .declaration{margin:18px 0;padding:16px;border-radius:8px;background:linear-gradient(180deg,rgba(11,95,255,0.03),transparent);border:1px solid var(--border);color:#1f2937}
-    .grid{display:grid;grid-template-columns:1fr 320px;gap:20px}
-    .card{background:var(--card);border:1px solid var(--border);padding:16px;border-radius:10px;box-shadow:0 1px 2px rgba(16,24,40,0.03)}
-    .modules h2{margin:0 0 10px 0}
-    .module{margin-bottom:14px}
-    .module h3{margin:0 0 6px 0;font-size:15px}
-    .module ul{margin:0;padding-left:18px;color:var(--muted)}
-    nav ul{list-style:none;padding:0;margin:0}
-    nav li{margin:6px 0}
-    a{color:var(--accent);text-decoration:none}
-    a:hover{text-decoration:underline}
-    .search{display:flex;gap:8px;margin-bottom:12px}
-    .search input{flex:1;padding:10px;border:1px solid var(--border);border-radius:8px}
-    .search button{padding:10px 12px;border-radius:8px;border:1px solid var(--border);background:#fff;cursor:pointer}
-    footer{margin-top:20px;color:var(--muted);font-size:13px}
-    @media (max-width:900px){.grid{grid-template-columns:1fr}}
-  </style>
+  <meta charset="UTF-8">
+  <title>MJSovereign – The Ethical Invocation Constitution</title>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <h1>MJ-Ahmad<br/>Documentation Hub</h1>
-      </div>
-      <div class="meta">
-        <h2 id="title">Loading…</h2>
-        <p><strong>Curated by</strong> <span id="curated_by"></span></p>
-        <p><strong>Type</strong> <span id="document_type"></span> · <strong>Updated</strong> <span id="last_updated"></span></p>
-      </div>
-    </header>
+  <header>
+    <h1>MJSovereign</h1>
+    <h2>The Ethical Invocation Constitution</h2>
+    <p><em>A platform for ethical governance and finance.</em></p>
+    <p>“Where every script is a verdict, every invocation a vote, and every log a legacy.”</p>
+    <p>“Write the soul of a nation. Invoke the dignity of all beings.”</p>
+  </header>
 
-    <div class="declaration card" id="declaration">Loading declaration…</div>
+  <section>
+    <h2>Project Structure</h2>
+    <ul>
+      <li>Foundational Ethos</li>
+      <li>Identity & Governance Infrastructure</li>
+      <li>Invocation & Deployment Layer</li>
+      <li>Justice & Legacy</li>
+    </ul>
+  </section>
 
-    <div class="grid">
-      <main class="card modules" id="main">
-        <div class="search">
-          <input id="searchInput" placeholder="Search modules, pages, or nav items" aria-label="Search documentation">
-          <button id="clearBtn">Clear</button>
-        </div>
-        <div id="modules">Loading modules…</div>
-      </main>
+  <section>
+    <h2>Foundational Ethos</h2>
+    <ul>
+      <li><strong>Ethical engine</strong> → A permanent software core enforcing fairness and integrity through rule-based systems and audit trails.</li>
+      <li><strong>Financial sovereignty</strong> → Blockchain-driven independence with transparent ledgers, free from corruption.</li>
+      <li><strong>Historical anchor</strong> → Immutable records of past ethical decisions guiding future actions.</li>
+      <li><strong>Purpose registry</strong> → Smart contracts ensuring funds are distributed according to declared goals.</li>
+    </ul>
+  </section>
 
-      <aside class="card">
-        <h3>Navigation</h3>
-        <nav id="nav">Loading navigation…</nav>
-        <footer>
-          <p id="quote" style="margin-top:12px;font-style:italic"></p>
-        </footer>
-      </aside>
-    </div>
-  </div>
+  <section>
+    <h2>Identity & Governance Infrastructure</h2>
+    <ul>
+      <li><strong>Decentralized signature engine</strong> → Cryptographic validation for digital constitutions and agreements.</li>
+      <li><strong>Merit-based governance</strong> → Authority earned through contribution, not hierarchy.</li>
+      <li><strong>Contribution scoring</strong> → Algorithms recalibrating fairness in participation.</li>
+    </ul>
+  </section>
 
-  <script>
-    async function load() {
-      const res = await fetch('mj.json', {cache: 'no-store'});
-      if (!res.ok) {
-        document.getElementById('title').textContent = 'Documentation Hub (mj.json not found)';
-        return;
-      }
-      const data = await res.json();
-      const meta = data.meta || {};
-      document.getElementById('title').textContent = meta.title || '';
-      document.getElementById('curated_by').textContent = meta.curated_by || '';
-      document.getElementById('document_type').textContent = meta.document_type || '';
-      document.getElementById('last_updated').textContent = meta.last_updated || '';
-      document.getElementById('declaration').textContent = meta.declaration || '';
-      document.getElementById('quote').textContent = meta.quote ? `"${meta.quote.text}" — ${meta.quote.author}` : '';
+  <section>
+    <h2>Invocation & Deployment Layer</h2>
+    <ul>
+      <li><strong>Cloud terminals</strong> → Sovereign-grade orchestration of cloud systems with secure access.</li>
+      <li><strong>AI invocation</strong> → Lightweight AI frameworks enabling low-resource communities to benefit from intelligence.</li>
+      <li><strong>Ethical travel and logistics systems</strong> → Sustainable, transparent mobility and logistics planning.</li>
+    </ul>
+  </section>
 
-      // Render modules
-      const modulesEl = document.getElementById('modules');
-      modulesEl.innerHTML = '';
-      (data.modules || []).forEach(m => {
-        const div = document.createElement('div');
-        div.className = 'module';
-        div.dataset.name = m.name || '';
-        const itemsHtml = (m.items || []).map(i => `<li>${escapeHtml(i)}</li>`).join('');
-        div.innerHTML = `<h3>${escapeHtml(m.name)}</h3><ul>${itemsHtml}</ul>`;
-        modulesEl.appendChild(div);
-      });
+  <section>
+    <h2>Justice & Legacy</h2>
+    <ul>
+      <li><strong>Species-inclusive judiciary</strong> → Legal frameworks extending rights to humans and all living beings.</li>
+      <li><strong>Sacred distribution</strong> → Transparent stewardship and fair allocation of shared resources.</li>
+      <li><strong>Social entrepreneurship</strong> → Microfinance and community-driven business tools for empowerment.</li>
+    </ul>
+  </section>
 
-      // Render nav (recursive)
-      const navEl = document.getElementById('nav');
-      navEl.innerHTML = '';
-      function renderNav(obj) {
-        const ul = document.createElement('ul');
-        for (const key in obj) {
-          const value = obj[key];
-          const li = document.createElement('li');
-          if (typeof value === 'string') {
-            li.innerHTML = `<a href="${escapeAttr(value)}" target="_blank" rel="noopener noreferrer">${escapeHtml(key)}</a>`;
-            li.dataset.search = key + ' ' + value;
-          } else {
-            li.innerHTML = `<strong>${escapeHtml(key)}</strong>`;
-            li.appendChild(renderNav(value));
-            li.dataset.search = key;
-          }
-          ul.appendChild(li);
-        }
-        return ul;
-      }
-      navEl.appendChild(renderNav(data.nav || {}));
+  <section>
+    <h2>Master Orchestrator</h2>
+    <ul>
+      <li>Role-based logic for accountability</li>
+      <li>Immutable audit logs for transparency</li>
+      <li>YAML anchors for modular configuration</li>
+      <li>Modular paths for scalable growth</li>
+    </ul>
+  </section>
 
-      // Search/filter
-      const input = document.getElementById('searchInput');
-      const clearBtn = document.getElementById('clearBtn');
-      input.addEventListener('input', () => applyFilter(input.value.trim().toLowerCase()));
-      clearBtn.addEventListener('click', () => { input.value=''; applyFilter(''); });
+  <section>
+    <h2>Roadmap with Milestones</h2>
+    <p><em>Idea → Impact → Global adoption</em></p>
+    <ul>
+      <li><strong>Idea & Conceptualization</strong> → Define vision, principles, and target communities.</li>
+      <li><strong>Prototype Development</strong> → Build a working prototype (e.g., Purpose Registry Blockchain).</li>
+      <li><strong>Pilot Testing</strong> → Partner with NGOs or community projects to validate usability and trust.</li>
+      <li><strong>Partnerships & Early Adoption</strong> → Collaborate with social enterprises and ethical finance groups.</li>
+      <li><strong>Funding & Investment</strong> → Secure seed capital from impact investors and crowdfunding.</li>
+      <li><strong>Launch</strong> → Release MVP with core modules and onboard NGOs/enterprises.</li>
+      <li><strong>Scaling & Expansion</strong> → Add advanced modules (AI invocation, logistics systems) and expand globally.</li>
+      <li><strong>Legacy & Sustainability</strong> → Establish governance council and position MJSovereign as a global ethical technology standard.</li>
+    </ul>
+  </section>
 
-      function applyFilter(q) {
-        // modules
-        document.querySelectorAll('.module').forEach(node => {
-          const name = node.dataset.name.toLowerCase();
-          const items = Array.from(node.querySelectorAll('li')).map(li => li.textContent.toLowerCase()).join(' ');
-          const match = !q || name.includes(q) || items.includes(q);
-          node.style.display = match ? '' : 'none';
-        });
-        // nav
-        document.querySelectorAll('#nav li').forEach(li => {
-          const text = (li.textContent || '').toLowerCase();
-          const match = !q || text.includes(q);
-          li.style.display = match ? '' : 'none';
-        });
-      }
-
-      // small helper escapes
-      function escapeHtml(s){ return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
-      function escapeAttr(s){ return String(s).replace(/"/g, '&quot;'); }
-    }
-
-    load().catch(err => {
-      console.error(err);
-      document.getElementById('title').textContent = 'Error loading mj.json';
-    });
-  </script>
+  <footer>
+    <h2>Closing Declaration</h2>
+    <p>MJSovereign is not merely a project. It is a charter for the future.</p>
+    <p>We commit to building systems that embody dignity, transparency, and resilience.</p>
+    <p>We anchor innovation in ethics.</p>
+    <p>We leave a legacy where technology serves humanity and all living beings.</p>
+  </footer>
 </body>
 </html>

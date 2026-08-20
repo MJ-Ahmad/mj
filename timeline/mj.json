@@ -1,0 +1,152 @@
+{
+  "MJAhmad": {
+    "Timeline": {
+      "Projects": [
+        {
+          "Id": "01",
+          "Key": "QuranerFariwala",
+          "Name": "Quraner Fariwala",
+          "Version": "1.0",
+          "CreatedDate": "2026-02-27",
+          "Description": "Recovery, documentation, negotiation, fundraising, operations, MCP network, consolidation, and sustainability.",
+          "Phases": [
+            { "Step": "1", "Title": "Crisis Documentation", "Goal": "Complete all lists within 3 days.", "Tasks": [] },
+            { "Step": "2", "Title": "Communication & Apology", "Goal": "Complete all communications within 5 days.", "Tasks": [] }
+          ]
+        },
+        {
+          "Id": "02",
+          "Key": "HelpingHand",
+          "Name": "Helping Hand",
+          "Version": "1.0",
+          "CreatedDate": "2026-03-15",
+          "Description": "Community-driven donation and volunteer coordination platform.",
+          "Phases": [
+            { "Step": "1", "Title": "Volunteer Recruitment", "Goal": "Onboard 50 volunteers within 2 weeks.", "Tasks": [] },
+            { "Step": "2", "Title": "Donation Drive", "Goal": "Raise $10,000 in the first month.", "Tasks": [] }
+          ]
+        },
+        {
+          "Id": "03",
+          "Key": "TechRecycle",
+          "Name": "Tech Recycle",
+          "Version": "1.0",
+          "CreatedDate": "2026-04-10",
+          "Description": "Hardware recycling and custom laptop manufacturing workflow.",
+          "Phases": [
+            { "Step": "1", "Title": "Collection", "Goal": "Gather 100 old laptops within 1 month.", "Tasks": [] },
+            { "Step": "2", "Title": "Refurbishment", "Goal": "Refurbish 50 laptops within 2 months.", "Tasks": [] }
+          ]
+        },
+        {
+          "Id": "04",
+          "Key": "EnglishPro",
+          "Name": "English Communication Mastery",
+          "Version": "1.0",
+          "CreatedDate": "2026-05-01",
+          "Description": "Professional-level English spoken communication for presentations and collaboration.",
+          "Phases": [
+            { "Step": "1", "Title": "Daily Practice", "Goal": "30 minutes of structured speaking daily.", "Tasks": [] },
+            { "Step": "2", "Title": "Presentation Skills", "Goal": "Deliver 5 mock presentations.", "Tasks": [] }
+          ]
+        },
+        {
+          "Id": "05",
+          "Key": "EthicalStartup",
+          "Name": "Ethical Tech Startup",
+          "Version": "1.0",
+          "CreatedDate": "2026-05-20",
+          "Description": "Design and launch ethical-technology-based startup projects.",
+          "Phases": [
+            { "Step": "1", "Title": "Ideation", "Goal": "Generate 10 startup concepts.", "Tasks": [] },
+            { "Step": "2", "Title": "Prototype", "Goal": "Develop MVP for top 2 ideas.", "Tasks": [] }
+          ]
+        },
+        {
+          "Id": "06",
+          "Key": "CyberShield",
+          "Name": "Cybersecurity Training",
+          "Version": "1.0",
+          "CreatedDate": "2026-06-01",
+          "Description": "Deep expertise in programming and cybersecurity using mobile-based Linux.",
+          "Phases": [
+            { "Step": "1", "Title": "Linux Setup", "Goal": "Install Kali NetHunter.", "Tasks": [] },
+            { "Step": "2", "Title": "Security Labs", "Goal": "Complete 20 penetration test labs.", "Tasks": [] }
+          ]
+        },
+        {
+          "Id": "07",
+          "Key": "GraphDesign",
+          "Name": "Graph Paper Design Workflow",
+          "Version": "1.0",
+          "CreatedDate": "2026-06-15",
+          "Description": "Graph-paper-based design and measurement workflows.",
+          "Phases": [
+            { "Step": "1", "Title": "Blueprints", "Goal": "Create 10 hardware design sketches.", "Tasks": [] },
+            { "Step": "2", "Title": "Measurements", "Goal": "Document precision measurements.", "Tasks": [] }
+          ]
+        },
+        {
+          "Id": "08",
+          "Key": "AICompanion",
+          "Name": "AI Companion Development",
+          "Version": "1.0",
+          "CreatedDate": "2026-07-01",
+          "Description": "Build AI-powered tools for ethical governance and project support.",
+          "Phases": [
+            { "Step": "1", "Title": "Model Training", "Goal": "Train 3 lightweight models.", "Tasks": [] },
+            { "Step": "2", "Title": "Integration", "Goal": "Deploy models into mobile workflow.", "Tasks": [] }
+          ]
+        },
+        {
+          "Id": "09",
+          "Key": "EduTech",
+          "Name": "Educational Tech Platform",
+          "Version": "1.0",
+          "CreatedDate": "2026-07-15",
+          "Description": "Platform for online learning and skill development.",
+          "Phases": [
+            { "Step": "1", "Title": "Course Creation", "Goal": "Develop 5 beginner-friendly courses.", "Tasks": [] },
+            { "Step": "2", "Title": "Deployment", "Goal": "Launch beta platform.", "Tasks": [] }
+          ]
+        },
+        {
+          "Id": "10",
+          "Key": "GreenEnergy",
+          "Name": "Green Energy Initiative",
+          "Version": "1.0",
+          "CreatedDate": "2026-07-30",
+          "Description": "Promote renewable energy adoption in local communities.",
+          "Phases": [
+            { "Step": "1", "Title": "Research", "Goal": "Document 5 viable energy solutions.", "Tasks": [] },
+            { "Step": "2", "Title": "Pilot Project", "Goal": "Install solar panels in 10 homes.", "Tasks": [] }
+          ]
+        },
+        {
+          "Id": "11",
+          "Key": "HealthNet",
+          "Name": "Community Health Network",
+          "Version": "1.0",
+          "CreatedDate": "2026-08-05",
+          "Description": "Build a network for affordable healthcare access.",
+          "Phases": [
+            { "Step": "1", "Title": "Partnerships", "Goal": "Sign agreements with 5 clinics.", "Tasks": [] },
+            { "Step": "2", "Title": "Outreach", "Goal": "Enroll 500 community members.", "Tasks": [] }
+          ]
+        },
+        {
+          "Id": "12",
+          "Key": "GlobalConnect",
+          "Name": "Global Collaboration Hub",
+          "Version": "1.0",
+          "CreatedDate": "2026-08-20",
+          "Description": "International collaboration for ethical technology projects.",
+          "Phases": [
+            { "Step": "1", "Title": "Networking", "Goal": "Connect with 20 global partners.", "Tasks": [] },
+            { "Step": "2", "Title": "Joint Projects", "Goal": "Launch 3 cross-border initiatives.", "Tasks": [] }
+          ]
+        }
+      ]
+    }
+  }
+}
