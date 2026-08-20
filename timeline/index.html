@@ -253,6 +253,7 @@
         DATA = buildDataFromProjects(projects);
         buildMenu(DATA, projects);
         buildTimelines(DATA);
+        populateDaySelect(Object.keys(DATA));
         renderEdgeInfo();
         computeOverallPercent();
       } catch(e){
