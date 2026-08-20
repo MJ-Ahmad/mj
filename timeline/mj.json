@@ -5,13 +5,21 @@
         {
           "Id": "01",
           "Key": "QuranerFariwala",
-          "Name": "Quraner Fariwala",
+          "Name": "TID-1720",
           "Version": "1.0",
           "CreatedDate": "2026-02-27",
           "Description": "Recovery, documentation, negotiation, fundraising, operations, MCP network, consolidation, and sustainability.",
           "Phases": [
-            { "Step": "1", "Title": "Crisis Documentation", "Goal": "Complete all lists within 3 days.", "Tasks": [] },
-            { "Step": "2", "Title": "Communication & Apology", "Goal": "Complete all communications within 5 days.", "Tasks": [] }
+                { "Step": "1", "Description": "Discovery & Planning", "Status": "Completed" },
+    { "Step": "2", "Description": "Website Development", "Status": "In Progress" },
+    { "Step": "3", "Description": "Development & Adding Event of Donation", "Status": "Pending" },
+    { "Step": "4", "Description": "Adding Event an running of donate collection", "Status": "Pending" },
+    { "Step": "5", "Description": "Add link in FB Page", "Status": "Pending" },
+    { "Step": "6", "Description": "FB Page is Good and running Health", "Status": "Pending" },
+    { "Step": "7", "Description": "Add link in WhatsApp and WhatsApp Messages", "Status": "Pending" },
+    { "Step": "8", "Description": "Add link in Email Message", "Status": "Pending" },
+    { "Step": "9", "Description": "Email writing", "Status": "Pending" },
+    { "Step": "10", "Description": "Email sending", "Status": "Pending" }
           ]
         },
         {
