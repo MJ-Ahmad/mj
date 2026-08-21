@@ -24,14 +24,22 @@
         },
         {
           "Id": "02",
-          "Key": "HelpingHand",
-          "Name": "Helping Hand",
+          "Key": "MahdiVi",
+          "Name": "TID-0846",
           "Version": "1.0",
-          "CreatedDate": "2026-03-15",
+          "CreatedDate": "2026-08-20",
           "Description": "Community-driven donation and volunteer coordination platform.",
           "Phases": [
-            { "Step": "1", "Title": "Volunteer Recruitment", "Goal": "Onboard 50 volunteers within 2 weeks.", "Tasks": [] },
-            { "Step": "2", "Title": "Donation Drive", "Goal": "Raise $10,000 in the first month.", "Tasks": [] }
+            { "Step": "1", "Title": "Install yt-dlp", "Goal": "", "Tasks": [] },
+            { "Step": "2", "Title": "Download the Facebook Video", "Goal": "", "Tasks": [] },
+            { "Step": "3", "Title": "Install FFmpeg", "Goal": "", "Tasks": [] },
+            { "Step": "4", "Title": "Convert the Video to MP3", "Goal": "", "Tasks": [] },
+            { "Step": "5", "Title": "Create Project Folder", "Goal": "", "Tasks": [] },
+            { "Step": "6", "Title": "Move the MP3 File to Project Folder", "Goal": "", "Tasks": [] },
+            { "Step": "7", "Title": "Extract Audio (.mp3)", "Goal": "", "Tasks": [] },
+            { "Step": "8", "Title": "Add the MP3 File to the Repository", "Goal": "", "Tasks": [] },
+            { "Step": "9", "Title": "Commit the Changes", "Goal": "", "Tasks": [] },
+            { "Step": "10", "Title": "Push to Remote Repository", "Goal": "", "Tasks": [] }
           ]
         },
         {
