@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://MJ-Ahmad.github.io/mjs/sitemap.xml
