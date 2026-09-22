@@ -17,71 +17,8 @@
     <link rel="manifest" href="manifest.webmanifest" />
     <link rel="canonical" href="https://MJ-Ahmad.github.io/mjs/" />
     <link rel="stylesheet" href="css/style.css" />
-<style>
-/* Splash Screen Styles */
-
-body {
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* সুন্দর gradient background */
-  color: #fff;
-  font-family: Arial, sans-serif;
-}
-
-.splash-container {
-  text-align: center;
-}
-
-.logo {
-  width: 180px;
-  animation: fadeIn 2s ease-in-out;
-}
-
-.progress-bar {
-  width: 300px;
-  height: 10px;
-  background: rgba(255,255,255,0.2);
-  border-radius: 5px;
-  margin: 20px auto;
-  overflow: hidden;
-}
-
-.progress {
-  height: 100%;
-  width: 0;
-  background: #00ffcc; /* progress color */
-  transition: width 0.3s ease;
-}
-
-.loading-text {
-  margin-top: 15px;
-  font-size: 1.1em;
-  animation: pulse 1.5s infinite;
-}
-
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.8); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-@keyframes pulse {
-  0% { opacity: 0.5; }
-  50% { opacity: 1; }
-  100% { opacity: 0.5; }
-}
-</style> 
- </head>
+  </head>
   <body>
- <!-- Splash overlay -->
-  <div id="splash">
-    <img src="logo.png" alt="MJSovereign Logo">
-    <div class="progress-bar"><div class="progress"></div></div>
-    <p class="loading-text">Preparing your sovereign experience...</p>
-  </div>
     <header class="site-header">
       <div class="container nav-wrap">
         <a class="brand" href="index.html" aria-label="MJSovereign home">
@@ -388,19 +325,6 @@ body {
         </div>
       </div>
     </footer>
-<script>
-    let progress = document.querySelector(".progress");
-    let width = 0;
-    let interval = setInterval(() => {
-      if (width >= 100) {
-        clearInterval(interval);
-        document.getElementById("splash").style.display = "none";
-      } else {
-        width++;
-        progress.style.width = width + "%";
-      }
-    }, 30); // 3 seconds total
-  </script>
 
     <script src="js/script.js"></script>
   </body>
