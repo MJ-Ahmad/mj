@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MJSovereign | Loading...</title>
+  <link rel="stylesheet" href="css/splash.css">
+</head>
+<body>
+  <div class="splash-container">
+    <!-- Logo -->
+    <img src="logo.png" alt="MJSovereign Logo" class="logo">
+
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+      <div class="progress"></div>
+    </div>
+
+    <!-- Loading Text -->
+    <p class="loading-text">Preparing your sovereign experience...</p>
+  </div>
+
+  <script>
+    // Progress bar animation + redirect
+    let progress = document.querySelector(".progress");
+    let width = 0;
+    let interval = setInterval(() => {
+      if (width >= 100) {
+        clearInterval(interval);
+        window.location.href = "index.html"; // redirect to homepage
+      } else {
+        width++;
+        progress.style.width = width + "%";
+      }
+    }, 30); // 3 seconds total (100 * 30ms)
+  </script>
+</body>
+</html>
