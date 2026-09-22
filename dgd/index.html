@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DGD | MJSovereign</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="loginShell" class="login-shell">
+      <div class="login-card">
+        <div class="login-header">
+          <span class="eyebrow">DGD Access</span>
+          <h1>General Dashboard</h1>
+        </div>
+
+        <form id="loginForm" class="login-form" autocomplete="off">
+          <label for="password">Enter password</label>
+          <input id="password" name="password" type="password" maxlength="12" placeholder="•••••" required />
+          <button type="submit" class="primary-btn">Unlock Dashboard</button>
+          <p id="loginError" class="login-error" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+
+    <div id="dashboardShell" class="dashboard-shell hidden" aria-live="polite">
+      <aside class="sidebar">
+        <div class="brand-block">
+          <div class="brand-mark">MJ</div>
+          <div>
+            <p class="brand-tag">MJSovereign</p>
+            <h2>DGD</h2>
+          </div>
+        </div>
+
+        <nav class="side-nav" aria-label="DGD Navigation">
+          <button class="nav-item active" type="button">Command Center</button>
+          <button class="nav-item" type="button">Portfolio</button>
+          <button class="nav-item" type="button">Projects</button>
+          <button class="nav-item" type="button">Governance</button>
+          <button class="nav-item" type="button">People</button>
+          <button class="nav-item" type="button">Finance</button>
+          <button class="nav-item" type="button">Strategy</button>
+          <button class="nav-item" type="button">Contacts</button>
+        </nav>
+
+        <div class="side-panel">
+          <span class="panel-label">Next review</span>
+          <strong>12 Sep 2026</strong>
+          <small>Executive oversight</small>
+        </div>
+
+        <div class="side-panel contact-box">
+          <span class="panel-label">Principal</span>
+          <strong>MJ Ahmad</strong>
+          <small>Director / Controller</small>
+          <a href="mailto:mj@mjsovereign.org">mj@mjsovereign.org</a>
+          <a href="tel:+8801700000000">+88 01700-000000</a>
+        </div>
+      </aside>
+
+      <div class="main-panel">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow soft">Operational Intelligence</p>
+            <h2>General Dashboard</h2>
+          </div>
+
+          <div class="topbar-actions">
+            <div class="status-chip">
+              <span class="status-dot live"></span>
+              Live oversight
+            </div>
+            <div class="live-clock" id="liveClock">--:--</div>
+            <button id="logoutBtn" class="ghost-btn" type="button">Lock</button>
+          </div>
+        </header>
+
+        <main class="dashboard-content">
+          <section class="hero-grid">
+            <article class="panel hero-panel">
+              <div class="panel-head">
+                <span class="eyebrow">MJ Ahmad Command Center</span>
+                <span class="tag tag-green">Mission Active</span>
+              </div>
+              <h3>One system for every strategic signal, action, responsibility, and outcome.</h3>
+              <p>
+                This DGD is designed as a single operational nervous system for MJ Ahmad — bringing governance,
+                people, projects, finance, communications, and future planning into one visible, accountable hub.
+              </p>
+              <div class="hero-actions">
+                <button class="primary-btn small-btn" type="button">Review priorities</button>
+                <button class="ghost-btn small-btn" type="button">Open site map</button>
+              </div>
+            </article>
+
+            <article class="panel mission-panel">
+              <div class="panel-head">
+                <h3>Strategic Pulse</h3>
+                <span class="tag tag-blue">System health</span>
+              </div>
+              <div class="pulse-metrics">
+                <div>
+                  <strong>94%</strong>
+                  <span>Governance alignment</span>
+                </div>
+                <div>
+                  <strong>21</strong>
+                  <span>Active workstreams</span>
+                </div>
+                <div>
+                  <strong>07</strong>
+                  <span>Priority initiatives</span>
+                </div>
+              </div>
+            </article>
+          </section>
+
+          <section class="overview-grid">
+            <article class="panel stat-card accent">
+              <span class="kicker">Portfolio Health</span>
+              <strong>92%</strong>
+              <small>Mission, delivery, and trust aligned</small>
+            </article>
+            <article class="panel stat-card">
+              <span class="kicker">Open Actions</span>
+              <strong>18</strong>
+              <small>11 on track / 4 at risk</small>
+            </article>
+            <article class="panel stat-card">
+              <span class="kicker">Milestones</span>
+              <strong>08</strong>
+              <small>03 closed this cycle</small>
+            </article>
+            <article class="panel stat-card">
+              <span class="kicker">Budget Status</span>
+              <strong>78%</strong>
+              <small>Within planned allocation</small>
+            </article>
+          </section>
+
+          <section class="two-col-layout">
+            <article class="panel">
+              <div class="panel-head">
+                <h3>Executive Summary</h3>
+                <span class="tag tag-green">Operational</span>
+              </div>
+              <p class="summary-text">
+                The operating model is entering a decisive phase. Strategic intent has been translated into visible
+                execution, while public trust, governance clarity, technology delivery, and partner coordination are now
+                synchronized under a single control structure.
+              </p>
+              <ul class="check-list">
+                <li>Governance architecture reaffirmed and sign-off ready</li>
+                <li>Digital ecosystem, communications, and launch assets stabilized</li>
+                <li>Core initiatives have defined owners, milestones, and output metrics</li>
+                <li>Risk, compliance, and stakeholder visibility are monitored continuously</li>
+              </ul>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head">
+                <h3>Priority Queue</h3>
+                <span class="tag tag-blue">Live</span>
+              </div>
+              <div id="taskBoard" class="task-list"></div>
+            </article>
+          </section>
+
+          <section class="wide-grid">
+            <article class="panel">
+              <div class="panel-head">
+                <h3>Strategic Focus Areas</h3>
+                <span class="tag tag-yellow">Capability map</span>
+              </div>
+              <div class="focus-grid">
+                <div class="focus-card">
+                  <span>Governance</span>
+                  <strong>96%</strong>
+                  <div class="mini-bar"><i style="width: 96%"></i></div>
+                </div>
+                <div class="focus-card">
+                  <span>Projects</span>
+                  <strong>88%</strong>
+                  <div class="mini-bar"><i style="width: 88%"></i></div>
+                </div>
+                <div class="focus-card">
+                  <span>People</span>
+                  <strong>81%</strong>
+                  <div class="mini-bar"><i style="width: 81%"></i></div>
+                </div>
+                <div class="focus-card">
+                  <span>Finance</span>
+                  <strong>74%</strong>
+                  <div class="mini-bar"><i style="width: 74%"></i></div>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head">
+                <h3>Decision Log</h3>
+                <span class="tag tag-blue">Latest</span>
+              </div>
+              <ul class="decision-log">
+                <li><strong>05 Sep</strong><span>Approved strategic backlog prioritization.</span></li>
+                <li><strong>02 Sep</strong><span>Confirmed launch communications calendar for public readiness.</span></li>
+                <li><strong>30 Aug</strong><span>Operational roles and ownership reviewed with leadership.</span></li>
+              </ul>
+            </article>
+          </section>
+
+          <section class="timeline-panel panel">
+            <div class="panel-head">
+              <h3>Roadmap & Timeline</h3>
+              <span class="tag tag-yellow">Quarterly</span>
+            </div>
+
+            <div class="timeline">
+              <div class="timeline-item complete">
+                <div class="time-marker">Q1</div>
+                <div class="timeline-body">
+                  <h4>Discovery & Charter</h4>
+                  <p>Define strategic intent, ethical values, governance logic, and operational framing.</p>
+                </div>
+              </div>
+              <div class="timeline-item complete">
+                <div class="time-marker">Q2</div>
+                <div class="timeline-body">
+                  <h4>Prototype & Architecture</h4>
+                  <p>Develop the public brand, digital platform, and governance blueprint.</p>
+                </div>
+              </div>
+              <div class="timeline-item active">
+                <div class="time-marker">Q3</div>
+                <div class="timeline-body">
+                  <h4>Pilot Integration</h4>
+                  <p>Deploy workflows, team onboarding, and governance rhythm across initiatives.</p>
+                </div>
+              </div>
+              <div class="timeline-item pending">
+                <div class="time-marker">Q4</div>
+                <div class="timeline-body">
+                  <h4>Scale & Network</h4>
+                  <p>Expand partnerships, public trust, and execution capacity.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="bottom-grid">
+            <article class="panel">
+              <div class="panel-head">
+                <h3>Initiative Board</h3>
+              </div>
+              <div class="initiative-list">
+                <div class="initiative-item">
+                  <span>01</span>
+                  <div>
+                    <strong>Trusted-Ally</strong>
+                    <small>Network / trust infrastructure</small>
+                  </div>
+                </div>
+                <div class="initiative-item">
+                  <span>02</span>
+                  <div>
+                    <strong>MJSovereign</strong>
+                    <small>Governance / strategic platform</small>
+                  </div>
+                </div>
+                <div class="initiative-item">
+                  <span>03</span>
+                  <div>
+                    <strong>NEXARA</strong>
+                    <small>Community / social innovation</small>
+                  </div>
+                </div>
+                <div class="initiative-item">
+                  <span>04</span>
+                  <div>
+                    <strong>MJ Ahmad</strong>
+                    <small>Leadership / accountability axis</small>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-head">
+                <h3>Risk Register</h3>
+              </div>
+              <ul class="risk-list">
+                <li><strong>Low</strong> — Brand consistency drift</li>
+                <li><strong>Med</strong> — Resource bottlenecks in delivery</li>
+                <li><strong>Med</strong> — Stakeholder alignment across initiatives</li>
+                <li><strong>Low</strong> — Compliance and reporting lag</li>
+              </ul>
+            </article>
+          </section>
+
+          <section class="contact-grid panel">
+            <div class="panel-head">
+              <h3>Connection Matrix</h3>
+              <span class="tag tag-green">Contact directory</span>
+            </div>
+            <div id="contactDirectory" class="contact-directory"></div>
+          </section>
+
+          <section class="map-grid panel">
+            <div class="panel-head">
+              <h3>Site Map & Control Links</h3>
+              <span class="tag tag-blue">Unified access</span>
+            </div>
+            <div class="map-list">
+              <a href="#">Mission</a>
+              <a href="#">Governance</a>
+              <a href="#">Projects</a>
+              <a href="#">People</a>
+              <a href="#">Data Center</a>
+              <a href="#">Reports</a>
+              <a href="#">Communications</a>
+              <a href="#">Partner Network</a>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
