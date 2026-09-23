@@ -18,7 +18,7 @@
   "chaptersHead": { "bn": "আমাদের কার্যক্রম", "en": "What we do" },
   "chapters": [
     {
-      "icon": "research",
+      "markBn": "গ", "markEn": "R",
       "title": { "bn": "গবেষণা", "en": "Research" },
       "text": {
         "bn": "কোরআনের গভীরতা অনুধাবনে প্রাচীন জ্ঞান ও আধুনিক বিশ্লেষণের মেলবন্ধন — শুধু তিলাওয়াত নয়, অর্থবোধ ও প্রজ্ঞার চর্চা।",
@@ -27,7 +27,7 @@
       "link": "/qf/edu"
     },
     {
-      "icon": "printing",
+      "markBn": "মু", "markEn": "P",
       "title": { "bn": "মুদ্রণ", "en": "Printing" },
       "text": {
         "bn": "প্রি-প্রেস থেকে বাঁধাই পর্যন্ত প্রতিটি ধাপে নিখুঁততা — যাতে প্রতিটি কপি যথাযথ মর্যাদায় পাঠকের হাতে পৌঁছায়।",
@@ -36,7 +36,7 @@
       "link": "/qf/pr"
     },
     {
-      "icon": "distribution",
+      "markBn": "বি", "markEn": "D",
       "title": { "bn": "বিতরণ", "en": "Distribution" },
       "text": {
         "bn": "মাদ্রাসা, এতিমখানা ও শরণার্থী শিবির পর্যন্ত — দেশের প্রতিটি বিভাগে পৌঁছে দেওয়া হয়েছে হাজারো কোরআন মাজিদ।",
@@ -82,51 +82,13 @@
     "portal": { "bn": "পোর্টাল", "en": "Portal" }
   },
   "footer": {
-    "columns": [
-      {
-        "heading": { "bn": "প্রতিষ্ঠান", "en": "Institution" },
-        "links": [
-          { "label": { "bn": "গবেষণা", "en": "Research" }, "link": "/qf/edu" },
-          { "label": { "bn": "মুদ্রণ", "en": "Printing" }, "link": "/qf/pr" },
-          { "label": { "bn": "বিতরণ", "en": "Distribution" }, "link": "/qf/ds" },
-          { "label": { "bn": "পোর্টাল লগইন", "en": "Portal Login" }, "link": "/qf/portal/login" }
-        ]
-      },
-      {
-        "heading": { "bn": "কোরআন পড়ুন ও শুনুন", "en": "Read & Listen" },
-        "links": [
-          { "label": { "bn": "পারা ভিত্তিক পড়ুন", "en": "Read by Para" }, "link": "/qf/quran/read?by=para", "soon": true },
-          { "label": { "bn": "সূরা ভিত্তিক পড়ুন", "en": "Read by Surah" }, "link": "/qf/quran/read?by=surah", "soon": true },
-          { "label": { "bn": "আয়াত ভিত্তিক পড়ুন", "en": "Read by Ayah" }, "link": "/qf/quran/read?by=ayah", "soon": true },
-          { "label": { "bn": "তিলাওয়াত শুনুন (অডিও/ভিডিও)", "en": "Listen — Audio/Video" }, "link": "/qf/quran/listen", "soon": true }
-        ]
-      },
-      {
-        "heading": { "bn": "শিক্ষা সহায়িকা", "en": "Learning" },
-        "links": [
-          { "label": { "bn": "মুকাদ্দামাতুল জাযারিয়্যাহ", "en": "Muqaddimatul Jazariyyah" }, "link": "/qf/learn/jazariyyah", "soon": true },
-          { "label": { "bn": "তাজবিদ", "en": "Tajweed" }, "link": "/qf/learn/tajweed", "soon": true },
-          { "label": { "bn": "রেওয়ায়েত ও কিরাআত", "en": "Riwayat & Qira'at" }, "link": "/qf/learn/riwayat", "soon": true }
-        ]
-      },
-      {
-        "heading": { "bn": "সহযোগিতা", "en": "Support" },
-        "links": [
-          { "label": { "bn": "অনুদান", "en": "Donate" }, "link": "/qf/donate" },
-          { "label": { "bn": "বিনিয়োগ", "en": "Invest" }, "link": "/qf/invest" },
-          { "label": { "bn": "ঋণ প্রদান", "en": "Lend" }, "link": "/qf/lend" },
-          { "label": { "bn": "যোগাযোগ", "en": "Contact" }, "link": "/qf/contact" }
-        ]
-      }
-    ],
-    "legal": [
+    "note": { "bn": "এই প্রকল্প উন্মুক্ত-উৎস এবং MIT লাইসেন্সের অধীনে পরিচালিত।", "en": "This project is open source, released under the MIT License." },
+    "credit": "MJ-Ahmad",
+    "creditLink": "https://MJ-Ahmad.github.io/mj-ahmad",
+    "links": [
       { "label": { "bn": "গোপনীয়তা", "en": "Privacy" }, "link": "/qf/privacy" },
       { "label": { "bn": "শর্তাবলী", "en": "Terms" }, "link": "/qf/terms" },
       { "label": { "bn": "সাইটম্যাপ", "en": "Sitemap" }, "link": "/qf/sitemap" }
-    ],
-    "note": { "bn": "এই প্রকল্প উন্মুক্ত-উৎস এবং MIT লাইসেন্সের অধীনে পরিচালিত।", "en": "This project is open source, released under the MIT License." },
-    "soonLabel": { "bn": "শীঘ্রই", "en": "Soon" },
-    "credit": "MJ-Ahmad",
-    "creditLink": "https://MJ-Ahmad.github.io/mj-ahmad"
+    ]
   }
 }
