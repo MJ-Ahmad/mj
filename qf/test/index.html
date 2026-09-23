@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <title>QuranerFariwala</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: sans-serif; margin:0; padding:0; }
+    header, footer { background:#f5f5f5; padding:1rem; }
+    nav ul { list-style:none; display:flex; gap:1rem; padding:0; }
+    nav ul li { display:inline; }
+    .hero { text-align:center; padding:2rem; background:#eef; }
+    .ledger { display:flex; justify-content:center; gap:2rem; margin:2rem 0; }
+    .chapters, .support { display:flex; gap:2rem; margin:2rem; }
+    .footer-columns { display:flex; gap:2rem; }
+    .footer-columns ul { list-style:none; padding:0; }
+    .soon { color:gray; }
+  </style>
+</head>
+<body>
+  <header>
+    <img id="logo" alt="" style="height:50px;">
+    <nav><ul id="nav"></ul></nav>
+  </header>
+
+  <section class="hero">
+    <h2 id="epigraph"></h2>
+    <p id="epigraphRef"></p>
+    <h1 id="heroTitle"></h1>
+    <p id="heroLead"></p>
+    <button id="heroCta"></button>
+  </section>
+
+  <section class="ledger" id="ledger"></section>
+
+  <h2 id="chaptersHead"></h2>
+  <section class="chapters" id="chapters"></section>
+
+  <h2 id="supportHead"></h2>
+  <p id="supportLead"></p>
+  <section class="support" id="support"></section>
+
+  <section class="portal">
+    <h2 id="portalTitle"></h2>
+    <p id="portalDesc"></p>
+    <button id="portalCta"></button>
+  </section>
+
+  <footer>
+    <div class="footer-columns" id="footerColumns"></div>
+    <div id="legal"></div>
+    <p id="footerNote"></p>
+    <small id="footerCredit"></small>
+  </footer>
+
+  <script>
+    fetch('data.json')
+      .then(res => res.json())
+      .then(data => {
+        // Logo
+        document.getElementById('logo').src = data.site.logo;
+        document.getElementById('logo').alt = data.site.logoAlt.bn;
+
+        // Nav
+        const navUl = document.getElementById('nav');
+        Object.keys(data.nav).forEach(key=>{
+          const li=document.createElement('li');
+          li.textContent=data.nav[key].bn;
+          navUl.appendChild(li);
+        });
+
+        // Hero
+        document.getElementById('epigraph').textContent=data.hero.epigraph;
+        document.getElementById('epigraphRef').textContent=data.hero.epigraphRef.bn;
+        document.getElementById('heroTitle').textContent=data.hero.title.bn;
+        document.getElementById('heroLead').textContent=data.hero.lead.bn;
+        document.getElementById('heroCta').textContent=data.hero.cta.bn;
+
+        // Ledger
+        const ledgerDiv=document.getElementById('ledger');
+        data.ledger.forEach(item=>{
+          const div=document.createElement('div');
+          div.innerHTML=`<h3>${item.value}</h3><p>${item.label.bn}</p>`;
+          ledgerDiv.appendChild(div);
+        });
+
+        // Chapters
+        document.getElementById('chaptersHead').textContent=data.chaptersHead.bn;
+        const chaptersDiv=document.getElementById('chapters');
+        data.chapters.forEach(ch=>{
+          const div=document.createElement('div');
+          div.innerHTML=`<h3>${ch.title.bn}</h3><p>${ch.text.bn}</p>`;
+          chaptersDiv.appendChild(div);
+        });
+
+        // Support
+        document.getElementById('supportHead').textContent=data.supportHead.bn;
+        document.getElementById('supportLead').textContent=data.supportLead.bn;
+        const supportDiv=document.getElementById('support');
+        data.ledgerEntries.forEach(entry=>{
+          const div=document.createElement('div');
+          div.innerHTML=`<h3>${entry.title.bn}</h3><p>${entry.note.bn}</p>`;
+          supportDiv.appendChild(div);
+        });
+
+        // Portal
+        document.getElementById('portalTitle').textContent=data.portal.title.bn;
+        document.getElementById('portalDesc').textContent=data.portal.desc.bn;
+        document.getElementById('portalCta').textContent=data.portal.cta.bn;
+
+        // Footer
+        const footerColumns=document.getElementById('footerColumns');
+        data.footer.columns.forEach(col=>{
+          const div=document.createElement('div');
+          const h=document.createElement('h4');
+          h.textContent=col.heading.bn;
+          div.appendChild(h);
+          const ul=document.createElement('ul');
+          col.links.forEach(link=>{
+            const li=document.createElement('li');
+            li.textContent=link.label.bn;
+            if(link.soon) li.classList.add('soon');
+            ul.appendChild(li);
+          });
+          div.appendChild(ul);
+          footerColumns.appendChild(div);
+        });
+        const legalDiv=document.getElementById('legal');
+        data.footer.legal.forEach(l=>{
+          const span=document.createElement('span');
+          span.textContent=l.label.bn+" ";
+          legalDiv.appendChild(span);
+        });
+        document.getElementById('footerNote').textContent=data.footer.note.bn;
+        document.getElementById('footerCredit').textContent=data.footer.credit;
+      });
+  </script>
+</body>
+</html>
