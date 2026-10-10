@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MJ Ahmad — Code</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../common.css">
+</head>
+<body>
+<div id="app"></div>
+<noscript>JavaScript required.</noscript>
+<script src="../common.js"></script>
+<script>
+(function(){
+const S={lang:'',src:'',sort:'id',group:true};
+const rr=()=>MJ.rerender();
+const COL={html:'#D8552B',json:'#A38F1A',python:'#3776AB',node:'#3F8A36',shell:'#3E8E3E',css:'#2965F1',ts:'#3178C6',react:'#1F8EA8',markdown:'#5B6B8C',sql:'#8A5AA8'};
+const nl=c=>{const l=String(c||'').split('\n');if(l[l.length-1]==='')l.pop();return l.length};
+window.MJ.boot('codes',{render(m){
+  const t=MJ.T(),all=MJ.data().codes||[],e=MJ.esc;
+  const lc=MJ.counts(all.map(i=>i.lang)),langs=Object.keys(lc).sort((a,b)=>lc[b]-lc[a]||a.localeCompare(b));
+  const label=l=>(all.find(i=>i.lang===l)||{}).lang_label||l;
+  const srcs=MJ.uniq(all.map(i=>i.source)).sort();
+  const lines=all.reduce((s,i)=>s+nl(i.content),0),bytes=all.reduce((s,i)=>s+(i.bytes||new Blob([i.content||'']).size),0);
+  m.append(MJ.E('div','ph',`<h2>💻 ${e(t.cT)}</h2><div class="sub">${e(t.cS)}</div>`));
+  MJ.stats(m,[{n:MJ.num(all.length),l:t.cTotal},{n:MJ.num(langs.length),l:t.cLang},{n:MJ.num(lines),l:t.cLines},{n:MJ.num(+(bytes/1024).toFixed(1))+' KB',l:t.cSize}]);
+  if(langs.length>1)MJ.chips(m,[{v:'',l:t.all,n:MJ.num(all.length)},...langs.map(l=>({v:l,l:label(l),n:MJ.num(lc[l]),dot:COL[l]||'#6B7B76'}))],S.lang,v=>{S.lang=v;rr()});
+  const tb=MJ.E('div','tb');
+  if(srcs.length>1)MJ.select(tb,t.src,[{v:'',l:t.allSrc},...srcs.map(v=>({v,l:v}))],S.src,v=>{S.src=v;rr()});
+  MJ.select(tb,t.sort,[{v:'id',l:t.sId},{v:'name',l:t.sName},{v:'lines',l:t.sLines}],S.sort,v=>{S.sort=v;rr()});
+  MJ.seg(tb,[{v:true,l:'▤ '+t.byLang},{v:false,l:'☰ '+t.all}],S.group,v=>{S.group=v;rr()});
+  if(S.lang||S.src)MJ.clearBtn(tb,()=>{S.lang='';S.src='';rr()});
+  m.append(tb);
+  const cmp={id:(a,b)=>a.id.localeCompare(b.id),name:(a,b)=>String(a.filename||'').localeCompare(String(b.filename||'')),lines:(a,b)=>nl(b.content)-nl(a.content)}[S.sort];
+  const arr=all.filter(i=>MJ.matchQ(i)&&(!S.lang||i.lang===S.lang)&&(!S.src||i.source===S.src)).sort((a,b)=>cmp(a,b)||a.id.localeCompare(b.id));
+  m.append(MJ.E('div','rc',`${MJ.num(arr.length)} ${e(t.of)} ${MJ.num(all.length)}`));
+  if(!arr.length){MJ.empty(m);return}
+  const grid=a=>{const g=MJ.E('div','cgrid');a.forEach(i=>g.append(MJ.codeCard(i)));return g};
+  if(!S.group||S.lang){m.append(grid(arr));return}
+  langs.forEach(l=>{const it=arr.filter(i=>i.lang===l);if(!it.length)return;
+    m.append(MJ.gh(`<span class="lg l-${MJ.cleanLang(l)}">${e(label(l))}</span>`,it.length));m.append(grid(it))})}});
+})();
+</script>
+</body>
+</html>

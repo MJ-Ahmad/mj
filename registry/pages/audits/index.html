@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MJ Ahmad — Audits</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../common.css">
+</head>
+<body>
+<div id="app"></div>
+<noscript>JavaScript required.</noscript>
+<script src="../common.js"></script>
+<script>
+(function(){
+const S={res:'',target:'',cat:'',sort:'new',group:false};
+const rr=()=>MJ.rerender();
+function card(i){
+  const e=MJ.esc,f=MJ.loc(i,'findings')||MJ.loc(i,'desc');
+  return MJ.cardEl('acard r-'+MJ.cleanLang(i.result),
+   `<div class="ch"><span class="id">${e(i.id)}</span>${MJ.stBadge(i.result)}</div><div class="ct">${e(MJ.ttl(i))}</div>${f?`<div class="cd">${e(f)}</div>`:''}<div class="cm">${i.target?`<span>🎯 ${e(i.target)}</span>`:''}${i.auditor?`<span>👤 ${e(i.auditor)}</span>`:''}${i.category?`<span>📁 ${e(i.category)}</span>`:''}<span>🕒 ${e(MJ.fmtD(i.created_at))}</span></div>${MJ.tagsHtml(i.tags)}`,i.id,x=>{const q=document.getElementById('q');q.value=x;q.dispatchEvent(new Event('input'))})}
+window.MJ.boot('audits',{render(m){
+  const t=MJ.T(),all=MJ.data().audits,e=MJ.esc,n=r=>all.filter(i=>i.result===r).length;
+  const targets=MJ.uniq(all.map(i=>i.target)).sort(),cats=MJ.uniq(all.map(i=>i.category)).sort();
+  const tot=all.length,rate=tot?Math.round(n('pass')/tot*100):0,w=r=>tot?n(r)/tot*100:0;
+  m.append(MJ.E('div','ph',`<h2>🔍 ${e(t.aT)}</h2><div class="sub">${e(t.aS)}</div>`));
+  m.append(MJ.E('div','pbox',`<div class="pl"><span>${e(t.aRate)}</span><b>${MJ.num(rate)}%</b></div><div class="prog"><i class="s-ok" style="width:${w('pass')}%"></i><i class="s-warn" style="width:${w('warning')}%"></i><i class="s-bad" style="width:${w('fail')}%"></i></div><div class="lgd"><span style="--dc:var(--ok)">${e(t.st.pass)} ${MJ.num(n('pass'))}</span><span style="--dc:var(--warn)">${e(t.st.warning)} ${MJ.num(n('warning'))}</span><span style="--dc:var(--bad)">${e(t.st.fail)} ${MJ.num(n('fail'))}</span></div>`));
+  const sw=v=>()=>{S.res=S.res===v?'':v;rr()};
+  MJ.stats(m,[{n:MJ.num(tot),l:t.aTotal,on:!S.res,fn:()=>{S.res='';rr()}},
+   {n:MJ.num(n('pass')),l:t.st.pass,cls:'ok',on:S.res==='pass',fn:sw('pass')},
+   {n:MJ.num(n('warning')),l:t.st.warning,cls:'warn',on:S.res==='warning',fn:sw('warning')},
+   {n:MJ.num(n('fail')),l:t.st.fail,cls:n('fail')?'bad':'',on:S.res==='fail',fn:sw('fail')}]);
+  const tb=MJ.E('div','tb');
+  if(targets.length)MJ.select(tb,t.target,[{v:'',l:t.allTarget},...targets.map(v=>({v,l:v}))],S.target,v=>{S.target=v;rr()});
+  if(cats.length)MJ.select(tb,t.cat,[{v:'',l:t.allCat},...cats.map(v=>({v,l:v}))],S.cat,v=>{S.cat=v;rr()});
+  MJ.select(tb,t.sort,[{v:'new',l:t.sNew},{v:'res',l:t.fk.result},{v:'title',l:t.sTitle}],S.sort,v=>{S.sort=v;rr()});
+  MJ.seg(tb,[{v:false,l:'☰ '+t.all},{v:true,l:'▤ '+t.byTarget}],S.group,v=>{S.group=v;rr()});
+  if(S.res||S.target||S.cat)MJ.clearBtn(tb,()=>{Object.assign(S,{res:'',target:'',cat:''});rr()});
+  m.append(tb);
+  const RO={fail:0,warning:1,pass:2};
+  const cmp={new:(a,b)=>(b.created_at||'').localeCompare(a.created_at||''),res:(a,b)=>(RO[a.result]??9)-(RO[b.result]??9),title:(a,b)=>MJ.ttl(a).localeCompare(MJ.ttl(b))}[S.sort];
+  const arr=all.filter(i=>MJ.matchQ(i)&&(!S.res||i.result===S.res)&&(!S.target||i.target===S.target)&&(!S.cat||i.category===S.cat)).sort((a,b)=>cmp(a,b)||b.id.localeCompare(a.id));
+  m.append(MJ.E('div','rc',`${MJ.num(arr.length)} ${e(t.of)} ${MJ.num(tot)}`));
+  if(!arr.length){MJ.empty(m);return}
+  if(!S.group){const g=MJ.E('div','agrid');arr.forEach(i=>g.append(card(i)));m.append(g);return}
+  [...new Set(arr.map(i=>i.target||''))].forEach(tg=>{
+    const it=arr.filter(i=>(i.target||'')===tg);
+    m.append(MJ.gh('🎯 '+e(tg||t.noTarget),it.length));const g=MJ.E('div','agrid');it.forEach(i=>g.append(card(i)));m.append(g)})}});
+})();
+</script>
+</body>
+</html>

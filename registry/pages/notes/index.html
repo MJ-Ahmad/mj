@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MJ Ahmad — Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../common.css">
+</head>
+<body>
+<div id="app"></div>
+<noscript>JavaScript required.</noscript>
+<script src="../common.js"></script>
+<script>
+(function(){
+const S={cat:'',tag:'',pin:false,sort:'new'};
+const rr=()=>MJ.rerender();
+const onTag=x=>{S.tag=S.tag===x?'':x;rr()};
+function card(i){
+  const e=MJ.esc,b=MJ.loc(i,'body'),d=MJ.loc(i,'desc');
+  return MJ.cardEl('ncard'+(i.pinned?' pin':''),
+   `<div class="ch"><span class="id">${e(i.id)}</span>${i.pinned?'<span class="b">📌</span>':''}</div><div class="ct">${e(MJ.ttl(i))}</div><div class="clamp">${e(b||d)}</div>${MJ.tagsHtml(i.tags)}<div class="cm"><span>🕒 ${e(MJ.fmtD(i.created_at))}</span>${i.category?`<span>📁 ${e(i.category)}</span>`:''}</div>`,i.id,onTag)}
+window.MJ.boot('notes',{render(m){
+  const t=MJ.T(),all=MJ.data().notes,e=MJ.esc;
+  const cats=MJ.uniq(all.map(i=>i.category)).sort(),tc=MJ.counts(all.flatMap(i=>i.tags||[])),tags=Object.keys(tc).sort((a,b)=>tc[b]-tc[a]||a.localeCompare(b));
+  m.append(MJ.E('div','ph',`<h2>📝 ${e(t.nT)}</h2><div class="sub">${e(t.nS)}</div>`));
+  MJ.stats(m,[
+   {n:MJ.num(all.length),l:t.nTotal,on:!S.pin,fn:()=>{S.pin=false;rr()}},
+   {n:MJ.num(all.filter(i=>i.pinned).length),l:t.nPin,cls:'warn',on:S.pin,fn:()=>{S.pin=!S.pin;rr()}},
+   {n:MJ.num(cats.length),l:t.nCats},{n:MJ.num(tags.length),l:t.nTags}]);
+  if(cats.length>1)MJ.chips(m,[{v:'',l:t.all,n:MJ.num(all.length)},...cats.map(c=>({v:c,l:c,n:MJ.num(all.filter(i=>i.category===c).length)}))],S.cat,v=>{S.cat=v;rr()});
+  if(tags.length)MJ.chips(m,tags.slice(0,16).map(x=>({v:x,l:'#'+x,n:MJ.num(tc[x])})),S.tag,v=>{S.tag=S.tag===v?'':v;rr()});
+  const tb=MJ.E('div','tb');
+  MJ.select(tb,t.sort,[{v:'new',l:t.sNew},{v:'old',l:t.sOld},{v:'title',l:t.sTitle}],S.sort,v=>{S.sort=v;rr()});
+  if(S.cat||S.tag||S.pin)MJ.clearBtn(tb,()=>{Object.assign(S,{cat:'',tag:'',pin:false});rr()});
+  m.append(tb);
+  const cmp={new:(a,b)=>(b.created_at||'').localeCompare(a.created_at||''),old:(a,b)=>(a.created_at||'').localeCompare(b.created_at||''),title:(a,b)=>MJ.ttl(a).localeCompare(MJ.ttl(b))}[S.sort];
+  const arr=all.filter(i=>MJ.matchQ(i)&&(!S.cat||i.category===S.cat)&&(!S.tag||(i.tags||[]).includes(S.tag))&&(!S.pin||i.pinned)).sort((a,b)=>cmp(a,b)||a.id.localeCompare(b.id));
+  m.append(MJ.E('div','rc',`${MJ.num(arr.length)} ${e(t.of)} ${MJ.num(all.length)}`));
+  if(!arr.length){MJ.empty(m);return}
+  const pins=arr.filter(i=>i.pinned),rest=arr.filter(i=>!i.pinned),sec=(h,a)=>{m.append(MJ.gh(h,a.length));const w=MJ.E('div','masonry');a.forEach(i=>w.append(card(i)));m.append(w)};
+  if(pins.length&&rest.length){sec('📌 '+e(t.pinned),pins);sec(e(t.other),rest)}else{const w=MJ.E('div','masonry');arr.forEach(i=>w.append(card(i)));m.append(w)}}});
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MJ Ahmad — Tasks</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../common.css">
+</head>
+<body>
+<div id="app"></div>
+<noscript>JavaScript required.</noscript>
+<script src="../common.js"></script>
+<script>
+(function(){
+const S={view:'board',status:'',pri:'',cat:'',tag:'',sp:'',sort:'due'};
+const PO={urgent:0,high:1,medium:2,low:3};
+const wk=i=>i.status!=='done'&&!!i.due&&MJ.daysTo(i.due)>=0&&MJ.daysTo(i.due)<=7;
+const filtered=()=>S.status||S.pri||S.cat||S.tag||S.sp;
+function dueInfo(i){
+  const t=MJ.T();if(!i.due)return'';
+  if(i.status==='done')return`<span class="due">📅 ${MJ.esc(MJ.fmtD(i.due))}</span>`;
+  const d=MJ.daysTo(i.due);let s,c='';
+  if(d<0){s=`${MJ.num(-d)} ${t.daysLate}`;c='bad'}else if(d===0){s=t.today;c='warn'}else if(d===1){s=t.tomorrow;c='warn'}else{s=`${MJ.num(d)} ${t.daysLeft}`;if(d<=7)c='warn'}
+  return`<span class="due ${c}">📅 ${MJ.esc(MJ.fmtD(i.due))} · ${MJ.esc(s)}</span>`}
+const rr=()=>MJ.rerender();
+const onTag=x=>{S.tag=x;rr()};
+function card(i){
+  const e=MJ.esc,d=MJ.loc(i,'desc');
+  return MJ.cardEl('tcard p-'+(i.priority||'none')+(i.status==='done'?' isdone':''),
+   `<div class="ch"><span class="id">${e(i.id)}</span>${MJ.stBadge(i.priority)}${i.pinned?'<span class="b">📌</span>':''}</div><div class="ct">${e(MJ.ttl(i))}</div>${d?`<div class="cd clamp2">${e(d)}</div>`:''}<div class="cm">${dueInfo(i)}${i.category?`<span>📁 ${e(i.category)}</span>`:''}</div>${MJ.tagsHtml(i.tags)}`,i.id,onTag)}
+function row(i){
+  const e=MJ.esc,d=MJ.loc(i,'desc');
+  return MJ.cardEl('tcard p-'+(i.priority||'none')+(i.status==='done'?' isdone':''),
+   `<span class="id">${e(i.id)}</span><div><div class="ct">${e(MJ.ttl(i))}</div>${d?`<div class="cd clamp2">${e(d)}</div>`:''}<div class="cm">${dueInfo(i)}${i.category?`<span>📁 ${e(i.category)}</span>`:''}</div>${MJ.tagsHtml(i.tags)}</div><div class="side">${MJ.stBadge(i.status)}${MJ.stBadge(i.priority)}${i.pinned?'<span class="b">📌</span>':''}</div>`,i.id,onTag)}
+window.MJ.boot('tasks',{render(m){
+  const t=MJ.T(),all=MJ.data().tasks,e=MJ.esc;
+  const cats=MJ.uniq(all.map(i=>i.category)).sort();
+  const done=all.filter(i=>i.status==='done').length,od=all.filter(MJ.overdue).length;
+  const pct=all.length?Math.round(done/all.length*100):0;
+  m.append(MJ.E('div','ph',`<h2>✅ ${e(t.tT)}</h2><div class="sub">${e(t.tS)}</div>`));
+  m.append(MJ.E('div','pbox',`<div class="pl"><span>${e(t.tProg)}</span><b>${MJ.num(pct)}%</b></div><div class="prog"><i class="s-ok" style="width:${pct}%"></i></div><small>${MJ.num(done)} / ${MJ.num(all.length)} ${e(t.st.done)}</small>`));
+  const sw=(k,v)=>()=>{const on=S[k]===v;S.status='';S.sp='';if(!on)S[k]=v;rr()};
+  MJ.stats(m,[
+   {n:MJ.num(all.length),l:t.tTotal,on:!S.status&&!S.sp,fn:()=>{S.status='';S.sp='';rr()}},
+   {n:MJ.num(all.filter(i=>i.status==='todo').length),l:t.st.todo,on:S.status==='todo',fn:sw('status','todo')},
+   {n:MJ.num(all.filter(i=>i.status==='doing').length),l:t.st.doing,cls:'warn',on:S.status==='doing',fn:sw('status','doing')},
+   {n:MJ.num(done),l:t.st.done,cls:'ok',on:S.status==='done',fn:sw('status','done')},
+   {n:MJ.num(od),l:t.overdue,cls:od?'bad':'',on:S.sp==='overdue',fn:sw('sp','overdue')},
+   {n:MJ.num(all.filter(wk).length),l:t.tWeek,cls:'warn',on:S.sp==='week',fn:sw('sp','week')}]);
+  const tb=MJ.E('div','tb');
+  MJ.select(tb,t.pri,[{v:'',l:t.allPri},...['urgent','high','medium','low'].map(v=>({v,l:t.st[v]}))],S.pri,v=>{S.pri=v;rr()});
+  if(cats.length)MJ.select(tb,t.cat,[{v:'',l:t.allCat},...cats.map(v=>({v,l:v}))],S.cat,v=>{S.cat=v;rr()});
+  MJ.select(tb,t.sort,[{v:'due',l:t.sDue},{v:'pri',l:t.sPri},{v:'new',l:t.sNew}],S.sort,v=>{S.sort=v;rr()});
+  MJ.seg(tb,[{v:'board',l:'▦ '+t.board},{v:'list',l:'☰ '+t.list}],S.view,v=>{S.view=v;rr()});
+  if(S.tag){const c=MJ.E('button','chip on','#'+e(S.tag)+' ✕');c.type='button';c.onclick=()=>{S.tag='';rr()};tb.append(c)}
+  if(filtered())MJ.clearBtn(tb,()=>{Object.assign(S,{status:'',pri:'',cat:'',tag:'',sp:''});rr()});
+  m.append(tb);
+  const cmp={due:(a,b)=>(a.due||'9999').localeCompare(b.due||'9999'),pri:(a,b)=>(PO[a.priority]??9)-(PO[b.priority]??9),new:(a,b)=>(b.created_at||'').localeCompare(a.created_at||'')}[S.sort];
+  const arr=all.filter(i=>MJ.matchQ(i)&&(!S.status||i.status===S.status)&&(!S.pri||i.priority===S.pri)&&(!S.cat||i.category===S.cat)&&(!S.tag||(i.tags||[]).includes(S.tag))&&(!S.sp||(S.sp==='overdue'?MJ.overdue(i):wk(i))))
+    .sort((a,b)=>(b.pinned?1:0)-(a.pinned?1:0)||cmp(a,b)||a.id.localeCompare(b.id));
+  m.append(MJ.E('div','rc',`${MJ.num(arr.length)} ${e(t.of)} ${MJ.num(all.length)}`));
+  if(!arr.length){MJ.empty(m);return}
+  if(S.view==='list'){const w=MJ.E('div','tlist');arr.forEach(i=>w.append(row(i)));m.append(w);return}
+  const b=MJ.E('div','board');
+  (S.status?[S.status]:['todo','doing','done']).forEach(s=>{
+    const it=arr.filter(i=>i.status===s),c=MJ.E('section','col k-'+s,`<h3>${e(t.st[s])}<span class="n">${MJ.num(it.length)}</span></h3>`);
+    if(it.length)it.forEach(i=>c.append(card(i)));else c.append(MJ.E('div','colE','—'));
+    b.append(c)});
+  const rest=arr.filter(i=>!['todo','doing','done'].includes(i.status));
+  if(rest.length){const c=MJ.E('section','col',`<h3>…<span class="n">${MJ.num(rest.length)}</span></h3>`);rest.forEach(i=>c.append(card(i)));b.append(c)}
+  m.append(b)}});
+})();
+</script>
+</body>
+</html>

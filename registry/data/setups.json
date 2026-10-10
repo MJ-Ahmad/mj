@@ -1,0 +1,2200 @@
+{
+ "setups": [
+  {
+   "id": "scripts",
+   "icon": "📜",
+   "color": "#B8862B",
+   "en": "Scripts",
+   "bn": "স্ক্রিপ্ট",
+   "desc_en": "Reusable scripts added step by step — copy, run, extend.",
+   "desc_bn": "পুনর্ব্যবহারযোগ্য স্ক্রিপ্ট, ধাপে ধাপে যুক্ত হবে — কপি করুন, চালান, বাড়ান।",
+   "sections": [
+    {
+     "id": "s1",
+     "en": "Step 1 — Project setup",
+     "bn": "ধাপ ১ — প্রজেক্ট সেটআপ",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Create the pages folder",
+       "bn": "pages ফোল্ডার তৈরি",
+       "cmd": "python3 create_pages.py",
+       "lang": "shell"
+      },
+      {
+       "t": "cmd",
+       "en": "Run the local server",
+       "bn": "লোকাল সার্ভার চালান",
+       "cmd": "./run.sh serve",
+       "lang": "shell"
+      },
+      {
+       "t": "cmd",
+       "en": "Fallback: plain Python server",
+       "bn": "বিকল্প: সাধারণ পাইথন সার্ভার",
+       "cmd": "python3 -m http.server 8000",
+       "lang": "shell"
+      },
+      {
+       "t": "note",
+       "en": "Open http://localhost:8000 after starting the server. JSON data cannot be loaded from file:// directly.",
+       "bn": "সার্ভার চালু করে http://localhost:8000 খুলুন। file:// থেকে সরাসরি JSON লোড হয় না।"
+      }
+     ]
+    },
+    {
+     "id": "s2",
+     "en": "Step 2 — Data check & backup",
+     "bn": "ধাপ ২ — ডাটা যাচাই ও ব্যাকআপ",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Validate every JSON file",
+       "bn": "সব JSON ফাইল যাচাই",
+       "cmd": "for f in data/*.json; do\n  python3 -m json.tool \"$f\" > /dev/null && echo \"OK   $f\" || echo \"FAIL $f\"\ndone",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Timestamped backup",
+       "bn": "সময়সহ ব্যাকআপ",
+       "cmd": "tar -czf \"backup-$(date +%F-%H%M).tar.gz\" index.html pages data",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Restore a backup",
+       "bn": "ব্যাকআপ পুনরুদ্ধার",
+       "cmd": "tar -xzf backup-YYYY-MM-DD-HHMM.tar.gz",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Validate JSON (PowerShell)",
+       "bn": "JSON যাচাই (PowerShell)",
+       "cmd": "Get-ChildItem .\\data\\*.json | ForEach-Object {\n  try { Get-Content $_ -Raw -Encoding UTF8 | ConvertFrom-Json | Out-Null; \"OK   $($_.Name)\" }\n  catch { \"FAIL $($_.Name)\" }\n}",
+       "lang": "powershell"
+      }
+     ]
+    },
+    {
+     "id": "s3",
+     "en": "Step 3 — Version control",
+     "bn": "ধাপ ৩ — ভার্সন কন্ট্রোল",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Initialise and first commit",
+       "bn": "শুরু ও প্রথম কমিট",
+       "cmd": "git init && git add -A && git commit -m \"init registry\"",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Short status",
+       "bn": "সংক্ষিপ্ত স্ট্যাটাস",
+       "cmd": "git status -sb",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Compact history",
+       "bn": "সংক্ষিপ্ত ইতিহাস",
+       "cmd": "git log --oneline --graph -n 15",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Undo local edits to one file",
+       "bn": "একটি ফাইলের স্থানীয় পরিবর্তন ফেরত",
+       "cmd": "git restore path/to/file",
+       "lang": "bash"
+      }
+     ]
+    },
+    {
+     "id": "s4",
+     "en": "Step 4 — Script templates",
+     "bn": "ধাপ ৪ — স্ক্রিপ্ট টেমপ্লেট",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Bash template",
+       "bn": "Bash টেমপ্লেট",
+       "cmd": "#!/usr/bin/env bash\nset -euo pipefail\n\nlog() { printf '[%s] %s\\n' \"$(date +%T)\" \"$*\"; }\n\nmain() {\n  log \"start\"\n  # your steps here\n  log \"done\"\n}\nmain \"$@\"",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Python CLI template",
+       "bn": "Python CLI টেমপ্লেট",
+       "cmd": "#!/usr/bin/env python3\nimport argparse, json, sys\nfrom pathlib import Path\n\ndef main() -> int:\n    ap = argparse.ArgumentParser(description=\"describe me\")\n    ap.add_argument(\"path\", type=Path)\n    args = ap.parse_args()\n    data = json.loads(args.path.read_text(encoding=\"utf-8\"))\n    print(f\"{args.path}: {len(data)} keys\")\n    return 0\n\nif __name__ == \"__main__\":\n    sys.exit(main())",
+       "lang": "python"
+      },
+      {
+       "t": "cmd",
+       "en": "Make a script executable",
+       "bn": "স্ক্রিপ্ট এক্সিকিউটেবল করুন",
+       "cmd": "chmod +x script.sh",
+       "lang": "bash"
+      }
+     ]
+    },
+    {
+     "id": "s5",
+     "en": "Step 5 — Automation",
+     "bn": "ধাপ ৫ — অটোমেশন",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Edit the cron table",
+       "bn": "cron টেবিল সম্পাদনা",
+       "cmd": "crontab -e",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Nightly backup at 02:00 (cron line)",
+       "bn": "প্রতিদিন রাত ২টায় ব্যাকআপ (cron লাইন)",
+       "cmd": "0 2 * * * cd /path/to/project && tar -czf backups/backup-$(date +\\%F).tar.gz index.html pages data",
+       "lang": "cron"
+      },
+      {
+       "t": "cmd",
+       "en": "Windows scheduled task",
+       "bn": "Windows নির্ধারিত টাস্ক",
+       "cmd": "schtasks /create /tn \"RegistryBackup\" /tr \"C:\\path\\backup.bat\" /sc daily /st 02:00",
+       "lang": "cmd"
+      },
+      {
+       "t": "note",
+       "en": "To add the next step, append a new section to this setup in data/setups.json.",
+       "bn": "পরের ধাপ যোগ করতে data/setups.json-এ এই সেটআপে নতুন section যোগ করুন।"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "universe",
+   "icon": "🌌",
+   "color": "#4A5BA8",
+   "en": "Universe",
+   "bn": "ইউনিভার্স",
+   "desc_en": "Astronomy and space: live data, Python tools, key constants.",
+   "desc_bn": "জ্যোতির্বিজ্ঞান ও মহাকাশ: লাইভ ডাটা, পাইথন টুল, গুরুত্বপূর্ণ ধ্রুবক।",
+   "sections": [
+    {
+     "id": "u1",
+     "en": "Explore online",
+     "bn": "অনলাইনে অন্বেষণ",
+     "items": [
+      {
+       "t": "link",
+       "en": "Stellarium Web — planetarium",
+       "bn": "Stellarium Web — প্ল্যানেটারিয়াম",
+       "url": "https://stellarium-web.org",
+       "icon": "🔭"
+      },
+      {
+       "t": "link",
+       "en": "NASA Eyes — solar system in 3D",
+       "bn": "NASA Eyes — ৩ডি সৌরজগৎ",
+       "url": "https://eyes.nasa.gov",
+       "icon": "🪐"
+      },
+      {
+       "t": "link",
+       "en": "Astronomy Picture of the Day",
+       "bn": "আজকের জ্যোতির্বিজ্ঞান ছবি",
+       "url": "https://apod.nasa.gov/apod/",
+       "icon": "🖼"
+      },
+      {
+       "t": "link",
+       "en": "JPL Horizons — ephemeris",
+       "bn": "JPL Horizons — অবস্থান-তালিকা",
+       "url": "https://ssd.jpl.nasa.gov/horizons/",
+       "icon": "🧭"
+      },
+      {
+       "t": "link",
+       "en": "In-The-Sky — what is up tonight",
+       "bn": "In-The-Sky — আজ রাতে আকাশে কী",
+       "url": "https://in-the-sky.org",
+       "icon": "🌙"
+      },
+      {
+       "t": "link",
+       "en": "NASA Exoplanet Archive",
+       "bn": "NASA এক্সোপ্ল্যানেট আর্কাইভ",
+       "url": "https://exoplanetarchive.ipac.caltech.edu",
+       "icon": "🌍"
+      },
+      {
+       "t": "link",
+       "en": "CelesTrak — satellite data",
+       "bn": "CelesTrak — উপগ্রহ ডাটা",
+       "url": "https://celestrak.org",
+       "icon": "🛰"
+      },
+      {
+       "t": "link",
+       "en": "NOAA Space Weather",
+       "bn": "NOAA মহাকাশ আবহাওয়া",
+       "url": "https://www.swpc.noaa.gov",
+       "icon": "☀️"
+      }
+     ]
+    },
+    {
+     "id": "u2",
+     "en": "Live data (curl)",
+     "bn": "লাইভ ডাটা (curl)",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "ISS position right now",
+       "bn": "এই মুহূর্তে ISS-এর অবস্থান",
+       "cmd": "curl -s https://api.wheretheiss.at/v1/satellites/25544",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "NASA APOD (demo key)",
+       "bn": "NASA APOD (ডেমো কী)",
+       "cmd": "curl -s \"https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY\"",
+       "lang": "bash"
+      },
+      {
+       "t": "note",
+       "en": "DEMO_KEY is rate-limited. Get a free key at https://api.nasa.gov for regular use.",
+       "bn": "DEMO_KEY-তে সীমা আছে। নিয়মিত ব্যবহারে https://api.nasa.gov থেকে বিনামূল্যে কী নিন।"
+      }
+     ]
+    },
+    {
+     "id": "u3",
+     "en": "Python toolkit",
+     "bn": "পাইথন টুলকিট",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Install",
+       "bn": "ইনস্টল",
+       "cmd": "pip install astropy skyfield numpy matplotlib",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Distance Earth → Mars now (Skyfield)",
+       "bn": "এখন পৃথিবী → মঙ্গল দূরত্ব (Skyfield)",
+       "cmd": "from skyfield.api import load\n\nts = load.timescale()\neph = load(\"de421.bsp\")          # downloads once\nearth, mars = eph[\"earth\"], eph[\"mars\"]\nd = earth.at(ts.now()).observe(mars).distance()\nprint(f\"{d.km:,.0f} km\")",
+       "lang": "python"
+      },
+      {
+       "t": "cmd",
+       "en": "Light-years to km (Astropy)",
+       "bn": "আলোকবর্ষ থেকে কিমি (Astropy)",
+       "cmd": "from astropy import units as u\n\nd = (4.246 * u.lyr).to(u.km)     # Proxima Centauri\nprint(d)",
+       "lang": "python"
+      },
+      {
+       "t": "cmd",
+       "en": "Sun position (Astropy)",
+       "bn": "সূর্যের অবস্থান (Astropy)",
+       "cmd": "from astropy.coordinates import get_sun\nfrom astropy.time import Time\n\nprint(get_sun(Time.now()))",
+       "lang": "python"
+      }
+     ]
+    },
+    {
+     "id": "u4",
+     "en": "Key constants",
+     "bn": "মূল ধ্রুবক",
+     "items": [
+      {
+       "t": "note",
+       "en": "Speed of light: 299,792,458 m/s",
+       "bn": "আলোর গতি: ২৯,৯৭,৯২,৪৫৮ মি/সে"
+      },
+      {
+       "t": "note",
+       "en": "1 AU ≈ 149,597,870.7 km (Earth–Sun mean distance)",
+       "bn": "১ AU ≈ ১৪,৯৫,৯৭,৮৭০.৭ কিমি (পৃথিবী–সূর্যের গড় দূরত্ব)"
+      },
+      {
+       "t": "note",
+       "en": "1 light-year ≈ 9.4607 × 10¹² km",
+       "bn": "১ আলোকবর্ষ ≈ ৯.৪৬০৭ × ১০¹² কিমি"
+      },
+      {
+       "t": "note",
+       "en": "1 parsec ≈ 3.2616 light-years",
+       "bn": "১ পারসেক ≈ ৩.২৬১৬ আলোকবর্ষ"
+      },
+      {
+       "t": "note",
+       "en": "Age of the universe ≈ 13.8 billion years",
+       "bn": "মহাবিশ্বের বয়স ≈ ১৩৮০ কোটি বছর"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "systems",
+   "icon": "🖥",
+   "color": "#2E7D4F",
+   "en": "Systems",
+   "bn": "সিস্টেমস",
+   "desc_en": "Linux, Windows, macOS and containers: inspect, monitor, maintain.",
+   "desc_bn": "লিনাক্স, উইন্ডোজ, ম্যাকওএস ও কন্টেইনার: পর্যবেক্ষণ, মনিটর, রক্ষণাবেক্ষণ।",
+   "sections": [
+    {
+     "id": "y1",
+     "en": "Overview (Linux)",
+     "bn": "সিস্টেম পরিচিতি (লিনাক্স)",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "OS and kernel",
+       "bn": "ওএস ও কার্নেল",
+       "cmd": "cat /etc/os-release && uname -srm",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Uptime, memory, root disk",
+       "bn": "আপটাইম, মেমোরি, রুট ডিস্ক",
+       "cmd": "uptime && free -h && df -h /",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "CPU details",
+       "bn": "সিপিইউ তথ্য",
+       "cmd": "lscpu | head -n 15",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Block devices",
+       "bn": "ব্লক ডিভাইস",
+       "cmd": "lsblk -f",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Host details",
+       "bn": "হোস্ট তথ্য",
+       "cmd": "hostnamectl",
+       "lang": "bash"
+      }
+     ]
+    },
+    {
+     "id": "y2",
+     "en": "Processes & performance",
+     "bn": "প্রসেস ও পারফরম্যান্স",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Top memory users",
+       "bn": "সবচেয়ে বেশি মেমোরি ব্যবহারকারী",
+       "cmd": "ps aux --sort=-%mem | head -n 10",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Top CPU users",
+       "bn": "সবচেয়ে বেশি সিপিইউ ব্যবহারকারী",
+       "cmd": "ps aux --sort=-%cpu | head -n 10",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Memory and swap activity",
+       "bn": "মেমোরি ও সোয়াপ কার্যক্রম",
+       "cmd": "vmstat 1 5",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Disk I/O (needs sysstat)",
+       "bn": "ডিস্ক I/O (sysstat লাগে)",
+       "cmd": "iostat -x 1 3",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Stop a process politely",
+       "bn": "প্রসেস ভদ্রভাবে বন্ধ করুন",
+       "cmd": "kill -15 PID",
+       "lang": "bash"
+      },
+      {
+       "t": "note",
+       "en": "Use kill -9 only if the process ignores -15.",
+       "bn": "-15 উপেক্ষা করলেই কেবল kill -9 ব্যবহার করুন।"
+      }
+     ]
+    },
+    {
+     "id": "y3",
+     "en": "Services & logs",
+     "bn": "সার্ভিস ও লগ",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Service status",
+       "bn": "সার্ভিসের অবস্থা",
+       "cmd": "systemctl status SERVICE",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Enable and start now",
+       "bn": "এখনই চালু ও এনাবল",
+       "cmd": "sudo systemctl enable --now SERVICE",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Failed units",
+       "bn": "ব্যর্থ ইউনিট",
+       "cmd": "systemctl list-units --failed",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Follow a service log",
+       "bn": "সার্ভিস লগ অনুসরণ",
+       "cmd": "journalctl -u SERVICE -f",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Errors since last boot",
+       "bn": "শেষ বুট থেকে ত্রুটি",
+       "cmd": "journalctl -p err -b --no-pager | tail -n 50",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Trim logs older than 7 days",
+       "bn": "৭ দিনের পুরনো লগ ছাঁটুন",
+       "cmd": "sudo journalctl --vacuum-time=7d",
+       "lang": "bash"
+      }
+     ]
+    },
+    {
+     "id": "y4",
+     "en": "Disk & updates",
+     "bn": "ডিস্ক ও আপডেট",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Folder sizes, sorted",
+       "bn": "ফোল্ডারের আকার, সাজানো",
+       "cmd": "du -h --max-depth=1 . | sort -h",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Files over 100 MB",
+       "bn": "১০০ MB-র বেশি ফাইল",
+       "cmd": "find . -type f -size +100M -exec ls -lh {} +",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Inode usage",
+       "bn": "inode ব্যবহার",
+       "cmd": "df -i",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Update (Debian/Ubuntu)",
+       "bn": "আপডেট (Debian/Ubuntu)",
+       "cmd": "sudo apt update && sudo apt upgrade -y",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Remove unused packages",
+       "bn": "অব্যবহৃত প্যাকেজ সরান",
+       "cmd": "sudo apt autoremove -y",
+       "lang": "bash"
+      }
+     ]
+    },
+    {
+     "id": "y5",
+     "en": "Users & permissions",
+     "bn": "ইউজার ও পারমিশন",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Who am I",
+       "bn": "আমি কে",
+       "cmd": "id",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Add user to a group",
+       "bn": "গ্রুপে ইউজার যোগ",
+       "cmd": "sudo usermod -aG GROUP USER",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Owner read/write, group read",
+       "bn": "মালিক পড়া/লেখা, গ্রুপ পড়া",
+       "cmd": "chmod 640 file",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Change owner recursively",
+       "bn": "মালিক পরিবর্তন (রিকার্সিভ)",
+       "cmd": "sudo chown -R user:group dir/",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Recent logins",
+       "bn": "সাম্প্রতিক লগইন",
+       "cmd": "last -n 10",
+       "lang": "bash"
+      }
+     ]
+    },
+    {
+     "id": "y6",
+     "en": "Windows & macOS",
+     "bn": "উইন্ডোজ ও ম্যাকওএস",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Windows: OS info",
+       "bn": "উইন্ডোজ: ওএস তথ্য",
+       "cmd": "Get-ComputerInfo | Select-Object OsName, OsVersion, CsTotalPhysicalMemory",
+       "lang": "powershell"
+      },
+      {
+       "t": "cmd",
+       "en": "Windows: top CPU processes",
+       "bn": "উইন্ডোজ: শীর্ষ সিপিইউ প্রসেস",
+       "cmd": "Get-Process | Sort-Object CPU -Descending | Select-Object -First 10",
+       "lang": "powershell"
+      },
+      {
+       "t": "cmd",
+       "en": "Windows: running services",
+       "bn": "উইন্ডোজ: চলমান সার্ভিস",
+       "cmd": "Get-Service | Where-Object Status -eq 'Running'",
+       "lang": "powershell"
+      },
+      {
+       "t": "cmd",
+       "en": "Windows: upgrade all apps",
+       "bn": "উইন্ডোজ: সব অ্যাপ আপগ্রেড",
+       "cmd": "winget upgrade --all",
+       "lang": "powershell"
+      },
+      {
+       "t": "cmd",
+       "en": "Windows: repair system files (admin)",
+       "bn": "উইন্ডোজ: সিস্টেম ফাইল মেরামত (অ্যাডমিন)",
+       "cmd": "sfc /scannow",
+       "lang": "cmd"
+      },
+      {
+       "t": "cmd",
+       "en": "macOS: version and CPU",
+       "bn": "ম্যাক: ভার্সন ও সিপিইউ",
+       "cmd": "sw_vers && sysctl -n machdep.cpu.brand_string",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "macOS: update Homebrew apps",
+       "bn": "ম্যাক: Homebrew অ্যাপ আপডেট",
+       "cmd": "brew update && brew upgrade",
+       "lang": "bash"
+      }
+     ]
+    },
+    {
+     "id": "y7",
+     "en": "Containers",
+     "bn": "কন্টেইনার",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "All containers",
+       "bn": "সব কন্টেইনার",
+       "cmd": "docker ps -a",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Live resource use",
+       "bn": "লাইভ রিসোর্স ব্যবহার",
+       "cmd": "docker stats --no-stream",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Disk used by Docker",
+       "bn": "Docker-এর ডিস্ক ব্যবহার",
+       "cmd": "docker system df",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Clean stopped containers and dangling images",
+       "bn": "বন্ধ কন্টেইনার ও অব্যবহৃত ইমেজ পরিষ্কার",
+       "cmd": "docker system prune -f",
+       "lang": "bash"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ffmpeg",
+   "icon": "🎬",
+   "color": "#C2552B",
+   "en": "FFmpeg",
+   "bn": "FFmpeg",
+   "desc_en": "Video and audio recipes: convert, compress, trim, stream.",
+   "desc_bn": "ভিডিও ও অডিও রেসিপি: রূপান্তর, কমপ্রেস, কাটা, স্ট্রিম।",
+   "sections": [
+    {
+     "id": "f1",
+     "en": "Install & inspect",
+     "bn": "ইনস্টল ও পরীক্ষা",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Install (Ubuntu/Debian)",
+       "bn": "ইনস্টল (Ubuntu/Debian)",
+       "cmd": "sudo apt install ffmpeg",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Install (macOS)",
+       "bn": "ইনস্টল (macOS)",
+       "cmd": "brew install ffmpeg",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Install (Windows)",
+       "bn": "ইনস্টল (Windows)",
+       "cmd": "winget install Gyan.FFmpeg",
+       "lang": "powershell"
+      },
+      {
+       "t": "cmd",
+       "en": "Version",
+       "bn": "ভার্সন",
+       "cmd": "ffmpeg -version",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "File summary",
+       "bn": "ফাইলের সারাংশ",
+       "cmd": "ffprobe -hide_banner input.mp4",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Full details as JSON",
+       "bn": "পূর্ণ তথ্য JSON-এ",
+       "cmd": "ffprobe -v error -show_format -show_streams -of json input.mp4",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "List encoders",
+       "bn": "এনকোডার তালিকা",
+       "cmd": "ffmpeg -hide_banner -encoders",
+       "lang": "bash"
+      }
+     ]
+    },
+    {
+     "id": "f2",
+     "en": "Convert & compress",
+     "bn": "রূপান্তর ও কমপ্রেস",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "To MP4 (H.264)",
+       "bn": "MP4-তে (H.264)",
+       "cmd": "ffmpeg -i input.mov -c:v libx264 -crf 23 -preset medium -c:a aac -b:a 128k output.mp4",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Smaller file (H.265)",
+       "bn": "ছোট ফাইল (H.265)",
+       "cmd": "ffmpeg -i input.mp4 -c:v libx265 -crf 28 -tag:v hvc1 -c:a aac -b:a 96k output_h265.mp4",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "To WebM (VP9 + Opus)",
+       "bn": "WebM-এ (VP9 + Opus)",
+       "cmd": "ffmpeg -i input.mp4 -c:v libvpx-vp9 -crf 32 -b:v 0 -c:a libopus output.webm",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Web-friendly (fast start)",
+       "bn": "ওয়েব-বান্ধব (দ্রুত শুরু)",
+       "cmd": "ffmpeg -i input.mp4 -c:v libx264 -crf 28 -preset slow -c:a aac -b:a 96k -movflags +faststart web.mp4",
+       "lang": "bash"
+      },
+      {
+       "t": "note",
+       "en": "Lower CRF means higher quality and a bigger file. Typical H.264 range: 18–28.",
+       "bn": "CRF কম মানে মান বেশি ও ফাইল বড়। সাধারণ H.264 সীমা: ১৮–২৮।"
+      }
+     ]
+    },
+    {
+     "id": "f3",
+     "en": "Resize, trim, merge",
+     "bn": "মাপ, কাটা, জোড়া",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Resize to 720p height",
+       "bn": "৭২০পি উচ্চতায় আনুন",
+       "cmd": "ffmpeg -i input.mp4 -vf scale=-2:720 -c:a copy output_720p.mp4",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Cut 10s to 30s without re-encoding",
+       "bn": "রি-এনকোড ছাড়া ১০ থেকে ৩০ সেকেন্ড কাটুন",
+       "cmd": "ffmpeg -ss 00:00:10 -to 00:00:30 -i input.mp4 -c copy clip.mp4",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Cut with exact frames (re-encode)",
+       "bn": "সঠিক ফ্রেমে কাটুন (রি-এনকোড)",
+       "cmd": "ffmpeg -ss 00:00:10 -to 00:00:30 -i input.mp4 -c:v libx264 -c:a aac clip_exact.mp4",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Join files of the same format",
+       "bn": "একই ফরম্যাটের ফাইল জোড়া লাগান",
+       "cmd": "printf \"file '%s'\\n\" part1.mp4 part2.mp4 > list.txt && ffmpeg -f concat -safe 0 -i list.txt -c copy joined.mp4",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Rotate 90° clockwise",
+       "bn": "৯০° ঘড়ির কাঁটার দিকে ঘোরান",
+       "cmd": "ffmpeg -i input.mp4 -vf transpose=1 -c:a copy rotated.mp4",
+       "lang": "bash"
+      }
+     ]
+    },
+    {
+     "id": "f4",
+     "en": "Audio",
+     "bn": "অডিও",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Extract MP3",
+       "bn": "MP3 বের করুন",
+       "cmd": "ffmpeg -i input.mp4 -vn -c:a libmp3lame -q:a 2 output.mp3",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Mono 16 kHz WAV (speech AI)",
+       "bn": "মনো ১৬ kHz WAV (স্পিচ AI)",
+       "cmd": "ffmpeg -i input.mp3 -vn -ar 16000 -ac 1 output.wav",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Normalise loudness",
+       "bn": "ভলিউম সমান করুন",
+       "cmd": "ffmpeg -i input.mp3 -af loudnorm output_norm.mp3",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Remove audio",
+       "bn": "অডিও সরান",
+       "cmd": "ffmpeg -i input.mp4 -an -c:v copy silent.mp4",
+       "lang": "bash"
+      }
+     ]
+    },
+    {
+     "id": "f5",
+     "en": "Images & GIF",
+     "bn": "ছবি ও GIF",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "One frame per second",
+       "bn": "প্রতি সেকেন্ডে একটি ফ্রেম",
+       "cmd": "ffmpeg -i input.mp4 -vf fps=1 frame_%04d.png",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Thumbnail at 5 s",
+       "bn": "৫ সেকেন্ডে থাম্বনেইল",
+       "cmd": "ffmpeg -ss 5 -i input.mp4 -frames:v 1 thumb.jpg",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Animated GIF",
+       "bn": "অ্যানিমেটেড GIF",
+       "cmd": "ffmpeg -i input.mp4 -vf \"fps=12,scale=480:-1:flags=lanczos\" output.gif",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Images to video",
+       "bn": "ছবি থেকে ভিডিও",
+       "cmd": "ffmpeg -framerate 24 -i frame_%04d.png -c:v libx264 -pix_fmt yuv420p output.mp4",
+       "lang": "bash"
+      }
+     ]
+    },
+    {
+     "id": "f6",
+     "en": "Subtitles",
+     "bn": "সাবটাইটেল",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Burn subtitles into video",
+       "bn": "ভিডিওতে সাবটাইটেল বসান",
+       "cmd": "ffmpeg -i input.mp4 -vf subtitles=subs.srt output_sub.mp4",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Add as selectable track (MP4)",
+       "bn": "বেছে নেওয়ার ট্র্যাক হিসেবে যোগ (MP4)",
+       "cmd": "ffmpeg -i input.mp4 -i subs.srt -c copy -c:s mov_text output_track.mp4",
+       "lang": "bash"
+      }
+     ]
+    },
+    {
+     "id": "f7",
+     "en": "Streaming & hardware",
+     "bn": "স্ট্রিমিং ও হার্ডওয়্যার",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "HLS playlist (VOD)",
+       "bn": "HLS প্লেলিস্ট (VOD)",
+       "cmd": "ffmpeg -i input.mp4 -c:v libx264 -c:a aac -hls_time 6 -hls_playlist_type vod -hls_segment_filename \"seg_%03d.ts\" index.m3u8",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "NVIDIA GPU encode",
+       "bn": "NVIDIA GPU এনকোড",
+       "cmd": "ffmpeg -i input.mp4 -c:v h264_nvenc -preset p5 -cq 23 -c:a copy output_gpu.mp4",
+       "lang": "bash"
+      },
+      {
+       "t": "note",
+       "en": "Tip: the Tools tab has an FFmpeg command builder.",
+       "bn": "টিপ: Tools ট্যাবে FFmpeg কমান্ড বিল্ডার আছে।"
+      },
+      {
+       "t": "link",
+       "en": "FFmpeg documentation",
+       "bn": "FFmpeg ডকুমেন্টেশন",
+       "url": "https://ffmpeg.org/documentation.html",
+       "icon": "📘"
+      },
+      {
+       "t": "link",
+       "en": "FFmpeg filters reference",
+       "bn": "FFmpeg ফিল্টার রেফারেন্স",
+       "url": "https://ffmpeg.org/ffmpeg-filters.html",
+       "icon": "🎛"
+      },
+      {
+       "t": "link",
+       "en": "FFmpeg wiki (guides)",
+       "bn": "FFmpeg উইকি (গাইড)",
+       "url": "https://trac.ffmpeg.org/wiki",
+       "icon": "📚"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dotnet-ai",
+   "icon": "🤖",
+   "color": "#6A4FB6",
+   "en": ".NET · Python AI · ML.NET",
+   "bn": ".NET · Python AI · ML.NET",
+   "desc_en": "Build and train models with ML.NET or Python, then run them from .NET.",
+   "desc_bn": "ML.NET বা পাইথনে মডেল তৈরি ও ট্রেন করে .NET থেকে চালান।",
+   "sections": [
+    {
+     "id": "d1",
+     "en": ".NET basics",
+     "bn": "ডটনেট মৌলিক",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Show SDK info",
+       "bn": "SDK তথ্য",
+       "cmd": "dotnet --info",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "New console app",
+       "bn": "নতুন কনসোল অ্যাপ",
+       "cmd": "dotnet new console -n MyApp && cd MyApp",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Run with hot reload",
+       "bn": "হট রিলোডসহ চালান",
+       "cmd": "dotnet watch run",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Add ML.NET",
+       "bn": "ML.NET যোগ",
+       "cmd": "dotnet add package Microsoft.ML",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Release build",
+       "bn": "রিলিজ বিল্ড",
+       "cmd": "dotnet build -c Release",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Publish (framework-dependent)",
+       "bn": "পাবলিশ (ফ্রেমওয়ার্ক-নির্ভর)",
+       "cmd": "dotnet publish -c Release -r win-x64 --self-contained false",
+       "lang": "bash"
+      },
+      {
+       "t": "link",
+       "en": "Download .NET",
+       "bn": "ডটনেট ডাউনলোড",
+       "url": "https://dotnet.microsoft.com/download",
+       "icon": "⬇"
+      }
+     ]
+    },
+    {
+     "id": "d2",
+     "en": "ML.NET starter",
+     "bn": "ML.NET শুরু",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Extra packages",
+       "bn": "অতিরিক্ত প্যাকেজ",
+       "cmd": "dotnet add package Microsoft.ML.AutoML && dotnet add package Microsoft.ML.OnnxTransformer && dotnet add package Microsoft.ML.OnnxRuntime",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Minimal regression (Program.cs)",
+       "bn": "ন্যূনতম রিগ্রেশন (Program.cs)",
+       "cmd": "using Microsoft.ML;\nusing Microsoft.ML.Data;\n\nvar ml = new MLContext(seed: 0);\nvar data = ml.Data.LoadFromEnumerable(new[] {\n    new House { Size = 50,  Price = 100 },\n    new House { Size = 80,  Price = 160 },\n    new House { Size = 120, Price = 240 } });\n\nvar pipeline = ml.Transforms.Concatenate(\"Features\", nameof(House.Size))\n    .Append(ml.Regression.Trainers.Sdca(labelColumnName: nameof(House.Price)));\nvar model = pipeline.Fit(data);\n\nvar engine = ml.Model.CreatePredictionEngine<House, Pred>(model);\nConsole.WriteLine(engine.Predict(new House { Size = 100 }).Score);\n\npublic class House { public float Size { get; set; } public float Price { get; set; } }\npublic class Pred { [ColumnName(\"Score\")] public float Score { get; set; } }",
+       "lang": "csharp"
+      },
+      {
+       "t": "note",
+       "en": "Real projects need far more rows than this demo. Split data into train and test sets and check the metrics.",
+       "bn": "বাস্তব প্রজেক্টে এই ডেমোর চেয়ে অনেক বেশি ডাটা লাগে। ডাটাকে ট্রেন ও টেস্টে ভাগ করে মেট্রিক দেখুন।"
+      },
+      {
+       "t": "link",
+       "en": "ML.NET documentation",
+       "bn": "ML.NET ডকুমেন্টেশন",
+       "url": "https://learn.microsoft.com/dotnet/machine-learning/",
+       "icon": "📘"
+      },
+      {
+       "t": "link",
+       "en": "ML.NET overview",
+       "bn": "ML.NET পরিচিতি",
+       "url": "https://dotnet.microsoft.com/apps/machinelearning-ai/ml-dotnet",
+       "icon": "🧠"
+      }
+     ]
+    },
+    {
+     "id": "d3",
+     "en": "Python AI environment",
+     "bn": "পাইথন AI পরিবেশ",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Create venv (Linux/macOS)",
+       "bn": "venv তৈরি (Linux/macOS)",
+       "cmd": "python3 -m venv .venv && source .venv/bin/activate",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Create venv (Windows PowerShell)",
+       "bn": "venv তৈরি (Windows PowerShell)",
+       "cmd": "py -m venv .venv\n.venv\\Scripts\\Activate.ps1",
+       "lang": "powershell"
+      },
+      {
+       "t": "cmd",
+       "en": "Core data-science stack",
+       "bn": "মূল ডাটা-সায়েন্স স্ট্যাক",
+       "cmd": "pip install numpy pandas scikit-learn matplotlib jupyterlab",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "PyTorch (CPU build)",
+       "bn": "PyTorch (CPU বিল্ড)",
+       "cmd": "pip install torch --index-url https://download.pytorch.org/whl/cpu",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Save dependencies",
+       "bn": "নির্ভরতা সংরক্ষণ",
+       "cmd": "pip freeze > requirements.txt",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Quick classifier (scikit-learn)",
+       "bn": "দ্রুত ক্লাসিফায়ার (scikit-learn)",
+       "cmd": "from sklearn.datasets import load_iris\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.ensemble import RandomForestClassifier\n\nX, y = load_iris(return_X_y=True)\nXtr, Xte, ytr, yte = train_test_split(X, y, test_size=0.2, random_state=42)\nm = RandomForestClassifier(random_state=42).fit(Xtr, ytr)\nprint(\"accuracy:\", m.score(Xte, yte))",
+       "lang": "python"
+      }
+     ]
+    },
+    {
+     "id": "d4",
+     "en": "Bridge Python ↔ .NET",
+     "bn": "পাইথন ↔ ডটনেট সেতু",
+     "items": [
+      {
+       "t": "note",
+       "en": "Recommended flow: train in Python, export to ONNX, run in .NET with ONNX Runtime.",
+       "bn": "প্রস্তাবিত পথ: পাইথনে ট্রেন, ONNX-এ এক্সপোর্ট, .NET-এ ONNX Runtime দিয়ে চালানো।"
+      },
+      {
+       "t": "cmd",
+       "en": "Install exporter",
+       "bn": "এক্সপোর্টার ইনস্টল",
+       "cmd": "pip install skl2onnx onnxruntime",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Export the sklearn model to ONNX",
+       "bn": "sklearn মডেল ONNX-এ এক্সপোর্ট",
+       "cmd": "from skl2onnx import to_onnx\nimport numpy as np\n\nonx = to_onnx(m, Xtr[:1].astype(np.float32))   # m = trained sklearn model\nwith open(\"model.onnx\", \"wb\") as f:\n    f.write(onx.SerializeToString())",
+       "lang": "python"
+      },
+      {
+       "t": "cmd",
+       "en": "Call Python from C# (pythonnet)",
+       "bn": "C# থেকে পাইথন কল (pythonnet)",
+       "cmd": "dotnet add package pythonnet",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "pythonnet example",
+       "bn": "pythonnet উদাহরণ",
+       "cmd": "using Python.Runtime;\n\nRuntime.PythonDLL = \"python311.dll\";   // adjust to your OS and version\nPythonEngine.Initialize();\nusing (Py.GIL())\n{\n    dynamic np = Py.Import(\"numpy\");\n    Console.WriteLine(np.sqrt(16));\n}",
+       "lang": "csharp"
+      },
+      {
+       "t": "link",
+       "en": "ONNX Runtime",
+       "bn": "ONNX Runtime",
+       "url": "https://onnxruntime.ai",
+       "icon": "⚙"
+      },
+      {
+       "t": "link",
+       "en": "PyTorch install selector",
+       "bn": "PyTorch ইনস্টল নির্বাচক",
+       "url": "https://pytorch.org/get-started/locally/",
+       "icon": "🔥"
+      },
+      {
+       "t": "link",
+       "en": "scikit-learn",
+       "bn": "scikit-learn",
+       "url": "https://scikit-learn.org/stable/",
+       "icon": "📊"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "gis",
+   "icon": "🗺",
+   "color": "#1F8EA8",
+   "en": "GeoJSON · GIS · GeoGrid",
+   "bn": "GeoJSON · GIS · GeoGrid",
+   "desc_en": "Spatial data: GeoJSON basics, GDAL, Python GIS, H3 and fishnet grids.",
+   "desc_bn": "স্থানিক ডাটা: GeoJSON মৌলিক, GDAL, পাইথন GIS, H3 ও ফিশনেট গ্রিড।",
+   "sections": [
+    {
+     "id": "g1",
+     "en": "GeoJSON basics",
+     "bn": "GeoJSON মৌলিক",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Minimal point (Dhaka)",
+       "bn": "ন্যূনতম পয়েন্ট (ঢাকা)",
+       "cmd": "{\n  \"type\": \"FeatureCollection\",\n  \"features\": [{\n    \"type\": \"Feature\",\n    \"properties\": { \"name\": \"Dhaka\" },\n    \"geometry\": { \"type\": \"Point\", \"coordinates\": [90.4125, 23.8103] }\n  }]\n}",
+       "lang": "json"
+      },
+      {
+       "t": "note",
+       "en": "Coordinate order is [longitude, latitude] (x, y). The default CRS is WGS 84 (EPSG:4326).",
+       "bn": "স্থানাঙ্কের ক্রম [দ্রাঘিমা, অক্ষাংশ] (x, y)। ডিফল্ট CRS হলো WGS 84 (EPSG:4326)।"
+      },
+      {
+       "t": "note",
+       "en": "Polygon rings must be closed (first point equals last). RFC 7946 asks for counter-clockwise exterior rings.",
+       "bn": "পলিগনের রিং বন্ধ হতে হবে (প্রথম ও শেষ বিন্দু এক)। RFC 7946 অনুযায়ী বাইরের রিং ঘড়ির কাঁটার উল্টো দিকে।"
+      },
+      {
+       "t": "note",
+       "en": "Tip: use Tools → GeoJSON check and Coordinates & distance.",
+       "bn": "টিপ: Tools → GeoJSON check ও Coordinates & distance ব্যবহার করুন।"
+      }
+     ]
+    },
+    {
+     "id": "g2",
+     "en": "GDAL / OGR (command line)",
+     "bn": "GDAL / OGR (কমান্ড লাইন)",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Install (Ubuntu/Debian)",
+       "bn": "ইনস্টল (Ubuntu/Debian)",
+       "cmd": "sudo apt install gdal-bin",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Install (macOS)",
+       "bn": "ইনস্টল (macOS)",
+       "cmd": "brew install gdal",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Vector summary",
+       "bn": "ভেক্টরের সারাংশ",
+       "cmd": "ogrinfo -al -so data.geojson",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Shapefile to GeoJSON",
+       "bn": "Shapefile থেকে GeoJSON",
+       "cmd": "ogr2ogr -f GeoJSON out.geojson in.shp",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Reproject to WGS 84",
+       "bn": "WGS 84-এ রূপান্তর",
+       "cmd": "ogr2ogr -t_srs EPSG:4326 out.shp in.shp",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Clip to a bounding box",
+       "bn": "বাউন্ডিং বক্সে ছাঁটুন",
+       "cmd": "ogr2ogr -f GeoJSON out.geojson in.geojson -spat 90.2 23.6 90.6 24.0",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Raster info",
+       "bn": "রাস্টারের তথ্য",
+       "cmd": "gdalinfo raster.tif",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Reproject a raster",
+       "bn": "রাস্টার রূপান্তর",
+       "cmd": "gdalwarp -t_srs EPSG:3857 in.tif out.tif",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Cloud-optimised GeoTIFF",
+       "bn": "ক্লাউড-অপ্টিমাইজড GeoTIFF",
+       "cmd": "gdal_translate -of COG in.tif out_cog.tif",
+       "lang": "bash"
+      }
+     ]
+    },
+    {
+     "id": "g3",
+     "en": "Python GIS",
+     "bn": "পাইথন GIS",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Install",
+       "bn": "ইনস্টল",
+       "cmd": "pip install geopandas shapely pyproj folium",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Read, inspect, reproject",
+       "bn": "পড়া, পরীক্ষা, রূপান্তর",
+       "cmd": "import geopandas as gpd\n\ngdf = gpd.read_file(\"data.geojson\")\nprint(gdf.crs)\nprint(gdf.head())\ngdf.to_crs(epsg=32646).to_file(\"out_utm46n.geojson\", driver=\"GeoJSON\")",
+       "lang": "python"
+      },
+      {
+       "t": "cmd",
+       "en": "Area in km² (UTM zone 46N)",
+       "bn": "এলাকা বর্গকিমিতে (UTM জোন ৪৬এন)",
+       "cmd": "gdf[\"km2\"] = gdf.to_crs(epsg=32646).area / 1e6",
+       "lang": "python"
+      },
+      {
+       "t": "cmd",
+       "en": "Interactive map in HTML",
+       "bn": "HTML-এ ইন্টারেক্টিভ ম্যাপ",
+       "cmd": "import folium\n\nm = folium.Map(location=[23.8103, 90.4125], zoom_start=11)\nfolium.GeoJson(\"data.geojson\").add_to(m)\nm.save(\"map.html\")",
+       "lang": "python"
+      },
+      {
+       "t": "note",
+       "en": "UTM 46N suits Bangladesh. Pick the zone for your own area when measuring.",
+       "bn": "বাংলাদেশের জন্য UTM ৪৬এন উপযোগী। মাপার সময় নিজের এলাকার জোন বেছে নিন।"
+      }
+     ]
+    },
+    {
+     "id": "g4",
+     "en": "GeoGrid: H3 & fishnet",
+     "bn": "GeoGrid: H3 ও ফিশনেট",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Install H3 (v4 API)",
+       "bn": "H3 ইনস্টল (v4 API)",
+       "cmd": "pip install h3",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Point to hex cell and neighbours",
+       "bn": "পয়েন্ট থেকে হেক্স সেল ও প্রতিবেশী",
+       "cmd": "import h3\n\ncell = h3.latlng_to_cell(23.8103, 90.4125, 8)    # resolution 8\nprint(cell, h3.cell_to_latlng(cell))\nprint(len(h3.grid_disk(cell, 1)))                # cell + 6 neighbours",
+       "lang": "python"
+      },
+      {
+       "t": "note",
+       "en": "Approx. average hexagon area: res 7 ≈ 5.16 km², res 8 ≈ 0.74 km², res 9 ≈ 0.105 km².",
+       "bn": "হেক্সাগনের গড় আনুমানিক ক্ষেত্রফল: রেজোলিউশন ৭ ≈ ৫.১৬ কিমি², ৮ ≈ ০.৭৪ কিমি², ৯ ≈ ০.১০৫ কিমি²।"
+      },
+      {
+       "t": "cmd",
+       "en": "Square fishnet grid (0.25°)",
+       "bn": "বর্গাকার ফিশনেট গ্রিড (০.২৫°)",
+       "cmd": "import numpy as np\nimport geopandas as gpd\nfrom shapely.geometry import box\n\nminx, miny, maxx, maxy = 88.0, 20.5, 92.7, 26.7   # rough Bangladesh bbox\nstep = 0.25\ncells = [box(x, y, x + step, y + step)\n         for x in np.arange(minx, maxx, step)\n         for y in np.arange(miny, maxy, step)]\ngpd.GeoDataFrame(geometry=cells, crs=\"EPSG:4326\").to_file(\"grid.geojson\", driver=\"GeoJSON\")",
+       "lang": "python"
+      }
+     ]
+    },
+    {
+     "id": "g5",
+     "en": "Data & tools",
+     "bn": "ডাটা ও টুলস",
+     "items": [
+      {
+       "t": "link",
+       "en": "geojson.io — draw and edit",
+       "bn": "geojson.io — আঁকা ও সম্পাদনা",
+       "url": "https://geojson.io",
+       "icon": "✏️"
+      },
+      {
+       "t": "link",
+       "en": "EPSG.io — coordinate systems",
+       "bn": "EPSG.io — স্থানাঙ্ক ব্যবস্থা",
+       "url": "https://epsg.io",
+       "icon": "📐"
+      },
+      {
+       "t": "link",
+       "en": "OpenStreetMap",
+       "bn": "OpenStreetMap",
+       "url": "https://www.openstreetmap.org",
+       "icon": "🌍"
+      },
+      {
+       "t": "link",
+       "en": "Overpass Turbo — query OSM",
+       "bn": "Overpass Turbo — OSM কোয়েরি",
+       "url": "https://overpass-turbo.eu",
+       "icon": "🔎"
+      },
+      {
+       "t": "link",
+       "en": "geoBoundaries — admin borders",
+       "bn": "geoBoundaries — প্রশাসনিক সীমানা",
+       "url": "https://www.geoboundaries.org",
+       "icon": "🗾"
+      },
+      {
+       "t": "link",
+       "en": "Natural Earth — free map data",
+       "bn": "Natural Earth — বিনামূল্যের ম্যাপ ডাটা",
+       "url": "https://www.naturalearthdata.com",
+       "icon": "🌐"
+      },
+      {
+       "t": "link",
+       "en": "QGIS — desktop GIS",
+       "bn": "QGIS — ডেস্কটপ GIS",
+       "url": "https://qgis.org",
+       "icon": "🖥"
+      },
+      {
+       "t": "link",
+       "en": "H3 documentation",
+       "bn": "H3 ডকুমেন্টেশন",
+       "url": "https://h3geo.org",
+       "icon": "⬡"
+      },
+      {
+       "t": "link",
+       "en": "GeoJSON spec (RFC 7946)",
+       "bn": "GeoJSON স্পেক (RFC 7946)",
+       "url": "https://datatracker.ietf.org/doc/html/rfc7946",
+       "icon": "📄"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "web3",
+   "icon": "🔐",
+   "color": "#8A5AA8",
+   "en": "IPFS · DID · Crypto · Contracts",
+   "bn": "IPFS · DID · ক্রিপ্টো · কন্ট্রাক্ট",
+   "desc_en": "Decentralised storage, identity, cryptography and smart contracts.",
+   "desc_bn": "বিকেন্দ্রীভূত স্টোরেজ, পরিচয়, ক্রিপ্টোগ্রাফি ও স্মার্ট কন্ট্রাক্ট।",
+   "sections": [
+    {
+     "id": "w1",
+     "en": "IPFS (Kubo)",
+     "bn": "IPFS (Kubo)",
+     "items": [
+      {
+       "t": "link",
+       "en": "Install Kubo",
+       "bn": "Kubo ইনস্টল",
+       "url": "https://docs.ipfs.tech/install/command-line/",
+       "icon": "⬇"
+      },
+      {
+       "t": "cmd",
+       "en": "Initialise and start the node",
+       "bn": "নোড তৈরি ও চালু",
+       "cmd": "ipfs init\nipfs daemon",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Add a file (prints the CID)",
+       "bn": "ফাইল যোগ (CID দেখাবে)",
+       "cmd": "ipfs add file.txt",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Add a folder",
+       "bn": "ফোল্ডার যোগ",
+       "cmd": "ipfs add -r ./site",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Read content by CID",
+       "bn": "CID দিয়ে কনটেন্ট পড়া",
+       "cmd": "ipfs cat CID",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Keep content (pin)",
+       "bn": "কনটেন্ট ধরে রাখা (পিন)",
+       "cmd": "ipfs pin add CID",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "List pins",
+       "bn": "পিন তালিকা",
+       "cmd": "ipfs pin ls --type=recursive",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Open through the local gateway",
+       "bn": "লোকাল গেটওয়েতে খুলুন",
+       "cmd": "http://127.0.0.1:8080/ipfs/CID",
+       "lang": "url"
+      },
+      {
+       "t": "note",
+       "en": "Content on IPFS is public by default. Encrypt anything private before adding it.",
+       "bn": "IPFS-এর কনটেন্ট ডিফল্টভাবে পাবলিক। ব্যক্তিগত কিছু যোগ করার আগে এনক্রিপ্ট করুন।"
+      }
+     ]
+    },
+    {
+     "id": "w2",
+     "en": "DID & credentials",
+     "bn": "DID ও ক্রেডেনশিয়াল",
+     "items": [
+      {
+       "t": "note",
+       "en": "A DID looks like did:method:identifier, for example did:key:… or did:web:example.com.",
+       "bn": "DID দেখতে did:method:identifier, যেমন did:key:… বা did:web:example.com।"
+      },
+      {
+       "t": "cmd",
+       "en": "Minimal DID document",
+       "bn": "ন্যূনতম DID ডকুমেন্ট",
+       "cmd": "{\n  \"@context\": [\"https://www.w3.org/ns/did/v1\"],\n  \"id\": \"did:example:123456789abcdefghi\",\n  \"verificationMethod\": [{\n    \"id\": \"did:example:123456789abcdefghi#key-1\",\n    \"type\": \"Ed25519VerificationKey2020\",\n    \"controller\": \"did:example:123456789abcdefghi\",\n    \"publicKeyMultibase\": \"z6Mk...\"\n  }],\n  \"authentication\": [\"did:example:123456789abcdefghi#key-1\"]\n}",
+       "lang": "json"
+      },
+      {
+       "t": "link",
+       "en": "W3C DID Core",
+       "bn": "W3C DID Core",
+       "url": "https://www.w3.org/TR/did-core/",
+       "icon": "📘"
+      },
+      {
+       "t": "link",
+       "en": "Verifiable Credentials 2.0",
+       "bn": "Verifiable Credentials 2.0",
+       "url": "https://www.w3.org/TR/vc-data-model-2.0/",
+       "icon": "🪪"
+      },
+      {
+       "t": "link",
+       "en": "Universal Resolver",
+       "bn": "ইউনিভার্সাল রিজলভার",
+       "url": "https://dev.uniresolver.io",
+       "icon": "🔎"
+      }
+     ]
+    },
+    {
+     "id": "w3",
+     "en": "Cryptography (OpenSSL & Python)",
+     "bn": "ক্রিপ্টোগ্রাফি (OpenSSL ও Python)",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Random 32-byte hex",
+       "bn": "৩২ বাইটের র‍্যান্ডম হেক্স",
+       "cmd": "openssl rand -hex 32",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "SHA-256 of a file",
+       "bn": "ফাইলের SHA-256",
+       "cmd": "openssl dgst -sha256 file.bin",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Ed25519 key pair",
+       "bn": "Ed25519 কী জোড়া",
+       "cmd": "openssl genpkey -algorithm ed25519 -out private.pem\nopenssl pkey -in private.pem -pubout -out public.pem",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Sign a file (OpenSSL 3+)",
+       "bn": "ফাইলে সই (OpenSSL 3+)",
+       "cmd": "openssl pkeyutl -sign -inkey private.pem -rawin -in msg.txt -out msg.sig",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Verify the signature",
+       "bn": "সই যাচাই",
+       "cmd": "openssl pkeyutl -verify -pubin -inkey public.pem -rawin -in msg.txt -sigfile msg.sig",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Encrypt a file (AES-256)",
+       "bn": "ফাইল এনক্রিপ্ট (AES-256)",
+       "cmd": "openssl enc -aes-256-cbc -pbkdf2 -salt -in secret.txt -out secret.enc",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Decrypt it",
+       "bn": "ডিক্রিপ্ট",
+       "cmd": "openssl enc -d -aes-256-cbc -pbkdf2 -in secret.enc -out secret.txt",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "SSH key (Ed25519)",
+       "bn": "SSH কী (Ed25519)",
+       "cmd": "ssh-keygen -t ed25519 -C \"you@example.com\"",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Sign and verify in Python",
+       "bn": "পাইথনে সই ও যাচাই",
+       "cmd": "# pip install cryptography\nfrom cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey\n\nsk = Ed25519PrivateKey.generate()\npk = sk.public_key()\nsig = sk.sign(b\"hello\")\npk.verify(sig, b\"hello\")          # raises InvalidSignature if wrong\nprint(\"valid\")",
+       "lang": "python"
+      },
+      {
+       "t": "note",
+       "en": "Never store private keys or passwords in this registry or in Git.",
+       "bn": "প্রাইভেট কী বা পাসওয়ার্ড কখনো এই রেজিস্ট্রিতে বা Git-এ রাখবেন না।"
+      }
+     ]
+    },
+    {
+     "id": "w4",
+     "en": "Smart contracts",
+     "bn": "স্মার্ট কন্ট্রাক্ট",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Install Foundry",
+       "bn": "Foundry ইনস্টল",
+       "cmd": "curl -L https://foundry.paradigm.xyz | bash\nfoundryup",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Create, build, test",
+       "bn": "তৈরি, বিল্ড, টেস্ট",
+       "cmd": "forge init my-contract\ncd my-contract\nforge build\nforge test -vvv",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Local test chain",
+       "bn": "লোকাল টেস্ট চেইন",
+       "cmd": "anvil",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Or Hardhat",
+       "bn": "অথবা Hardhat",
+       "cmd": "npm init -y\nnpm install --save-dev hardhat\nnpx hardhat init\nnpx hardhat test",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Registry contract (maps a CID hash to its owner)",
+       "bn": "রেজিস্ট্রি কন্ট্রাক্ট (CID হ্যাশ থেকে মালিক)",
+       "cmd": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.20;\n\ncontract Registry {\n    mapping(bytes32 => address) public ownerOf;\n    event Registered(bytes32 indexed cid, address indexed owner);\n\n    function register(bytes32 cid) external {\n        require(ownerOf[cid] == address(0), \"exists\");\n        ownerOf[cid] = msg.sender;\n        emit Registered(cid, msg.sender);\n    }\n}",
+       "lang": "solidity"
+      },
+      {
+       "t": "note",
+       "en": "Deploy to a testnet first. Get an independent audit before holding real value.",
+       "bn": "আগে টেস্টনেটে ডিপ্লয় করুন। প্রকৃত মূল্য রাখার আগে স্বাধীন অডিট করান।"
+      },
+      {
+       "t": "link",
+       "en": "Foundry Book",
+       "bn": "Foundry বই",
+       "url": "https://book.getfoundry.sh",
+       "icon": "📘"
+      },
+      {
+       "t": "link",
+       "en": "Hardhat docs",
+       "bn": "Hardhat ডকস",
+       "url": "https://hardhat.org/docs",
+       "icon": "⚒"
+      },
+      {
+       "t": "link",
+       "en": "Solidity docs",
+       "bn": "Solidity ডকস",
+       "url": "https://docs.soliditylang.org",
+       "icon": "📄"
+      },
+      {
+       "t": "link",
+       "en": "OpenZeppelin Contracts",
+       "bn": "OpenZeppelin Contracts",
+       "url": "https://docs.openzeppelin.com/contracts",
+       "icon": "🛡"
+      },
+      {
+       "t": "link",
+       "en": "Remix IDE (browser)",
+       "bn": "Remix IDE (ব্রাউজার)",
+       "url": "https://remix.ethereum.org",
+       "icon": "🧪"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "network",
+   "icon": "📡",
+   "color": "#3178C6",
+   "en": "Network",
+   "bn": "নেটওয়ার্ক",
+   "desc_en": "Local network: addresses, ports, DNS, firewall, SSH.",
+   "desc_bn": "লোকাল নেটওয়ার্ক: ঠিকানা, পোর্ট, DNS, ফায়ারওয়াল, SSH।",
+   "sections": [
+    {
+     "id": "n1",
+     "en": "Addresses & routes",
+     "bn": "ঠিকানা ও রুট",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Interfaces (brief)",
+       "bn": "ইন্টারফেস (সংক্ষিপ্ত)",
+       "cmd": "ip -br addr",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Routing table",
+       "bn": "রাউটিং টেবিল",
+       "cmd": "ip route",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "DNS settings",
+       "bn": "DNS সেটিং",
+       "cmd": "resolvectl status",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Windows: full config",
+       "bn": "উইন্ডোজ: পূর্ণ কনফিগ",
+       "cmd": "ipconfig /all",
+       "lang": "cmd"
+      },
+      {
+       "t": "cmd",
+       "en": "Neighbours on the LAN",
+       "bn": "LAN-এর প্রতিবেশী ডিভাইস",
+       "cmd": "arp -a",
+       "lang": "bash"
+      }
+     ]
+    },
+    {
+     "id": "n2",
+     "en": "Reachability",
+     "bn": "পৌঁছানো পরীক্ষা",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Ping 4 times",
+       "bn": "৪ বার পিং",
+       "cmd": "ping -c 4 8.8.8.8",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Trace the path",
+       "bn": "পথ ট্রেস",
+       "cmd": "traceroute example.com",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Windows trace",
+       "bn": "উইন্ডোজ ট্রেস",
+       "cmd": "tracert example.com",
+       "lang": "cmd"
+      },
+      {
+       "t": "cmd",
+       "en": "Ping + trace in one (mtr)",
+       "bn": "পিং + ট্রেস একসাথে (mtr)",
+       "cmd": "mtr -rwc 20 example.com",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Is a TCP port open?",
+       "bn": "TCP পোর্ট খোলা কি?",
+       "cmd": "nc -vz example.com 443",
+       "lang": "bash"
+      }
+     ]
+    },
+    {
+     "id": "n3",
+     "en": "Ports & connections",
+     "bn": "পোর্ট ও সংযোগ",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Listening ports and owners",
+       "bn": "শোনা পোর্ট ও মালিক",
+       "cmd": "sudo ss -tulpn",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Who uses port 8000",
+       "bn": "৮০০০ পোর্ট কে ব্যবহার করছে",
+       "cmd": "sudo lsof -i :8000",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Scan your own device for services",
+       "bn": "নিজের ডিভাইসের সার্ভিস স্ক্যান",
+       "cmd": "nmap -sV -p 1-1000 127.0.0.1",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Find hosts on your own LAN",
+       "bn": "নিজের LAN-এর হোস্ট খুঁজুন",
+       "cmd": "nmap -sn 192.168.1.0/24",
+       "lang": "bash"
+      },
+      {
+       "t": "note",
+       "en": "Scan only networks and devices you own or have permission to test.",
+       "bn": "শুধু নিজের বা অনুমতিপ্রাপ্ত নেটওয়ার্ক ও ডিভাইস স্ক্যান করুন।"
+      }
+     ]
+    },
+    {
+     "id": "n4",
+     "en": "Wi-Fi",
+     "bn": "ওয়াই-ফাই",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Nearby networks (Linux)",
+       "bn": "কাছের নেটওয়ার্ক (Linux)",
+       "cmd": "nmcli dev wifi list",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Saved connections (Linux)",
+       "bn": "সংরক্ষিত সংযোগ (Linux)",
+       "cmd": "nmcli connection show",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Saved profiles (Windows)",
+       "bn": "সংরক্ষিত প্রোফাইল (Windows)",
+       "cmd": "netsh wlan show profiles",
+       "lang": "cmd"
+      }
+     ]
+    },
+    {
+     "id": "n5",
+     "en": "Firewall",
+     "bn": "ফায়ারওয়াল",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "UFW status",
+       "bn": "UFW অবস্থা",
+       "cmd": "sudo ufw status verbose",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Allow SSH, then enable",
+       "bn": "SSH অনুমতি দিয়ে চালু করুন",
+       "cmd": "sudo ufw allow 22/tcp\nsudo ufw enable",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "iptables rules",
+       "bn": "iptables নিয়ম",
+       "cmd": "sudo iptables -L -n -v",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Windows firewall profiles",
+       "bn": "উইন্ডোজ ফায়ারওয়াল প্রোফাইল",
+       "cmd": "netsh advfirewall show allprofiles",
+       "lang": "cmd"
+      },
+      {
+       "t": "note",
+       "en": "Allow SSH before enabling UFW on a remote machine, or you may lock yourself out.",
+       "bn": "রিমোট মেশিনে UFW চালুর আগে SSH অনুমতি দিন, নইলে নিজেই আটকে যেতে পারেন।"
+      }
+     ]
+    },
+    {
+     "id": "n6",
+     "en": "SSH & transfer",
+     "bn": "SSH ও ফাইল স্থানান্তর",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Connect",
+       "bn": "সংযোগ",
+       "cmd": "ssh user@host",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Install your key on a server",
+       "bn": "সার্ভারে আপনার কী বসান",
+       "cmd": "ssh-copy-id user@host",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Forward a local port",
+       "bn": "লোকাল পোর্ট ফরওয়ার্ড",
+       "cmd": "ssh -L 8080:localhost:80 user@host",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Copy a file to a server",
+       "bn": "সার্ভারে ফাইল কপি",
+       "cmd": "scp file.txt user@host:/path/",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Sync a folder (rsync)",
+       "bn": "ফোল্ডার সিঙ্ক (rsync)",
+       "cmd": "rsync -avz --progress ./site/ user@host:/var/www/site/",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Capture DNS traffic",
+       "bn": "DNS ট্রাফিক ধরুন",
+       "cmd": "sudo tcpdump -i any -n port 53",
+       "lang": "bash"
+      },
+      {
+       "t": "note",
+       "en": "Tip: the Tools tab has an IPv4 / CIDR calculator.",
+       "bn": "টিপ: Tools ট্যাবে IPv4 / CIDR ক্যালকুলেটর আছে।"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "internet",
+   "icon": "🌐",
+   "color": "#0F7B8A",
+   "en": "Internet",
+   "bn": "ইন্টারনেট",
+   "desc_en": "DNS, HTTP, TLS, public tunnels and web diagnostics.",
+   "desc_bn": "DNS, HTTP, TLS, পাবলিক টানেল ও ওয়েব ডায়াগনস্টিক।",
+   "sections": [
+    {
+     "id": "i1",
+     "en": "DNS",
+     "bn": "DNS",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Short answer",
+       "bn": "সংক্ষিপ্ত উত্তর",
+       "cmd": "dig example.com +short",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Mail servers",
+       "bn": "মেইল সার্ভার",
+       "cmd": "dig example.com MX +short",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Ask a specific resolver",
+       "bn": "নির্দিষ্ট রিজলভারকে জিজ্ঞাসা",
+       "cmd": "dig @1.1.1.1 example.com A",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Reverse lookup",
+       "bn": "রিভার্স লুকআপ",
+       "cmd": "dig -x 8.8.8.8 +short",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Windows lookup",
+       "bn": "উইন্ডোজ লুকআপ",
+       "cmd": "nslookup example.com",
+       "lang": "cmd"
+      },
+      {
+       "t": "cmd",
+       "en": "Registration details",
+       "bn": "নিবন্ধনের তথ্য",
+       "cmd": "whois example.com",
+       "lang": "bash"
+      }
+     ]
+    },
+    {
+     "id": "i2",
+     "en": "HTTP",
+     "bn": "HTTP",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Response headers only",
+       "bn": "শুধু রেসপন্স হেডার",
+       "cmd": "curl -I https://example.com",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Status code and total time",
+       "bn": "স্ট্যাটাস কোড ও মোট সময়",
+       "cmd": "curl -s -o /dev/null -w \"%{http_code} %{time_total}s\\n\" https://example.com",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Follow redirects, verbose",
+       "bn": "রিডাইরেক্ট অনুসরণ, ভার্বোস",
+       "cmd": "curl -Lv https://example.com -o /dev/null",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "POST JSON",
+       "bn": "JSON POST করুন",
+       "cmd": "curl -X POST https://httpbin.org/post \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"hello\":\"world\"}'",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Security headers check",
+       "bn": "সিকিউরিটি হেডার পরীক্ষা",
+       "cmd": "curl -sI https://example.com | grep -iE \"strict-transport|content-security|x-frame|x-content-type\"",
+       "lang": "bash"
+      }
+     ]
+    },
+    {
+     "id": "i3",
+     "en": "TLS certificates",
+     "bn": "TLS সার্টিফিকেট",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Certificate dates, issuer, subject",
+       "bn": "সার্টিফিকেটের তারিখ, ইস্যুকারী, বিষয়",
+       "cmd": "openssl s_client -connect example.com:443 -servername example.com </dev/null 2>/dev/null | openssl x509 -noout -dates -issuer -subject",
+       "lang": "bash"
+      }
+     ]
+    },
+    {
+     "id": "i4",
+     "en": "Your public identity",
+     "bn": "আপনার পাবলিক পরিচয়",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Public IP",
+       "bn": "পাবলিক IP",
+       "cmd": "curl -s https://ifconfig.me",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "IP details (JSON)",
+       "bn": "IP বিবরণ (JSON)",
+       "cmd": "curl -s https://ipinfo.io/json",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Rough download speed",
+       "bn": "আনুমানিক ডাউনলোড গতি",
+       "cmd": "curl -o /dev/null -s -w \"%{speed_download} bytes/s\\n\" \"https://speed.cloudflare.com/__down?bytes=25000000\"",
+       "lang": "bash"
+      }
+     ]
+    },
+    {
+     "id": "i5",
+     "en": "Share localhost",
+     "bn": "localhost শেয়ার করুন",
+     "items": [
+      {
+       "t": "cmd",
+       "en": "Serve current folder",
+       "bn": "বর্তমান ফোল্ডার সার্ভ",
+       "cmd": "python3 -m http.server 8000",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Quick public tunnel (cloudflared)",
+       "bn": "দ্রুত পাবলিক টানেল (cloudflared)",
+       "cmd": "cloudflared tunnel --url http://localhost:8000",
+       "lang": "bash"
+      },
+      {
+       "t": "cmd",
+       "en": "Tunnel with ngrok",
+       "bn": "ngrok দিয়ে টানেল",
+       "cmd": "ngrok http 8000",
+       "lang": "bash"
+      },
+      {
+       "t": "note",
+       "en": "A tunnel makes your local server public. Stop it when you finish, and never expose private data.",
+       "bn": "টানেল আপনার লোকাল সার্ভার পাবলিক করে। কাজ শেষে বন্ধ করুন এবং ব্যক্তিগত ডাটা কখনো উন্মুক্ত করবেন না।"
+      }
+     ]
+    },
+    {
+     "id": "i6",
+     "en": "Online checkers",
+     "bn": "অনলাইন চেকার",
+     "items": [
+      {
+       "t": "link",
+       "en": "MDN HTTP status codes",
+       "bn": "MDN HTTP স্ট্যাটাস কোড",
+       "url": "https://developer.mozilla.org/docs/Web/HTTP/Status",
+       "icon": "📘"
+      },
+      {
+       "t": "link",
+       "en": "Can I use — browser support",
+       "bn": "Can I use — ব্রাউজার সাপোর্ট",
+       "url": "https://caniuse.com",
+       "icon": "🧭"
+      },
+      {
+       "t": "link",
+       "en": "PageSpeed Insights",
+       "bn": "PageSpeed Insights",
+       "url": "https://pagespeed.web.dev",
+       "icon": "⚡"
+      },
+      {
+       "t": "link",
+       "en": "SSL Labs server test",
+       "bn": "SSL Labs সার্ভার টেস্ট",
+       "url": "https://www.ssllabs.com/ssltest/",
+       "icon": "🔒"
+      },
+      {
+       "t": "link",
+       "en": "MXToolbox — mail & DNS",
+       "bn": "MXToolbox — মেইল ও DNS",
+       "url": "https://mxtoolbox.com",
+       "icon": "✉️"
+      },
+      {
+       "t": "link",
+       "en": "DNS Checker — propagation",
+       "bn": "DNS Checker — প্রসারণ",
+       "url": "https://dnschecker.org",
+       "icon": "🌍"
+      },
+      {
+       "t": "link",
+       "en": "Wayback Machine",
+       "bn": "Wayback Machine",
+       "url": "https://web.archive.org",
+       "icon": "🕰"
+      },
+      {
+       "t": "link",
+       "en": "Downdetector",
+       "bn": "Downdetector",
+       "url": "https://downdetector.com",
+       "icon": "📉"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
