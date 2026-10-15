@@ -88,16 +88,16 @@
                 {
                     "id": 1,
                     "title": "Initial setup",
-                    "completed": false,
-                    "completed_dhaka": null,
-                    "completed_utc": null
+                    "completed": true,
+                    "completed_dhaka": "2026-10-15 23:59:26.023",
+                    "completed_utc": "2026-10-15 17:59:26.023"
                 },
                 {
                     "id": 2,
                     "title": "testing working activity",
-                    "completed": false,
-                    "completed_dhaka": null,
-                    "completed_utc": null
+                    "completed": true,
+                    "completed_dhaka": "2026-10-15 23:59:40.884",
+                    "completed_utc": "2026-10-15 17:59:40.884"
                 },
                 {
                     "id": 3,
@@ -109,9 +109,9 @@
                 {
                     "id": 4,
                     "title": "add in mj root",
-                    "completed": false,
-                    "completed_dhaka": null,
-                    "completed_utc": null
+                    "completed": true,
+                    "completed_dhaka": "2026-10-15 23:59:48.498",
+                    "completed_utc": "2026-10-15 17:59:48.498"
                 },
                 {
                     "id": 5,
@@ -140,12 +140,27 @@
                     "dhaka": "2026-10-15 23:47:40.717",
                     "utc": "2026-10-15 17:47:40.717",
                     "action": "Task created"
+                },
+                {
+                    "dhaka": "2026-10-15 23:59:26.023",
+                    "utc": "2026-10-15 17:59:26.023",
+                    "action": "Completed Step 1: Initial setup"
+                },
+                {
+                    "dhaka": "2026-10-15 23:59:40.884",
+                    "utc": "2026-10-15 17:59:40.884",
+                    "action": "Completed Step 2: testing working activity"
+                },
+                {
+                    "dhaka": "2026-10-15 23:59:48.498",
+                    "utc": "2026-10-15 17:59:48.498",
+                    "action": "Completed Step 4: add in mj root"
                 }
             ],
             "progress": {
-                "completed": 0,
-                "remaining": 7,
-                "percentage": 0
+                "completed": 3,
+                "remaining": 4,
+                "percentage": 42
             }
         },
         {
