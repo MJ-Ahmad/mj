@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1">
+
+<title>
+Life Tracker
+</title>
+
+<style>
+
+body{
+background:#0f172a;
+font-family:sans-serif;
+color:white;
+margin:0;
+}
+
+header{
+padding:30px;
+text-align:center;
+background:#1e293b;
+}
+
+h1{
+margin:0;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+padding:20px;
+}
+
+input{
+width:100%;
+padding:15px;
+border:none;
+border-radius:10px;
+background:#1e293b;
+color:white;
+margin-bottom:20px;
+}
+
+.card{
+background:#1e293b;
+padding:20px;
+margin-bottom:20px;
+border-radius:15px;
+}
+
+.time{
+color:#93c5fd;
+font-size:13px;
+}
+
+.registry{
+display:inline-block;
+padding:8px 12px;
+background:#14532d;
+color:#4ade80;
+border-radius:30px;
+margin-top:10px;
+margin-bottom:15px;
+}
+
+.heading{
+font-size:24px;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+.description{
+line-height:1.8;
+}
+
+.meta{
+
+margin-top:20px;
+
+padding-top:20px;
+
+border-top:
+1px solid #334155;
+
+font-size:14px;
+}
+
+a{
+color:#38bdf8;
+}
+
+button{
+
+padding:10px 15px;
+
+border:none;
+
+border-radius:10px;
+
+background:#2563eb;
+
+color:white;
+
+cursor:pointer;
+
+margin-top:10px;
+}
+
+pre{
+
+background:#020617;
+
+padding:15px;
+
+overflow:auto;
+
+border-radius:10px;
+
+margin-top:10px;
+
+display:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>
+Life Progress Tracker
+</h1>
+
+</header>
+
+<div class="container">
+
+<input
+id="search"
+placeholder="Search">
+
+<div id="timeline">
+
+</div>
+
+</div>
+
+<script>
+
+let entries=[];
+
+async function load(){
+
+const r=
+await fetch(
+'data.json'
+);
+
+const data=
+await r.json();
+
+entries=
+data.entries;
+
+render(entries);
+
+}
+
+async function showCode(path,id){
+
+let area=
+document.getElementById(id);
+
+if(area.style.display==="block"){
+
+area.style.display="none";
+
+return;
+}
+
+const r=
+await fetch(path);
+
+const txt=
+await r.text();
+
+area.textContent=
+txt;
+
+area.style.display=
+"block";
+
+}
+
+function render(items){
+
+let html='';
+
+items.forEach((e,i)=>{
+
+html+=`
+
+<div class="card">
+
+<div class="time">
+${e.dhaka_time}
+</div>
+
+<div class="time">
+UTC:
+${e.utc_time}
+</div>
+
+<div class="registry">
+${e.registry}
+</div>
+
+<div class="heading">
+${e.heading}
+</div>
+
+<div class="description">
+${e.description}
+</div>
+
+<div class="meta">
+
+<div>
+File:
+<a href="${e.attachment.file}" download>
+${e.attachment.original}
+</a>
+</div>
+
+<div>
+Type:
+${e.attachment.type}
+</div>
+
+<div>
+Size:
+${e.attachment.size}
+Bytes
+</div>
+
+<div>
+SHA256:
+${e.attachment.sha256}
+</div>
+
+<button
+onclick="
+showCode(
+'${e.attachment.file}',
+'code${i}'
+)">
+View Code
+</button>
+
+<pre id="code${i}">
+</pre>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+document
+.getElementById(
+'timeline'
+)
+.innerHTML=
+html;
+
+}
+
+document
+.getElementById(
+'search'
+)
+.addEventListener(
+'input',
+function(){
+
+let q =
+this.value.toLowerCase();
+
+let filtered =
+
+entries.filter(
+e=>
+
+e.heading
+.toLowerCase()
+.includes(q)
+
+||
+
+e.description
+.toLowerCase()
+.includes(q)
+
+||
+
+e.registry
+.toLowerCase()
+.includes(q)
+);
+
+render(
+filtered
+);
+
+}
+);
+
+load();
+
+</script>
+
+</body>
+
+</html>

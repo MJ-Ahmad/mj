@@ -1,0 +1,95 @@
+{
+    "entries": [
+        {
+            "registry": "REG-000008",
+            "dhaka_time": "2026-10-15 06:37:46.015",
+            "utc_time": "2026-10-15 00:37:46.015",
+            "heading": ".bashrc of kali nethunter",
+            "description": "Initial .bashrc for kali-nethunter",
+            "attachment": {
+                "file": "attachments/REG-000008.kali-nethunter",
+                "original": ".bashrc.kali-nethunter",
+                "size": 2546,
+                "type": "application/octet-stream",
+                "sha256": "0781ce22f8340e8054fb408067a0e98eb251f7e7aeb635696e95b8a69bc33388"
+            }
+        },
+        {
+            "registry": "REG-000007",
+            "dhaka_time": "2026-10-15 06:36:25.845",
+            "utc_time": "2026-10-15 00:36:25.845",
+            "heading": ".bashrc of Debian",
+            "description": "Initial .bashrc for Debian",
+            "attachment": {
+                "file": "attachments/REG-000007.debian",
+                "original": ".bashrc.debian",
+                "size": 2030,
+                "type": "application/octet-stream",
+                "sha256": "34f9846f7c64d297fd001943af4cb661c0b18f0eca39cf28eff4c4f7ea944d58"
+            }
+        },
+        {
+            "registry": "REG-000006",
+            "dhaka_time": "2026-10-15 06:34:58.037",
+            "utc_time": "2026-10-15 00:34:58.037",
+            "heading": ".bashrc of Ubuntu",
+            "description": "Initial .bashrc for Ubuntu",
+            "attachment": {
+                "file": "attachments/REG-000006.ubuntu",
+                "original": ".bashrc.ubuntu",
+                "size": 1916,
+                "type": "application/octet-stream",
+                "sha256": "6e70c02f48d3b7b07e4bfc23f8eb635365c61f9f11847daedefcde9e5ec5143f"
+            }
+        },
+        {
+            "registry": "REG-000005",
+            "dhaka_time": "2026-10-15 06:31:55.134",
+            "utc_time": "2026-10-15 00:31:55.134",
+            "heading": ".bashrc of Termux",
+            "description": "Initial .bashrc for Termux",
+            "attachment": {
+                "file": "attachments/REG-000005.termux",
+                "original": ".bashrc.termux",
+                "size": 4449,
+                "type": "application/octet-stream",
+                "sha256": "2bf85cdd1a10aa3d181d798cbffcf51871061c43d6729f3894d81f9bd284a5aa"
+            }
+        },
+        {
+            "registry": "REG-000004",
+            "dhaka_time": "2026-10-15 06:09:04.561",
+            "utc_time": "2026-10-15 00:09:04.561",
+            "heading": ".bashrc Initial setup completed",
+            "description": ".bashrc এর প্রাথমিক সেটআপ Termux, Ubuntu, Debian, Kali nethunter এই চারটির মধ্যেই প্রাথমিক ভাবে সেটাপ সম্পূর্ণ করা হয়েছে, প্রাথমিক কোড গুলো ধারাবাহিক ভাবে .bashrc.termux, .bashrc.ubuntu, .bashrc.debian, .bashrc.kali-nethunter হিসেবে যুক্ত করা হবে"
+        },
+        {
+            "registry": "REG-000003",
+            "dhaka_time": "2026-10-15 05:46:25.928",
+            "utc_time": "2026-10-14 23:46:25.928",
+            "heading": "Next Objective: .bashrc",
+            "description": "Comprehensive .bashrc Customization and Environment Standardization. The next objective is to create a fully customized and feature-rich .bashrc configuration that provides a unified user experience across Termux, Ubuntu, Debian, and Kali NetHunter."
+        },
+        {
+            "registry": "REG-000002",
+            "dhaka_time": "2026-10-15 05:42:37.299",
+            "utc_time": "2026-10-14 23:42:37.299",
+            "heading": "Initial Environment Provisioning Completed.",
+            "description": "Ubuntu, Debian, and Kali NetHunter have been successfully deployed within the Termux environment. Distribution access, shell transition, and session exit mechanisms have been validated. The platform is ready for subsequent configuration and integration tasks."
+        },
+        {
+            "registry": "REG-000001",
+            "dhaka_time": "2026-10-15 05:19:05.499",
+            "utc_time": "2026-10-14 23:19:05.499",
+            "heading": ".bashrc",
+            "description": ".bashrc setup completed",
+            "attachment": {
+                "file": "attachments/REG-000001",
+                "original": ".bashrc",
+                "size": 1916,
+                "type": "unknown",
+                "sha256": "6e70c02f48d3b7b07e4bfc23f8eb635365c61f9f11847daedefcde9e5ec5143f"
+            }
+        }
+    ]
+}

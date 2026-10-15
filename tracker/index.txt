@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+Life Progress Tracker
+</title>
+
+<style>https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css</style>
+
+<script>https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js</script>
+
+<style>
+
+:root{
+
+--bg:#0f172a;
+--card:#1e293b;
+--text:#f8fafc;
+--muted:#94a3b8;
+--blue:#3b82f6;
+--green:#22c55e;
+--cyan:#06b6d4;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+background:var(--bg);
+
+font-family:
+Segoe UI,
+sans-serif;
+
+color:var(--text);
+
+min-height:100vh;
+}
+
+header{
+
+background:
+linear-gradient(
+135deg,
+#2563eb,
+#06b6d4
+);
+
+padding:30px 20px;
+
+text-align:center;
+
+box-shadow:
+0 5px 20px
+rgba(0,0,0,.3);
+}
+
+header h1{
+
+font-size:32px;
+}
+
+header p{
+
+margin-top:10px;
+
+opacity:.9;
+}
+
+.stats{
+
+max-width:1200px;
+
+margin:auto;
+
+padding:20px;
+
+display:grid;
+
+grid-template-columns:
+repeat(
+auto-fit,
+minmax(
+200px,
+1fr
+)
+);
+
+gap:20px;
+}
+
+.stat{
+
+background:var(--card);
+
+padding:20px;
+
+border-radius:15px;
+
+text-align:center;
+}
+
+.stat h2{
+
+font-size:32px;
+
+color:#60a5fa;
+}
+
+.container{
+
+max-width:1200px;
+
+margin:auto;
+
+padding:20px;
+}
+
+.search-box{
+
+position:sticky;
+
+top:0;
+
+z-index:100;
+
+padding-bottom:15px;
+
+background:var(--bg);
+}
+
+#search{
+
+width:100%;
+
+padding:15px;
+
+background:var(--card);
+
+border:none;
+
+outline:none;
+
+border-radius:12px;
+
+color:white;
+
+font-size:15px;
+}
+
+.card{
+
+background:var(--card);
+
+padding:20px;
+
+margin-bottom:20px;
+
+border-radius:18px;
+
+box-shadow:
+0 5px 18px
+rgba(0,0,0,.25);
+}
+
+.time{
+
+font-size:13px;
+
+color:#93c5fd;
+
+margin-bottom:5px;
+}
+
+.utc{
+
+font-size:13px;
+
+color:#67e8f9;
+
+margin-bottom:12px;
+}
+
+.registry{
+
+display:inline-block;
+
+padding:8px 14px;
+
+background:#14532d;
+
+color:#4ade80;
+
+border-radius:30px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+margin-bottom:15px;
+}
+
+.heading{
+
+font-size:24px;
+
+font-weight:bold;
+
+margin-bottom:10px;
+}
+
+.description{
+
+line-height:1.8;
+
+color:#e2e8f0;
+}
+
+.meta{
+
+margin-top:20px;
+
+padding-top:20px;
+
+border-top:
+1px solid #334155;
+}
+
+.meta-item{
+
+margin-bottom:10px;
+
+word-break:break-all;
+}
+
+.toolbar{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:10px;
+
+margin-top:15px;
+}
+
+.btn{
+
+border:none;
+
+padding:10px 15px;
+
+border-radius:10px;
+
+background:var(--blue);
+
+color:white;
+
+cursor:pointer;
+
+font-size:14px;
+}
+
+.btn:hover{
+
+opacity:.9;
+}
+
+.btn-green{
+
+background:var(--green);
+}
+
+.btn-cyan{
+
+background:var(--cyan);
+}
+
+.code-wrapper{
+
+margin-top:15px;
+}
+
+pre{
+
+display:none;
+
+border-radius:12px;
+
+overflow:auto;
+
+max-height:600px;
+}
+
+.footer{
+
+padding:40px;
+
+text-align:center;
+
+color:#64748b;
+}
+
+.toast{
+
+position:fixed;
+
+bottom:20px;
+
+right:20px;
+
+background:#16a34a;
+
+padding:12px 18px;
+
+border-radius:10px;
+
+display:none;
+
+z-index:999;
+}
+
+a{
+
+color:#60a5fa;
+}
+
+@media(max-width:768px){
+
+header h1{
+
+font-size:24px;
+}
+
+.heading{
+
+font-size:20px;
+}
+
+.description{
+
+font-size:14px;
+}
+
+.btn{
+
+width:100%;
+}
+
+.toolbar{
+
+flex-direction:column;
+}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>
+Life Progress Tracker
+</h1>
+
+<p>
+Personal Registry & Code Craft Ledger
+</p>
+
+</header>
+
+<div class="stats">
+
+<div class="stat">
+<h2 id="totalEntries">0</h2>
+<p>Total Records</p>
+</div>
+
+</div>
+
+<div class="container">
+
+<div class="search-box">
+
+<input
+id="search"
+placeholder="Search heading, registry, file, hash, description...">
+
+</div>
+
+<div id="timeline"></div>
+
+</div>
+
+<div class="footer">
+
+Every Change Documented
+
+</div>
+
+<div
+id="toast"
+class="toast">
+
+Copied
+
+</div>
+
+<script>
+
+let entries=[];
+
+function toast(message){
+
+const t =
+document.getElementById(
+'toast'
+);
+
+t.innerText =
+message;
+
+t.style.display =
+'block';
+
+setTimeout(
+()=>{
+t.style.display='none';
+},
+2000
+);
+}
+
+function escapeHtml(text){
+
+return text
+
+.replaceAll('&','&amp;')
+.replaceAll('<','&lt;')
+.replaceAll('>','&gt;');
+}
+
+async function copyText(text){
+
+await navigator
+.clipboard
+.writeText(text);
+
+toast(
+'Copied'
+);
+}
+
+async function copyCode(id){
+
+const code =
+
+document
+.getElementById(id)
+.innerText;
+
+if(!code){
+
+toast(
+'Open Code First'
+);
+
+return;
+}
+
+await navigator
+.clipboard
+.writeText(code);
+
+toast(
+'Code Copied'
+);
+}
+
+async function showCode(path,id){
+
+const area =
+document
+.getElementById(id);
+
+if(
+area.style.display==="block"
+){
+
+area.style.display=
+"none";
+
+return;
+}
+
+try{
+
+const r=
+await fetch(path);
+
+const txt=
+await r.text();
+
+const code=
+escapeHtml(txt);
+
+area.innerHTML=
+`<code>${code}</code>`;
+
+area.style.display=
+"block";
+
+hljs.highlightElement(
+area.querySelector('code')
+);
+
+}
+catch{
+
+toast(
+'Cannot Load File'
+);
+}
+}
+
+async function load(){
+
+const response=
+await fetch(
+'data.json'
+);
+
+const data=
+await response.json();
+
+entries=
+data.entries;
+
+document
+.getElementById(
+'totalEntries'
+)
+.innerText=
+entries.length;
+
+render(
+entries
+);
+}
+
+function render(list){
+
+const holder=
+
+document
+.getElementById(
+'timeline'
+);
+
+if(
+list.length===0
+){
+
+holder.innerHTML=
+`
+<div class="card">
+No Entries Found
+</div>
+`;
+
+return;
+}
+
+let html='';
+
+list.forEach(
+(e,i)=>{
+
+html+=`
+
+<div class="card">
+
+<div class="time">
+${e.dhaka_time}
+</div>
+
+<div class="utc">
+UTC :
+${e.utc_time}
+</div>
+
+<div
+class="registry"
+onclick="
+copyText(
+'${e.registry}'
+)">
+${e.registry}
+</div>
+
+<div class="heading">
+${e.heading}
+</div>
+
+<div class="description">
+${e.description}
+</div>
+
+<div class="meta">
+
+<div class="meta-item">
+📄
+<a
+href="${e.attachment.file}"
+download>
+${e.attachment.original}
+</a>
+</div>
+
+<div class="meta-item">
+Type:
+${e.attachment.type}
+</div>
+
+<div class="meta-item">
+Size:
+${e.attachment.size}
+Bytes
+</div>
+
+<div class="meta-item">
+SHA256:
+${e.attachment.sha256}
+</div>
+
+<div class="toolbar">
+
+<button
+class="btn"
+onclick="
+showCode(
+'${e.attachment.file}',
+'code${i}'
+)">
+View Code
+</button>
+
+<button
+class="btn btn-green"
+onclick="
+copyCode(
+'code${i}'
+)">
+Copy Code
+</button>
+
+<button
+class="btn btn-cyan"
+onclick="
+copyText(
+'${e.attachment.sha256}'
+)">
+Copy SHA256
+</button>
+
+<button
+class="btn"
+onclick="
+window.open(
+'${e.attachment.file}',
+'_blank'
+)">
+Open Raw
+</button>
+
+</div>
+
+<div class="code-wrapper">
+
+<pre id="code${i}"></pre>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+holder.innerHTML=
+html;
+}
+
+document
+.getElementById(
+'search'
+)
+.addEventListener(
+'input',
+function(){
+
+const q=
+
+this.value
+.toLowerCase();
+
+const filtered=
+
+entries.filter(
+e=>
+
+JSON.stringify(e)
+.toLowerCase()
+.includes(q)
+);
+
+render(
+filtered
+);
+}
+);
+
+load();
+
+</script>
+
+</body>
+
+</html>
