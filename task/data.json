@@ -77,7 +77,7 @@
         {
             "task_id": "TASK-000006",
             "registry": "REG-000006",
-            "status": "active",
+            "status": "completed",
             "heading": "Task system create",
             "description": "MJ এর আওতায় সয়ংসম্পূর্ণ ভাবে Task system ডিজাইন করা ও যথাযথ ভাবে সেটআপ করা",
             "created_dhaka": "2026-10-15 23:47:40.717",
@@ -102,9 +102,9 @@
                 {
                     "id": 3,
                     "title": "backup a copy in backup/mj/task/v1/task-system",
-                    "completed": false,
-                    "completed_dhaka": null,
-                    "completed_utc": null
+                    "completed": true,
+                    "completed_dhaka": "2026-10-16 05:05:26.911",
+                    "completed_utc": "2026-10-15 23:05:26.911"
                 },
                 {
                     "id": 4,
@@ -116,23 +116,23 @@
                 {
                     "id": 5,
                     "title": "update mj home page footer links",
-                    "completed": false,
-                    "completed_dhaka": null,
-                    "completed_utc": null
+                    "completed": true,
+                    "completed_dhaka": "2026-10-16 04:46:29.867",
+                    "completed_utc": "2026-10-15 22:46:29.867"
                 },
                 {
                     "id": 6,
                     "title": "Testing by searching by the link across multiple browsers",
-                    "completed": false,
-                    "completed_dhaka": null,
-                    "completed_utc": null
+                    "completed": true,
+                    "completed_dhaka": "2026-10-16 04:46:39.494",
+                    "completed_utc": "2026-10-15 22:46:39.494"
                 },
                 {
                     "id": 7,
                     "title": "alias setup in Shell for development",
-                    "completed": false,
-                    "completed_dhaka": null,
-                    "completed_utc": null
+                    "completed": true,
+                    "completed_dhaka": "2026-10-16 05:01:48.514",
+                    "completed_utc": "2026-10-15 23:01:48.514"
                 }
             ],
             "history": [
@@ -155,12 +155,48 @@
                     "dhaka": "2026-10-15 23:59:48.498",
                     "utc": "2026-10-15 17:59:48.498",
                     "action": "Completed Step 4: add in mj root"
+                },
+                {
+                    "dhaka": "2026-10-16 04:46:29.867",
+                    "utc": "2026-10-15 22:46:29.867",
+                    "action": "Completed Step 5: update mj home page footer links"
+                },
+                {
+                    "dhaka": "2026-10-16 04:46:39.494",
+                    "utc": "2026-10-15 22:46:39.494",
+                    "action": "Completed Step 6: Testing by searching by the link across multiple browsers"
+                },
+                {
+                    "dhaka": "2026-10-16 05:01:48.514",
+                    "utc": "2026-10-15 23:01:48.514",
+                    "action": "Completed Step 7: alias setup in Shell for development"
+                },
+                {
+                    "dhaka": "2026-10-16 05:05:26.911",
+                    "utc": "2026-10-15 23:05:26.911",
+                    "action": "Completed Step 3: backup a copy in backup/mj/task/v1/task-system"
+                },
+                {
+                    "dhaka": "2026-10-16 05:06:05.134",
+                    "utc": "2026-10-15 23:06:05.134",
+                    "action": "Task completed and archived"
                 }
             ],
             "progress": {
-                "completed": 3,
-                "remaining": 4,
-                "percentage": 42
+                "completed": 7,
+                "remaining": 0,
+                "percentage": 100
+            },
+            "completed_dhaka": "2026-10-16 05:06:05.134",
+            "completed_utc": "2026-10-15 23:06:05.134",
+            "overview": "Task execution completed successfully.\n\nTask:\nTask system create\n\nAll planned implementation activities\nhave been completed and validated.\n\nSupporting documentation, evidence files, notes,\nand execution records have been successfully archived.\n\nCompletion Rate: 100%\n\nThis task is now considered ready for archival,\ninheritance, future reference, and stewardship review.",
+            "evaluation": {
+                "steps_total": 7,
+                "steps_completed": 7,
+                "completion_percentage": 100,
+                "notes": 0,
+                "attachments": 0,
+                "archive_ready": true
             }
         },
         {
