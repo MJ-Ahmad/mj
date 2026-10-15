@@ -1,0 +1,606 @@
+{
+    "tasks": [
+        {
+            "task_id": "TASK-000007",
+            "registry": "REG-000007",
+            "status": "active",
+            "heading": "Tracker system create",
+            "description": "MJ এর আওতায় Self tracking system ডিজাইন করা ও যথাযথ ভাবে সেটআপ করা",
+            "created_dhaka": "2026-10-15 23:50:45.662",
+            "created_utc": "2026-10-15 17:50:45.662",
+            "notes": [],
+            "attachments": [],
+            "steps": [
+                {
+                    "id": 1,
+                    "title": "Initial setup",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 2,
+                    "title": "testing working activity",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 3,
+                    "title": "backup a copy in backup/mj/tracker/v1/tracker-system",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 4,
+                    "title": "add in mj root",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 5,
+                    "title": "update mj home page footer links",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 6,
+                    "title": "Testing by searching by the link across multiple browsers",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 7,
+                    "title": "alias setup in Shell for development",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                }
+            ],
+            "history": [
+                {
+                    "dhaka": "2026-10-15 23:50:45.662",
+                    "utc": "2026-10-15 17:50:45.662",
+                    "action": "Task created"
+                }
+            ],
+            "progress": {
+                "completed": 0,
+                "remaining": 7,
+                "percentage": 0
+            }
+        },
+        {
+            "task_id": "TASK-000006",
+            "registry": "REG-000006",
+            "status": "active",
+            "heading": "Task system create",
+            "description": "MJ এর আওতায় সয়ংসম্পূর্ণ ভাবে Task system ডিজাইন করা ও যথাযথ ভাবে সেটআপ করা",
+            "created_dhaka": "2026-10-15 23:47:40.717",
+            "created_utc": "2026-10-15 17:47:40.717",
+            "notes": [],
+            "attachments": [],
+            "steps": [
+                {
+                    "id": 1,
+                    "title": "Initial setup",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 2,
+                    "title": "testing working activity",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 3,
+                    "title": "backup a copy in backup/mj/task/v1/task-system",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 4,
+                    "title": "add in mj root",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 5,
+                    "title": "update mj home page footer links",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 6,
+                    "title": "Testing by searching by the link across multiple browsers",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 7,
+                    "title": "alias setup in Shell for development",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                }
+            ],
+            "history": [
+                {
+                    "dhaka": "2026-10-15 23:47:40.717",
+                    "utc": "2026-10-15 17:47:40.717",
+                    "action": "Task created"
+                }
+            ],
+            "progress": {
+                "completed": 0,
+                "remaining": 7,
+                "percentage": 0
+            }
+        },
+        {
+            "task_id": "TASK-000005",
+            "registry": "REG-000005",
+            "status": "active",
+            "heading": "QuranerFariwala V4",
+            "description": "ভার্সন-৪ এর আওতায় Investment page, Supporter page, দায়িত্বশীল পেইজ তৈরি করা",
+            "created_dhaka": "2026-10-15 23:30:24.491",
+            "created_utc": "2026-10-15 17:30:24.491",
+            "notes": [],
+            "attachments": [],
+            "steps": [
+                {
+                    "id": 1,
+                    "title": "Investment root structure create",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 2,
+                    "title": "Investment template create",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 3,
+                    "title": "Supporter root structure create",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 4,
+                    "title": "Supporter template create",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 5,
+                    "title": "Responsible root structure create",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 6,
+                    "title": "Responsible template create",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                }
+            ],
+            "history": [
+                {
+                    "dhaka": "2026-10-15 23:30:24.491",
+                    "utc": "2026-10-15 17:30:24.491",
+                    "action": "Task created"
+                }
+            ],
+            "progress": {
+                "completed": 0,
+                "remaining": 6,
+                "percentage": 0
+            }
+        },
+        {
+            "task_id": "TASK-000004",
+            "registry": "REG-000004",
+            "status": "active",
+            "heading": "QuranerFariwala V3",
+            "description": "ভার্সন-৩ এর আওতায় about us, folder structure, home page update",
+            "created_dhaka": "2026-10-15 23:22:29.561",
+            "created_utc": "2026-10-15 17:22:29.561",
+            "notes": [],
+            "attachments": [],
+            "steps": [
+                {
+                    "id": 1,
+                    "title": "data.txt draft",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 2,
+                    "title": "update home page",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 3,
+                    "title": "about page",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 4,
+                    "title": "listed of required pages for new create",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                }
+            ],
+            "history": [
+                {
+                    "dhaka": "2026-10-15 23:22:29.561",
+                    "utc": "2026-10-15 17:22:29.561",
+                    "action": "Task created"
+                }
+            ],
+            "progress": {
+                "completed": 0,
+                "remaining": 4,
+                "percentage": 0
+            }
+        },
+        {
+            "task_id": "TASK-000003",
+            "registry": "REG-000003",
+            "status": "active",
+            "heading": "QuranerFariwala V2",
+            "description": "ভার্সন-২ এর আওতায় বর্তমানে থাকা স্টেটিক ফাইল গুলো EN|BN|AR এ আভডেট করা",
+            "created_dhaka": "2026-10-15 23:16:11.310",
+            "created_utc": "2026-10-15 17:16:11.310",
+            "notes": [],
+            "attachments": [],
+            "steps": [
+                {
+                    "id": 1,
+                    "title": "Home page",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 2,
+                    "title": "Terms",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 3,
+                    "title": "privacy",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 4,
+                    "title": "sitemap",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 5,
+                    "title": "contact",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 6,
+                    "title": "printing",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 7,
+                    "title": "Distribution",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 8,
+                    "title": "faq",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 9,
+                    "title": "education",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 10,
+                    "title": "in_development",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 11,
+                    "title": "Hifz_portal",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                }
+            ],
+            "history": [
+                {
+                    "dhaka": "2026-10-15 23:16:11.310",
+                    "utc": "2026-10-15 17:16:11.310",
+                    "action": "Task created"
+                }
+            ],
+            "progress": {
+                "completed": 0,
+                "remaining": 11,
+                "percentage": 0
+            }
+        },
+        {
+            "task_id": "TASK-000002",
+            "registry": "REG-000002",
+            "status": "active",
+            "heading": "Quraner Fariwala",
+            "description": "স্টেটিক ফাইল গুলো ঠিক করে আপলোড করা",
+            "created_dhaka": "2026-10-15 23:10:35.120",
+            "created_utc": "2026-10-15 17:10:35.120",
+            "notes": [],
+            "attachments": [],
+            "steps": [
+                {
+                    "id": 1,
+                    "title": "Home page links update",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 2,
+                    "title": "Terms page update",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 3,
+                    "title": "privacy page update",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 4,
+                    "title": "sitemap page update",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 5,
+                    "title": "contact page update",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 6,
+                    "title": "printing page update",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 7,
+                    "title": "Distribution page update",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 8,
+                    "title": "faq page update",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 9,
+                    "title": "education page update",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 10,
+                    "title": "in_development page create",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                }
+            ],
+            "history": [
+                {
+                    "dhaka": "2026-10-15 23:10:35.120",
+                    "utc": "2026-10-15 17:10:35.120",
+                    "action": "Task created"
+                }
+            ],
+            "progress": {
+                "completed": 0,
+                "remaining": 10,
+                "percentage": 0
+            }
+        },
+        {
+            "task_id": "TASK-000001",
+            "registry": "REG-000001",
+            "status": "active",
+            "heading": "Stewardship Task System Foundation Completed",
+            "description": "An inheritable task management system has been designed and implemented. Core registry management, task creation, progress tracking, completion reporting, attachment handling, audit trail generation, Dhaka and UTC timestamp management, and stewardship-oriented task governance mechanisms have been established. The project is prepared for dashboard integration, advanced reporting, and long-term operational use.",
+            "created_dhaka": "2026-10-15 14:36:53.041",
+            "created_utc": "2026-10-15 08:36:53.041",
+            "notes": [
+                "Initial foundation of the stewardship-oriented task management platform.",
+                "System designed for long-term inheritance, auditability, traceability, and operational stewardship.",
+                "Future phases include charts, analytics, parent-child task relationships, export functions, and advanced reporting."
+            ],
+            "attachments": [],
+            "steps": [
+                {
+                    "id": 1,
+                    "title": "Create project structure",
+                    "completed": true,
+                    "completed_dhaka": "2026-10-15 14:37:03.504",
+                    "completed_utc": "2026-10-15 08:37:03.504"
+                },
+                {
+                    "id": 2,
+                    "title": "Implement _lib.py core library",
+                    "completed": true,
+                    "completed_dhaka": "2026-10-15 14:37:11.658",
+                    "completed_utc": "2026-10-15 08:37:11.658"
+                },
+                {
+                    "id": 3,
+                    "title": "Implement add_task.py task creation system",
+                    "completed": true,
+                    "completed_dhaka": "2026-10-15 14:37:18.656",
+                    "completed_utc": "2026-10-15 08:37:18.656"
+                },
+                {
+                    "id": 4,
+                    "title": "Implement track_task.py progress tracking system",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 5,
+                    "title": "Implement validate.py database validation system",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 6,
+                    "title": "Implement complete_task.py completion engine",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 7,
+                    "title": "Create task registry database",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 8,
+                    "title": "Create attachment storage mechanism",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 9,
+                    "title": "Design stewardship workflow",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 10,
+                    "title": "Develop dashboard architecture",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 11,
+                    "title": "Create responsive user interface",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 12,
+                    "title": "Verify data integrity",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 13,
+                    "title": "Perform integration testing",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 14,
+                    "title": "Prepare production deployment",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                }
+            ],
+            "progress": {
+                "completed": 3,
+                "remaining": 11,
+                "percentage": 21
+            },
+            "history": [
+                {
+                    "dhaka": "2026-10-15 14:37:03.504",
+                    "utc": "2026-10-15 08:37:03.504",
+                    "action": "Completed Step 1: Create project structure"
+                },
+                {
+                    "dhaka": "2026-10-15 14:37:11.658",
+                    "utc": "2026-10-15 08:37:11.658",
+                    "action": "Completed Step 2: Implement _lib.py core library"
+                },
+                {
+                    "dhaka": "2026-10-15 14:37:18.656",
+                    "utc": "2026-10-15 08:37:18.656",
+                    "action": "Completed Step 3: Implement add_task.py task creation system"
+                }
+            ]
+        }
+    ]
+}

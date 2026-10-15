@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+Stewardship Task Dashboard
+</title>
+
+<style>
+
+:root{
+
+--primary:#1f4d91;
+--accent:#27ae60;
+--bg:#f4f7fb;
+--card:#ffffff;
+--text:#222;
+--border:#dbe4ef;
+
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+font-family:
+Segoe UI,
+Arial,
+sans-serif;
+
+background:var(--bg);
+color:var(--text);
+
+line-height:1.6;
+}
+
+.hero-header{
+
+background:
+linear-gradient(
+135deg,
+#1f4d91,
+#0c2f61
+);
+
+color:white;
+
+padding:40px 20px;
+
+text-align:center;
+
+box-shadow:
+0 4px 15px rgba(0,0,0,.15);
+
+}
+
+.hero-logo{
+
+width:90px;
+
+height:90px;
+
+object-fit:contain;
+
+margin-bottom:15px;
+}
+
+.hero-header h1{
+
+font-size:2rem;
+margin-bottom:10px;
+}
+
+.hero-header p{
+
+opacity:.9;
+}
+
+.hero-tag{
+
+display:inline-block;
+
+margin-top:15px;
+
+padding:8px 16px;
+
+border-radius:30px;
+
+background:
+rgba(255,255,255,.15);
+}
+
+.container{
+
+max-width:1200px;
+
+margin:auto;
+
+padding:20px;
+}
+
+.stats{
+
+display:grid;
+
+grid-template-columns:
+repeat(
+auto-fit,
+minmax(200px,1fr)
+);
+
+gap:15px;
+
+margin-bottom:25px;
+}
+
+.stat{
+
+background:var(--card);
+
+padding:20px;
+
+border-radius:12px;
+
+text-align:center;
+
+box-shadow:
+0 2px 7px rgba(0,0,0,.08);
+}
+
+.stat h2{
+
+color:var(--primary);
+
+font-size:32px;
+}
+
+.search{
+
+margin-bottom:25px;
+}
+
+.search input{
+
+width:100%;
+
+padding:15px;
+
+border-radius:10px;
+
+border:1px solid #ccc;
+
+font-size:15px;
+}
+
+.task-card{
+
+background:white;
+
+border-radius:15px;
+
+padding:20px;
+
+margin-bottom:20px;
+
+box-shadow:
+0 4px 15px rgba(0,0,0,.08);
+}
+
+.record-bar{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:10px;
+
+margin-bottom:15px;
+}
+
+.record-item{
+
+background:#eef4fb;
+
+padding:10px;
+
+border-radius:10px;
+
+font-size:13px;
+
+flex:1;
+}
+
+.badge{
+
+display:inline-block;
+
+padding:5px 12px;
+
+border-radius:20px;
+
+font-size:12px;
+
+color:white;
+
+margin-bottom:10px;
+}
+
+.active{
+background:#e67e22;
+}
+
+.completed{
+background:#27ae60;
+}
+
+.task-title{
+
+color:var(--primary);
+
+font-size:22px;
+
+margin-bottom:12px;
+}
+
+.task-preview{
+
+color:#444;
+
+display:-webkit-box;
+
+-webkit-line-clamp:4;
+
+-webkit-box-orient:vertical;
+
+overflow:hidden;
+}
+
+.btn{
+
+width:100%;
+
+margin-top:15px;
+
+padding:12px;
+
+border:none;
+
+background:var(--primary);
+
+color:white;
+
+border-radius:8px;
+
+cursor:pointer;
+}
+
+.btn:hover{
+
+background:#17396c;
+}
+
+.details{
+
+display:none;
+
+margin-top:20px;
+
+border-top:
+1px solid var(--border);
+
+padding-top:20px;
+}
+
+.details.show{
+
+display:block;
+}
+
+.section-title{
+
+color:var(--primary);
+
+margin-top:15px;
+
+margin-bottom:10px;
+}
+
+.note-box{
+
+background:#eef6ff;
+
+border-left:
+4px solid var(--primary);
+
+padding:12px;
+
+border-radius:6px;
+
+margin-bottom:10px;
+}
+
+.progress{
+
+background:#ddd;
+
+height:12px;
+
+border-radius:30px;
+
+overflow:hidden;
+}
+
+.progress-fill{
+
+height:100%;
+
+background:var(--accent);
+}
+
+.timeline{
+
+margin-top:10px;
+}
+
+.timeline-date{
+
+font-weight:bold;
+
+background:#f1f5fa;
+
+padding:10px;
+
+margin-top:15px;
+
+border-radius:8px;
+}
+
+.timeline-item{
+
+padding:10px;
+
+border-left:
+3px solid var(--accent);
+
+margin-left:8px;
+
+margin-top:5px;
+
+background:#fafafa;
+}
+
+.footer{
+
+margin-top:50px;
+
+background:#0c2f61;
+
+color:white;
+
+padding:40px 20px;
+}
+
+.footer-wrap{
+
+max-width:1200px;
+
+margin:auto;
+
+display:grid;
+
+grid-template-columns:
+repeat(
+auto-fit,
+minmax(250px,1fr)
+);
+
+gap:30px;
+}
+
+.footer h3{
+
+margin-bottom:12px;
+}
+
+.footer a{
+
+display:block;
+
+text-decoration:none;
+
+color:white;
+
+margin-bottom:8px;
+
+opacity:.85;
+}
+
+.footer a:hover{
+
+opacity:1;
+}
+
+.footer-bottom{
+
+margin-top:25px;
+
+text-align:center;
+
+opacity:.7;
+
+font-size:14px;
+}
+
+@media(max-width:768px){
+
+.hero-header h1{
+font-size:1.6rem;
+}
+
+.task-title{
+font-size:18px;
+}
+
+.record-item{
+
+flex-basis:100%;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="hero-header">
+
+<img
+src="assets/logo.png"
+alt="Logo"
+class="hero-logo">
+
+<h1>
+Stewardship Task System
+</h1>
+
+<p>
+Documentation • Governance • Audit
+</p>
+
+<div class="hero-tag">
+Every Task Documented, Tracked, Audited & Inherited
+</div>
+
+</header>
+
+<div class="container">
+
+<div class="stats">
+
+<div class="stat">
+<h2>31</h2>
+<p>Total Tasks</p>
+</div>
+
+<div class="stat">
+<h2>21</h2>
+<p>Active</p>
+</div>
+
+<div class="stat">
+<h2>10</h2>
+<p>Completed</p>
+</div>
+
+</div>
+
+<div class="search">
+
+<input
+type="text"
+placeholder="Search registry, task, notes, timeline...">
+
+</div>
+
+<div class="task-card">
+
+<span class="badge active">
+ACTIVE
+</span>
+
+<div class="record-bar">
+
+<div class="record-item">
+
+<strong>Dhaka</strong>
+<br>
+2026-10-15 13:35:02.652
+
+</div>
+
+<div class="record-item">
+
+<strong>UTC</strong>
+<br>
+2026-10-15 07:35:02.652
+
+</div>
+
+</div>
+
+<div class="record-bar">
+
+<div class="record-item">
+
+<strong>Task ID</strong>
+<br>
+TASK-000001
+
+</div>
+
+<div class="record-item">
+
+<strong>Registry</strong>
+<br>
+REG-000001
+
+</div>
+
+</div>
+
+<h2 class="task-title">
+
+Stewardship Task System Foundation Completed
+
+</h2>
+
+<p class="task-preview">
+
+Initial implementation completed.
+Stewardship system foundation,
+project registry,
+audit structure and task management framework have been successfully established.
+
+</p>
+
+<button class="btn expandBtn">
+
+View Full Record
+
+</button>
+
+<div class="details">
+
+<h3 class="section-title">
+
+Overview
+
+</h3>
+
+<p>
+
+This task established the initial stewardship system architecture with audit-ready record tracking and inheritance support.
+
+</p>
+
+<h3 class="section-title">
+
+Notes
+
+</h3>
+
+<div class="note-box">
+
+✓ Foundation created successfully
+
+</div>
+
+<div class="note-box">
+
+✓ Registry architecture ready
+
+</div>
+
+<h3 class="section-title">
+
+Progress
+
+</h3>
+
+<div class="progress">
+
+<div
+class="progress-fill"
+style="width:67%;">
+
+</div>
+
+</div>
+
+<p>
+
+67% Completed
+
+</p>
+
+<h3 class="section-title">
+
+Timeline
+
+</h3>
+
+<div class="timeline">
+
+<div class="timeline-date">
+
+2026-10-14
+
+</div>
+
+<div class="timeline-item">
+
+13:05 ✓ Create project structure
+
+</div>
+
+<div class="timeline-item">
+
+14:15 ✓ Implement _lib.py core library
+
+</div>
+
+<div class="timeline-date">
+
+2026-10-15
+
+</div>
+
+<div class="timeline-item">
+
+09:55 ✓ Implement add_task.py task creation system
+
+</div>
+
+<div class="timeline-item">
+
+11:25 ✓ Build dashboard architecture
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<footer class="footer">
+
+<div class="footer-wrap">
+
+<div>
+
+<h3>
+Stewardship Task System
+</h3>
+
+<p>
+
+Built for documentation,
+inheritance,
+audit readiness,
+long-term stewardship and institutional continuity.
+
+</p>
+
+</div>
+
+<div>
+
+<h3>
+Navigation
+</h3>
+
+<a href="#">
+Dashboard
+</a>
+
+<a href="#">
+Registry
+</a>
+
+<a href="#">
+Tasks
+</a>
+
+<a href="#">
+Timeline
+</a>
+
+</div>
+
+<div>
+
+<h3>
+Governance
+</h3>
+
+<a href="#">
+Documentation
+</a>
+
+<a href="#">
+Audit Records
+</a>
+
+<a href="#">
+Evaluations
+</a>
+
+<a href="#">
+History
+</a>
+
+</div>
+
+<div>
+
+<h3>
+Mission
+</h3>
+
+<p>
+
+Every task preserved for future review,
+verification,
+inheritance and stewardship continuity.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+
+© 2026 Stewardship Task System
+
+</div>
+
+</footer>
+
+<script>
+
+document
+.querySelectorAll(".expandBtn")
+.forEach(button=>{
+
+button.addEventListener(
+"click",
+()=>{
+
+const details=
+button.nextElementSibling;
+
+details.classList.toggle(
+"show"
+);
+
+button.textContent=
+details.classList.contains(
+"show"
+)
+?
+"Hide Record"
+:
+"View Full Record";
+
+});
+
+});
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+Stewardship-Task-System/
+│
+├── index.html
+│
+├── data/
+│   ├── tasks.json
+│   ├── registry.json
+│   ├── history.json
+│   └── settings.json
+│
+├── assets/
+│   │
+│   ├── logo.png
+│   ├── favicon.ico
+│   │
+│   ├── icons/
+│   │   ├── active.svg
+│   │   ├── completed.svg
+│   │   ├── registry.svg
+│   │   ├── timeline.svg
+│   │   └── audit.svg
+│   │
+│   ├── banners/
+│   │   ├── dashboard-banner.jpg
+│   │   └── governance-banner.jpg
+│   │
+│   └── screenshots/
+│
+├── css/
+│   ├── style.css
+│   ├── mobile.css
+│   ├── dark-mode.css
+│   └── print.css
+│
+├── js/
+│   ├── app.js
+│   ├── search.js
+│   ├── timeline.js
+│   ├── statistics.js
+│   ├── theme.js
+│   └── utilities.js
+│
+├── attachments/
+│   │
+│   ├── TASK-000001/
+│   │   ├── report.pdf
+│   │   ├── diagram.png
+│   │   └── notes.docx
+│   │
+│   ├── TASK-000002/
+│   │
+│   └── TASK-000003/
+│
+├── exports/
+│   ├── pdf/
+│   ├── csv/
+│   └── backups/
+│
+├── docs/
+│   ├── README.md
+│   ├── GOVERNANCE.md
+│   ├── REGISTRY-STANDARD.md
+│   ├── DATA-SCHEMA.md
+│   └── CHANGELOG.md
+│
+└── archive/
+    ├── completed-tasks.json
+    ├── old-registries.json
+    └── legacy-records/
