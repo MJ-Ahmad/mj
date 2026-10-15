@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Life Progress Tracker</title>
+
+<style>
+
+:root{
+
+--bg:#0f172a;
+--card:#1e293b;
+--card2:#334155;
+--text:#f8fafc;
+--muted:#94a3b8;
+
+--blue:#2563eb;
+--green:#16a34a;
+--cyan:#0891b2;
+}
+
+*{
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+
+}
+
+body{
+
+background:var(--bg);
+
+color:var(--text);
+
+font-family:
+Segoe UI,
+sans-serif;
+
+min-height:100vh;
+
+}
+
+header{
+
+padding:30px;
+
+text-align:center;
+
+background:
+linear-gradient(
+135deg,
+#2563eb,
+#0891b2
+);
+
+}
+
+header h1{
+
+font-size:32px;
+
+margin-bottom:10px;
+
+}
+
+.stats{
+
+max-width:1200px;
+
+margin:auto;
+
+padding:20px;
+
+display:grid;
+
+grid-template-columns:
+repeat(
+auto-fit,
+minmax(
+220px,
+1fr
+)
+);
+
+gap:20px;
+
+}
+
+.stat{
+
+background:var(--card);
+
+padding:20px;
+
+border-radius:16px;
+
+text-align:center;
+
+}
+
+.stat h2{
+
+color:#60a5fa;
+
+font-size:34px;
+
+}
+
+.container{
+
+max-width:1200px;
+
+margin:auto;
+
+padding:20px;
+
+}
+
+.search-container{
+
+position:sticky;
+
+top:0;
+
+z-index:100;
+
+padding-bottom:20px;
+
+background:var(--bg);
+
+}
+
+#search{
+
+width:100%;
+
+padding:15px;
+
+border:none;
+
+outline:none;
+
+border-radius:12px;
+
+background:var(--card);
+
+color:white;
+
+font-size:16px;
+
+}
+
+.card{
+
+background:var(--card);
+
+padding:20px;
+
+border-radius:18px;
+
+margin-bottom:20px;
+
+box-shadow:
+0 5px 15px
+rgba(
+0,
+0,
+0,
+0.25
+);
+
+}
+
+.time{
+
+font-size:13px;
+
+color:#93c5fd;
+
+margin-bottom:5px;
+
+}
+
+.utc{
+
+font-size:13px;
+
+color:#67e8f9;
+
+margin-bottom:15px;
+
+}
+
+.registry{
+
+display:inline-block;
+
+padding:8px 14px;
+
+background:#14532d;
+
+color:#4ade80;
+
+border-radius:30px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+margin-bottom:15px;
+
+}
+
+.heading{
+
+font-size:24px;
+
+font-weight:bold;
+
+margin-bottom:12px;
+
+}
+
+.description{
+
+line-height:1.8;
+
+color:#e2e8f0;
+
+}
+
+.meta{
+
+margin-top:20px;
+
+padding-top:20px;
+
+border-top:
+1px solid #475569;
+
+}
+
+.meta-item{
+
+margin-bottom:10px;
+
+word-break:break-word;
+
+}
+
+.toolbar{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:10px;
+
+margin-top:15px;
+
+}
+
+.btn{
+
+border:none;
+
+cursor:pointer;
+
+padding:10px 15px;
+
+border-radius:10px;
+
+color:white;
+
+background:var(--blue);
+
+}
+
+.btn-green{
+
+background:var(--green);
+
+}
+
+.btn-cyan{
+
+background:var(--cyan);
+
+}
+
+.btn:hover{
+
+opacity:.9;
+
+}
+
+pre{
+
+display:none;
+
+margin-top:15px;
+
+padding:20px;
+
+background:#020617;
+
+border-radius:12px;
+
+overflow:auto;
+
+max-height:500px;
+
+font-family:
+Consolas,
+monospace;
+
+font-size:13px;
+
+line-height:1.6;
+
+white-space:pre-wrap;
+
+word-break:break-word;
+
+}
+
+.toast{
+
+position:fixed;
+
+bottom:20px;
+
+right:20px;
+
+background:#16a34a;
+
+padding:12px 18px;
+
+border-radius:10px;
+
+display:none;
+
+z-index:9999;
+
+}
+
+.footer{
+
+padding:40px;
+
+text-align:center;
+
+color:#64748b;
+
+}
+
+a{
+
+color:#60a5fa;
+
+text-decoration:none;
+
+}
+
+a:hover{
+
+text-decoration:underline;
+
+}
+
+@media(max-width:768px){
+
+.container{
+
+padding:12px;
+
+}
+
+.heading{
+
+font-size:20px;
+
+}
+
+.description{
+
+font-size:14px;
+
+}
+
+.toolbar{
+
+flex-direction:column;
+
+}
+
+.btn{
+
+width:100%;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>
+Life Progress Tracker
+</h1>
+
+<p>
+Personal Registry & Audit Ledger
+</p>
+
+</header>
+
+<div class="stats">
+
+<div class="stat">
+
+<h2 id="totalRecords">
+0
+</h2>
+
+<div>
+Total Records
+</div>
+
+</div>
+
+</div>
+
+<div class="container">
+
+<div class="search-container">
+
+<input
+id="search"
+placeholder="Search registry, heading, description...">
+
+</div>
+
+<div id="timeline">
+
+</div>
+
+</div>
+
+<div class="footer">
+
+Every Step Documented
+
+</div>
+
+<div
+id="toast"
+class="toast">
+
+Copied
+
+</div>
+
+<script>
+
+let entries = [];
+
+function showToast(message){
+
+const toast =
+document.getElementById(
+"toast"
+);
+
+toast.innerText =
+message;
+
+toast.style.display =
+"block";
+
+setTimeout(()=>{
+toast.style.display =
+"none";
+},2000);
+
+}
+
+function escapeHtml(text){
+
+return text
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;");
+
+}
+
+async function copyText(text){
+
+try{
+
+await navigator
+.clipboard
+.writeText(text);
+
+showToast(
+"Copied"
+);
+
+}catch{
+
+showToast(
+"Copy Failed"
+);
+
+}
+
+}
+
+async function copyCode(id){
+
+const area =
+document.getElementById(id);
+
+if(
+!area.textContent.trim()
+){
+
+showToast(
+"Open code first"
+);
+
+return;
+
+}
+
+await navigator
+.clipboard
+.writeText(
+area.textContent
+);
+
+showToast(
+"Code Copied"
+);
+
+}
+
+async function showCode(path,id){
+
+const area =
+document.getElementById(id);
+
+if(
+area.style.display==="block"
+){
+
+area.style.display=
+"none";
+
+return;
+
+}
+
+try{
+
+const response =
+await fetch(path);
+
+const text =
+await response.text();
+
+area.textContent =
+text;
+
+area.style.display =
+"block";
+
+}catch{
+
+showToast(
+"Cannot Load File"
+);
+
+}
+
+}
+
+function render(data){
+
+const timeline =
+document.getElementById(
+"timeline"
+);
+
+if(
+data.length===0
+){
+
+timeline.innerHTML=
+`
+<div class="card">
+No Entries Found
+</div>
+`;
+
+return;
+
+}
+
+let html='';
+
+data.forEach(
+(entry,index)=>{
+
+let attachmentHtml='';
+
+if(entry.attachment){
+
+attachmentHtml=`
+
+<div class="meta">
+
+<div class="meta-item">
+📄
+<a
+href="${entry.attachment.file}"
+download>
+
+${entry.attachment.original}
+
+</a>
+</div>
+
+<div class="meta-item">
+Type:
+${entry.attachment.type}
+</div>
+
+<div class="meta-item">
+Size:
+${entry.attachment.size}
+ Bytes
+</div>
+
+<div class="meta-item">
+SHA256:
+${entry.attachment.sha256}
+</div>
+
+<div class="toolbar">
+
+<button
+class="btn"
+onclick="
+showCode(
+'${entry.attachment.file}',
+'code${index}'
+)">
+View Code
+</button>
+
+<button
+class="btn btn-green"
+onclick="
+copyCode(
+'code${index}'
+)">
+Copy Code
+</button>
+
+<button
+class="btn btn-cyan"
+onclick="
+copyText(
+'${entry.attachment.sha256}'
+)">
+Copy SHA256
+</button>
+
+</div>
+
+<pre id="code${index}"></pre>
+
+</div>
+
+`;
+
+}
+
+html += `
+
+<div class="card">
+
+<div class="time">
+${entry.dhaka_time}
+</div>
+
+<div class="utc">
+UTC:
+${entry.utc_time}
+</div>
+
+<div
+class="registry"
+onclick="
+copyText(
+'${entry.registry}'
+)">
+${entry.registry}
+</div>
+
+<div class="heading">
+${entry.heading}
+</div>
+
+<div class="description">
+${entry.description}
+</div>
+
+${attachmentHtml}
+
+</div>
+
+`;
+
+});
+
+timeline.innerHTML=
+html;
+
+}
+
+async function loadData(){
+
+try{
+
+const response =
+await fetch(
+"data.json"
+);
+
+const data =
+await response.json();
+
+entries =
+data.entries || [];
+
+document
+.getElementById(
+"totalRecords"
+)
+.innerText =
+entries.length;
+
+render(
+entries
+);
+
+}catch(error){
+
+document
+.getElementById(
+"timeline"
+)
+.innerHTML=
+
+`
+<div class="card">
+
+Failed To Load data.json
+
+</div>
+`;
+
+}
+
+}
+
+document
+.getElementById(
+"search"
+)
+.addEventListener(
+"input",
+function(){
+
+const keyword =
+this.value
+.toLowerCase();
+
+const filtered =
+
+entries.filter(
+item=>
+
+JSON.stringify(item)
+.toLowerCase()
+.includes(
+keyword
+)
+);
+
+render(
+filtered
+);
+
+}
+);
+
+loadData();
+
+</script>
+
+</body>
+
+</html>
