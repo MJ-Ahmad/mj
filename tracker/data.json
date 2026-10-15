@@ -1,6 +1,20 @@
 {
     "entries": [
         {
+            "registry": "REG-000011",
+            "dhaka_time": "2026-10-15 13:35:02.652",
+            "utc_time": "2026-10-15 07:35:02.652",
+            "heading": "Task create helping",
+            "description": "deriction from ai",
+            "attachment": {
+                "file": "attachments/REG-000011.md",
+                "original": "chat.md",
+                "size": 5898,
+                "type": "text/markdown",
+                "sha256": "63a2dc86bad311ed4e647a0241bf552f28a9e2527fe656ac937bbf4858128fd0"
+            }
+        },
+        {
             "registry": "REG-000010",
             "dhaka_time": "2026-10-15 13:30:24.147",
             "utc_time": "2026-10-15 07:30:24.147",
