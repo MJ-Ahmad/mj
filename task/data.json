@@ -486,65 +486,65 @@
                 {
                     "id": 1,
                     "title": "Home page links update",
-                    "completed": false,
-                    "completed_dhaka": null,
-                    "completed_utc": null
+                    "completed": true,
+                    "completed_dhaka": "2026-10-16 09:23:47.496",
+                    "completed_utc": "2026-10-16 03:23:47.496"
                 },
                 {
                     "id": 2,
                     "title": "Terms page update",
-                    "completed": false,
-                    "completed_dhaka": null,
-                    "completed_utc": null
+                    "completed": true,
+                    "completed_dhaka": "2026-10-16 15:01:44.907",
+                    "completed_utc": "2026-10-16 09:01:44.907"
                 },
                 {
                     "id": 3,
                     "title": "privacy page update",
-                    "completed": false,
-                    "completed_dhaka": null,
-                    "completed_utc": null
+                    "completed": true,
+                    "completed_dhaka": "2026-10-16 15:02:09.586",
+                    "completed_utc": "2026-10-16 09:02:09.586"
                 },
                 {
                     "id": 4,
                     "title": "sitemap page update",
-                    "completed": false,
-                    "completed_dhaka": null,
-                    "completed_utc": null
+                    "completed": true,
+                    "completed_dhaka": "2026-10-16 15:02:19.292",
+                    "completed_utc": "2026-10-16 09:02:19.292"
                 },
                 {
                     "id": 5,
                     "title": "contact page update",
-                    "completed": false,
-                    "completed_dhaka": null,
-                    "completed_utc": null
+                    "completed": true,
+                    "completed_dhaka": "2026-10-16 15:02:30.237",
+                    "completed_utc": "2026-10-16 09:02:30.237"
                 },
                 {
                     "id": 6,
                     "title": "printing page update",
-                    "completed": false,
-                    "completed_dhaka": null,
-                    "completed_utc": null
+                    "completed": true,
+                    "completed_dhaka": "2026-10-16 15:02:43.556",
+                    "completed_utc": "2026-10-16 09:02:43.556"
                 },
                 {
                     "id": 7,
                     "title": "Distribution page update",
-                    "completed": false,
-                    "completed_dhaka": null,
-                    "completed_utc": null
+                    "completed": true,
+                    "completed_dhaka": "2026-10-16 15:02:53.606",
+                    "completed_utc": "2026-10-16 09:02:53.606"
                 },
                 {
                     "id": 8,
                     "title": "faq page update",
-                    "completed": false,
-                    "completed_dhaka": null,
-                    "completed_utc": null
+                    "completed": true,
+                    "completed_dhaka": "2026-10-16 15:03:00.508",
+                    "completed_utc": "2026-10-16 09:03:00.508"
                 },
                 {
                     "id": 9,
                     "title": "education page update",
-                    "completed": false,
-                    "completed_dhaka": null,
-                    "completed_utc": null
+                    "completed": true,
+                    "completed_dhaka": "2026-10-16 15:03:06.846",
+                    "completed_utc": "2026-10-16 09:03:06.846"
                 },
                 {
                     "id": 10,
@@ -559,12 +559,57 @@
                     "dhaka": "2026-10-15 23:10:35.120",
                     "utc": "2026-10-15 17:10:35.120",
                     "action": "Task created"
+                },
+                {
+                    "dhaka": "2026-10-16 09:23:47.496",
+                    "utc": "2026-10-16 03:23:47.496",
+                    "action": "Completed Step 1: Home page links update"
+                },
+                {
+                    "dhaka": "2026-10-16 15:01:44.907",
+                    "utc": "2026-10-16 09:01:44.907",
+                    "action": "Completed Step 2: Terms page update"
+                },
+                {
+                    "dhaka": "2026-10-16 15:02:09.586",
+                    "utc": "2026-10-16 09:02:09.586",
+                    "action": "Completed Step 3: privacy page update"
+                },
+                {
+                    "dhaka": "2026-10-16 15:02:19.292",
+                    "utc": "2026-10-16 09:02:19.292",
+                    "action": "Completed Step 4: sitemap page update"
+                },
+                {
+                    "dhaka": "2026-10-16 15:02:30.237",
+                    "utc": "2026-10-16 09:02:30.237",
+                    "action": "Completed Step 5: contact page update"
+                },
+                {
+                    "dhaka": "2026-10-16 15:02:43.556",
+                    "utc": "2026-10-16 09:02:43.556",
+                    "action": "Completed Step 6: printing page update"
+                },
+                {
+                    "dhaka": "2026-10-16 15:02:53.606",
+                    "utc": "2026-10-16 09:02:53.606",
+                    "action": "Completed Step 7: Distribution page update"
+                },
+                {
+                    "dhaka": "2026-10-16 15:03:00.508",
+                    "utc": "2026-10-16 09:03:00.508",
+                    "action": "Completed Step 8: faq page update"
+                },
+                {
+                    "dhaka": "2026-10-16 15:03:06.846",
+                    "utc": "2026-10-16 09:03:06.846",
+                    "action": "Completed Step 9: education page update"
                 }
             ],
             "progress": {
-                "completed": 0,
-                "remaining": 10,
-                "percentage": 0
+                "completed": 9,
+                "remaining": 1,
+                "percentage": 90
             }
         },
         {
