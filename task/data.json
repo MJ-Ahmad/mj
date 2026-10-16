@@ -1,6 +1,101 @@
 {
     "tasks": [
         {
+            "task_id": "TASK-000009",
+            "registry": "REG-000009",
+            "status": "active",
+            "heading": "Quraner Fariwala 0.0 First Stable Release",
+            "description": "TASK-000002 এর প্রাথমিক সম্পূর্ণের ভিত্তিতে TASK-000008 সম্পূর্ণ করার ক্ষেত্রে কয়েকটি বিষয় সঠিক ও যথার্থ ভাবে যুক্ত করা উচিত, তাই TASK-000008 সম্পূর্ণ পরবর্তী Quraner Fariwala 0.0 হিসেবে এর প্রথম প্রস্ততকৃত Stable Public Release টি যাচাই, রিপোর্ট সংরক্ষণ, প্রকাশ ও রেজিঃ নিবন্ধন সম্পন্ন করা, এবং পরবর্তী যে বিষয় গুলো আরো গভীর সেই গুলো, অর্থাৎ Foundation, Architecture, Governance, Knowledge, Research, Learning, AI ও Archive Framework এর একাধিক ভার গভীর ভাবে আলোচনা পর্যালোচনা পরবর্তী প্রতিটি বিষয়ের কার্যক্রমগুলোর মূল কাঠামোটি চুড়ান্ত করার চেষ্টা করা, যা কোন ধরনের প্রশ্নের মুখোমুখি হলে যথাযথ সঠিক উত্তর নির্দ্বিধায় প্রকাশ করতে কোন ধরনের সংকুচ না হয়, এবং চুড়ান্ত কাঠামোর যথাযথ সকল সেটাপ ও চুড়ান্ত রিভিউ পরবর্তী অনুমোদিত সংস্করণ হিসেবে জনসাধারণের জন্য উন্মুক্ত থাকবে।",
+            "created_dhaka": "2026-10-16 23:58:21.953",
+            "created_utc": "2026-10-16 17:58:21.953",
+            "notes": [],
+            "attachments": [],
+            "steps": [
+                {
+                    "id": 1,
+                    "title": "Create platform readiness Design",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 2,
+                    "title": "Create final Overview for this",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 3,
+                    "title": "Structure governance compliance",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 4,
+                    "title": "Structure knowledge integrity",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 5,
+                    "title": "Adding and Validate archive readiness Setup",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 6,
+                    "title": "Prepare release assets",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 7,
+                    "title": "Publish stable release",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 8,
+                    "title": "Register release",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 9,
+                    "title": "Archive release",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 10,
+                    "title": "Announce version 0.0 or Quraner Fariwala 0.0",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                }
+            ],
+            "history": [
+                {
+                    "dhaka": "2026-10-16 23:58:21.953",
+                    "utc": "2026-10-16 17:58:21.953",
+                    "action": "Task created"
+                }
+            ],
+            "progress": {
+                "completed": 0,
+                "remaining": 10,
+                "percentage": 0
+            }
+        },
+        {
             "task_id": "TASK-000008",
             "registry": "REG-000008",
             "status": "active",
