@@ -3,7 +3,7 @@
         {
             "task_id": "TASK-000007",
             "registry": "REG-000007",
-            "status": "active",
+            "status": "completed",
             "heading": "Tracker system create",
             "description": "MJ এর আওতায় Self tracking system ডিজাইন করা ও যথাযথ ভাবে সেটআপ করা",
             "created_dhaka": "2026-10-15 23:50:45.662",
@@ -14,51 +14,51 @@
                 {
                     "id": 1,
                     "title": "Initial setup",
-                    "completed": false,
-                    "completed_dhaka": null,
-                    "completed_utc": null
+                    "completed": true,
+                    "completed_dhaka": "2026-10-16 08:36:33.327",
+                    "completed_utc": "2026-10-16 02:36:33.327"
                 },
                 {
                     "id": 2,
                     "title": "testing working activity",
-                    "completed": false,
-                    "completed_dhaka": null,
-                    "completed_utc": null
+                    "completed": true,
+                    "completed_dhaka": "2026-10-16 08:37:02.601",
+                    "completed_utc": "2026-10-16 02:37:02.601"
                 },
                 {
                     "id": 3,
                     "title": "backup a copy in backup/mj/tracker/v1/tracker-system",
-                    "completed": false,
-                    "completed_dhaka": null,
-                    "completed_utc": null
+                    "completed": true,
+                    "completed_dhaka": "2026-10-16 08:42:39.010",
+                    "completed_utc": "2026-10-16 02:42:39.010"
                 },
                 {
                     "id": 4,
                     "title": "add in mj root",
-                    "completed": false,
-                    "completed_dhaka": null,
-                    "completed_utc": null
+                    "completed": true,
+                    "completed_dhaka": "2026-10-16 08:37:28.203",
+                    "completed_utc": "2026-10-16 02:37:28.203"
                 },
                 {
                     "id": 5,
                     "title": "update mj home page footer links",
-                    "completed": false,
-                    "completed_dhaka": null,
-                    "completed_utc": null
+                    "completed": true,
+                    "completed_dhaka": "2026-10-16 08:37:50.423",
+                    "completed_utc": "2026-10-16 02:37:50.423"
                 },
                 {
                     "id": 6,
                     "title": "Testing by searching by the link across multiple browsers",
-                    "completed": false,
-                    "completed_dhaka": null,
-                    "completed_utc": null
+                    "completed": true,
+                    "completed_dhaka": "2026-10-16 08:38:11.977",
+                    "completed_utc": "2026-10-16 02:38:11.977"
                 },
                 {
                     "id": 7,
                     "title": "alias setup in Shell for development",
-                    "completed": false,
-                    "completed_dhaka": null,
-                    "completed_utc": null
+                    "completed": true,
+                    "completed_dhaka": "2026-10-16 08:51:20.037",
+                    "completed_utc": "2026-10-16 02:51:20.037"
                 }
             ],
             "history": [
@@ -66,12 +66,63 @@
                     "dhaka": "2026-10-15 23:50:45.662",
                     "utc": "2026-10-15 17:50:45.662",
                     "action": "Task created"
+                },
+                {
+                    "dhaka": "2026-10-16 08:36:33.327",
+                    "utc": "2026-10-16 02:36:33.327",
+                    "action": "Completed Step 1: Initial setup"
+                },
+                {
+                    "dhaka": "2026-10-16 08:37:02.601",
+                    "utc": "2026-10-16 02:37:02.601",
+                    "action": "Completed Step 2: testing working activity"
+                },
+                {
+                    "dhaka": "2026-10-16 08:37:28.203",
+                    "utc": "2026-10-16 02:37:28.203",
+                    "action": "Completed Step 4: add in mj root"
+                },
+                {
+                    "dhaka": "2026-10-16 08:37:50.423",
+                    "utc": "2026-10-16 02:37:50.423",
+                    "action": "Completed Step 5: update mj home page footer links"
+                },
+                {
+                    "dhaka": "2026-10-16 08:38:11.977",
+                    "utc": "2026-10-16 02:38:11.977",
+                    "action": "Completed Step 6: Testing by searching by the link across multiple browsers"
+                },
+                {
+                    "dhaka": "2026-10-16 08:42:39.010",
+                    "utc": "2026-10-16 02:42:39.010",
+                    "action": "Completed Step 3: backup a copy in backup/mj/tracker/v1/tracker-system"
+                },
+                {
+                    "dhaka": "2026-10-16 08:51:20.037",
+                    "utc": "2026-10-16 02:51:20.037",
+                    "action": "Completed Step 7: alias setup in Shell for development"
+                },
+                {
+                    "dhaka": "2026-10-16 08:51:52.402",
+                    "utc": "2026-10-16 02:51:52.402",
+                    "action": "Task completed and archived"
                 }
             ],
             "progress": {
-                "completed": 0,
-                "remaining": 7,
-                "percentage": 0
+                "completed": 7,
+                "remaining": 0,
+                "percentage": 100
+            },
+            "completed_dhaka": "2026-10-16 08:51:52.402",
+            "completed_utc": "2026-10-16 02:51:52.402",
+            "overview": "Task execution completed successfully.\n\nTask:\nTracker system create\n\nAll planned implementation activities\nhave been completed and validated.\n\nSupporting documentation, evidence files, notes,\nand execution records have been successfully archived.\n\nCompletion Rate: 100%\n\nThis task is now considered ready for archival,\ninheritance, future reference, and stewardship review.",
+            "evaluation": {
+                "steps_total": 7,
+                "steps_completed": 7,
+                "completion_percentage": 100,
+                "notes": 0,
+                "attachments": 0,
+                "archive_ready": true
             }
         },
         {
