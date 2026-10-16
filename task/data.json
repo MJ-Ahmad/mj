@@ -1,6 +1,73 @@
 {
     "tasks": [
         {
+            "task_id": "TASK-000008",
+            "registry": "REG-000008",
+            "status": "active",
+            "heading": "Quraner Fariwala Initial Release",
+            "description": "Quraner Fariwala Public Site এর প্রথম Release Version Package, Archive, Publish ও Registry সম্পন্ন করা।",
+            "created_dhaka": "2026-10-16 21:52:25.912",
+            "created_utc": "2026-10-16 15:52:25.912",
+            "notes": [],
+            "attachments": [],
+            "steps": [
+                {
+                    "id": 1,
+                    "title": "Build release",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 2,
+                    "title": "Generate APK",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 3,
+                    "title": "Create ZIP",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 4,
+                    "title": "Publish assets",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 5,
+                    "title": "Store archive",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 6,
+                    "title": "Register release",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                }
+            ],
+            "history": [
+                {
+                    "dhaka": "2026-10-16 21:52:25.912",
+                    "utc": "2026-10-16 15:52:25.912",
+                    "action": "Task created"
+                }
+            ],
+            "progress": {
+                "completed": 0,
+                "remaining": 6,
+                "percentage": 0
+            }
+        },
+        {
             "task_id": "TASK-000007",
             "registry": "REG-000007",
             "status": "completed",
