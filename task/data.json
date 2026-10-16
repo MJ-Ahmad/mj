@@ -1,6 +1,1012 @@
 {
     "tasks": [
         {
+            "task_id": "TASK-000019",
+            "registry": "REG-000019",
+            "status": "active",
+            "heading": "Quraner Fariwala Civilizational Foundation",
+            "description": "Humanity First নীতির ভিত্তিতে Quraner Fariwala এর দীর্ঘমেয়াদী জ্ঞান, শিক্ষা, গবেষণা, সংলাপ, প্রযুক্তি ও সংরক্ষণ অবকাঠামোর মৌলিক ভিত্তি ডিজাইন ও চূড়ান্ত করা।",
+            "created_dhaka": "2026-10-17 02:30:40.938",
+            "created_utc": "2026-10-16 20:30:40.938",
+            "notes": [],
+            "attachments": [],
+            "steps": [
+                {
+                    "id": 1,
+                    "title": "Define constitution",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 2,
+                    "title": "Establish root principles",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 3,
+                    "title": "Design core architecture",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 4,
+                    "title": "Define knowledge ecosystem",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 5,
+                    "title": "Define dialogue framework",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 6,
+                    "title": "Define research ecosystem",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 7,
+                    "title": "Define AI infrastructure",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 8,
+                    "title": "Define archive strategy",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 9,
+                    "title": "Define governance framework",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 10,
+                    "title": "Finalize foundation",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                }
+            ],
+            "history": [
+                {
+                    "dhaka": "2026-10-17 02:30:40.938",
+                    "utc": "2026-10-16 20:30:40.938",
+                    "action": "Task created"
+                }
+            ],
+            "progress": {
+                "completed": 0,
+                "remaining": 10,
+                "percentage": 0
+            }
+        },
+        {
+            "task_id": "TASK-000018",
+            "registry": "REG-000018",
+            "status": "active",
+            "heading": "Quraner Fariwala Constitutional Foundation",
+            "description": "Humanity First নীতির ভিত্তিতে Quraner Fariwala এর সাংবিধানিক ভিত্তি, মূল স্থাপত্য, জ্ঞান অবকাঠামো, গবেষণা কাঠামো, শিক্ষা কাঠামো, সংলাপ কাঠামো, AI কাঠামো, সংরক্ষণ নীতি, নিরাপত্তা নীতি ও পরিচালন কাঠামোর প্রাথমিক সংস্করণ ডিজাইন, পর্যালোচনা ও চূড়ান্ত করা।",
+            "created_dhaka": "2026-10-17 02:30:06.005",
+            "created_utc": "2026-10-16 20:30:06.005",
+            "notes": [],
+            "attachments": [],
+            "steps": [
+                {
+                    "id": 1,
+                    "title": "Define constitution",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 2,
+                    "title": "Establish core principles",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 3,
+                    "title": "Design root architecture",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 4,
+                    "title": "Define humanity layer",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 5,
+                    "title": "Design question system",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 6,
+                    "title": "Design answer workflow",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 7,
+                    "title": "Define review system",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 8,
+                    "title": "Define knowledge framework",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 9,
+                    "title": "Define learning framework",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 10,
+                    "title": "Define research framework",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 11,
+                    "title": "Define dialogue framework",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 12,
+                    "title": "Define AI framework",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 13,
+                    "title": "Define archive strategy",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 14,
+                    "title": "Define safety framework",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 15,
+                    "title": "Define governance framework",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 16,
+                    "title": "Define registry structure",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 17,
+                    "title": "Define knowledge graph model",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 18,
+                    "title": "Review foundation",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 19,
+                    "title": "Approve foundation",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                }
+            ],
+            "history": [
+                {
+                    "dhaka": "2026-10-17 02:30:06.005",
+                    "utc": "2026-10-16 20:30:06.005",
+                    "action": "Task created"
+                }
+            ],
+            "progress": {
+                "completed": 0,
+                "remaining": 19,
+                "percentage": 0
+            }
+        },
+        {
+            "task_id": "TASK-000017",
+            "registry": "REG-000017",
+            "status": "active",
+            "heading": "Quraner Fariwala Constitutional Foundation",
+            "description": "Humanity First নীতির ভিত্তিতে Quraner Fariwala এর সাংবিধানিক, জ্ঞানগত, গবেষণা, শিক্ষা, সংলাপ, প্রযুক্তি ও সংরক্ষণ অবকাঠামোর প্রথম Foundation Release চূড়ান্ত করা।",
+            "created_dhaka": "2026-10-17 02:28:55.181",
+            "created_utc": "2026-10-16 20:28:55.181",
+            "notes": [],
+            "attachments": [],
+            "steps": [
+                {
+                    "id": 1,
+                    "title": "Define constitution",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 2,
+                    "title": "Establish principles",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 3,
+                    "title": "Design architecture",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 4,
+                    "title": "Define humanity layer",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 5,
+                    "title": "Design knowledge system",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 6,
+                    "title": "Design research system",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 7,
+                    "title": "Design learning system",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 8,
+                    "title": "Design dialogue system",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 9,
+                    "title": "Design AI infrastructure",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 10,
+                    "title": "Design archive framework",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 11,
+                    "title": "Define governance",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 12,
+                    "title": "Finalize foundation",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                }
+            ],
+            "history": [
+                {
+                    "dhaka": "2026-10-17 02:28:55.181",
+                    "utc": "2026-10-16 20:28:55.181",
+                    "action": "Task created"
+                }
+            ],
+            "progress": {
+                "completed": 0,
+                "remaining": 12,
+                "percentage": 0
+            }
+        },
+        {
+            "task_id": "TASK-000016",
+            "registry": "REG-000016",
+            "status": "active",
+            "heading": "Quraner Fariwala Core Architecture",
+            "description": "Quraner Fariwala Foundation এর উপর ভিত্তি করে System Architecture, Domain Structure, Registry Structure, Knowledge Structure, Workflow Structure এবং Infrastructure Blueprint ডিজাইন ও চূড়ান্ত করা।",
+            "created_dhaka": "2026-10-17 02:28:05.132",
+            "created_utc": "2026-10-16 20:28:05.132",
+            "notes": [],
+            "attachments": [],
+            "steps": [
+                {
+                    "id": 1,
+                    "title": "Define domains",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 2,
+                    "title": "Design structure",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 3,
+                    "title": "Define registries",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 4,
+                    "title": "Design workflows",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 5,
+                    "title": "Define knowledge model",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 6,
+                    "title": "Define review model",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 7,
+                    "title": "Design archive model",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 8,
+                    "title": "Design AI architecture",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 9,
+                    "title": "Design access framework",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 10,
+                    "title": "Define system boundaries",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 11,
+                    "title": "Review architecture",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 12,
+                    "title": "Finalize architecture",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                }
+            ],
+            "history": [
+                {
+                    "dhaka": "2026-10-17 02:28:05.132",
+                    "utc": "2026-10-16 20:28:05.132",
+                    "action": "Task created"
+                }
+            ],
+            "progress": {
+                "completed": 0,
+                "remaining": 12,
+                "percentage": 0
+            }
+        },
+        {
+            "task_id": "TASK-000015",
+            "registry": "REG-000015",
+            "status": "active",
+            "heading": "Quraner Fariwala Registry and Governance",
+            "description": "Quraner Fariwala এর Registry System, Governance Structure, Review Authority, Accountability Framework, Decision Process এবং Audit Mechanism এর প্রাথমিক সংস্করণ ডিজাইন ও চূড়ান্ত করা।",
+            "created_dhaka": "2026-10-17 02:26:55.250",
+            "created_utc": "2026-10-16 20:26:55.250",
+            "notes": [],
+            "attachments": [],
+            "steps": [
+                {
+                    "id": 1,
+                    "title": "Define registries",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 2,
+                    "title": "Define governance roles",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 3,
+                    "title": "Define review workflow",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 4,
+                    "title": "Define accountability model",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 5,
+                    "title": "Define audit framework",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 6,
+                    "title": "Define decision process",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 7,
+                    "title": "Validate governance structure",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 8,
+                    "title": "Finalize governance",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                }
+            ],
+            "history": [
+                {
+                    "dhaka": "2026-10-17 02:26:55.250",
+                    "utc": "2026-10-16 20:26:55.250",
+                    "action": "Task created"
+                }
+            ],
+            "progress": {
+                "completed": 0,
+                "remaining": 8,
+                "percentage": 0
+            }
+        },
+        {
+            "task_id": "TASK-000014",
+            "registry": "REG-000014",
+            "status": "active",
+            "heading": "Quraner Fariwala Knowledge Framework",
+            "description": "Quraner Fariwala এর Knowledge Graph, Question Registry, Evidence Registry, Reference System, Learning Structure এবং Knowledge Lifecycle এর ভিত্তি চূড়ান্ত করা।",
+            "created_dhaka": "2026-10-17 02:25:49.347",
+            "created_utc": "2026-10-16 20:25:49.347",
+            "notes": [],
+            "attachments": [],
+            "steps": [
+                {
+                    "id": 1,
+                    "title": "Define knowledge graph",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 2,
+                    "title": "Define question registry",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 3,
+                    "title": "Define evidence registry",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 4,
+                    "title": "Define reference system",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 5,
+                    "title": "Define learning model",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 6,
+                    "title": "Define knowledge lifecycle",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 7,
+                    "title": "Review framework",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 8,
+                    "title": "Finalize framework",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                }
+            ],
+            "history": [
+                {
+                    "dhaka": "2026-10-17 02:25:49.347",
+                    "utc": "2026-10-16 20:25:49.347",
+                    "action": "Task created"
+                }
+            ],
+            "progress": {
+                "completed": 0,
+                "remaining": 8,
+                "percentage": 0
+            }
+        },
+        {
+            "task_id": "TASK-000013",
+            "registry": "REG-000013",
+            "status": "active",
+            "heading": "Quraner Fariwala Functional Prototype",
+            "description": "Core Architecture অনুযায়ী প্রশ্ন, উত্তর, জ্ঞান, গবেষণা ও রেজিস্ট্রি কাঠামোর কার্যকর Prototype Version প্রস্তুত করা।",
+            "created_dhaka": "2026-10-17 02:25:12.914",
+            "created_utc": "2026-10-16 20:25:12.914",
+            "notes": [],
+            "attachments": [],
+            "steps": [
+                {
+                    "id": 1,
+                    "title": "Build prototype",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 2,
+                    "title": "Implement question flow",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 3,
+                    "title": "Implement answer workflow",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 4,
+                    "title": "Implement registry integration",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 5,
+                    "title": "Implement knowledge framework",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 6,
+                    "title": "Validate prototype",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 7,
+                    "title": "Review functionality",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 8,
+                    "title": "Finalize prototype",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                }
+            ],
+            "history": [
+                {
+                    "dhaka": "2026-10-17 02:25:12.914",
+                    "utc": "2026-10-16 20:25:12.914",
+                    "action": "Task created"
+                }
+            ],
+            "progress": {
+                "completed": 0,
+                "remaining": 8,
+                "percentage": 0
+            }
+        },
+        {
+            "task_id": "TASK-000012",
+            "registry": "REG-000012",
+            "status": "active",
+            "heading": "Quraner Fariwala Integrated Platform",
+            "description": "প্রধান System Layer, Knowledge Framework, Research Framework, Learning Framework, AI Framework এবং Registry Layer সমন্বিত করে একটি একীভূত Platform প্রস্তুত করা।",
+            "created_dhaka": "2026-10-17 02:23:17.224",
+            "created_utc": "2026-10-16 20:23:17.224",
+            "notes": [],
+            "attachments": [],
+            "steps": [
+                {
+                    "id": 1,
+                    "title": "Integrate core systems",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 2,
+                    "title": "Integrate knowledge layer",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 3,
+                    "title": "Integrate research layer",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 4,
+                    "title": "Integrate learning layer",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 5,
+                    "title": "Integrate AI layer",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 6,
+                    "title": "Integrate registry layer",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 7,
+                    "title": "Validate integrations",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 8,
+                    "title": "Finalize platform",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                }
+            ],
+            "history": [
+                {
+                    "dhaka": "2026-10-17 02:23:17.224",
+                    "utc": "2026-10-16 20:23:17.224",
+                    "action": "Task created"
+                }
+            ],
+            "progress": {
+                "completed": 0,
+                "remaining": 8,
+                "percentage": 0
+            }
+        },
+        {
+            "task_id": "TASK-000011",
+            "registry": "REG-000011",
+            "status": "active",
+            "heading": "Quraner Fariwala milestone steps structure setup",
+            "description": "Quraner Fariwala এর সকল স্টেটস প্রস্তুত, যাচাই, সংরক্ষণ, প্রকাশ ও নিবন্ধন সম্পন্ন করা এবং Foundation, Architecture, Governance, Knowledge, Research, Learning, AI ও Archive Framework এর অনুমোদিত সংস্করণ জনসাধারণের জন্য উন্মুক্ত করা ইত্যাদি সব কিছুর জন্য প্রাথমিক চুড়ান্ত কাঠামো নিশ্চিত করা এবং কাঠামো সেটাপ পরবর্তী কোনটির অধিনে কিভাবে কি থাকবে ঐ রকম একটি করে ড্রাফ্ট কপি উদাহরণ হিসেবে তৈরি করে যুক্ত করা",
+            "created_dhaka": "2026-10-17 02:20:36.601",
+            "created_utc": "2026-10-16 20:20:36.601",
+            "notes": [],
+            "attachments": [],
+            "steps": [
+                {
+                    "id": 1,
+                    "title": "0.0 Vision",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 2,
+                    "title": "0.1 Constitutional Foundation",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 3,
+                    "title": "0.2 Core Architecture",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 4,
+                    "title": "0.3 Registry and Governance",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 5,
+                    "title": "0.4 Knowledge Framework",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 6,
+                    "title": "0.5 Functional Prototype",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 7,
+                    "title": "0.6 Integrated Platform",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 8,
+                    "title": "0.7 Public Beta",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 9,
+                    "title": "0.8 Verification and Hardening",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 10,
+                    "title": "0.9 Release Candidate",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 11,
+                    "title": "1.0 First Stable Release",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                }
+            ],
+            "history": [
+                {
+                    "dhaka": "2026-10-17 02:20:36.601",
+                    "utc": "2026-10-16 20:20:36.601",
+                    "action": "Task created"
+                }
+            ],
+            "progress": {
+                "completed": 0,
+                "remaining": 11,
+                "percentage": 0
+            }
+        },
+        {
+            "task_id": "TASK-000010",
+            "registry": "REG-000010",
+            "status": "active",
+            "heading": "Quraner Fariwala 1.0 Final Release Checklist",
+            "description": "Quraner Fariwala 1.0 First Stable Release এর পূর্বে Foundation, Architecture, Governance, Knowledge, Security, Documentation, Registry, Archive এবং Release Asset এর পূর্ণাঙ্গ যাচাই সম্পন্ন করা।",
+            "created_dhaka": "2026-10-17 02:09:52.245",
+            "created_utc": "2026-10-16 20:09:52.245",
+            "notes": [],
+            "attachments": [],
+            "steps": [
+                {
+                    "id": 1,
+                    "title": "Review foundation",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 2,
+                    "title": "Review architecture",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 3,
+                    "title": "Review governance",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 4,
+                    "title": "Review knowledge framework",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 5,
+                    "title": "Review platform",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 6,
+                    "title": "Verify safety controls",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 7,
+                    "title": "Verify documentation",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 8,
+                    "title": "Verify registry records",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 9,
+                    "title": "Verify archives",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 10,
+                    "title": "Verify release assets",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 11,
+                    "title": "Perform final audit",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 12,
+                    "title": "Approve release",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                }
+            ],
+            "history": [
+                {
+                    "dhaka": "2026-10-17 02:09:52.245",
+                    "utc": "2026-10-16 20:09:52.245",
+                    "action": "Task created"
+                }
+            ],
+            "progress": {
+                "completed": 0,
+                "remaining": 12,
+                "percentage": 0
+            }
+        },
+        {
             "task_id": "TASK-000009",
             "registry": "REG-000009",
             "status": "active",
