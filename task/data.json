@@ -1,6 +1,115 @@
 {
     "tasks": [
         {
+            "task_id": "TASK-000021",
+            "registry": "REG-000021",
+            "status": "active",
+            "heading": "লোকাল হোস্ট সমস্যা প্রাথমিক সমাধান দক্ষতা অর্জন",
+            "description": "লোকাল কপি, ব্রাউজার ক্যাশ এবং Python HTTP Server সম্পর্কিত সাধারণ সমস্যা দ্রুত শনাক্ত ও সমাধানের জন্য প্রাথমিক দক্ষতা অর্জন। ধাপ ১: পুরোনো qf ফোল্ডার খুঁজে বের করুন। কমান্ড: find ~ -maxdepth 4 -type d -name qf 2>/dev/null। ফলাফল খালি এলে নতুন কপি নিয়ে কাজ শুরু করা যাবে। ধাপ ২: পুরোনো কপি নিরাপদে সরিয়ে নতুন কপি বসান। কমান্ড: mkdir -p ~/qf-site। এরপর: [ -d ~/qf-site/qf ] && mv ~/qf-site/qf ~/qf_old_2026-10-17_1028। তারপর: unzip -o ~/Downloads/qf.zip -d ~/qf-site। unzip বা python3 অনুপস্থিত থাকলে root হিসেবে চালান: su -c \"apt update && apt install -y unzip python3\"। নতুন কপি যাচাই করুন: grep -c 'data-lang-button=\"ar\"' ~/qf-site/qf/home/index.html। ফলাফল 1 হওয়া উচিত। ধাপ ৩: লোকাল সার্ভার চালু করুন। কমান্ড: cd ~/qf-site && python3 -m http.server 8000। ব্রাউজারে খুলুন: http://localhost:8000/qf/home/index.html। যদি Address already in use বার্তা আসে তাহলে: pkill -f 'http.server 8000'। অথবা অন্য পোর্ট ব্যবহার করুন: python3 -m http.server 8080। ধাপ ৪: ব্রাউজার ক্যাশ পরিষ্কার করুন। Ctrl+Shift+R ব্যবহার করুন অথবা Ctrl+Shift+N দিয়ে Incognito উইন্ডো খুলে পরীক্ষা করুন। পুরোনো file:// বা অন্য পোর্টে খোলা ট্যাব বন্ধ করুন। ধাপ ৫: চূড়ান্ত যাচাই করুন। Developer Tools খুলে Console-এ চালান: document.querySelectorAll('[data-lang-button=\"ar\"]').length। ফলাফল 1 হলে নতুন কপি সঠিকভাবে চলছে। হেডারে EN | বাংলা | AR দেখা যাবে এবং AR নির্বাচন করলে আরবি ও RTL লেআউট সক্রিয় হবে।",
+            "created_dhaka": "2026-10-17 10:28:18.712",
+            "created_utc": "2026-10-17 04:28:18.712",
+            "notes": [],
+            "attachments": [],
+            "steps": [
+                {
+                    "id": 1,
+                    "title": "পুরোনো কপি অনুসন্ধান",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 2,
+                    "title": "নিরাপদ ব্যাকআপ ও রিনেম কৌশল শেখা",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 3,
+                    "title": "নতুন কপি ডিপ্লয় করা",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 4,
+                    "title": "unzip ও python3 ইনস্টল করা",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 5,
+                    "title": "লোকাল HTTP সার্ভার চালানো",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 6,
+                    "title": "Port Conflict সমাধান করা",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 7,
+                    "title": "Browser Cache Troubleshooting শেখা",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 8,
+                    "title": "Incognito Testing করা",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 9,
+                    "title": "Developer Tools ব্যবহার করা",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 10,
+                    "title": "Console Validation করা",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 11,
+                    "title": "ভাষা পরিবর্তন পরীক্ষা করা",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 12,
+                    "title": "RTL Rendering যাচাই করা",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                }
+            ],
+            "history": [
+                {
+                    "dhaka": "2026-10-17 10:28:18.712",
+                    "utc": "2026-10-17 04:28:18.712",
+                    "action": "Task created"
+                }
+            ],
+            "progress": {
+                "completed": 0,
+                "remaining": 12,
+                "percentage": 0
+            }
+        },
+        {
             "task_id": "TASK-000020",
             "registry": "REG-000020",
             "status": "active",
