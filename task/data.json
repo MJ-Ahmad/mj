@@ -1,6 +1,115 @@
 {
     "tasks": [
         {
+            "task_id": "TASK-000020",
+            "registry": "REG-000020",
+            "status": "active",
+            "heading": "সার্ভারের প্রাথমিক জরুরী ধারণা গুলো আয়ত্ব করা",
+            "description": "সার্ভার (SSH) এবং ব্রাউজারের জন্য হঠাৎ সমস্যা সমাধানের উপর মোটামুটি দক্ষতা অর্জন। প্রথমে সার্ভারে পুরোনো ফাইলের ব্যাকআপ নিন, তারপর মুছুন। user, your-server এবং /var/www/html নিজের সেটআপ অনুযায়ী বদলান। ১. সার্ভারে পুরোনো ফাইল মুছে ফেলা। ধাপ ১: সার্ভারে লগইন ও কী আছে দেখুন: ssh user@your-server, ls -la /var/www/html/, sudo ls /var/www/html/qf। ধাপ ২: পুরোনো ফোল্ডারের ব্যাকআপ নিন: sudo tar -czf ~/qf_backup_$(date +%F_%H%M).tar.gz -C /var/www/html qf, ls -lh ~/qf_backup_*.tar.gz। ধাপ ৩: পুরোনো ফোল্ডার মুছুন: sudo rm -rf /var/www/html/qf। প্রয়োজনে ব্যাকআপ থেকে পুনরুদ্ধার: sudo tar -xzf ~/qf_backup_YYYY-MM-DD_HHMM.tar.gz -C /var/www/html। ধাপ ৪: নতুন ফাইল আপলোড করুন: unzip -o ~/Downloads/qf.zip -d ~/qf-site, scp -r ~/qf-site/qf user@your-server:/tmp/qf_new, ssh user@your-server, sudo mv /tmp/qf_new /var/www/html/qf, sudo chown -R www-data:www-data /var/www/html/qf, sudo find /var/www/html/qf -type d -exec chmod 755 {} \\;, sudo find /var/www/html/qf -type f -exec chmod 644 {} \\;। ধাপ ৫: Nginx হলে sudo nginx -t && sudo systemctl reload nginx, Apache হলে sudo apache2ctl configtest && sudo systemctl reload apache2। ধাপ ৬: curl ব্যবহার করে নতুন ফাইল যাচাই করুন এবং প্রয়োজন হলে CDN Purge Everything করুন। ২. ব্রাউজারের পুরোনো ক্যাশ মুছে ফেলা: Windows/Linux Ctrl+Shift+R, Mac Cmd+Shift+R, Developer Tools থেকে Disable Cache, প্রয়োজন অনুযায়ী Chrome, Edge, Firefox, Safari, Android, iPhone এবং Linux ক্যাশ ক্লিয়ার পদ্ধতি অনুসরণ করুন। NetHunter/Kali/Linux এ rm -rf ~/.cache/chromium ~/.cache/google-chrome ~/.cache/mozilla/firefox ব্যবহার করুন। ৩. শেষ যাচাই: EN | বাংলা | AR ভাষা বাটন পরীক্ষা করুন, AR নির্বাচন করলে RTL আরবি লেআউট নিশ্চিত করুন। Developer Tools Console-এ document.querySelectorAll('[data-lang-button=\"ar\"]').length চালিয়ে ফলাফল 1 কিনা যাচাই করুন।",
+            "created_dhaka": "2026-10-17 10:17:12.264",
+            "created_utc": "2026-10-17 04:17:12.264",
+            "notes": [],
+            "attachments": [],
+            "steps": [
+                {
+                    "id": 1,
+                    "title": "SSH বেসিক ধারণা শেখা",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 2,
+                    "title": "সার্ভারে নিরাপদ লগইন অনুশীলন",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 3,
+                    "title": "ব্যাকআপ তৈরির প্রক্রিয়া আয়ত্ত করা",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 4,
+                    "title": "পুরোনো ফাইল অপসারণ অনুশীলন",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 5,
+                    "title": "SCP দিয়ে ফাইল ট্রান্সফার শেখা",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 6,
+                    "title": "Permissions ও Ownership বোঝা",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 7,
+                    "title": "Nginx ও Apache Reload অনুশীলন",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 8,
+                    "title": "Curl দিয়ে ভেরিফিকেশন শেখা",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 9,
+                    "title": "CDN Cache Management শেখা",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 10,
+                    "title": "Browser Cache Troubleshooting শেখা",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 11,
+                    "title": "Developer Tools ব্যবহার করা",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 12,
+                    "title": "Final Deployment Verification সম্পন্ন করা",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                }
+            ],
+            "history": [
+                {
+                    "dhaka": "2026-10-17 10:17:12.264",
+                    "utc": "2026-10-17 04:17:12.264",
+                    "action": "Task created"
+                }
+            ],
+            "progress": {
+                "completed": 0,
+                "remaining": 12,
+                "percentage": 0
+            }
+        },
+        {
             "task_id": "TASK-000019",
             "registry": "REG-000019",
             "status": "active",
