@@ -1,237 +1,419 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MJ Ahmad - Profile</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    body {
-      background-color: #121212;
-      color: #e0e0e0;
-    }
-    .profile-img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      border: 3px solid #ff9800;
-    }
-    .social-links a {
-      margin: 0 10px;
-      font-size: 28px;
-      color: #e0e0e0;
-      transition: color 0.3s;
-    }
-    .social-links a:hover { color: #ff9800; }
-    .social-links img {
-      width: 32px; height: 32px;
-      vertical-align: middle;
-    }
-    .lang-toggle button {
-      margin: 0 5px;
-    }
-    /* ---------- Footer ---------- */
-    .site-footer {
-      margin-top: 2.5rem;
-      padding: 2rem 0 1.5rem;
-      border-top: 1px solid #2a2a2a;
-      color: #9e9e9e;
-    }
-    .project-chips {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-    }
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 16px;
-      border-radius: 999px;
-      border: 1px solid #2f2f2f;
-      background: linear-gradient(135deg, #1b1b1b, #161616);
-      color: #e0e0e0;
-      text-decoration: none;
-      font-size: 0.92rem;
-      transition: all 0.25s ease;
-    }
-    .chip::before {
-      content: "";
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #ff9800;
-      opacity: 0.75;
-    }
-    .chip:hover,
-    .chip:focus-visible {
-      color: #ff9800;
-      border-color: #ff9800;
-      box-shadow: 0 0 0 3px rgba(255, 152, 0, 0.12);
-      transform: translateY(-2px);
-      outline: none;
-    }
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.6rem 1.4rem;
-      margin: 1.5rem 0 0;
-      padding: 0;
-      list-style: none;
-    }
-    .footer-links a {
-      color: #e0e0e0;
-      text-decoration: none;
-      font-size: 0.95rem;
-      padding-bottom: 2px;
-      border-bottom: 1px solid transparent;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .footer-links a:hover,
-    .footer-links a:focus-visible {
-      color: #ff9800;
-      border-bottom-color: #ff9800;
-      outline: none;
-    }
-    .footer-bottom {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 0.75rem;
-      margin-top: 1.75rem;
-      padding-top: 1rem;
-      border-top: 1px solid #2a2a2a;
-      font-size: 0.85rem;
-    }
-    .back-top {
-      background: none;
-      border: 1px solid #3a3a3a;
-      color: #ff9800;
-      border-radius: 999px;
-      padding: 4px 14px;
-      font-size: 0.85rem;
-      cursor: pointer;
-      transition: border-color 0.2s, background-color 0.2s;
-    }
-    .back-top:hover,
-    .back-top:focus-visible {
-      border-color: #ff9800;
-      background-color: rgba(255, 152, 0, 0.08);
-      outline: none;
-    }
-    @media (max-width: 576px) {
-      .footer-bottom {
-        flex-direction: column;
-        text-align: center;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MJ Ahmad - Profile</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #ff9800;
+            object-fit: cover;
+        }
+
+        .social-links a {
+            margin: 0 10px;
+            font-size: 28px;
+            color: #e0e0e0;
+            transition: color 0.3s;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            color: #ff9800;
+        }
+
+        .social-links img {
+            width: 32px;
+            height: 32px;
+            vertical-align: middle;
+        }
+
+        .lang-toggle button {
+            margin: 0 5px;
+        }
+
+        .card {
+            border: 1px solid #2a2a2a;
+        }
+
+        /* Footer */
+
+        .site-footer {
+            margin-top: 2.5rem;
+            padding: 2rem 0 1.5rem;
+            border-top: 1px solid #2a2a2a;
+            color: #9e9e9e;
+        }
+
+        .project-chips {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 999px;
+            border: 1px solid #2f2f2f;
+            background: linear-gradient(135deg, #1b1b1b, #161616);
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 0.92rem;
+            transition: all 0.25s ease;
+        }
+
+        .chip::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #ff9800;
+            opacity: 0.75;
+        }
+
+        .chip:hover {
+            color: #ff9800;
+            border-color: #ff9800;
+            transform: translateY(-2px);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.6rem 1.4rem;
+            margin: 1.5rem 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .footer-links a:hover {
+            color: #ff9800;
+        }
+
+        .footer-bottom {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 1.75rem;
+            padding-top: 1rem;
+            border-top: 1px solid #2a2a2a;
+            font-size: 0.85rem;
+        }
+
+        .back-top {
+            background: none;
+            border: 1px solid #3a3a3a;
+            color: #ff9800;
+            border-radius: 999px;
+            padding: 4px 14px;
+            cursor: pointer;
+        }
+
+        .back-top:hover {
+            border-color: #ff9800;
+            background-color: rgba(255, 152, 0, 0.08);
+        }
+
+        @media (max-width:576px) {
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+
 </head>
 <body>
 
-<div class="container text-center py-4">
-  <img src="assets/img/mj.png" alt="MJ Ahmad" class="profile-img mb-3">
-  <h2 id="name">এম জে আহমদ</h2>
-  <p id="location"><i class="fas fa-map-marker-alt"></i> নরসিংদী, বাংলাদেশ</p>
-  <div class="social-links mb-3">
-    <a href="/mj-ahmad" title="GitHub"><i class="fab fa-github"></i></a>
-    <a href="/in/jafor-ahmad" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-    <a href="https://mj-ahmad.github.io/qf" title="কোরআনের ফেরিওয়ালা">
-      <img src="assets/img/logo/qf.png" alt="QF">
-    </a>
-  </div>
-  <div class="lang-toggle mb-4">
-    <button class="btn btn-sm btn-secondary" onclick="setLang('en')">EN</button>
-    <button class="btn btn-sm btn-secondary" onclick="setLang('bn')">BN</button>
-    <button class="btn btn-sm btn-secondary" onclick="setLang('ar')">AR</button>
-  </div>
-</div>
+    <div class="container text-center py-4">
 
-<main class="container" id="content">
-  <div class="card bg-dark text-light p-4">
-    <p>
-      প্রযুক্তি দিয়ে বাংলাদেশের জন্য কাঠামোবদ্ধ, স্বচ্ছ ও জনকল্যাণমুখী সিস্টেম গড়ে তোলার কাজ করি।  
-      আমার একটি চলমান প্রজেক্ট রয়েছে যার নাম <strong>কোরআনের ফেরিওয়ালা</strong>,  
-      এটি বৈশ্বিক কুরআনিক জ্ঞান, শিক্ষা, গবেষণা ও মানব উন্নয়ন অবকাঠামো।
-    </p>
-  </div>
-</main>
+        <img src="assets/img/mj.png"
+            alt="MJ Ahmad"
+            class="profile-img mb-3">
 
-<footer class="site-footer">
-  <div class="container">
+        <h2 id="name">এম জে আহমদ</h2>
 
-    <div class="project-chips">
-      <a class="chip" href="https://mj-ahmad.github.io/qf" target="_blank" rel="noopener" id="fl-qf">কোরআনের ফেরিওয়ালা</a>
-      <a class="chip" href="https://mj-ahmad.github.io/mj/nijer-khata" target="_blank" rel="noopener">Nijer Khata</a>
-      <a class="chip" href="https://mj-ahmad.github.io/mj/task" target="_blank" rel="noopener">Task</a>
-      <a class="chip" href="https://mj-ahmad.github.io/mj/registry" target="_blank" rel="noopener">Registry</a>
+        <p id="location">
+            <i class="fas fa-map-marker-alt"></i>
+            নরসিংদী, বাংলাদেশ
+        </p>
+
+        <div class="social-links mb-3">
+
+            <a href="/mj-ahmad" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+
+            <a href="/in/jafor-ahmad" title="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+
+            <a href="https://mj-ahmad.github.io/qf" title="কোরআনের ফেরিওয়ালা">
+                <img src="assets/img/logo/qf.png" alt="QF">
+            </a>
+
+        </div>
+
+        <div class="lang-toggle mb-4">
+
+            <button class="btn btn-sm btn-secondary" onclick="setLang('en')">
+                EN
+            </button>
+
+            <button class="btn btn-sm btn-secondary" onclick="setLang('bn')">
+                BN
+            </button>
+
+            <button class="btn btn-sm btn-secondary" onclick="setLang('ar')">
+                AR
+            </button>
+
+        </div>
+
     </div>
 
-    <nav aria-label="Quick links">
-      <ul class="footer-links">
-        <li><a href="https://github.com/mj-ahmad" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a></li>
-        <li><a href="https://www.linkedin.com/in/jafor-ahmad" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-        <li><a href="mailto:mjahmad2024@outlook.com" id="fl-mail">ইমেইল</a></li>
-        <li><a href="coming-soon.html?page=feedback" id="fl-feedback">ফিডব্যাক</a></li>
-        <li><a href="coming-soon.html?page=suggestion" id="fl-suggest">পরামর্শ</a></li>
-        <li><a href="coming-soon.html?page=complaint" id="fl-complaint">অভিযোগ</a></li>
-      </ul>
-    </nav>
+    <main class="container" id="content">
 
-    <div class="footer-bottom">
-      <span id="fl-copy">© 2026 MJ Ahmad. সর্বস্বত্ব সংরক্ষিত।</span>
-      <button class="back-top" type="button" id="fl-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">উপরে ফিরুন ↑</button>
-    </div>
+        <div class="card bg-dark text-light p-4">
+            <p>
+                প্রযুক্তি দিয়ে বাংলাদেশের জন্য কাঠামোবদ্ধ, স্বচ্ছ ও জনকল্যাণমুখী সিস্টেম গড়ে তোলার কাজ করি।
+                আমার একটি চলমান প্রজেক্ট রয়েছে যার নাম
+                <strong>কোরআনের ফেরিওয়ালা</strong>,
+                এটি বৈশ্বিক কুরআনিক জ্ঞান, শিক্ষা, গবেষণা ও মানব উন্নয়ন অবকাঠামো।
+            </p>
+        </div>
 
-  </div>
-</footer>
+    </main>
 
-<script>
-  const footerText = {
-    en: { mail: "Email", feedback: "Feedback", suggest: "Suggestions", complaint: "Complaints", qf: "Quraner Fariwala", top: "Back to top ↑", copy: "All rights reserved." },
-    bn: { mail: "ইমেইল", feedback: "ফিডব্যাক", suggest: "পরামর্শ", complaint: "অভিযোগ", qf: "কোরআনের ফেরিওয়ালা", top: "উপরে ফিরুন ↑", copy: "সর্বস্বত্ব সংরক্ষিত।" },
-    ar: { mail: "البريد الإلكتروني", feedback: "ملاحظات", suggest: "اقتراحات", complaint: "شكاوى", qf: "قُرآنر فَريوالا", top: "العودة للأعلى ↑", copy: "جميع الحقوق محفوظة." }
-  };
+    <footer class="site-footer">
 
-  function applyFooter(lang) {
-    const f = footerText[lang];
-    document.getElementById('fl-mail').innerText = f.mail;
-    document.getElementById('fl-feedback').innerText = f.feedback;
-    document.getElementById('fl-suggest').innerText = f.suggest;
-    document.getElementById('fl-complaint').innerText = f.complaint;
-    document.getElementById('fl-qf').innerText = f.qf;
-    document.getElementById('fl-top').innerText = f.top;
-    document.getElementById('fl-copy').innerText = `© ${new Date().getFullYear()} MJ Ahmad. ${f.copy}`;
-  }
+        <div class="container">
 
-  function setLang(lang) {
-    const name = document.getElementById('name');
-    const location = document.getElementById('location');
-    const content = document.getElementById('content');
+            <div class="project-chips">
 
-    if(lang === 'en') {
-      name.innerText = "MJ Ahmad";
-      location.innerHTML = '<i class="fas fa-map-marker-alt"></i> Narsingdi, Bangladesh';
-      content.innerHTML = '<div class="card bg-dark text-light p-4"><p>I work to build structured, transparent, and welfare-oriented systems for Bangladesh using technology. One of my ongoing projects is <strong>Quraner Fariwala</strong>, a global Qur\'anic knowledge, education, research, and human development infrastructure.</p></div>';
-    } else if(lang === 'bn') {
-      name.innerText = "এম জে আহমদ";
-      location.innerHTML = '<i class="fas fa-map-marker-alt"></i> নরসিংদী, বাংলাদেশ';
-      content.innerHTML = '<div class="card bg-dark text-light p-4"><p>প্রযুক্তি দিয়ে বাংলাদেশের জন্য কাঠামোবদ্ধ, স্বচ্ছ ও জনকল্যাণমুখী সিস্টেম গড়ে তোলার কাজ করি। আমার একটি চলমান প্রজেক্ট রয়েছে যার নাম <strong>কোরআনের ফেরিওয়ালা</strong>, এটি বৈশ্বিক কুরআনিক জ্ঞান, শিক্ষা, গবেষণা ও মানব উন্নয়ন অবকাঠামো।</p></div>';
-    } else if(lang === 'ar') {
-      name.innerText = "إم جي أحمد";
-      location.innerHTML = '<i class="fas fa-map-marker-alt"></i> نارسيندي، بنغلاديش';
-      content.innerHTML = '<div class="card bg-dark text-light p-4"><p>أعمل على بناء أنظمة منظمة وشفافة وموجهة نحو رفاهية بنغلاديش باستخدام التكنولوجيا. لدي مشروع مستمر يسمى <strong>قُرآنر فَريوالا</strong>، وهو بنية تحتية عالمية للمعرفة والتعليم والبحث والتنمية البشرية المتعلقة بالقرآن.</p></div>';
-    }
+                <a class="chip"
+                    href="/mj/project/qf/"
+                    target="_blank"
+                    rel="noopener"
+                    id="fl-qf">
+                    কোরআনের ফেরিওয়ালা
+                </a>
 
-    applyFooter(lang);
-  }
+                <a class="chip"
+                    href="/mj/system/nijer-khata/"
+                    target="_blank"
+                    rel="noopener">
+                    Nijer Khata
+                </a>
 
-  applyFooter('bn');
-</script>
+                <a class="chip"
+                    href="/mj/system/task/"
+                    target="_blank"
+                    rel="noopener">
+                    Task
+                </a>
+
+                <a class="chip"
+                    href="/mj/system/registry/"
+                    target="_blank"
+                    rel="noopener">
+                    Registry
+                </a>
+
+            </div>
+
+            <nav aria-label="Quick Links">
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="https://github.com/mj-ahmad"
+                            target="_blank"
+                            rel="noopener">
+                            <i class="fab fa-github"></i>
+                            GitHub
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="https://www.linkedin.com/in/jafor-ahmad"
+                            target="_blank"
+                            rel="noopener">
+                            <i class="fab fa-linkedin"></i>
+                            LinkedIn
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="mailto:mjahmad2024@outlook.com"
+                            id="fl-mail">
+                            ইমেইল
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/mj/ud/coming-soon.html"
+                            id="fl-feedback">
+                            ফিডব্যাক
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/mj/ud/coming-soon.html"
+                            id="fl-suggest">
+                            পরামর্শ
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/mj/ud/coming-soon.html"
+                            id="fl-complaint">
+                            অভিযোগ
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+            <div class="footer-bottom">
+
+                <span id="fl-copy">
+                    © 2026 MJ Ahmad. সর্বস্বত্ব সংরক্ষিত।
+                </span>
+
+                <button class="back-top"
+                    type="button"
+                    id="fl-top"
+                    onclick="window.scrollTo({top:0,behavior:'smooth'})">
+                    উপরে ফিরুন ↑
+                </button>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script>
+
+        const footerText = {
+            en: {
+                mail: "Email",
+                feedback: "Feedback",
+                suggest: "Suggestions",
+                complaint: "Complaints",
+                qf: "Quraner Fariwala",
+                top: "Back to top ↑",
+                copy: "All rights reserved."
+            },
+            bn: {
+                mail: "ইমেইল",
+                feedback: "ফিডব্যাক",
+                suggest: "পরামর্শ",
+                complaint: "অভিযোগ",
+                qf: "কোরআনের ফেরিওয়ালা",
+                top: "উপরে ফিরুন ↑",
+                copy: "সর্বস্বত্ব সংরক্ষিত।"
+            },
+            ar: {
+                mail: "البريد الإلكتروني",
+                feedback: "ملاحظات",
+                suggest: "اقتراحات",
+                complaint: "شكاوى",
+                qf: "قُرآنر فَريوالا",
+                top: "العودة للأعلى ↑",
+                copy: "جميع الحقوق محفوظة."
+            }
+        };
+
+        function applyFooter(lang) {
+
+            const f = footerText[lang];
+
+            document.getElementById('fl-mail').innerText = f.mail;
+            document.getElementById('fl-feedback').innerText = f.feedback;
+            document.getElementById('fl-suggest').innerText = f.suggest;
+            document.getElementById('fl-complaint').innerText = f.complaint;
+            document.getElementById('fl-qf').innerText = f.qf;
+            document.getElementById('fl-top').innerText = f.top;
+
+            document.getElementById('fl-copy').innerText =
+                `© ${new Date().getFullYear()} MJ Ahmad. ${f.copy}`;
+        }
+
+        function setLang(lang) {
+
+            const name = document.getElementById('name');
+            const location = document.getElementById('location');
+            const content = document.getElementById('content');
+
+            if (lang === 'en') {
+
+                name.innerText = 'MJ Ahmad';
+
+                location.innerHTML =
+                    '<i class="fas fa-map-marker-alt"></i> Narsingdi, Bangladesh';
+
+                content.innerHTML =
+                    '<div class="card bg-dark text-light p-4"><p>I work to build structured, transparent and welfare-oriented systems for Bangladesh using technology. One of my ongoing projects is <strong>Quraner Fariwala</strong>, a global Qur’anic knowledge, education, research and human development infrastructure.</p></div>';
+
+            }
+            else if (lang === 'ar') {
+
+                name.innerText = 'إم جي أحمد';
+
+                location.innerHTML =
+                    '<i class="fas fa-map-marker-alt"></i> نارسيندي، بنغلاديش';
+
+                content.innerHTML =
+                    '<div class="card bg-dark text-light p-4"><p>أعمل على بناء أنظمة منظمة وشفافة وموجهة نحو رفاهية بنغلاديش باستخدام التكنولوجيا. لدي مشروع مستمر باسم <strong>قُرآنر فَريوالا</strong>.</p></div>';
+
+            }
+            else {
+
+                name.innerText = 'এম জে আহমদ';
+
+                location.innerHTML =
+                    '<i class="fas fa-map-marker-alt"></i> নরসিংদী, বাংলাদেশ';
+
+                content.innerHTML =
+                    '<div class="card bg-dark text-light p-4"><p>প্রযুক্তি দিয়ে বাংলাদেশের জন্য কাঠামোবদ্ধ, স্বচ্ছ ও জনকল্যাণমুখী সিস্টেম গড়ে তোলার কাজ করি। আমার একটি চলমান প্রজেক্ট রয়েছে যার নাম <strong>কোরআনের ফেরিওয়ালা</strong>, এটি বৈশ্বিক কুরআনিক জ্ঞান, শিক্ষা, গবেষণা ও মানব উন্নয়ন অবকাঠামো।</p></div>';
+            }
+
+            applyFooter(lang);
+        }
+
+        applyFooter('bn');
+
+    </script>
 
 </body>
 </html>
