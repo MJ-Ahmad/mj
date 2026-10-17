@@ -1,6 +1,115 @@
 {
     "tasks": [
         {
+            "task_id": "TASK-000022",
+            "registry": "REG-000022",
+            "status": "active",
+            "heading": "লোকাল হোস্ট সমস্যা প্রাথমিক সমাধান",
+            "description": "লোকাল কপি, Browser Cache এবং Python HTTP Server সম্পর্কিত সাধারণ সমস্যা শনাক্ত ও সমাধানের প্রাথমিক দক্ষতা অর্জন।\n\nধাপ ১: পুরোনো qf ফোল্ডার খুঁজে বের করুন।\nকমান্ড: find ~ -maxdepth 4 -type d -name qf 2>/dev/null\n\nধাপ ২: পুরোনো কপি নিরাপদে সরিয়ে নতুন কপি স্থাপন করুন।\nকমান্ড:\nmkdir -p ~/qf-site\n[ -d ~/qf-site/qf ] && mv ~/qf-site/qf ~/qf_old_backup\nunzip -o ~/Downloads/qf.zip -d ~/qf-site\n\nধাপ ৩: unzip বা python3 অনুপস্থিত থাকলে ইনস্টল করুন।\nকমান্ড:\nsu -c 'apt update && apt install -y unzip python3'\n\nধাপ ৪: নতুন কপি যাচাই করুন।\nকমান্ড:\ngrep -c 'data-lang-button=\"ar\"' ~/qf-site/qf/home/index.html\nপ্রত্যাশিত ফলাফল: 1\n\nধাপ ৫: লোকাল সার্ভার চালু করুন।\nকমান্ড:\ncd ~/qf-site\npython3 -m http.server 8000\n\nব্রাউজার:\nhttp://localhost:8000/qf/home/index.html\n\nধাপ ৬: Port Conflict হলে।\nকমান্ড:\npkill -f 'http.server 8000'\n\nঅথবা:\npython3 -m http.server 8080\n\nধাপ ৭: Browser Cache পরিষ্কার করুন।\nCtrl + Shift + R ব্যবহার করুন অথবা Incognito Window খুলুন।\n\nধাপ ৮: চূড়ান্ত যাচাই করুন।\nDeveloper Tools Console:\ndocument.querySelectorAll('[data-lang-button=\"ar\"]').length\n\nপ্রত্যাশিত ফলাফল:\nEN | বাংলা | AR দৃশ্যমান হবে।\nAR নির্বাচন করলে RTL Layout সক্রিয় হবে।\nনতুন লোকাল কপি সঠিকভাবে লোড হবে।",
+            "created_dhaka": "2026-10-17 10:45:22.891",
+            "created_utc": "2026-10-17 04:45:22.891",
+            "notes": [],
+            "attachments": [],
+            "steps": [
+                {
+                    "id": 1,
+                    "title": "পুরোনো কপি অনুসন্ধান",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 2,
+                    "title": "নিরাপদ ব্যাকআপ ও রিনেম",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 3,
+                    "title": "নতুন কপি স্থাপন",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 4,
+                    "title": "unzip ও python3 প্রস্তুতি",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 5,
+                    "title": "লোকাল HTTP সার্ভার চালানো",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 6,
+                    "title": "Port Conflict সমাধান",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 7,
+                    "title": "Browser Cache পরিষ্কার",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 8,
+                    "title": "Incognito Testing",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 9,
+                    "title": "Developer Tools Verification",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 10,
+                    "title": "AR Language Testing",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 11,
+                    "title": "RTL Layout Verification",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                },
+                {
+                    "id": 12,
+                    "title": "Final Localhost Validation",
+                    "completed": false,
+                    "completed_dhaka": null,
+                    "completed_utc": null
+                }
+            ],
+            "history": [
+                {
+                    "dhaka": "2026-10-17 10:45:22.891",
+                    "utc": "2026-10-17 04:45:22.891",
+                    "action": "Task created"
+                }
+            ],
+            "progress": {
+                "completed": 0,
+                "remaining": 12,
+                "percentage": 0
+            }
+        },
+        {
             "task_id": "TASK-000021",
             "registry": "REG-000021",
             "status": "active",
