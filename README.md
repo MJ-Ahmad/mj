@@ -78,6 +78,24 @@
 
 ## Quran Navigator - H
 
+```
+root@localhost:~/mj/mj/c-dev/qnh# ls
+qn
+root@localhost:~/mj/mj/c-dev/qnh# tree
+.
+`-- qn
+    |-- analysis
+    |   |-- firebase.js
+    |   |-- index.js
+    |   `-- vendor.js
+    |-- firebase.txt
+    |-- index.html
+    `-- projectid.txt
+
+3 directories, 6 files
+```
+
+
 ---
 
 ## Alias
