@@ -190,6 +190,439 @@ echo "শুভকামনা!"
 
 ---
 
+**.bashrc**
+```
+#!/usr/bin/env bash
+#
+# ============================================================================
+# MJ Shell Framework
+# ============================================================================
+#
+# Purpose   : Modular Shell Environment Loader
+# Maintainer: MJ Ahmad
+# Version   : 1.0
+#
+# Design Principles
+# -----------------
+# 1. .bashrc remains small and stable.
+# 2. All logic lives inside ~/.bash/.
+# 3. bootstrap.sh controls module loading.
+# 4. Fail safely if framework is incomplete.
+# 5. Support long-term scalable architecture.
+#
+# ============================================================================
+
+
+# ----------------------------------------------------------------------------
+# Framework Root
+# ----------------------------------------------------------------------------
+
+export MJ_BASH_HOME="$HOME/.bash"
+
+
+# ----------------------------------------------------------------------------
+# Version
+# ----------------------------------------------------------------------------
+
+export MJ_BASH_FRAMEWORK_VERSION="1.0"
+
+
+# ----------------------------------------------------------------------------
+# Bootstrap Loader
+# ----------------------------------------------------------------------------
+
+if [[ -f "$MJ_BASH_HOME/bootstrap.sh" ]]; then
+    source "$MJ_BASH_HOME/bootstrap.sh"
+fi
+
+
+# ----------------------------------------------------------------------------
+# Shell History Configuration
+# ----------------------------------------------------------------------------
+
+HISTSIZE=100000
+HISTFILESIZE=200000
+
+HISTCONTROL=ignoredups:erasedups
+
+shopt -s histappend
+
+PROMPT_COMMAND="history -a; history -c; history -r"
+
+
+# ----------------------------------------------------------------------------
+# Safer Defaults
+# ----------------------------------------------------------------------------
+
+set -o notify
+
+
+# ----------------------------------------------------------------------------
+# Common Convenience Aliases
+# ----------------------------------------------------------------------------
+
+alias reload='source "$HOME/.bashrc"'
+
+alias bashrc='nano "$HOME/.bashrc"'
+
+alias mjbash='cd "$HOME/.bash"'
+
+
+# ----------------------------------------------------------------------------
+# Framework Information
+# ----------------------------------------------------------------------------
+
+mj_framework_info() {
+
+    printf '\n'
+
+    printf 'MJ Shell Framework\n'
+
+    printf 'Version : %s\n' \
+        "$MJ_BASH_FRAMEWORK_VERSION"
+
+    printf 'Home    : %s\n' \
+        "$MJ_BASH_HOME"
+
+    printf '\n'
+}
+
+
+# ----------------------------------------------------------------------------
+# End Of File
+# ----------------------------------------------------------------------------
+```
+
+---
+
+**Get-Start-ub.sh**
+```
+#!/bin/bash
+
+# ==================================================
+# Get-Start-ub.sh
+# Ubuntu Bootstrap Script for Termux Proot
+# Version: 1.1 Stable
+# ==================================================
+
+set -e
+
+GREEN="\e[32m"
+YELLOW="\e[33m"
+RED="\e[31m"
+BLUE="\e[34m"
+NC="\e[0m"
+
+LOGFILE="$HOME/Get-Start-ub.log"
+
+touch "$LOGFILE"
+
+log_plain() {
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" >> "$LOGFILE"
+}
+
+msg() {
+    echo -e "${GREEN}[+] $1${NC}"
+    log_plain "[INFO] $1"
+}
+
+warn() {
+    echo -e "${YELLOW}[!] $1${NC}"
+    log_plain "[WARN] $1"
+}
+
+error() {
+    echo -e "${RED}[X] $1${NC}"
+    log_plain "[ERROR] $1"
+}
+
+banner() {
+
+clear
+
+echo -e "${BLUE}"
+echo "=================================================="
+echo "            UBUNTU QUICK START"
+echo "=================================================="
+echo " Ubuntu Development Environment Bootstrap"
+echo "=================================================="
+echo -e "${NC}"
+
+}
+
+backup_file() {
+
+FILE="$1"
+
+if [ -f "$FILE" ]; then
+
+cp "$FILE" "$FILE.backup.$(date +%Y%m%d_%H%M%S)"
+
+fi
+
+}
+
+banner
+
+msg "Starting Ubuntu Setup..."
+
+msg "Updating repositories..."
+
+apt update
+
+msg "Upgrading installed packages..."
+
+DEBIAN_FRONTEND=noninteractive apt upgrade -y
+
+msg "Installing essential packages..."
+
+apt install -y \
+sudo \
+curl \
+wget \
+git \
+nano \
+vim \
+zip \
+unzip \
+tar \
+tree \
+htop \
+tmux \
+screen \
+mc \
+bash-completion \
+software-properties-common \
+ca-certificates \
+gnupg \
+lsb-release
+
+msg "Installing development tools..."
+
+apt install -y \
+build-essential \
+cmake \
+clang \
+gdb \
+make \
+pkg-config
+
+msg "Installing Python Environment..."
+
+apt install -y \
+python3 \
+python3-pip \
+python3-venv
+
+msg "Installing Node.js Environment..."
+
+apt install -y \
+nodejs \
+npm
+
+msg "Installing network tools..."
+
+apt install -y \
+net-tools \
+dnsutils \
+iputils-ping \
+traceroute \
+whois \
+openssh-client \
+openssh-server
+
+msg "Installing additional utilities..."
+
+apt install -y \
+jq \
+ripgrep \
+fzf \
+rsync \
+less \
+man-db \
+ncdu
+
+msg "Creating backup structure..."
+
+mkdir -p ~/Backups
+
+backup_file ~/.bashrc
+backup_file ~/.profile
+backup_file ~/.gitconfig
+
+msg "Creating workspace structure..."
+
+mkdir -p ~/Workspace
+
+mkdir -p ~/Workspace/Projects
+mkdir -p ~/Workspace/Python
+mkdir -p ~/Workspace/NodeJS
+mkdir -p ~/Workspace/DotNet
+mkdir -p ~/Workspace/MLNet
+mkdir -p ~/Workspace/GitHub
+mkdir -p ~/Workspace/Scripts
+mkdir -p ~/Workspace/Notes
+mkdir -p ~/Workspace/Templates
+mkdir -p ~/Workspace/Backup
+
+msg "Configuring aliases..."
+
+touch ~/.bashrc
+
+grep -q "alias update=" ~/.bashrc 2>/dev/null || \
+echo "alias update='apt update && apt upgrade -y'" >> ~/.bashrc
+
+grep -q "alias cls=" ~/.bashrc 2>/dev/null || \
+echo "alias cls='clear'" >> ~/.bashrc
+
+grep -q "alias ll=" ~/.bashrc 2>/dev/null || \
+echo "alias ll='ls -lah'" >> ~/.bashrc
+
+grep -q "alias gs=" ~/.bashrc 2>/dev/null || \
+echo "alias gs='git status'" >> ~/.bashrc
+
+grep -q "alias ga=" ~/.bashrc 2>/dev/null || \
+echo "alias ga='git add .'" >> ~/.bashrc
+
+grep -q "alias gp=" ~/.bashrc 2>/dev/null || \
+echo "alias gp='git push'" >> ~/.bashrc
+
+grep -q "alias gl=" ~/.bashrc 2>/dev/null || \
+echo "alias gl='git pull'" >> ~/.bashrc
+
+grep -q "alias py=" ~/.bashrc 2>/dev/null || \
+echo "alias py='python3'" >> ~/.bashrc
+
+grep -q "alias pipup=" ~/.bashrc 2>/dev/null || \
+echo "alias pipup='pip3 list --outdated'" >> ~/.bashrc
+
+grep -q "alias work=" ~/.bashrc 2>/dev/null || \
+echo "alias work='cd ~/Workspace'" >> ~/.bashrc
+
+grep -q "alias notes=" ~/.bashrc 2>/dev/null || \
+echo "alias notes='cd ~/Workspace/Notes'" >> ~/.bashrc
+
+grep -q "alias scripts=" ~/.bashrc 2>/dev/null || \
+echo "alias scripts='cd ~/Workspace/Scripts'" >> ~/.bashrc
+
+grep -q "alias pyproj=" ~/.bashrc 2>/dev/null || \
+echo "alias pyproj='cd ~/Workspace/Python'" >> ~/.bashrc
+
+grep -q "alias nodeproj=" ~/.bashrc 2>/dev/null || \
+echo "alias nodeproj='cd ~/Workspace/NodeJS'" >> ~/.bashrc
+
+msg "Generating README..."
+
+cat > ~/Workspace/README-FIRST.txt <<'EOF'
+
+================================================
+Ubuntu Development Environment
+================================================
+
+Useful Commands
+
+update      -> Update Ubuntu
+
+ll          -> Detailed File Listing
+
+cls         -> Clear Screen
+
+py          -> Python3
+
+gs          -> Git Status
+
+ga          -> Git Add
+
+gp          -> Git Push
+
+gl          -> Git Pull
+
+work        -> Workspace
+
+notes       -> Notes Folder
+
+scripts     -> Scripts Folder
+
+pyproj      -> Python Workspace
+
+nodeproj    -> NodeJS Workspace
+
+================================================
+
+EOF
+
+msg "Installing common Python packages..."
+
+pip3 install --upgrade pip
+
+pip3 install \
+requests \
+numpy \
+pandas \
+matplotlib \
+jupyter \
+virtualenv || true
+
+msg "Creating welcome banner..."
+
+cat <<'EOF' >> ~/.bashrc
+
+echo
+echo "================================================"
+echo " Ubuntu Development Environment Ready"
+echo "================================================"
+echo " update   -> Update Ubuntu"
+echo " work     -> Workspace"
+echo " py       -> Python3"
+echo " gs       -> Git Status"
+echo "================================================"
+echo
+
+EOF
+
+msg "Running health check..."
+
+echo
+echo "==============================="
+echo " HEALTH CHECK"
+echo "==============================="
+
+git --version || true
+python3 --version || true
+pip3 --version || true
+node --version || true
+npm --version || true
+gcc --version | head -n 1 || true
+cmake --version | head -n 1 || true
+
+echo "==============================="
+
+echo
+echo -e "${GREEN}"
+echo "=================================================="
+echo " Ubuntu Setup Completed Successfully"
+echo "=================================================="
+echo -e "${NC}"
+
+echo
+echo "Workspace:"
+echo "  ~/Workspace"
+echo
+
+echo "Log File:"
+echo "  $LOGFILE"
+echo
+
+echo "Reload Shell:"
+echo "  source ~/.bashrc"
+echo
+
+echo "Happy Coding!"
+echo
+```
+
+---
+
 
 
 
