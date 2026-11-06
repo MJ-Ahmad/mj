@@ -1,4 +1,198 @@
-# MJ Ahmad
+> MJ Ahmad
+
+# SystemOps-Documentation-Framework
+
+## 01.Initiation-Layer
+Termux Shell run `Get-Start.sh`
+
+**Get-Start.sh**
+```
+#!/data/data/com.termux/files/usr/bin/bash
+
+# ==================================================
+# Get-Start.sh
+# Initial Termux + Ubuntu Setup Script
+# Author: Copilot
+# Version: 1.0
+# ==================================================
+
+set -e
+
+GREEN="\e[32m"
+YELLOW="\e[33m"
+RED="\e[31m"
+BLUE="\e[34m"
+NC="\e[0m"
+
+banner() {
+    clear
+    echo -e "${BLUE}"
+    echo "=================================================="
+    echo "              TERMUX QUICK START"
+    echo "=================================================="
+    echo -e "${NC}"
+}
+
+msg() {
+    echo -e "${GREEN}[+] $1${NC}"
+}
+
+warn() {
+    echo -e "${YELLOW}[!] $1${NC}"
+}
+
+error() {
+    echo -e "${RED}[X] $1${NC}"
+}
+
+banner
+
+msg "Updating package repository..."
+pkg update -y
+
+msg "Upgrading installed packages..."
+pkg upgrade -y
+
+msg "Installing basic tools..."
+
+pkg install -y \
+bash \
+curl \
+wget \
+git \
+nano \
+vim \
+zip \
+unzip \
+tar \
+tree \
+which \
+openssh \
+htop \
+tmux \
+python \
+python-pip \
+nodejs \
+clang \
+make \
+cmake \
+jq \
+ripgrep \
+fd \
+net-tools \
+dnsutils \
+termux-tools
+
+msg "Installing development tools..."
+
+pkg install -y \
+man \
+less \
+grep \
+sed \
+gawk \
+findutils \
+coreutils
+
+msg "Installing proot-distro..."
+
+pkg install -y proot-distro
+
+if proot-distro list | grep -q ubuntu; then
+    msg "Ubuntu distribution available."
+else
+    error "Ubuntu repository information unavailable."
+    exit 1
+fi
+
+warn "Installing Ubuntu..."
+proot-distro install ubuntu
+
+msg "Creating .bashrc backup..."
+
+if [ -f ~/.bashrc ]; then
+    cp ~/.bashrc ~/.bashrc.backup.$(date +%Y%m%d%H%M%S)
+fi
+
+msg "Configuring alias..."
+
+grep -q "alias ub=" ~/.bashrc 2>/dev/null || \
+echo "alias ub='proot-distro login ubuntu'" >> ~/.bashrc
+
+source ~/.bashrc
+
+msg "Updating Ubuntu packages..."
+
+proot-distro login ubuntu -- bash -c "
+apt update &&
+apt upgrade -y &&
+apt install -y \
+sudo \
+curl \
+wget \
+git \
+nano \
+vim \
+zip \
+unzip \
+software-properties-common \
+build-essential \
+ca-certificates \
+python3 \
+python3-pip \
+net-tools \
+htop \
+tree
+"
+
+msg "Creating Ubuntu welcome profile..."
+
+proot-distro login ubuntu -- bash -c '
+cat > /etc/profile.d/welcome.sh <<EOF
+
+echo
+echo "====================================="
+echo " Ubuntu on Termux Ready"
+echo "====================================="
+echo
+EOF
+
+chmod +x /etc/profile.d/welcome.sh
+'
+
+echo
+echo -e "${GREEN}"
+echo "============================================="
+echo " Setup Completed Successfully"
+echo "============================================="
+echo -e "${NC}"
+
+echo
+echo "Ubuntu shell open করতে:"
+echo
+echo "    ub"
+echo
+
+echo "অথবা"
+echo
+
+echo "    proot-distro login ubuntu"
+echo
+
+echo "বর্তমান shell reload করতে:"
+echo
+
+echo "    source ~/.bashrc"
+echo
+
+echo "শুভকামনা!"
+```
+
+---
+
+
+
+
 
 ## Timeline
 
